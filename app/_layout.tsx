@@ -3,39 +3,31 @@ import { DarkTheme, Stack, ThemeProvider } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Animated, Image, StyleSheet, View } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
 import { WordbookProvider } from "@/lib/wordbook";
 export { ErrorBoundary } from "expo-router";
 
+NativeSplash.setOptions({ duration: 0, fade: false });
 NativeSplash.preventAutoHideAsync().catch(() => undefined);
 
 export default function RootLayout() {
   const [isSplashDone, setIsSplashDone] = useState(false);
-  const fadeAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     let active = true;
 
     const finishSplash = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 300));
       await NativeSplash.hideAsync().catch(() => undefined);
 
-      if (!active) return;
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 350,
-        useNativeDriver: true,
-      }).start(() => {
-        if (active) setIsSplashDone(true);
-      });
+      if (active) setIsSplashDone(true);
     };
 
     finishSplash();
     return () => {
       active = false;
     };
-  }, [fadeAnim]);
+  }, []);
 
   return (
     <WordbookProvider>
@@ -50,7 +42,7 @@ export default function RootLayout() {
             {!isSplashDone && (
               <Animated.View
                 pointerEvents="none"
-                style={[StyleSheet.absoluteFill, styles.splashOverlay, { opacity: fadeAnim }]}
+                style={[StyleSheet.absoluteFill, styles.splashOverlay]}
               >
                 <Image
                   source={require("../assets/images/splash-screen-deep-blue.png")}
