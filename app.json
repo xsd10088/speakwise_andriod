@@ -40,8 +40,7 @@
         {
           "image": "./assets/images/splash-screen-deep-blue.png",
           "resizeMode": "cover",
-          "backgroundColor": "#061B46",
-          "imageWidth": 1
+          "backgroundColor": "#061B46"
         }
       ],
       "expo-audio"

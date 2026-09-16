@@ -22,7 +22,7 @@ const config: ExpoConfig = {
   plugins: [
     "expo-router",
     "expo-audio",
-    ["expo-splash-screen", { image: "./assets/images/splash-screen-deep-blue.png", resizeMode: "cover", backgroundColor: "#061B46", imageWidth: 1 }],
+    ["expo-splash-screen", { image: "./assets/images/splash-screen-deep-blue.png", resizeMode: "cover", backgroundColor: "#061B46" }],
   ],
   experiments: { typedRoutes: true },
   extra: {
