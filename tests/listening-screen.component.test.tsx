@@ -99,7 +99,7 @@ describe("ListeningScreen", () => {
     expect(mockScrollToOffset).toHaveBeenCalledWith({ offset: 0, animated: true });
   });
 
-  it("shows ten horizontally selectable scenes and only the active line while speaking", () => {
+  it("shows ten horizontally selectable scenes and all 40 lines are visible while speaking", () => {
     render(<ListeningScreen />);
 
     expect(screen.getAllByText("日常问候").length).toBeGreaterThan(1);
@@ -107,7 +107,7 @@ describe("ListeningScreen", () => {
     expect(screen.queryByText("餐厅服务")).toBeNull();
 
     fireEvent.press(screen.getAllByText("语音")[0]);
-    expect(screen.getByText("正在播放")).toBeTruthy();
-    expect(screen.getAllByText("语音")).toHaveLength(1);
+    expect(screen.getByText("正在播放当前对话")).toBeTruthy();
+    expect(screen.getAllByText("语音")).toHaveLength(40);
   });
 });
