@@ -29,6 +29,13 @@ jest.mock("react-native", () => {
     Component.displayName = name;
     return Component;
   };
+  const Animated = {
+    Value: jest.fn(() => ({ setValue: jest.fn() })),
+    View: host("Animated.View"),
+    timing: jest.fn(() => ({ start: jest.fn() })),
+    sequence: jest.fn((animations: unknown[]) => animations),
+    loop: jest.fn(() => ({ start: jest.fn(), stop: jest.fn() })),
+  };
   const FlatList = RNReact.forwardRef(({ data, renderItem, ListHeaderComponent, ListFooterComponent, ...props }: any, ref: any) => {
     RNReact.useImperativeHandle(ref, () => ({ scrollToIndex: mockScrollToIndex, scrollToOffset: mockScrollToOffset }));
     return RNReact.createElement("FlatList", props,
@@ -39,11 +46,14 @@ jest.mock("react-native", () => {
   });
   return {
     ActivityIndicator: host("ActivityIndicator"),
+    Animated,
+    Image: host("Image"),
     NativeModules: { ExpoModulesCoreJSLogger: { get: jest.fn(() => undefined) } },
     TurboModuleRegistry: { get: jest.fn(() => null) },
     FlatList,
     Platform: { OS: "android", select: (specifics: any) => specifics.android ?? specifics.native ?? specifics.default },
     Pressable: host("Pressable"),
+    ScrollView: host("ScrollView"),
     StyleSheet: { create: (styles: any) => styles, flatten: (style: any) => style },
     Text: host("Text"),
     View: host("View"),
@@ -87,5 +97,17 @@ describe("ListeningScreen", () => {
     expect(await screen.findByText("暂未读取到系统声线，将使用默认英语声音播放")).toBeTruthy();
     fireEvent.press(screen.getByLabelText("返回页面顶部"));
     expect(mockScrollToOffset).toHaveBeenCalledWith({ offset: 0, animated: true });
+  });
+
+  it("shows ten horizontally selectable scenes and only the active line while speaking", () => {
+    render(<ListeningScreen />);
+
+    expect(screen.getAllByText("日常问候").length).toBeGreaterThan(1);
+    expect(screen.getByText("学校沟通")).toBeTruthy();
+    expect(screen.queryByText("餐厅服务")).toBeNull();
+
+    fireEvent.press(screen.getAllByText("语音")[0]);
+    expect(screen.getByText("正在播放")).toBeTruthy();
+    expect(screen.getAllByText("语音")).toHaveLength(1);
   });
 });
