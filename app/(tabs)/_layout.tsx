@@ -1,6 +1,7 @@
 import { SymbolView } from "expo-symbols";
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { StyleSheet } from "react-native";
+import { useEffect } from "react";
 
 const icons = {
   practice: { ios: "mic.fill", android: "mic", web: "mic" },
@@ -9,9 +10,14 @@ const icons = {
 } as const;
 
 export default function TabLayout() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/(tabs)/listening");
+  }, [router]);
+
   return (
     <Tabs
-      initialRouteName="listening"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "#8DB0FF",
@@ -24,21 +30,27 @@ export default function TabLayout() {
         name="listening"
         options={{
           title: "听力训练",
-          tabBarIcon: ({ color }) => <SymbolView name={icons.listening} tintColor={color} size={22} />,
+          tabBarIcon: ({ color }) => (
+            <SymbolView name={icons.listening} tintColor={color} size={22} />
+          ),
         }}
       />
       <Tabs.Screen
         name="index"
         options={{
           title: "AI口语练习",
-          tabBarIcon: ({ color }) => <SymbolView name={icons.practice} tintColor={color} size={22} />,
+          tabBarIcon: ({ color }) => (
+            <SymbolView name={icons.practice} tintColor={color} size={22} />
+          ),
         }}
       />
       <Tabs.Screen
         name="progress"
         options={{
           title: "我的进度",
-          tabBarIcon: ({ color }) => <SymbolView name={icons.progress} tintColor={color} size={22} />,
+          tabBarIcon: ({ color }) => (
+            <SymbolView name={icons.progress} tintColor={color} size={22} />
+          ),
         }}
       />
     </Tabs>
