@@ -3,17 +3,21 @@ import { describe, expect, it } from "vitest";
 import { getPracticeDialogue, LISTENING_LINES, PRACTICE_DIALOGUE, SCENE_CONTENT, SCENES } from "./data";
 
 describe("SpeakWise learning content", () => {
-  it("contains exactly 40 listening lines", () => {
-    expect(LISTENING_LINES).toHaveLength(40);
+  it("contains exactly 100 listening lines", () => {
+    expect(LISTENING_LINES).toHaveLength(100);
     expect(LISTENING_LINES.every((line) => line.text.length > 0 && line.translation.length > 0)).toBe(true);
   });
 
-  it("contains twelve scenes with forty complete lines each", () => {
+  it("contains twelve scenes, with ten scenes having one hundred complete lines each", () => {
     expect(SCENES).toHaveLength(12);
-    for (const scene of SCENES) {
+    for (const scene of SCENES.slice(0, 10)) {
+      const lines = SCENE_CONTENT[scene.key];
+      expect(lines).toHaveLength(100);
+      expect(lines.every((line) => /[A-Za-z]/.test(line.text) && line.translation.length > 0)).toBe(true);
+    }
+    for (const scene of SCENES.slice(10)) {
       const lines = SCENE_CONTENT[scene.key];
       expect(lines).toHaveLength(40);
-      expect(lines.every((line) => /[A-Za-z]/.test(line.text) && line.translation.length > 0)).toBe(true);
     }
   });
 
