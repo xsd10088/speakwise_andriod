@@ -84,11 +84,11 @@ describe("ListeningScreen", () => {
   it("switches the play-all control to a stop action", () => {
     render(<ListeningScreen />);
 
-    const playAll = screen.getByLabelText("播放全部40句");
+    const playAll = screen.getByLabelText("播放全部100句");
     fireEvent.press(playAll);
     expect(screen.getByLabelText("停止播放全部")).toBeTruthy();
     fireEvent.press(screen.getByLabelText("停止播放全部"));
-    expect(screen.getByLabelText("播放全部40句")).toBeTruthy();
+    expect(screen.getByLabelText("播放全部100句")).toBeTruthy();
   });
 
   it("shows the default-voice fallback and supports returning to the top", async () => {
@@ -99,7 +99,7 @@ describe("ListeningScreen", () => {
     expect(mockScrollToOffset).toHaveBeenCalledWith({ offset: 0, animated: true });
   });
 
-  it("shows ten horizontally selectable scenes and all 40 lines are visible while speaking", () => {
+  it("shows ten horizontally selectable scenes and all 100 lines are visible while speaking", () => {
     render(<ListeningScreen />);
 
     expect(screen.getAllByText("日常问候").length).toBeGreaterThan(1);
@@ -108,6 +108,6 @@ describe("ListeningScreen", () => {
 
     fireEvent.press(screen.getAllByText("语音")[0]);
     expect(screen.getByText("正在播放当前对话")).toBeTruthy();
-    expect(screen.getAllByText("语音")).toHaveLength(40);
+    expect(screen.getAllByText("语音")).toHaveLength(100);
   });
 });
