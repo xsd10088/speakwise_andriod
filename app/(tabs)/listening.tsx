@@ -10,7 +10,7 @@ import { useWordbook } from "@/lib/wordbook";
 const ModalComponent = Modal ?? View;
 const C = { bg: "#0B0C0F", panel: "#111317", border: "#3A3D45", text: "#F2F3F5", muted: "#9AA2B4", blue: "#2F6BEB", soft: "#162A57" };
 const SPEEDS = [0.75, 1, 1.25] as const;
-const sceneOptions = SCENES.slice(0, 10);
+const sceneOptions = SCENES.slice(0, 10) as { key: SceneKey; title: string; subtitle: string }[];
 function voiceSpeaker(speaker: Speaker): "Alex" | "Mia" { return ["Mia", "Agent", "Lee", "Landlord", "Receptionist", "Banker", "Server", "StationAgent", "Clerk", "Teacher"].includes(speaker) ? "Mia" : "Alex"; }
 function WordSentence({ text, onWord }: { text: string; onWord: (word: string) => void }) { return <Text style={styles.lineText}>{text.split(/(\s+)/).map((part, i) => /\s+/.test(part) ? part : <Text key={`${part}-${i}`} onPress={() => onWord(part)} style={styles.word}>{part}</Text>)}</Text>; }
 function Waveform({ active }: { active: boolean }) {

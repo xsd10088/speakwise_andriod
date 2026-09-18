@@ -1,4 +1,12 @@
 export type LevelKey = "beginner" | "intermediate" | "advanced";
+
+export type Scene = {
+  key: SceneKey;
+  title: string;
+  subtitle: string;
+  lines: ListeningLine[];
+};
+
 export type Speaker = string;
 export type PracticeLine = { id: string; speaker: Speaker; text: string; translation: string; note: string };
 export type ListeningLine = PracticeLine;

@@ -11,12 +11,12 @@ describe("SpeakWise learning content", () => {
   it("contains twelve scenes, with ten scenes having one hundred complete lines each", () => {
     expect(SCENES).toHaveLength(12);
     for (const scene of SCENES.slice(0, 10)) {
-      const lines = SCENE_CONTENT[scene.key];
+      const lines = SCENE_CONTENT[scene.key as "greetings"];
       expect(lines).toHaveLength(100);
       expect(lines.every((line) => /[A-Za-z]/.test(line.text) && line.translation.length > 0)).toBe(true);
     }
     for (const scene of SCENES.slice(10)) {
-      const lines = SCENE_CONTENT[scene.key];
+      const lines = SCENE_CONTENT[scene.key as "greetings"];
       expect(lines).toHaveLength(40);
     }
   });

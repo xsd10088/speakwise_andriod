@@ -1,19 +1,5 @@
 import React from "react";
-
-interface Scene {
-  key: string;
-  title: string;
-  subtitle: string;
-  lines: ListeningLine[];
-}
-
-interface ListeningLine {
-  id: string;
-  speaker: string;
-  text: string;
-  translation: string;
-  note: string;
-}
+import { Scene, SceneKey } from "../lib/data";
 
 const DIALOGUE_RENDERER: React.FC<{ scene: Scene }> = ({ scene }) => {
   const { key, title, subtitle, lines } = scene;
@@ -38,4 +24,4 @@ const DIALOGUE_RENDERER: React.FC<{ scene: Scene }> = ({ scene }) => {
   );
 };
 
-export default DialogRenderer;
+export default DIALOGUE_RENDERER;

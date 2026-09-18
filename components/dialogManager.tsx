@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DialogRenderer from "./dialogueRenderer";
-import { Scene, ListeningLine } from "../lib/data";
+import { Scene } from "../lib/data";
 
 interface DialogManagerProps {
   scenes: Scene[];
@@ -37,4 +37,4 @@ const DIALOG_MANAGER: React.FC<DialogManagerProps> = ({
   );
 };
 
-export default DialogManager;
+export default DIALOG_MANAGER;
