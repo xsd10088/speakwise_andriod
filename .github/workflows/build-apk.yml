@@ -1,0 +1,39 @@
+name: Build APK
+
+on:
+  push:
+    branches: [feature/fix-recording]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          cd app/tabs
+          npx react-native install
+          cd ..
+          npm ci
+
+      - name: Build APK
+        run: |
+          cd app/tabs
+          npx react-native run-android
+        env:
+          ANDROID_SDK_ROOT: /opt/android-sdk
+          LOCAL_AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          LOCAL_AWS_SECRET_ACCESS_KEY: ${{ secrets.LOCAL_AWS_SECRET_ACCESS_KEY }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-build
+          path: build/outputs/apk/debug/

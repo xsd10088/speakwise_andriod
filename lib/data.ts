@@ -19,11 +19,11 @@ export const SCENES = [
   { key: "banking", title: "银行开户", subtitle: "开卡、存取与转账" },
   { key: "shopping", title: "购物用餐", subtitle: "超市、点餐与退换" },
   { key: "transit", title: "交通通勤", subtitle: "公交、地铁与驾照" },
-  { key: "government", title: "政务办理", subtitle: "证件、邮局与税务" },
-  { key: "school", title: "学校沟通", subtitle: "入学、家校与请假" },
-  { key: "restaurant", title: "餐厅服务", subtitle: "预约、点餐与结账" },
+   { key: "school", title: "学校沟通", subtitle: "入学、家校与请假" },
+   { key: "government", title: "政府事务", subtitle: "政策、法规与公共服务" },
+   { key: "restaurant", title: "餐厅服务", subtitle: "预约、点餐与结账" },
   { key: "emergency", title: "紧急求助", subtitle: "报警、求救与安全确认" },
-] as const;
+]
 
 export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
   greetings: [
