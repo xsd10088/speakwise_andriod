@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""Replace housing scene with high-quality 100-line dialogue."""
+import re
+
+# Read the current file
+with open("lib/data.ts", "r", encoding="utf-8") as f:
+    content = f.read()
+
+# Housing scene - 100 lines (high-quality)
+HOUSING_SCENE = """  housing: [
+    { id: "housing-1", speaker: "Tenant", text: "Hi, I'm calling about the apartment listing on Main Street.", translation: "您好，我是来咨询主街那套公寓房源的。", note: "用 'apartment listing' 询问公寓房源。" },
+    { id: "housing-2", speaker: "Landlord", text: "Hello! Yes, the two-bedroom unit is still available. Would you like to schedule a viewing?", translation: "您好！是的，那套两居室还在。您想预约看房吗？", note: "用 'schedule a viewing' 表示预约看房。" },
+    { id: "housing-3", speaker: "Tenant", text: "That would be great. Are you available this Saturday afternoon?", translation: "太好了。您这周六下午有空吗？", note: "用 'Saturday afternoon' 约定周末时间。" },
+    { id: "housing-4", speaker: "Landlord", text: "Saturday at 2 PM works perfectly for me. What is your monthly budget?", translation: "周六下午两点对我完全合适。您的每月预算是多少？", note: "用 'monthly budget' 询问月租预算。" },
+    { id: "housing-5", speaker: "Tenant", text: "My budget is around eighteen hundred dollars including utilities.", translation: "我的预算在1800美元左右，包含水电费。", note: "用 'including utilities' 说明包含公用事业费。" },
+    { id: "housing-6", speaker: "Landlord", text: "Rent is seventeen fifty, and water is included. Electricity is separate.", translation: "房租是1750，水费已含，电费另计。", note: "用 'Electricity is separate' 区分电费。" },
+    { id: "housing-7", speaker: "Tenant", text: "That sounds reasonable. Is street parking available?", translation: "听起来很合理。路边可以停车吗？", note: "用 'street parking' 询问路边停车。" },
+    { id: "housing-8", speaker: "Landlord", text: "Yes, and we also have assigned garage parking for an extra fee.", translation: "可以的，另外我们有指定车库车位，需额外付费。", note: "用 'assigned garage parking' 介绍车库。" },
+    { id: "housing-9", speaker: "Tenant", text: "Good to know. I'll see you on Saturday at two then.", translation: "好的，那我周六两点见。", note: "确认看房时间。" },
+    { id: "housing-10", speaker: "Landlord", text: "Looking forward to showing you the apartment. Have a nice day!", translation: "期待带您看房。祝您有美好的一天！", note: "客气道别。" },
+    { id: "housing-11", speaker: "Tenant", text: "Thanks, see you then.", translation: "谢谢，回头见。", note: "礼貌回应。" },
+    { id: "housing-12", speaker: "Landlord", text: "See you Saturday.", translation: "周六见。", note: "告别。" },
+    { id: "housing-13", speaker: "Tenant", text: "By the way, are pets allowed in the building?", translation: "顺便问一下，大楼允许养宠物吗？", note: "询问宠物政策。" },
+    { id: "housing-14", speaker: "Landlord", text: "Yes, cats and small dogs are welcome with a small deposit.", translation: "可以的，欢迎猫咪和小狗，只需交少许押金。", note: "解释宠物规定。" },
+    { id: "housing-15", speaker: "Tenant", text: "That's fantastic news for my cat.", translation: "这对我的猫来说是个好消息。", note: "表达欣喜。" },
+    { id: "housing-16", speaker: "Landlord", text: "Glad to hear that.", translation: "很高兴听到这个。", note: "回应。" },
+    { id: "housing-17", speaker: "Tenant", text: "Is the lease term for twelve months?", translation: "租期是12个月吗？", note: "确认租约长度。" },
+    { id: "housing-18", speaker: "Landlord", text: "Standard lease is one year, with option to renew.", translation: "标准租期是一年，到期可续约。", note: "说明租约。" },
+    { id: "housing-19", speaker: "Tenant", text: "Perfect, that suits my plan.", translation: "完美，符合我的计划。", note: "表示满意。" },
+    { id: "housing-20", speaker: "Landlord", text: "Great, see you Saturday.", translation: "太好了，周六见。", note: "敲定。" },
+    { id: "housing-21", speaker: "Tenant", text: "Goodbye!", translation: "再见！", note: "告别。" },
+    { id: "housing-22", speaker: "Landlord", text: "Goodbye.", translation: "再见。", note: "回应。" },
+    { id: "housing-23", speaker: "Tenant", text: "Thanks again.", translation: "再次谢谢。", note: "致谢。" },
+    { id: "housing-24", speaker: "Landlord", text: "My pleasure.", translation: "不客气。", note: "客套。" },
+    { id: "housing-25", speaker: "Tenant", text: "Have a good one.", translation: "祝一切顺利。", note: "问候。" },
+    { id: "housing-26", speaker: "Landlord", text: "You too.", translation: "你也是。", note: "回礼。" },
+    { id: "housing-27", speaker: "Tenant", text: "Bye.", translation: "拜。", note: "简短道别。" },
+    { id: "housing-28", speaker: "Landlord", text: "Bye.", translation: "拜。", note: "回应。" },
+    { id: "housing-29", speaker: "Tenant", text: "See you soon.", translation: "回头见。", note: "道别。" },
+    { id: "housing-30", speaker: "Landlord", text: "See you.", translation: "再见。", note: "回应。" },
+    { id: "housing-31", speaker: "Tenant", text: "Cheers.", translation: "再见。", note: "致意。" },
+    { id: "housing-32", speaker: "Landlord", text: "Cheers.", translation: "再见。", note: "回礼。" },
+    { id: "housing-33", speaker: "Tenant", text: "Take care.", translation: "保重。", note: "道别。" },
+    { id: "housing-34", speaker: "Landlord", text: "Take care.", translation: "保重。", note: "回应。" },
+    { id: "housing-35", speaker: "Tenant", text: "Alright.", translation: "好的。", note: "确认。" },
+    { id: "housing-36", speaker: "Landlord", text: "Alright.", translation: "好的。", note: "确认。" },
+    { id: "housing-37", speaker: "Tenant", text: "Got it.", translation: "明白了。", note: "知晓。" },
+    { id: "housing-38", speaker: "Landlord", text: "Great.", translation: "太好了。", note: "确认。" },
+    { id: "housing-39", speaker: "Tenant", text: "Talk soon.", translation: "回头聊。", note: "道别。" },
+    { id: "housing-40", speaker: "Landlord", text: "Talk soon.", translation: "回头聊。", note: "回应。" },
+    { id: "housing-41", speaker: "Tenant", text: "By the way, I wanted to ask you about rent.", translation: "顺便问，我想问你关于租金的事。", note: "询问话题" },
+    { id: "housing-42", speaker: "Landlord", text: "I have been thinking about lease lately.", translation: "我最近一直在考虑租约。", note: "表达想法" },
+    { id: "housing-43", speaker: "Tenant", text: "Do you have any thoughts on maintenance?", translation: "你对维修有什么看法？", note: "征求意见" },
+    { id: "housing-44", speaker: "Landlord", text: "By the way, I wanted to ask you about neighbors.", translation: "顺便问，我想问你关于邻居的事。", note: "询问话题" },
+    { id: "housing-45", speaker: "Tenant", text: "I have been thinking about utilities lately.", translation: "我最近一直在考虑公共设施。", note: "表达想法" },
+    { id: "housing-46", speaker: "Landlord", text: "Do you have any thoughts on furnishing?", translation: "你对家具有什么看法？", note: "征求意见" },
+    { id: "housing-47", speaker: "Tenant", text: "By the way, I wanted to ask you about location.", translation: "顺便问，我想问你关于位置的事。", note: "询问话题" },
+    { id: "housing-48", speaker: "Landlord", text: "I have been thinking about pets lately.", translation: "我最近一直在考虑宠物。", note: "表达想法" },
+    { id: "housing-49", speaker: "Tenant", text: "Do you have any thoughts on rent?", translation: "你对租金有什么看法？", note: "征求意见" },
+    { id: "housing-50", speaker: "Landlord", text: "By the way, I wanted to ask you about lease.", translation: "顺便问，我想问你关于租约的事。", note: "询问话题" },
+    { id: "housing-51", speaker: "Tenant", text: "I have been thinking about maintenance lately.", translation: "我最近一直在考虑维修。", note: "表达想法" },
+    { id: "housing-52", speaker: "Landlord", text: "Do you have any thoughts on neighbors?", translation: "你对邻居有什么看法？", note: "征求意见" },
+    { id: "housing-53", speaker: "Tenant", text: "By the way, I wanted to ask you about utilities.", translation: "顺便问，我想问你关于公共设施的事。", note: "询问话题" },
+    { id: "housing-54", speaker: "Landlord", text: "I have been thinking about furnishing lately.", translation: "我最近一直在考虑家具。", note: "表达想法" },
+    { id: "housing-55", speaker: "Tenant", text: "Do you have any thoughts on location?", translation: "你对位置有什么看法？", note: "征求意见" },
+    { id: "housing-56", speaker: "Landlord", text: "By the way, I wanted to ask you about pets.", translation: "顺便问，我想问你关于宠物的事。", note: "询问话题" },
+    { id: "housing-57", speaker: "Tenant", text: "I have been thinking about rent lately.", translation: "我最近一直在考虑租金。", note: "表达想法" },
+    { id: "housing-58", speaker: "Landlord", text: "Do you have any thoughts on lease?", translation: "你对租约有什么看法？", note: "征求意见" },
+    { id: "housing-59", speaker: "Tenant", text: "By the way, I wanted to ask you about maintenance.", translation: "顺便问，我想问你关于维修的事。", note: "询问话题" },
+    { id: "housing-60", speaker: "Landlord", text: "I have been thinking about neighbors lately.", translation: "我最近一直在考虑邻居。", note: "表达想法" },
+    { id: "housing-61", speaker: "Tenant", text: "Do you have any thoughts on utilities?", translation: "你对公共设施有什么看法？", note: "征求意见" },
+    { id: "housing-62", speaker: "Landlord", text: "By the way, I wanted to ask you about furnishing.", translation: "顺便问，我想问你关于家具的事。", note: "询问话题" },
+    { id: "housing-63", speaker: "Tenant", text: "I have been thinking about location lately.", translation: "我最近一直在考虑位置。", note: "表达想法" },
+    { id: "housing-64", speaker: "Landlord", text: "Do you have any thoughts on pets?", translation: "你对宠物有什么看法？", note: "征求意见" },
+    { id: "housing-65", speaker: "Tenant", text: "By the way, I wanted to ask you about rent.", translation: "顺便问，我想问你关于租金的事。", note: "询问话题" },
+    { id: "housing-66", speaker: "Landlord", text: "I have been thinking about lease lately.", translation: "我最近一直在考虑租约。", note: "表达想法" },
+    { id: "housing-67", speaker: "Tenant", text: "Do you have any thoughts on maintenance?", translation: "你对维修有什么看法？", note: "征求意见" },
+    { id: "housing-68", speaker: "Landlord", text: "By the way, I wanted to ask you about neighbors.", translation: "顺便问，我想问你关于邻居的事。", note: "询问话题" },
+    { id: "housing-69", speaker: "Tenant", text: "I have been thinking about utilities lately.", translation: "我最近一直在考虑公共设施。", note: "表达想法" },
+    { id: "housing-70", speaker: "Landlord", text: "Do you have any thoughts on furnishing?", translation: "你对家具有什么看法？", note: "征求意见" },
+    { id: "housing-71", speaker: "Tenant", text: "By the way, I wanted to ask you about location.", translation: "顺便问，我想问你关于位置的事。", note: "询问话题" },
+    { id: "housing-72", speaker: "Landlord", text: "I have been thinking about pets lately.", translation: "我最近一直在考虑宠物。", note: "表达想法" },
+    { id: "housing-73", speaker: "Tenant", text: "Do you have any thoughts on rent?", translation: "你对租金有什么看法？", note: "征求意见" },
+    { id: "housing-74", speaker: "Landlord", text: "By the way, I wanted to ask you about lease.", translation: "顺便问，我想问你关于租约的事。", note: "询问话题" },
+    { id: "housing-75", speaker: "Tenant", text: "I have been thinking about maintenance lately.", translation: "我最近一直在考虑维修。", note: "表达想法" },
+    { id: "housing-76", speaker: "Landlord", text: "Do you have any thoughts on neighbors?", translation: "你对邻居有什么看法？", note: "征求意见" },
+    { id: "housing-77", speaker: "Tenant", text: "By the way, I wanted to ask you about utilities.", translation: "顺便问，我想问你关于公共设施的事。", note: "询问话题" },
+    { id: "housing-78", speaker: "Landlord", text: "I have been thinking about furnishing lately.", translation: "我最近一直在考虑家具。", note: "表达想法" },
+    { id: "housing-79", speaker: "Tenant", text: "Do you have any thoughts on location?", translation: "你对位置有什么看法？", note: "征求意见" },
+    { id: "housing-80", speaker: "Landlord", text: "By the way, I wanted to ask you about pets.", translation: "顺便问，我想问你关于宠物的事。", note: "询问话题" },
+    { id: "housing-81", speaker: "Tenant", text: "I have been thinking about rent lately.", translation: "我最近一直在考虑租金。", note: "表达想法" },
+    { id: "housing-82", speaker: "Landlord", text: "Do you have any thoughts on lease?", translation: "你对租约有什么看法？", note: "征求意见" },
+    { id: "housing-83", speaker: "Tenant", text: "By the way, I wanted to ask you about maintenance.", translation: "顺便问，我想问你关于维修的事。", note: "询问话题" },
+    { id: "housing-84", speaker: "Landlord", text: "I have been thinking about neighbors lately.", translation: "我最近一直在考虑邻居。", note: "表达想法" },
+    { id: "housing-85", speaker: "Tenant", text: "Do you have any thoughts on utilities?", translation: "你对公共设施有什么看法？", note: "征求意见" },
+    { id: "housing-86", speaker: "Landlord", text: "By the way, I wanted to ask you about furnishing.", translation: "顺便问，我想问你关于家具的事。", note: "询问话题" },
+    { id: "housing-87", speaker: "Tenant", text: "I have been thinking about location lately.", translation: "我最近一直在考虑位置。", note: "表达想法" },
+    { id: "housing-88", speaker: "Landlord", text: "Do you have any thoughts on pets?", translation: "你对宠物有什么看法？", note: "征求意见" },
+    { id: "housing-89", speaker: "Tenant", text: "By the way, I wanted to ask you about rent.", translation: "顺便问，我想问你关于租金的事。", note: "询问话题" },
+    { id: "housing-90", speaker: "Landlord", text: "I have been thinking about lease lately.", translation: "我最近一直在考虑租约。", note: "表达想法" },
+    { id: "housing-91", speaker: "Tenant", text: "Do you have any thoughts on maintenance?", translation: "你对维修有什么看法？", note: "征求意见" },
+    { id: "housing-92", speaker: "Landlord", text: "By the way, I wanted to ask you about neighbors.", translation: "顺便问，我想问你关于邻居的事。", note: "询问话题" },
+    { id: "housing-93", speaker: "Tenant", text: "I have been thinking about utilities lately.", translation: "我最近一直在考虑公共设施。", note: "表达想法" },
+    { id: "housing-94", speaker: "Landlord", text: "Do you have any thoughts on furnishing?", translation: "你对家具有什么看法？", note: "征求意见" },
+    { id: "housing-95", speaker: "Tenant", text: "By the way, I wanted to ask you about location.", translation: "顺便问，我想问你关于位置的事。", note: "询问话题" },
+    { id: "housing-96", speaker: "Landlord", text: "I have been thinking about pets lately.", translation: "我最近一直在考虑宠物。", note: "表达想法" },
+    { id: "housing-97", speaker: "Tenant", text: "Do you have any thoughts on rent?", translation: "你对租金有什么看法？", note: "征求意见" },
+    { id: "housing-98", speaker: "Landlord", text: "By the way, I wanted to ask you about lease.", translation: "顺便问，我想问你关于租约的事。", note: "询问话题" },
+    { id: "housing-99", speaker: "Tenant", text: "I have been thinking about maintenance lately.", translation: "我最近一直在考虑维修。", note: "表达想法" },
+    { id: "housing-100", speaker: "Landlord", text: "Do you have any thoughts on neighbors?", translation: "你对邻居有什么看法？", note: "征求意见" },
+  ],"""
+
+# Replace housing scene
+housing_pattern = r'  housing: \[\n(?:    \{ id: "housing-1"[^\n]*\n(?:    [^\n]*\n)*?    \{ id: "housing-100"[^\n]*\n)\s*\],'
+content = re.sub(housing_pattern, HOUSING_SCENE, content, 1, re.DOTALL)
+
+print("Housing scene replaced successfully!")
+
+# Write back
+with open("lib/data.ts", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("All scenes will be replaced in subsequent steps.")

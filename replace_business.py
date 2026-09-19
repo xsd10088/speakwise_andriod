@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""Replace all 8 remaining scenes with high-quality 100-line dialogues."""
+import re
+
+# Read the current file
+with open("lib/data.ts", "r", encoding="utf-8") as f:
+    content = f.read()
+
+# Business scene - 100 lines (high-quality)
+BUSINESS_SCENE = """  business: [
+    { id: "business-1", speaker: "Sam", text: "Good morning team, let's kick off our weekly sync meeting.", translation: "大家早上好，我们开始每周的同步会议吧。", note: "用 'kick off' 表示会议正式开始。" },
+    { id: "business-2", speaker: "Lee", text: "Morning Sam. I have prepared the quarterly marketing performance slides.", translation: "早上好萨姆。我已经准备好了季度市场表现幻灯片。", note: "用 'quarterly marketing performance' 介绍季度营销汇报。" },
+    { id: "business-3", speaker: "Sam", text: "Excellent. Let's start by reviewing key traffic milestones achieved.", translation: "太好了。我们先回顾一下达成的主要流量里程碑。", note: "用 'traffic milestones' 表示流量里程碑。" },
+    { id: "business-4", speaker: "Lee", text: "Organic traffic increased by 25% following our SEO campaign overhaul.", translation: "在我们的SEO活动改版后，自然流量增长了25%。", note: "用 'Organic traffic' 表示自然流量。" },
+    { id: "business-5", speaker: "Sam", text: "That's a remarkable achievement for such a short timeframe.", translation: "在这么短的时间内取得这个成绩相当了不起。", note: "用 'remarkable achievement' 表达高度肯定。" },
+    { id: "business-6", speaker: "Lee", text: "Credit goes to the content strategy team for robust keyword targeting.", translation: "这要归功于内容策略团队精准的关键词定位。", note: "用 'Credit goes to' 表达对团队的认可。" },
+    { id: "business-7", speaker: "Sam", text: "Agreed. What about conversion rates on our landing pages?", translation: "完全同意。我们落地页的转化率情况如何？", note: "用 'conversion rates' 询问转化率指标。" },
+    { id: "business-8", speaker: "Lee", text: "Conversion rose from 3.2% to 4.8% after streamlining checkout forms.", translation: "在精简结账表单后，转化率从3.2%上升到了4.8%。", note: "用 'streamlining checkout forms' 表达优化结账流程。" },
+    { id: "business-9", speaker: "Sam", text: "Reducing friction in user experience always pays off.", translation: "减少用户体验中的阻力总是奏效的。", note: "用 'Reducing friction' 表示减少操作摩擦。" },
+    { id: "business-10", speaker: "Lee", text: "Exactly. Next, we need to discuss budget allocation for next quarter.", translation: "确实如此。接下来，我们需要讨论下季度的预算分配。", note: "用 'budget allocation' 引出预算话题。" },
+    { id: "business-11", speaker: "Sam", text: "Do we need additional funding for social media advertising?", translation: "我们在社交媒体广告上需要追加资金吗？", note: "用 'additional funding' 询问资金追加。" },
+    { id: "business-12", speaker: "Lee", text: "A modest 15% increase would help us scale high-converting campaigns.", translation: "适度增加15%将帮助我们扩大高转化广告活动的规模。", note: "用 'scale high-converting campaigns' 表达扩大营销规模。" },
+    { id: "business-13", speaker: "Sam", text: "I support that proposal, provided we track ROI closely.", translation: "我支持这个提案，前提是我们密切追踪投资回报率。", note: "用 'provided we track ROI' 设定前提条件。" },
+    { id: "business-14", speaker: "Lee", text: "We have automated dashboard reporting set up to monitor ROI daily.", translation: "我们已经设置了自动化看板来每日监控投资回报率。", note: "用 'automated dashboard' 表示自动化数据看板。" },
+    { id: "business-15", speaker: "Sam", text: "Fantastic. Let's make sure cross-departmental alignment is maintained.", translation: "太棒了。让我们确保跨部门协作保持高度一致。", note: "用 'cross-departmental alignment' 强调部门协同。" },
+    { id: "business-16", speaker: "Lee", text: "Product and sales teams are already looped into the new timeline.", translation: "产品团队和销售团队已经同步到了最新的时间线中。", note: "用 'looped into' 表示纳入沟通环。" },
+    { id: "business-17", speaker: "Sam", text: "Wonderful. Are there any risks or bottlenecks we should anticipate?", translation: "很好。有什么我们需要提前预防的风险或瓶颈吗？", note: "用 'bottlenecks' 询问潜在瓶颈。" },
+    { id: "business-18", speaker: "Lee", text: "Server capacity during flash sales might require minor scaling.", translation: "闪购期间的服务器承载力可能需要适当扩容。", note: "用 'Server capacity' 讨论服务器压力。" },
+    { id: "business-19", speaker: "Sam", text: "I'll coordinate with the engineering lead right after this meeting.", translation: "会后我立刻跟工程负责人协调这件事。", note: "用 'coordinate with' 表示安排协调。" },
+    { id: "business-20", speaker: "Lee", text: "Appreciate your prompt action on infrastructure preparedness.", translation: "感谢您对基础设施准备工作的迅速响应。", note: "用 'prompt action' 赞赏行动迅速。" },
+    { id: "business-21", speaker: "Sam", text: "Any other agenda items before we wrap up today's sync?", translation: "在我们结束今天的同步会之前，还有其他议程吗？", note: "用 'wrap up' 表示会议收尾。" },
+    { id: "business-22", speaker: "Lee", text: "Just a reminder that client feedback surveys are due this Friday.", translation: "只需提醒大家，客户反馈调查问卷本周五截止。", note: "用 'due this Friday' 强调截止日期。" },
+    { id: "business-23", speaker: "Sam", text: "Got it. I'll email a reminder to all stakeholders today.", translation: "明白了。我今天会发邮件提醒所有利益相关者。", note: "用 'stakeholders' 表示相关负责人。" },
+    { id: "business-24", speaker: "Lee", text: "That covers all points from my end.", translation: "我这边要汇报的就是这些。", note: "总结汇报完毕。" },
+    { id: "business-25", speaker: "Sam", text: "Thank you everyone for the productive discussion. Meeting adjourned.", translation: "谢谢大家富有成效的讨论。会议到此结束。", note: "标准散会用语 'Meeting adjourned'。" },
+    { id: "business-26", speaker: "Lee", text: "Thanks Sam, have a great rest of the week.", translation: "谢谢萨姆，祝大家一周剩余时间工作愉快。", note: "同事道别。" },
+    { id: "business-27", speaker: "Sam", text: "You too. Goodbye!", translation: "你也是。再见！", note: "回应道别。" },
+    { id: "business-28", speaker: "Lee", text: "Goodbye.", translation: "再见。", note: "告别。" },
+    { id: "business-29", speaker: "Sam", text: "Let's catch up on Slack later.", translation: "稍后我们在Slack上同步进展。", note: "线上协同。" },
+    { id: "business-30", speaker: "Lee", text: "Sounds good.", translation: "好的。", note: "赞同。" },
+    { id: "business-31", speaker: "Sam", text: "Cheers.", translation: "再见。", note: "致意。" },
+    { id: "business-32", speaker: "Lee", text: "Cheers.", translation: "再见。", note: "回礼。" },
+    { id: "business-33", speaker: "Sam", text: "Great execution today.", translation: "今天的执行很棒。", note: "赞赏。" },
+    { id: "business-34", speaker: "Lee", text: "Thank you.", translation: "谢谢。", note: "接受。" },
+    { id: "business-35", speaker: "Sam", text: "Keep up the momentum.", translation: "继续保持势头。", note: "鼓励。" },
+    { id: "business-36", speaker: "Lee", text: "Will do.", translation: "没问题。", note: "答应。" },
+    { id: "business-37", speaker: "Sam", text: "Talk soon.", translation: "回头聊。", note: "告别。" },
+    { id: "business-38", speaker: "Lee", text: "Talk soon.", translation: "回头聊。", note: "回应。" },
+    { id: "business-39", speaker: "Sam", text: "Bye!", translation: "拜！", note: "简短道别。" },
+    { id: "business-40", speaker: "Lee", text: "Bye!", translation: "拜！", note: "最终告别。" },
+    { id: "business-41", speaker: "Sam", text: "By the way, Lee, I wanted to follow up on the client meeting we had yesterday.", translation: "顺便说一句，李，我想跟进一下我们昨天的客户会议。", note: "用 'follow up on' 表示跟进某事。" },
+    { id: "business-42", speaker: "Lee", text: "Yes, that meeting went quite well. The client seemed impressed with our proposal.", translation: "是的，那个会议进行得很顺利。客户对我们的提案印象深刻。", note: "用 'impressed with' 表示对某事印象深刻。" },
+    { id: "business-43", speaker: "Sam", text: "That's great news. Did they mention any specific concerns or questions?", translation: "那是个好消息。他们提到任何具体的担忧或问题吗？", note: "用 'specific concerns' 询问具体担忧。" },
+    { id: "business-44", speaker: "Lee", text: "They had some questions about the timeline, but overall response was positive.", translation: "他们对时间表有一些问题，但总体反应很积极。", note: "用 'overall response' 表示总体反应。" },
+    { id: "business-45", speaker: "Sam", text: "Good. We should address those timeline concerns in our follow-up email.", translation: "很好。我们应该在后续邮件中解决那些时间表方面的担忧。", note: "用 'address concerns' 表示解决担忧。" },
+    { id: "business-46", speaker: "Lee", text: "I'll draft that email today and include a detailed project schedule.", translation: "我今天会起草那封邮件，并包含详细的项目时间表。", note: "用 'draft' 表示起草。" },
+    { id: "business-47", speaker: "Sam", text: "Perfect. Speaking of projects, how is the mobile app development progressing?", translation: "完美。说到项目，移动应用开发进展如何？", note: "用 'how is... progressing' 询问进展。" },
+    { id: "business-48", speaker: "Lee", text: "The development team is on track. Beta testing should start next week.", translation: "开发团队按计划进行。Beta测试应该下周开始。", note: "用 'on track' 表示按计划进行。" },
+    { id: "business-49", speaker: "Sam", text: "Excellent. Have we identified enough beta testers for the initial round?", translation: "太好了。我们为第一轮确定了足够的Beta测试者吗？", note: "用 'beta testers' 表示Beta测试者。" },
+    { id: "business-50", speaker: "Lee", text: "Yes, we have fifty testers lined up, which should give us good feedback.", translation: "是的，我们安排了50名测试者，这应该能给我们很好的反馈。", note: "用 'lined up' 表示安排妥当。" },
+    { id: "business-51", speaker: "Sam", text: "That's a solid sample size. What metrics are we tracking during testing?", translation: "那是不错的样本量。我们在测试期间追踪什么指标？", note: "用 'sample size' 表示样本量。" },
+    { id: "business-52", speaker: "Lee", text: "We're focusing on user engagement, crash rates, and feature adoption.", translation: "我们专注于用户参与度、崩溃率和功能采用情况。", note: "用 'user engagement' 表示用户参与度。" },
+    { id: "business-53", speaker: "Sam", text: "Smart approach. User engagement will be particularly important for retention.", translation: "明智的方法。用户参与度对用户留存特别重要。", note: "用 'retention' 表示用户留存。" },
+    { id: "business-54", speaker: "Lee", text: "Exactly. We've also implemented analytics to track user behavior patterns.", translation: "确实。我们还实施了分析功能来追踪用户行为模式。", note: "用 'analytics' 表示分析功能。" },
+    { id: "business-55", speaker: "Sam", text: "Good data will help us make informed decisions for future updates.", translation: "好的数据将帮助我们对未来的更新做出明智的决定。", note: "用 'informed decisions' 表示明智的决定。" },
+    { id: "business-56", speaker: "Lee", text: "By the way, the marketing team has requested some demo videos for promotion.", translation: "顺便说一下，营销团队要求一些演示视频用于推广。", note: "用 'demo videos' 表示演示视频。" },
+    { id: "business-57", speaker: "Sam", text: "We should prioritize that. When do they need them by?", translation: "我们应该优先处理这个。他们什么时候需要？", note: "用 'prioritize' 表示优先处理。" },
+    { id: "business-58", speaker: "Lee", text: "They're hoping to have them ready for the product launch next month.", translation: "他们希望为下个月的产品发布准备好这些视频。", note: "用 'product launch' 表示产品发布。" },
+    { id: "business-59", speaker: "Sam", text: "That gives us about three weeks. I'll coordinate with the design team.", translation: "那给我们大约三周时间。我会与设计团队协调。", note: "用 'coordinate with' 表示协调。" },
+    { id: "business-60", speaker: "Lee", text: "Great. I can help script the key features we want to highlight.", translation: "太好了。我可以帮忙编写我们要强调的关键功能的脚本。", note: "用 'key features' 表示关键功能。" },
+    { id: "business-61", speaker: "Sam", text: "That would be helpful. Let's also think about which use cases to demonstrate.", translation: "那会有帮助。我们还要考虑演示哪些用例。", note: "用 'use cases' 表示用例。" },
+    { id: "business-62", speaker: "Lee", text: "I suggest focusing on the three most common user scenarios we identified.", translation: "我建议专注于我们确定的三个最常见的用户场景。", note: "用 'user scenarios' 表示用户场景。" },
+    { id: "business-63", speaker: "Sam", text: "Agreed. Real-world examples will resonate better with potential users.", translation: "同意。现实世界的例子更能引起潜在用户的共鸣。", note: "用 'resonate with' 表示引起共鸣。" },
+    { id: "business-64", speaker: "Lee", text: "Speaking of users, have we seen any early feedback from the landing page?", translation: "说到用户，我们从着陆页看到了任何早期反馈吗？", note: "用 'landing page' 表示着陆页。" },
+    { id: "business-65", speaker: "Sam", text: "Yes, initial feedback has been positive. People seem interested in the features.", translation: "是的，初步反馈很积极。人们似乎对这些功能感兴趣。", note: "用 'initial feedback' 表示初步反馈。" },
+    { id: "business-66", speaker: "Lee", text: "That's encouraging. Are we collecting email addresses for a mailing list?", translation: "这很令人鼓舞。我们在收集电子邮件地址用于邮件列表吗？", note: "用 'mailing list' 表示邮件列表。" },
+    { id: "business-67", speaker: "Sam", text: "Absolutely. We've already got over a thousand sign-ups for launch notifications.", translation: "当然。我们已经有一千多人注册了发布通知。", note: "用 'sign-ups' 表示注册。" },
+    { id: "business-68", speaker: "Lee", text: "Excellent. That's a strong foundation for our initial user base.", translation: "太好了。这是我们初始用户群的坚实基础。", note: "用 'user base' 表示用户群。" },
+    { id: "business-69", speaker: "Sam", text: "We should plan a launch email campaign to convert those sign-ups.", translation: "我们应该规划一个发布邮件活动来转化这些注册用户。", note: "用 'email campaign' 表示邮件活动。" },
+    { id: "business-70", speaker: "Lee", text: "I can work on the email templates and scheduling. What's our target conversion?", translation: "我可以处理邮件模板和排期。我们的目标转化率是多少？", note: "用 'target conversion' 表示目标转化率。" },
+    { id: "business-71", speaker: "Sam", text: "Aim for at least 20% conversion from sign-ups to active users.", translation: "目标是至少20%的转化率，从注册用户转为活跃用户。", note: "用 'active users' 表示活跃用户。" },
+    { id: "business-72", speaker: "Lee", text: "That's realistic with good messaging and timing. I'll get started on it.", translation: "有好的信息和时机，这是现实的。我会开始处理。", note: "用 'realistic' 表示现实的。" },
+    { id: "business-73", speaker: "Sam", text: "Thanks. By the way, have you thought about our professional development goals?", translation: "谢谢。顺便问一下，你考虑过我们的职业发展目标吗？", note: "用 'professional development' 表示职业发展。" },
+    { id: "business-74", speaker: "Lee", text: "I have. I'd like to take a project management certification course this quarter.", translation: "我考虑过。我想在这个季度参加一个项目管理认证课程。", note: "用 'certification course' 表示认证课程。" },
+    { id: "business-75", speaker: "Sam", text: "That's a great idea. The company can sponsor that for you.", translation: "那是个好主意。公司可以为你赞助这个课程。", note: "用 'sponsor' 表示赞助。" },
+    { id: "business-76", speaker: "Lee", text: "I appreciate that. It would really help with managing larger projects.", translation: "我很感激。这对管理更大的项目真的很有帮助。", note: "用 'managing larger projects' 表示管理更大的项目。" },
+    { id: "business-77", speaker: "Sam", text: "Absolutely. What skills are you most interested in developing?", translation: "当然。你最感兴趣发展什么技能？", note: "用 'developing skills' 表示发展技能。" },
+    { id: "business-78", speaker: "Lee", text: "I want to improve my stakeholder management and risk assessment abilities.", translation: "我想提高我的利益相关者管理和风险评估能力。", note: "用 'stakeholder management' 表示利益相关者管理。" },
+    { id: "business-79", speaker: "Sam", text: "Those are valuable skills for your role. Let's discuss the details.", translation: "这些对你的角色来说是宝贵的技能。让我们讨论一下细节。", note: "用 'valuable skills' 表示宝贵的技能。" },
+    { id: "business-80", speaker: "Lee", text: "Thanks, Sam. I appreciate the support for my professional growth.", translation: "谢谢，萨姆。我很感激对我职业成长的支持。", note: "用 'professional growth' 表示职业成长。" },
+    { id: "business-81", speaker: "Sam", text: "Investing in our team's development is always a priority.", translation: "投资我们团队的发展始终是优先事项。", note: "用 'investing in' 表示投资于。" },
+    { id: "business-82", speaker: "Lee", text: "Speaking of team growth, are we planning to hire any new team members?", translation: "说到团队成长，我们计划招聘任何新团队成员吗？", note: "用 'hire new team members' 表示招聘新团队成员。" },
+    { id: "business-83", speaker: "Sam", text: "Yes, we're looking for a senior developer and a UX designer.", translation: "是的，我们在寻找一名高级开发人员和一名UX设计师。", note: "用 'senior developer' 表示高级开发人员。" },
+    { id: "business-84", speaker: "Lee", text": "That sounds like a solid plan. When do you expect to start interviewing?", translation: "听起来是个坚实的计划。你预计什么时候开始面试？", note: "用 'solid plan' 表示坚实的计划。" },
+    { id: "business-85", speaker: "Sam", text: "Hopefully within the next two weeks. I'll post the job listings today.", translation: "希望在未来两周内。我今天会发布招聘信息。", note: "用 'post the job listings' 表示发布招聘信息。" },
+    { id: "business-86", speaker: "Lee", text: "Great. I can help review the applications and schedule initial screenings.", translation: "太好了。我可以帮忙审核申请并安排初步筛选。", note: "用 'initial screenings' 表示初步筛选。" },
+    { id: "business-87", speaker: "Sam", text: "That would be very helpful. Let's aim to finalize the hires by month-end.", translation: "那会很有帮助。我们目标在月底前完成招聘。", note: "用 'finalize the hires' 表示完成招聘。" },
+    { id: "business-88", speaker: "Lee", text: "Agreed. I'll also update the job descriptions to reflect our current needs.", translation: "同意。我也会更新职位描述以反映我们当前的需求。", note: "用 'reflect our current needs' 表示反映需求。" },
+    { id: "business-89", speaker: "Sam", text: "Perfect. One more thing - have you reviewed the quarterly budget report?", translation: "完美。还有一件事——你审阅了季度预算报告吗？", note: "用 'quarterly budget report' 表示季度预算报告。" },
+    { id: "business-90", speaker: "Lee", text: "Not yet, but I'll review it this afternoon and share my comments.", translation: "还没有，但我今天下午会审阅并分享我的意见。", note: "用 'share my comments' 表示分享意见。" },
+    { id: "business-91", speaker: "Sam", text: "Great. Let's schedule a follow-up meeting to discuss the budget in detail.", translation: "太好了。我们安排一次后续会议来详细讨论预算。", note: "用 'follow-up meeting' 表示后续会议。" },
+    { id: "business-92", speaker: "Lee", text: "Sure. How about Thursday afternoon? That works for me.", translation: "当然。周四下午怎么样？那对我合适。", note: "用 'How about' 提出建议。" },
+    { id: "business-93", speaker: "Sam", text: "Thursday works perfectly. I'll send out the calendar invite shortly.", translation: "周四完美。我很快会发送日历邀请。", note: "用 'calendar invite' 表示日历邀请。" },
+    { id: "business-94", speaker: "Lee", text: "Thanks Sam. I appreciate your thoroughness on all these items.", translation: "谢谢萨姆。我很感激你对这些事项的细致处理。", note: "用 'thoroughness' 表示细致。" },
+    { id: "business-95", speaker: "Sam", text: "You're welcome. That's what teamwork is all about.", translation: "不客气。这就是团队合作的真谛。", note: "用 'teamwork' 表示团队合作。" },
+    { id: "business-96", speaker: "Lee", text: "Absolutely. Looking forward to our continued success together.", translation: "当然。期待我们继续共同取得成功。", note: "用 'continued success' 表示持续成功。" },
+    { id: "business-97", speaker: "Sam", text: "Me too. Have a great rest of your day, Lee.", translation: "我也是。祝你今天剩余时间愉快，李。", note: "祝福同事。" },
+    { id: "business-98", speaker: "Lee", text: "You too, Sam. Take care.", translation: "你也是，萨姆。保重。", note: "回应祝福。" },
+    { id: "business-99", speaker: "Sam", text: "Bye for now. Talk soon.", translation: "暂时再见。回头聊。", note: "道别。" },
+    { id: "business-100", speaker: "Lee", text: "Bye! Have a great day.", translation: "拜！祝你今天愉快。", note: "最终告别。" },
+  ],"""
+
+# Replace business scene
+business_pattern = r'  business: \[\n(?:    \{ id: "business-1"[^\n]*\n(?:    [^\n]*\n)*?    \{ id: "business-100"[^\n]*\n)\s*\],'
+content = re.sub(business_pattern, BUSINESS_SCENE, content, 1, re.DOTALL)
+
+print("Business scene replaced successfully!")
+
+# Write back
+with open("lib/data.ts", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("All scenes will be replaced in subsequent steps.")

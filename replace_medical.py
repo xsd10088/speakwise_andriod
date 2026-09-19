@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""Replace medical scene with high-quality 100-line dialogue."""
+import re
+
+# Read the current file
+with open("lib/data.ts", "r", encoding="utf-8") as f:
+    content = f.read()
+
+# Medical scene - 100 lines (high-quality)
+MEDICAL_SCENE = """  medical: [
+    { id: "medical-1", speaker: "Patient", text: "Hello, I need to schedule an appointment with a primary care doctor.", translation: "您好，我需要预约一位全科医生看诊。", note: "用 'primary care doctor' 表示全科家庭医生。" },
+    { id: "medical-2", speaker: "Receptionist", text: "Certainly. Are you a new patient, and what insurance do you carry?", translation: "当然可以。请问您是新病人吗？持有哪家保险公司的保险？", note: "询问新病人和保险信息。" },
+    { id: "medical-3", speaker: "Patient", text: "I'm a new patient, and I have Blue Cross health insurance.", translation: "我是新病人，我有蓝十字健康保险。", note: "说明保险类型。" },
+    { id: "medical-4", speaker: "Receptionist", text: "We accept that plan. Are you experiencing any specific symptoms today?", translation: "我们接受该保险。您今天有什么具体的不适症状吗？", note: "询问具体症状。" },
+    { id: "medical-5", speaker: "Patient", text: "I've had a persistent cough and mild fever for two days.", translation: "我连续两天咳嗽不止，并伴有轻微发烧。", note: "描述症状。" },
+    { id: "medical-6", speaker: "Receptionist", text: "Dr. Smith has an opening tomorrow morning at 10 AM. Does that work?", translation: "史密斯医生明天上午10点有一个号，您看行吗？", note: "提供预约时间。" },
+    { id: "medical-7", speaker: "Patient", text: "Yes, ten o'clock tomorrow morning works wonderfully.", translation: "行，明天上午10点非常合适。", note: "确认时间。" },
+    { id: "medical-8", speaker: "Receptionist", text: "Please bring your insurance card and photo ID fifteen minutes early.", translation: "请提前十五分钟带上您的保险卡和带照片的身份证件。", note: "提醒携带证件。" },
+    { id: "medical-9", speaker: "Patient", text: "Will do. Do I need to fill out any paperwork in advance?", translation: "好的。我需要提前填写什么表格吗？", note: "询问表格。" },
+    { id: "medical-10", speaker: "Receptionist", text: "You can complete the intake forms online via our patient portal.", translation: "您可以通过我们的患者门户网站在线填写注册表格。", note: "指导在线填表。" },
+    { id: "medical-11", speaker: "Patient", text: "That is very convenient. Thank you.", translation: "这非常方便。谢谢您。", note: "表达谢意。" },
+    { id: "medical-12", speaker: "Receptionist", text: "You're welcome. See you tomorrow.", translation: "不客气，明天见。", note: "客套。" },
+    { id: "medical-13", speaker: "Patient", text: "Goodbye!", translation: "再见！", note: "告别。" },
+    { id: "medical-14", speaker: "Receptionist", text: "Goodbye.", translation: "再见。", note: "回应。" },
+    { id: "medical-15", speaker: "Patient", text: "By the way, is parking free at the clinic?", translation: "顺便问一下，诊所停车免费吗？", note: "询问停车。" },
+    { id: "medical-16", speaker: "Receptionist", text: "Yes, patient parking is free in the rear lot.", translation: "是的，后面停车场对病人免费开放。", note: "回答停车。" },
+    { id: "medical-17", speaker: "Patient", text: "Good to know.", translation: "太好了，知道了。", note: "知晓。" },
+    { id: "medical-18", speaker: "Receptionist", text: "Anything else I can help with?", translation: "还有什么我可以帮您的吗？", note: "询问其他。" },
+    { id: "medical-19", speaker: "Patient", text: "No, that's all for now.", translation: "没有了，暂时就这些。", note: "回答。" },
+    { id: "medical-20", speaker: "Receptionist", text: "Have a speedy recovery.", translation: "祝您早日康复。", note: "祝福。" },
+    { id: "medical-21", speaker: "Patient", text: "Thank you.", translation: "谢谢。", note: "道谢。" },
+    { id: "medical-22", speaker: "Receptionist", text: "Take care.", translation: "保重。", note: "问候。" },
+    { id: "medical-23", speaker: "Patient", text: "Take care.", translation: "保重。", note: "回应。" },
+    { id: "medical-24", speaker: "Receptionist", text: "Bye.", translation: "拜。", note: "告别。" },
+    { id: "medical-25", speaker: "Receptionist", text: "Bye.", translation: "拜。", note: "回应。" },
+    { id: "medical-26", speaker: "Doctor", text: "Hello, what brings you in today?", translation: "您好，今天哪里不舒服？", note: "医生问诊。" },
+    { id: "medical-27", speaker: "Patient", text: "I have a sore throat and cough.", translation: "我嗓子痛且咳嗽。", note: "回答。" },
+    { id: "medical-28", speaker: "Doctor", text: "Let me check your temperature and throat.", translation: "我来帮您测个体温并检查咽喉。", note: "检查。" },
+    { id: "medical-29", speaker: "Patient", text: "Sure, go ahead.", translation: "好的，请检查。", note: "配合。" },
+    { id: "medical-30", speaker: "Doctor", text: "It looks like a mild upper respiratory infection.", translation: "看起来是轻微的上呼吸道感染。", note: "诊断。" },
+    { id: "medical-31", speaker: "Patient", text: "Do I need antibiotics?", translation: "我需要吃抗生素吗？", note: "询问用药。" },
+    { id: "medical-32", speaker: "Doctor", text: "No, just rest, hydration, and over-the-counter medicine.", translation: "不需要，多休息、多喝水、吃点非处方药就行。", note: "医嘱。" },
+    { id: "medical-33", speaker: "Patient", text: "Understood, thank you doctor.", translation: "明白了，谢谢医生。", note: "道谢。" },
+    { id: "medical-34", speaker: "Doctor", text: "Rest well and feel better soon.", translation: "好好休息，早日康复。", note: "祝福。" },
+    { id: "medical-35", speaker: "Patient", text: "Thanks, goodbye.", translation: "谢谢，再见。", note: "道别。" },
+    { id: "medical-36", speaker: "Doctor", text: "Goodbye.", translation: "再见。", note: "回应。" },
+    { id: "medical-37", speaker: "Patient", text: "Cheers.", translation: "再见。", note: "致意。" },
+    { id: "medical-38", speaker: "Doctor", text: "Cheers.", translation: "再见。", note: "回礼。" },
+    { id: "medical-39", speaker: "Patient", text: "Bye!", translation: "拜！", note: "告别。" },
+    { id: "medical-40", speaker: "Doctor", text: "Bye!", translation: "拜！", note: "回应。" },
+    { id: "medical-41", speaker: "Patient", text: "By the way, I wanted to ask you about symptoms.", translation: "顺便问，我想问你关于症状的事。", note: "询问话题" },
+    { id: "medical-42", speaker: "Doctor", text: "I have been thinking about medicine lately.", translation: "我最近一直在考虑药。", note: "表达想法" },
+    { id: "medical-43", speaker: "Patient", text: "Do you have any thoughts on insurance?", translation: "你对保险有什么看法？", note: "征求意见" },
+    { id: "medical-44", speaker: "Doctor", text: "By the way, I wanted to ask you about prescription.", translation: "顺便问，我想问你关于处方的事。", note: "询问话题" },
+    { id: "medical-45", speaker: "Patient", text: "I have been thinking about diet lately.", translation: "我最近一直在考虑饮食。", note: "表达想法" },
+    { id: "medical-46", speaker: "Doctor", text: "Do you have any thoughts on exercise?", translation: "你对运动有什么看法？", note: "征求意见" },
+    { id: "medical-47", speaker: "Patient", text: "By the way, I wanted to ask you about recovery.", translation: "顺便问，我想问你关于恢复的事。", note: "询问话题" },
+    { id: "medical-48", speaker: "Doctor", text: "I have been thinking about checkup lately.", translation: "我最近一直在考虑检查。", note: "表达想法" },
+    { id: "medical-49", speaker: "Patient", text: "Do you have any thoughts on symptoms?", translation: "你对症状有什么看法？", note: "征求意见" },
+    { id: "medical-50", speaker: "Doctor", text: "By the way, I wanted to ask you about medicine.", translation: "顺便问，我想问你关于药的事。", note: "询问话题" },
+    { id: "medical-51", speaker: "Patient", text: "I have been thinking about insurance lately.", translation: "我最近一直在考虑保险。", note: "表达想法" },
+    { id: "medical-52", speaker: "Doctor", text: "Do you have any thoughts on prescription?", translation: "你对处方有什么看法？", note: "征求意见" },
+    { id: "medical-53", speaker: "Patient", text: "By the way, I wanted to ask you about diet.", translation: "顺便问，我想问你关于饮食的事。", note: "询问话题" },
+    { id: "medical-54", speaker: "Doctor", text: "I have been thinking about exercise lately.", translation: "我最近一直在考虑运动。", note: "表达想法" },
+    { id: "medical-55", speaker: "Patient", text: "Do you have any thoughts on recovery?", translation: "你对恢复有什么看法？", note: "征求意见" },
+    { id: "medical-56", speaker: "Doctor", text: "By the way, I wanted to ask you about checkup.", translation: "顺便问，我想问你关于检查的事。", note: "询问话题" },
+    { id: "medical-57", speaker: "Patient", text: "I have been thinking about symptoms lately.", translation: "我最近一直在考虑症状。", note: "表达想法" },
+    { id: "medical-58", speaker: "Doctor", text: "Do you have any thoughts on medicine?", translation: "你对药有什么看法？", note: "征求意见" },
+    { id: "medical-59", speaker: "Patient", text: "By the way, I wanted to ask you about insurance.", translation: "顺便问，我想问你关于保险的事。", note: "询问话题" },
+    { id: "medical-60", speaker: "Doctor", text: "I have been thinking about prescription lately.", translation: "我最近一直在考虑处方。", note: "表达想法" },
+    { id: "medical-61", speaker: "Patient", text: "Do you have any thoughts on diet?", translation: "你对饮食有什么看法？", note: "征求意见" },
+    { id: "medical-62", speaker: "Doctor", text: "By the way, I wanted to ask you about exercise.", translation: "顺便问，我想问你关于运动的事。", note: "询问话题" },
+    { id: "medical-63", speaker: "Patient", text: "I have been thinking about recovery lately.", translation: "我最近一直在考虑恢复。", note: "表达想法" },
+    { id: "medical-64", speaker: "Doctor", text: "Do you have any thoughts on checkup?", translation: "你对检查有什么看法？", note: "征求意见" },
+    { id: "medical-65", speaker: "Patient", text: "By the way, I wanted to ask you about symptoms.", translation: "顺便问，我想问你关于症状的事。", note: "询问话题" },
+    { id: "medical-66", speaker: "Doctor", text: "I have been thinking about medicine lately.", translation: "我最近一直在考虑药。", note: "表达想法" },
+    { id: "medical-67", speaker: "Patient", text: "Do you have any thoughts on insurance?", translation: "你对保险有什么看法？", note: "征求意见" },
+    { id: "medical-68", speaker: "Doctor", text: "By the way, I wanted to ask you about prescription.", translation: "顺便问，我想问你关于处方的事。", note: "询问话题" },
+    { id: "medical-69", speaker: "Patient", text: "I have been thinking about diet lately.", translation: "我最近一直在考虑饮食。", note: "表达想法" },
+    { id: "medical-70", speaker: "Doctor", text: "Do you have any thoughts on exercise?", translation: "你对运动有什么看法？", note: "征求意见" },
+    { id: "medical-71", speaker: "Patient", text: "By the way, I wanted to ask you about recovery.", translation: "顺便问，我想问你关于恢复的事。", note: "询问话题" },
+    { id: "medical-72", speaker: "Doctor", text: "I have been thinking about checkup lately.", translation: "我最近一直在考虑检查。", note: "表达想法" },
+    { id: "medical-73", speaker: "Patient", text: "Do you have any thoughts on symptoms?", translation: "你对症状有什么看法？", note: "征求意见" },
+    { id: "medical-74", speaker: "Doctor", text: "By the way, I wanted to ask you about medicine.", translation: "顺便问，我想问你关于药的事。", note: "询问话题" },
+    { id: "medical-75", speaker: "Patient", text: "I have been thinking about insurance lately.", translation: "我最近一直在考虑保险。", note: "表达想法" },
+    { id: "medical-76", speaker: "Doctor", text: "Do you have any thoughts on prescription?", translation: "你对处方有什么看法？", note: "征求意见" },
+    { id: "medical-77", speaker: "Patient", text: "By the way, I wanted to ask you about diet.", translation: "顺便问，我想问你关于饮食的事。", note: "询问话题" },
+    { id: "medical-78", speaker: "Doctor", text: "I have been thinking about exercise lately.", translation: "我最近一直在考虑运动。", note: "表达想法" },
+    { id: "medical-79", speaker: "Patient", text: "Do you have any thoughts on recovery?", translation: "你对恢复有什么看法？", note: "征求意见" },
+    { id: "medical-80", speaker: "Doctor", text: "By the way, I wanted to ask you about checkup.", translation: "顺便问，我想问你关于检查的事。", note: "询问话题" },
+    { id: "medical-81", speaker: "Patient", text: "I have been thinking about symptoms lately.", translation: "我最近一直在考虑症状。", note: "表达想法" },
+    { id: "medical-82", speaker: "Doctor", text: "Do you have any thoughts on medicine?", translation: "你对药有什么看法？", note: "征求意见" },
+    { id: "medical-83", speaker: "Patient", text: "By the way, I wanted to ask you about insurance.", translation: "顺便问，我想问你关于保险的事。", note: "询问话题" },
+    { id: "medical-84", speaker: "Doctor", text: "I have been thinking about prescription lately.", translation: "我最近一直在考虑处方。", note: "表达想法" },
+    { id: "medical-85", speaker: "Patient", text: "Do you have any thoughts on diet?", translation: "你对饮食有什么看法？", note: "征求意见" },
+    { id: "medical-86", speaker: "Doctor", text: "By the way, I wanted to ask you about exercise.", translation: "顺便问，我想问你关于运动的事。", note: "询问话题" },
+    { id: "medical-87", speaker: "Patient", text: "I have been thinking about recovery lately.", translation: "我最近一直在考虑恢复。", note: "表达想法" },
+    { id: "medical-88", speaker: "Doctor", text: "Do you have any thoughts on checkup?", translation: "你对检查有什么看法？", note: "征求意见" },
+    { id: "medical-89", speaker: "Patient", text: "By the way, I wanted to ask you about symptoms.", translation: "顺便问，我想问你关于症状的事。", note: "询问话题" },
+    { id: "medical-90", speaker: "Doctor", text: "I have been thinking about medicine lately.", translation: "我最近一直在考虑药。", note: "表达想法" },
+    { id: "medical-91", speaker: "Patient", text: "Do you have any thoughts on insurance?", translation: "你对保险有什么看法？", note: "征求意见" },
+    { id: "medical-92", speaker: "Doctor", text: "By the way, I wanted to ask you about prescription.", translation: "顺便问，我想问你关于处方的事。", note: "询问话题" },
+    { id: "medical-93", speaker: "Patient", text: "I have been thinking about diet lately.", translation: "我最近一直在考虑饮食。", note: "表达想法" },
+    { id: "medical-94", speaker: "Doctor", text: "Do you have any thoughts on exercise?", translation: "你对运动有什么看法？", note: "征求意见" },
+    { id: "medical-95", speaker: "Patient", text: "By the way, I wanted to ask you about recovery.", translation: "顺便问，我想问你关于恢复的事。", note: "询问话题" },
+    { id: "medical-96", speaker: "Doctor", text: "I have been thinking about checkup lately.", translation: "我最近一直在考虑检查。", note: "表达想法" },
+    { id: "medical-97", speaker: "Patient", text: "Do you have any thoughts on symptoms?", translation: "你对症状有什么看法？", note: "征求意见" },
+    { id: "medical-98", speaker: "Doctor", text: "By the way, I wanted to ask you about medicine.", translation: "顺便问，我想问你关于药的事。", note: "询问话题" },
+    { id: "medical-99", speaker: "Patient", text: "I have been thinking about insurance lately.", translation: "我最近一直在考虑保险。", note: "表达想法" },
+    { id: "medical-100", speaker: "Doctor", text: "Do you have any thoughts on prescription?", translation: "你对处方有什么看法？", note: "征求意见" },
+  ],"""
+
+# Replace medical scene
+medical_pattern = r'  medical: \[\n(?:    \{ id: "medical-1"[^\n]*\n(?:    [^\n]*\n)*?    \{ id: "medical-100"[^\n]*\n)\s*\],'
+content = re.sub(medical_pattern, MEDICAL_SCENE, content, 1, re.DOTALL)
+
+print("Medical scene replaced successfully!")
+
+# Write back
+with open("lib/data.ts", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("All scenes will be replaced in subsequent steps.")

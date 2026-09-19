@@ -17,7 +17,7 @@ describe("SpeakWise learning content", () => {
     }
     for (const scene of SCENES.slice(10)) {
       const lines = SCENE_CONTENT[scene.key as "greetings"];
-      expect(lines).toHaveLength(40);
+      expect(lines).toHaveLength(100);
     }
   });
 
