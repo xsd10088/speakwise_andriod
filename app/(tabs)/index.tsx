@@ -13,8 +13,10 @@ import {
   useWindowDimensions,
 } from "react-native";
 import * as Speech from "expo-speech";
+import * as FileSystem from "expo-file-system/legacy";
 import {
   useAudioRecorder,
+  useAudioRecorderState,
   RecordingPresets,
   requestRecordingPermissionsAsync,
   setAudioModeAsync,
@@ -65,6 +67,7 @@ export default function IndexScreen() {
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  const [recordingError, setRecordingError] = useState<string | null>(null);
   const [suggestions, setSuggestions] = useState<SuggestionCard[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [messageTranslations, setMessageTranslations] = useState<Record<string, string>>({});
@@ -75,7 +78,12 @@ export default function IndexScreen() {
   const [selectedDefinition, setSelectedDefinition] = useState<WordDefinition | null>(null);
   const [selectedExample, setSelectedExample] = useState("");
 
-  const audioRecorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
+  const audioRecorder = useAudioRecorder({
+    ...RecordingPresets.HIGH_QUALITY,
+    directory: "document",
+  });
+  const recorderState = useAudioRecorderState(audioRecorder);
+  const completedRecordingUri = useRef<string | null>(null);
   const scrollViewRef = useRef<ScrollView>(null);
   const autoPlayedMessageIds = useRef(new Set<string>());
   const { width: screenWidth } = useWindowDimensions();
@@ -114,55 +122,62 @@ export default function IndexScreen() {
     };
     setMessages([initialMsg]);
     setSuggestions([]);
+    setRecordingError(null);
     setShowSuggestions(false);
     setActiveSuggestionIndex(0);
   };
 
-  // 自动获取快捷建议
-  useEffect(() => {
-    const lastMsg = messages[messages.length - 1];
-    if (lastMsg && lastMsg.role === "assistant") {
-      fetchDialogueSuggestions({
+  const handleToggleSuggestions = async () => {
+    if (showSuggestions) {
+      setShowSuggestions(false);
+      return;
+    }
+
+    const lastAssistantMessage = [...messages].reverse().find((message) => message.role === "assistant");
+    if (!lastAssistantMessage) return;
+
+    setShowSuggestions(true);
+    setSuggestions([]);
+    try {
+      const sugs = await fetchDialogueSuggestions({
         level: "beginner",
         scene: selectedScene.key,
-        history: messages.slice(0, -1).map((m) => ({ role: m.role, text: m.text })),
-        aiMessage: lastMsg.text,
-      })
-        .then((sugs) => {
-          if (Array.isArray(sugs)) {
-            const cards = sugs.slice(0, 2).map((suggestion) => ({
-              english: typeof suggestion === "string" ? suggestion : String(suggestion),
-              chinese: "中文翻译中...",
-            }));
-            setSuggestions(cards);
-            setActiveSuggestionIndex(0);
-            Promise.all(
-              cards.map(async (card) => {
-                try {
-                  const result = await translateText({
-                    text: card.english,
-                    sourceLanguage: "en",
-                    targetLanguage: "zh",
-                  });
-                  return result.text;
-                } catch (error) {
-                  console.error("Failed to translate suggestion:", error);
-                  return "暂无中文翻译";
-                }
-              }),
-            ).then((translations) => {
-              setSuggestions((current) =>
-                current.map((card, index) => ({
-                  ...card,
-                  chinese: translations[index] || "暂无中文翻译",
-                })),
-              );
+        history: messages.slice(-8).map((message) => ({ role: message.role, text: message.text })),
+        aiMessage: lastAssistantMessage.text,
+      });
+      const suggestions: unknown[] = Array.isArray(sugs) ? sugs : (sugs as { suggestions?: unknown[] } | undefined)?.suggestions || [];
+      const cards = suggestions.slice(0, 2).map((suggestion) => ({
+        english: typeof suggestion === "string" ? suggestion : String(suggestion),
+        chinese: "中文翻译中...",
+      }));
+      setSuggestions(cards);
+      setActiveSuggestionIndex(0);
+      const translations = await Promise.all(
+        cards.map(async (card) => {
+          try {
+            const result = await translateText({
+              text: card.english,
+              sourceLanguage: "en",
+              targetLanguage: "zh",
             });
+            return result.text;
+          } catch (error) {
+            console.error("Failed to translate suggestion:", error);
+            return "暂无中文翻译";
           }
-        })
-        .catch(() => setSuggestions([]));
+        }),
+      );
+      setSuggestions((current) =>
+        current.map((card, index) => ({
+          ...card,
+          chinese: translations[index] || "暂无中文翻译",
+        })),
+      );
+    } catch (error) {
+      console.error("Failed to fetch reply suggestions:", error);
+      setSuggestions([]);
     }
-  }, [messages, selectedScene]);
+  };
 
   const containsChinese = (value: string) => /[\u3400-\u9FFF]/.test(value);
 
@@ -234,10 +249,15 @@ export default function IndexScreen() {
 
   // 开始录音
   const startRecording = async () => {
+    if (recorderState.isRecording || isRecording || isLoading) return;
+    setRecordingError(null);
+    completedRecordingUri.current = null;
     try {
       const permission = await requestRecordingPermissionsAsync();
       if (permission.status !== "granted") {
-        alert("Microphone permission is required to record audio.");
+        const message = "Microphone permission is required to record audio.";
+        setRecordingError(message);
+        alert(message);
         return;
       }
       await setAudioModeAsync({
@@ -246,41 +266,41 @@ export default function IndexScreen() {
       });
       await audioRecorder.prepareToRecordAsync();
       audioRecorder.record();
+      completedRecordingUri.current = null;
       setIsRecording(true);
     } catch (err) {
-      console.error("Failed to start recording:", err);
+      setIsRecording(false);
+      const message = err instanceof Error ? err.message : "Failed to start recording.";
+      setRecordingError(message);
+      console.error(message, err);
     }
   };
 
-  // 停止录音并将转写结果放回输入框
+  // 停止录音，仅将转写结果回填输入框，由用户确认后点击 SEND。
   const stopAndProcessRecording = async () => {
     if (!isRecording) return;
+    setRecordingError(null);
     try {
-      setIsRecording(false);
       await audioRecorder.stop();
-      const uri = audioRecorder.uri;
-      if (!uri) return;
+      const uri = completedRecordingUri.current ?? audioRecorder.uri ?? recorderState.url;
+      setIsRecording(false);
+      if (!uri) {
+        throw new Error("No recording file was created. Please try again.");
+      }
 
       setIsLoading(true);
 
-      // 将录音文件读取为 Base64
-      const blobResp = await fetch(uri);
-      const blob = await blobResp.blob();
-      const base64Data = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const res = reader.result as string;
-          const base64 = res.includes(",") ? res.split(",")[1] : res;
-          resolve(base64);
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
+      const base64Data = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64,
       });
 
-      // 1. 转译录音文本
       let userText = "";
       try {
-        const transRes = await transcribeRecording({ audioBase64: base64Data, language: "auto" });
+        const transRes = await transcribeRecording({
+          audioBase64: base64Data,
+          mimeType: "audio/m4a",
+          language: "auto",
+        });
         userText = transRes.text || "Hello! Practice speaking.";
         if (/[\u3400-\u9FFF]/.test(userText)) {
           const english = await translateText({
@@ -298,7 +318,10 @@ export default function IndexScreen() {
       // 2. 仅将录音转写结果放回输入框，由用户确认后点击 SEND。
       setInputText(userText);
     } catch (error) {
-      console.error("Error processing recording:", error);
+      setIsRecording(false);
+      const message = error instanceof Error ? error.message : "Failed to process recording.";
+      setRecordingError(message);
+      console.error(message, error);
     } finally {
       setIsLoading(false);
     }
@@ -490,7 +513,11 @@ export default function IndexScreen() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.inputContainer}
       >
-        {/* 录音/停止控制按钮 */}
+        {recordingError ? (
+          <Text style={styles.recordingErrorText} accessibilityRole="alert">
+            {recordingError}
+          </Text>
+        ) : null}
         <TouchableOpacity
           style={[styles.micButton, isRecording && styles.micButtonRecording]}
           onPress={isRecording ? stopAndProcessRecording : startRecording}
@@ -500,8 +527,8 @@ export default function IndexScreen() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.hintButton}
-          onPress={() => setShowSuggestions((current) => !current)}
-          accessibilityLabel="显示回复提示"
+          onPress={handleToggleSuggestions}
+          accessibilityLabel={showSuggestions ? "隐藏回复提示" : "显示回复提示"}
         >
           <Text style={styles.hintButtonText}>💡</Text>
         </TouchableOpacity>
@@ -574,6 +601,7 @@ const styles = StyleSheet.create({
   micButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: "#162A57", justifyContent: "center", alignItems: "center", marginRight: 8 },
   micButtonRecording: { backgroundColor: "#5B2632" },
   micButtonText: { fontSize: 18 },
+  recordingErrorText: { maxWidth: 150, color: "#FCA5A5", fontSize: 11, marginRight: 8 },
   hintButton: { width: 34, height: 40, borderRadius: 20, backgroundColor: "#162A57", justifyContent: "center", alignItems: "center", marginRight: 8 },
   hintButtonText: { fontSize: 17 },
   textInput: { flex: 1, height: 40, borderWidth: 1, borderColor: "#3A3D45", borderRadius: 20, paddingHorizontal: 16, backgroundColor: "#151820", color: "#F2F3F5", fontSize: 14 },

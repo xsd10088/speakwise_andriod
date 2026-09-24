@@ -13,19 +13,16 @@ jest.mock("expo-speech", () => ({
   stop: jest.fn(),
 }));
 
+// Mock Expo 文件系统
+jest.mock("expo-file-system/legacy", () => ({
+  readAsStringAsync: jest.fn().mockResolvedValue("bW9jay1yZWNvcmRpbmctYmFzZTY0"),
+  EncodingType: { Base64: "base64" },
+}));
+
 // Mock Expo 音频录制模块（含 useAudioRecorderState）
 jest.mock("expo-audio", () => ({
-  useAudioRecorder: jest.fn(() => ({
-    prepareToRecordAsync: jest.fn().mockResolvedValue(undefined),
-    record: jest.fn(),
-    stop: jest.fn().mockResolvedValue(undefined),
-    uri: "mock-recording-uri",
-  })),
-  useAudioRecorderState: jest.fn(() => ({
-    isRecording: false,
-    recordingTime: 0,
-    meter: -160,
-  })),
+  useAudioRecorder: jest.fn(),
+  useAudioRecorderState: jest.fn(),
   RecordingPresets: { HIGH_QUALITY: {} },
   requestRecordingPermissionsAsync: jest.fn().mockResolvedValue({ status: "granted" }),
   setAudioModeAsync: jest.fn().mockResolvedValue(undefined),
@@ -48,26 +45,72 @@ jest.mock("../lib/api", () => ({
 }));
 
 describe("PracticeScreen", () => {
+  let audioRecorder: {
+    prepareToRecordAsync: jest.Mock;
+    record: jest.Mock;
+    stop: jest.Mock;
+    uri: string | null;
+    isRecording: boolean;
+    getStatus: jest.Mock;
+  };
+  let statusListener: ((status: { isFinished: boolean; url: string | null }) => void) | undefined;
+
+  beforeEach(() => {
+    statusListener = undefined;
+    jest.clearAllMocks();
+    audioRecorder = {
+      prepareToRecordAsync: jest.fn().mockResolvedValue(undefined),
+      record: jest.fn(),
+      stop: jest.fn().mockImplementation(async () => {
+        audioRecorder.uri = "mock-recording-uri";
+        statusListener?.({ isFinished: true, url: "mock-recording-uri" });
+      }),
+      uri: null,
+      isRecording: false,
+      getStatus: jest.fn().mockReturnValue({
+        canRecord: true,
+        isRecording: false,
+        durationMillis: 0,
+        mediaServicesDidReset: false,
+        url: null,
+      }),
+    };
+    jest.mocked(require("expo-audio").useAudioRecorder).mockReturnValue(audioRecorder);
+    jest.mocked(require("expo-audio").useAudioRecorderState).mockReturnValue({
+      canRecord: true,
+      isRecording: false,
+      durationMillis: 0,
+      mediaServicesDidReset: false,
+      url: null,
+    });
+  });
+
   it("renders every configured practice scene", async () => {
-    const { getByText, getByLabelText } = render(<IndexScreen />);
+    const { getByText } = render(<IndexScreen />);
 
-    // 验证页面主标题渲染
     expect(getByText("AI 助手")).toBeTruthy();
-
-    // 验证场景列表中所有 Scene 标题渲染
     SCENES.forEach((scene) => {
       expect(getByText(scene.title)).toBeTruthy();
     });
+  });
 
-    // ✅ 等待 useEffect 中的异步 fetchDialogueSuggestions 状态更新完成，消除 act 警告
-    await waitFor(() => {
-      expect(getByLabelText("显示回复提示")).toBeTruthy();
-    });
+  it("generates reply suggestions from the latest AI message", async () => {
+    const { getByLabelText, getByText } = render(<IndexScreen />);
 
     fireEvent.press(getByLabelText("显示回复提示"));
-    expect(getByText("Suggestion 1")).toBeTruthy();
-    expect(getByText("中文Suggestion 1")).toBeTruthy();
-    expect(getByText("中文Suggestion 2")).toBeTruthy();
+
+    await waitFor(() => {
+      expect(require("../lib/api").fetchDialogueSuggestions).toHaveBeenCalledWith(
+        expect.objectContaining({
+          aiMessage: expect.stringContaining("How can I help you today?"),
+          history: expect.arrayContaining([
+            expect.objectContaining({ text: expect.stringContaining("How can I help you today?") }),
+          ]),
+        }),
+      );
+      expect(getByText("Suggestion 1")).toBeTruthy();
+      expect(getByText("中文Suggestion 1")).toBeTruthy();
+    });
   });
 
   it("automatically reads a successful AI reply aloud", async () => {
@@ -84,5 +127,27 @@ describe("PracticeScreen", () => {
         expect.objectContaining({ language: "en-US" }),
       );
     });
+  });
+
+  it("stops recording and places transcription in the reply input without sending", async () => {
+    const { getByPlaceholderText, getByText } = render(<IndexScreen />);
+    const startButton = getByText("🎤");
+    const input = getByPlaceholderText("输入英文或点击麦克风录音...");
+
+    fireEvent.press(startButton);
+    await waitFor(() => {
+      expect(getByText("⏹️")).toBeTruthy();
+    });
+    fireEvent.press(getByText("⏹️"));
+
+    await waitFor(() => {
+      expect(require("expo-file-system/legacy").readAsStringAsync).toHaveBeenCalledWith(
+        "mock-recording-uri",
+        expect.objectContaining({ encoding: "base64" }),
+      );
+      expect(input.props.value).toBe("Sample transcribed text");
+    });
+
+    expect(require("../lib/api").replyToDialogue).not.toHaveBeenCalled();
   });
 });
