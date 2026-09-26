@@ -1,171 +1,146 @@
-# 项目快照：听力训练模块对话内容重构
+# 项目快照：Speakwise Android 听力数据重构
 
-## 项目基本信息
-- **项目名称**: Speakwise Android 听力训练模块对话内容重构
-- **分支**: `feature/fix-recording`
-- **工作目录**: `C:\speakwise-android-parity`
-- **开始时间**: 2026-09-17
-- **当前状态**: 部分完成（2/10场景已替换）
+## 快照时间
 
-## 任务目标
-在 `feature/fix-recording` 分支上修改听力训练模块，为10个场景重新生成高质量对话，确保对话连贯、符合场景主题、翻译准确。
+2026-09-25 12:55（当前工作区状态）
 
-## 涉及的场景和角色
-1. **greetings** (日常问候) - Alex / Mia
-2. **travel** (旅游出行) - Traveler / Agent  
-3. **business** (商务交流) - Sam / Lee
-4. **housing** (租房居住) - Tenant / Landlord
-5. **medical** (就医看诊) - Patient / Doctor
-6. **banking** (银行开户) - Customer / Banker
-7. **shopping** (购物用餐) - Shopper / Clerk
-8. **transit** (交通通勤) - Commuter / Conductor
-9. **government** (政务办理) - Citizen / Officer
-10. **school** (学校沟通) - Parent / Teacher
+## 仓库状态
 
-## 已完成工作
+- 当前分支：`main`
+- 基线提交：`7b972c6e256a1617e7e17ace00ec52e64cef457d`（`merge: resolve .gitignore conflict and merge origin/main`）
+- 工作区：存在未提交变更；当前运行时数据变更仅涉及 `lib/data.ts` 的 `greetings` 数组。
+- `lib/data.ts` 当前 diff：101 行新增、100 行删除；与 `lib/data.ts.greetings.bak` 对比，仅覆盖 `greetings` 数组。
+- `lib/data.ts.travel.bak` 已创建，作为 `travel` 替换前备份；`travel` 尚未写入运行时数据。
+- `kilo.json` 存在与本任务无关的既有修改，不应纳入听力数据提交。
+- 既有未跟踪生成/修复脚本、候选文本、`.gradle/` 和 `__pycache__/` 未纳入本次提交范围。
 
-### ✅ greetings 场景（已完成）
-- **状态**: 后60句已替换
-- **内容**: 从"Goodbye!"结束的自然延续，涵盖再次相遇、咖啡店闲聊、周末计划、工作爱好、食物推荐、旅行计划等话题
-- **验证**: 通过 typecheck 和 test
+## 已完成场景
 
-### ✅ travel 场景（已完成）
-- **状态**: 后60句已替换
-- **内容**: 从机场登机结束的延续，涵盖酒店入住、观光咨询、货币兑换、购物建议、文化活动、安全注意事项等
-- **验证**: 通过 typecheck 和 test
+### `greetings`
 
-## 待完成工作
+- 位置：`lib/data.ts:37`
+- 状态：完整重写为 100 条高质量日常问候对话。
+- 角色：`greetings-1` 至 `greetings-100` 严格交替使用 `Alex` / `Mia`。
+- 内容单元：10 个连续 10 句主题单元，依次为睡眠与阅读、通勤、周末烘焙店、设计评审、雨后散步、咖啡馆与艺术展、摄影、餐厅、日本旅行规划、出发前准备。
+- 结构：每个对象包含 `id`、`speaker`、`text`、`translation`、`note`。
+- 质量：已消除原数组中提前道别后继续对话、重复道别、机械问答、中文式英语和事实性注释错误。
 
-### ⏳ business 场景（待替换）
-- **内容**: 会后讨论、项目进展、团队协作、客户跟进、市场分析、职业发展等
-- **状态**: 对话内容已生成，待应用到文件
+## 当前进行场景
 
-### ⏳ housing 场景（待替换）
-- **内容**: 看房后的讨论、搬入安排、设施使用、社区环境、维修责任、租约条款等
-- **状态**: 对话内容已生成，待应用到文件
+### `travel`
 
-### ⏳ medical 场景（待替换）
-- **内容**: 详细诊断、治疗方案、药物说明、生活方式建议、保险问询、健康咨询等
-- **状态**: 对话内容已生成，待应用到文件
+- 位置：`lib/data.ts:140`
+- 状态：旧数组仍在运行时文件中，尚未替换。
+- 当前审计：`travel: validation failed - duplicate English text found`。
+- 已完成候选：`C:\Users\xsd\AppData\Local\Temp\kilo\travel-records.json`。
+- TypeScript 候选：`C:\Users\xsd\AppData\Local\Temp\kilo\travel-records.ts`，文件带 UTF-16 BOM，当前 AST 解析未用于写入。
+- 候选校验：100 条；`travel-1..travel-100`；`Alex` / `Mia` 严格交替；`id`、`speaker`、`text`、`translation`、`note` 完整；英文、中文、注释均无重复；10 个连续主题单元。
+- 当前阻塞：临时候选文件编码解析问题；下一步改用已验证 JSON，按 `travel-1` 与 `travel-100` 的唯一数组边界写入。
 
-### ⏳ banking 场景（待替换）
-- **内容**: 账户功能、在线银行、储蓄产品、信用卡申请、投资咨询、安全保护等
-- **状态**: 对话内容已生成，待应用到文件
+## 其他场景状态
 
-### ⏳ shopping 场景（待替换）
-- **内容**: 服装试穿、尺寸选择、会员优惠、支付方式、退换政策、礼品包装等
-- **状态**: 对话内容已生成，待应用到文件
+`business`、`housing`、`medical`、`banking`、`shopping`、`transit`、`government`、`school`、`restaurant`、`emergency` 当前均保留原有 100 条数组，但本轮未对它们做内容替换。后续场景必须逐场景完成内容审查、替换和验证，不能仅凭数量判断质量。
 
-### ⏳ transit 场景（待替换）
-- **内容**: 乘车指导、乘车规则、驾照办理、交通法规、安全建议、服务总结等
-- **状态**: 对话内容已生成，待应用到文件
+## 验证结果
 
-### ⏳ government 场景（待替换）
-- **内容**: 身份证办理、签证申请、税务办理、驾照更新、社会福利、服务总结等
-- **状态**: 对话内容已生成，待应用到文件
+### `greetings`
 
-### ⏳ school 场景（待替换）
-- **内容**: 课程选择、作业辅导、课外活动、升学规划、心理健康、家校合作等
-- **状态**: 对话内容已生成，待应用到文件
+```text
+node validate-data-scene.js greetings
+greetings: PASS (100 objects, continuous IDs, complete fields, unique English text, no forbidden templates)
+```
+
+额外 AST/结构校验通过：
+
+```text
+TypeScript parse: PASS
+100 continuous IDs: PASS
+strict Alex/Mia alternation: PASS
+complete id/speaker/text/translation/note fields: PASS
+unique English text: PASS
+unique translations: PASS
+unique notes: PASS
+zero normalized duplicate English lines: PASS
+```
+
+项目命令：
+
+```text
+pnpm typecheck       PASS
+pnpm test            PASS（2 个测试文件，8 个测试）
+pnpm test:components PASS（用户随后确认命令已通过）
+git diff --check     PASS
+```
+
+### `travel`
+
+```text
+node validate-data-scene.js travel
+travel: validation failed - duplicate English text found
+```
+
+临时 JSON 候选校验：
+
+```text
+count: 100
+firstId: travel-1
+lastId: travel-100
+strictAlternation: true
+fields: id, speaker, text, translation, note
+uniqueEnglish: true
+uniqueChinese: true
+uniqueNotes: true
+arcs: 10
+linesPerArc: 10
+```
+
+## 当前数据审计
+
+TypeScript AST 审计结果：
+
+```text
+greetings: 100 elements, greetings-1..greetings-100
+travel: 100 elements, travel-1..travel-100
+business: 100 elements, business-1..business-100
+housing: 100 elements, housing-1..housing-100
+medical: 100 elements, medical-1..medical-100
+banking: 100 elements, banking-1..banking-100
+shopping: 100 elements, shopping-1..shopping-100
+transit: 100 elements, transit-1..transit-100
+government: 100 elements, government-1..government-100
+school: 100 elements, school-1..school-100
+restaurant: 100 elements, restaurant-1..restaurant-100
+emergency: 100 elements, emergency-1..emergency-100
+```
+
+`SCENE_CONTENT` 仍包含全部 12 个键；`SCENES.slice(0, 10)` 的听力页数据入口未修改。
 
 ## 关键文件
 
-### 主要文件
-- **主数据文件**: `C:\speakwise-android-parity\lib\data.ts`
-  - 包含所有场景的对话数据
-  - 已修改 greetings 和 travel 场景
-  - 需要修改剩余8个场景
+- 运行时唯一数据源：`lib/data.ts`
+- 听力页面：`app/(tabs)/listening.tsx`（本轮未修改）
+- 数据测试：`lib/data.test.ts`
+- 场景校验器：`validate-data-scene.js`
+- `greetings` 替换前备份：`lib/data.ts.greetings.bak`
+- `travel` 替换前备份：`lib/data.ts.travel.bak`
+- `travel` JSON 候选：`C:\Users\xsd\AppData\Local\Temp\kilo\travel-records.json`
+- `travel` TypeScript 候选：`C:\Users\xsd\AppData\Local\Temp\kilo\travel-records.ts`
+- 旧交接记录：`SCENE_REPLACEMENT_HANDOVER.md`
 
-### 辅助文件
-- **替换脚本**: `C:\speakwise-android-parity\replace_remaining_scenes.py`
-  - 用于批量替换场景对话的Python脚本
-  - 已成功测试 travel 场景替换
+## 提交与交接状态
 
-- **对话生成脚本**: `C:\speakwise-android-parity\regenerate_dialogue.py`
-  - 用于生成对话内容的Python脚本
-  - 包含对话数据和处理逻辑
+- `greetings` 变更尚未暂存或提交。
+- `travel` 尚未写入、校验或提交。
+- 用户要求仅在全部验证通过后暂存并提交听力数据变更。
+- `greetings` 提交前必须再次确认 `git diff -- lib/data.ts` 只包含 `greetings`，并排除 `kilo.json`、备份文件和未跟踪候选文件。
+- 推荐提交范围：仅 `lib/data.ts`。
+- 推荐提交信息：`refactor: replace greetings listening dialogues`。
+- `travel` 写入并通过项目级验证后，再按相同范围提交，推荐提交信息：`refactor: replace travel listening dialogues`。
 
-- **business对话文件**: `C:\speakwise-android-parity\business_dialogue.txt`
-  - business场景的对话内容临时文件
+## 下一步
 
-### 计划文件
-- **项目计划**: `C:\Users\xsd\.devin\plans\plan-0f7d706ebe5eaa42.md`
-  - 当前项目计划和进度跟踪
-
-## 修改方法
-
-### 对话格式
-每个对话行包含以下字段：
-```typescript
-{
-  id: "场景名-序号",
-  speaker: "角色名",
-  text: "英文对话",
-  translation: "中文翻译",
-  note: "语言点注释"
-}
-```
-
-### 替换策略
-1. 使用正则表达式匹配特定场景的第41-100句
-2. 用生成的高质量对话内容替换
-3. 保持文件格式和结构一致
-4. 验证TypeScript类型正确性
-
-### 验证命令
-```bash
-cd C:\speakwise-android-parity
-pnpm typecheck  # TypeScript类型检查
-pnpm test       # 运行测试套件
-```
-
-## 对话生成特点
-
-### 质量标准
-- **连贯性**: 对话场景连贯，逻辑合理
-- **主题性**: 符合场景主题和角色设定
-- **翻译准确性**: 中文翻译准确传达英文原意
-- **教育价值**: note字段提供有价值的语言学习点
-- **自然性**: 对话自然流畅，贴近真实交流
-
-### 风格一致性
-- 保持与前40句相同的语言风格
-- 角色说话风格一致
-- 场景氛围一致
-- 难度梯度合理
-
-## 当前问题
-
-### 计划变更
-- **原计划**: 保持前40句不变，只替换后60句
-- **新计划**: 删除前40句和后60句，重新生成100句完整的高质量对话
-- **状态**: 待用户确认执行方案
-
-### 技术挑战
-- 需要确保前40句和后60句的自然衔接
-- 完整100句对话需要保持风格一致性
-- 修改范围更大，需要更仔细的验证
-
-## 下一步行动
-
-### 待确认事项
-1. 执行方案选择（方案A vs 方案B）
-2. 是否需要重新生成前40句对话
-3. 完成剩余8个场景的替换工作
-
-### 建议行动
-1. 确认执行方案
-2. 根据方案完成剩余场景替换
-3. 进行全面验证
-4. 提交修改到分支
-
-## GitHub Actions 信息
-- **工作流程**: 只支持手动触发（workflow_dispatch）
-- **推送**: 不会自动构建APK
-- **触发时**: 需要输入API地址: `https://speakwise.app`
-
-## 团队协作备注
-- 分支: `feature/fix-recording`
-- 交接人: Devin AI Agent
-- 验证状态: 部分验证通过
-- 建议审查: 完成所有场景替换后进行代码审查
+1. 用 `travel-records.json` 严格替换 `SCENE_CONTENT.travel`，保持 `business` 数组边界不变。
+2. 运行 `node validate-data-scene.js travel`。
+3. 运行 `pnpm typecheck`、`pnpm test`、`pnpm test:components` 和 `git diff --check`。
+4. 确认 diff 仅涉及预期场景，排除无关文件。
+5. 仅暂存并提交 `lib/data.ts`，然后等待确认后再处理 `business`。
