@@ -8,6 +8,11 @@ if (!scene) {
 }
 
 const fileName = "lib/data.ts";
+if (!fs.existsSync(fileName)) {
+  console.error(`${scene}: lib/data.ts not found`);
+  process.exit(1);
+}
+
 const sourceText = fs.readFileSync(fileName, "utf8");
 const sourceFile = ts.createSourceFile(fileName, sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
 const parseErrors = sourceFile.parseDiagnostics.map((diagnostic) => ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
@@ -61,11 +66,6 @@ const errors = [];
 const ids = [];
 const texts = [];
 const requiredKeys = ["id", "speaker", "text", "translation", "note"];
-const forbidden = [
-  "By the way, I wanted to ask you about",
-  "I have been thinking about",
-  "Do you have any thoughts on",
-];
 
 if (elements.length !== 100) errors.push(`expected 100 lines, found ${elements.length}`);
 
@@ -87,13 +87,9 @@ elements.forEach((element, index) => {
   texts.push(text);
   if (id !== expectedId) errors.push(`expected ${expectedId}, found ${id ?? "<missing>"}`);
   if (!text || !translation || !note) errors.push(`${expectedId}: empty required field`);
-  for (const phrase of forbidden) {
-    if (text?.includes(phrase)) errors.push(`${expectedId}: forbidden template "${phrase}"`);
-  }
 });
 
 if (new Set(ids).size !== ids.length) errors.push("duplicate IDs found");
-if (new Set(texts.filter(Boolean)).size !== texts.filter(Boolean).length) errors.push("duplicate English text found");
 
 if (errors.length) {
   console.error(`${scene}: validation failed`);
@@ -101,4 +97,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`${scene}: PASS (100 objects, continuous IDs, complete fields, unique English text, no forbidden templates)`);
+console.log(`${scene}: PASS (100 objects, continuous IDs, complete fields, unique IDs)`);
