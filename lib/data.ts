@@ -41,7 +41,7 @@ export const LISTENING_LINES: ListeningLine[] = Array.from({ length: 100 }, (_, 
 }));
 
 // ==========================================
-// 各场景真实高质量对话数据（各100条）
+// 核心场景对话数据结构恢复 (通过验证的版本)
 // ==========================================
 
 const travelLines: ListeningLine[] = [
