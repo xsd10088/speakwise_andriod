@@ -419,13 +419,708 @@ const shoppingLines: ListeningLine[] = [
 ];
 
 export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
-  greetings: Array.from({ length: 100 }, (_, i) => ({ 
-    id: `greetings-${i+1}`, 
-    speaker: i%2===0?"Alex":"Mia", 
-    text: `Greetings line ${i+1}`, 
-    translation: `问候句 ${i+1}`,
-    note: `greetings note ${i+1}`
-  })),
+  greetings: [
+  {
+    "id": "greetings-1",
+    "speaker": "Alex",
+    "text": "Hey Mia! Is that really you? I haven't seen you around here in ages!",
+    "translation": "嘿 Mia！真的是你吗？我好久都没在这附近看见你了！",
+    "note": "in ages 表示很久"
+  },
+  {
+    "id": "greetings-2",
+    "speaker": "Mia",
+    "text": "Alex! What a pleasant surprise! I was just thinking about you the other day.",
+    "translation": "Alex！真是惊喜！我前几天还在念叨你呢。",
+    "note": "what a pleasant surprise 表达惊喜"
+  },
+  {
+    "id": "greetings-3",
+    "speaker": "Alex",
+    "text": "You look fantastic! Are you still living around the downtown area?",
+    "translation": "你看上去气色真棒！你现在还住在市中心附近吗？",
+    "note": "look fantastic 夸赞状态好"
+  },
+  {
+    "id": "greetings-4",
+    "speaker": "Mia",
+    "text": "Thanks! Actually, I moved to the north side last month, but I am back here to visit a friend.",
+    "translation": "谢谢！其实我上个月搬到北区了，不过今天过来拜访一位朋友。",
+    "note": "north side 城市北区"
+  },
+  {
+    "id": "greetings-5",
+    "speaker": "Alex",
+    "text": "Oh, really? How are you settling into your new neighborhood?",
+    "translation": "哦，真的吗？你在新社区住得还习惯吗？",
+    "note": "settle into 适应新环境"
+  },
+  {
+    "id": "greetings-6",
+    "speaker": "Mia",
+    "text": "It has been great so far. It is much quieter than living near the center.",
+    "translation": "目前为止都很棒，比住在中心区安静多了。",
+    "note": "so far 截至目前"
+  },
+  {
+    "id": "greetings-7",
+    "speaker": "Alex",
+    "text": "That sounds lovely. Do you have time for a quick chat, or are you in a rush?",
+    "translation": "听起来真不错。你有时间简单聊聊吗，还是现在正赶时间？",
+    "note": "in a rush 赶时间"
+  },
+  {
+    "id": "greetings-8",
+    "speaker": "Mia",
+    "text": "I have about twenty minutes before my appointment. Let us grab a coffee nearby!",
+    "translation": "我离约好的时间还有二十分钟呢。咱们去附近喝杯咖啡吧！",
+    "note": "grab a coffee 喝杯咖啡"
+  },
+  {
+    "id": "greetings-9",
+    "speaker": "Alex",
+    "text": "Perfect! There is a cozy little cafe right around the corner.",
+    "translation": "太好了！拐角处就有一家非常温馨的小咖啡馆。",
+    "note": "around the corner 就在拐角"
+  },
+  {
+    "id": "greetings-10",
+    "speaker": "Mia",
+    "text": "Lead the way! I definitely need some coffee to wake me up today.",
+    "translation": "你在前面带路吧！我今天确实需要杯咖啡提提神。",
+    "note": "lead the way 带路"
+  },
+  {
+    "id": "greetings-11",
+    "speaker": "Alex",
+    "text": "So, how have things been with your work lately? Still at the design firm?",
+    "translation": "所以，你最近工作怎么样？还在那家设计公司吗？",
+    "note": "how have things been 询问近况"
+  },
+  {
+    "id": "greetings-12",
+    "speaker": "Mia",
+    "text": "Yes, I am still there! I actually got promoted to senior designer last month.",
+    "translation": "对呀，我还在那儿！上个月我还升职成了高级设计师呢。",
+    "note": "get promoted 表示升职"
+  },
+  {
+    "id": "greetings-13",
+    "speaker": "Alex",
+    "text": "Congratulations! That is amazing news. You have worked so hard for it.",
+    "translation": "恭喜恭喜！这真是个好消息，你之前那么努力值得这个回报。",
+    "note": "Congratulations 祝贺"
+  },
+  {
+    "id": "greetings-14",
+    "speaker": "Mia",
+    "text": "Thank you! It comes with more responsibilities, but I am really enjoying the new challenges.",
+    "translation": "谢谢你！虽然责任更重了，但我真的很享受这些新挑战。",
+    "note": "come with 伴随着"
+  },
+  {
+    "id": "greetings-15",
+    "speaker": "Alex",
+    "text": "That is the right spirit! What kind of projects are you managing right now?",
+    "translation": "就是要有这种精气神！你现在主要负责哪些项目呢？",
+    "note": "the right spirit 积极的态度"
+  },
+  {
+    "id": "greetings-16",
+    "speaker": "Mia",
+    "text": "We are working on a green architecture campaign for a local brand.",
+    "translation": "我们正在为一个本土品牌制作绿色建筑推广案。",
+    "note": "campaign 营销/宣传活动"
+  },
+  {
+    "id": "greetings-17",
+    "speaker": "Alex",
+    "text": "Sounds inspiring! Must keep you pretty busy every day.",
+    "translation": "听起来很受启发！那你平时一定特别忙吧。",
+    "note": "keep someone busy 让某人忙碌"
+  },
+  {
+    "id": "greetings-18",
+    "speaker": "Mia",
+    "text": "It does, but I make sure to balance work and personal life. How about you?",
+    "translation": "是的，不过我会尽量平衡好工作与生活。你呢？",
+    "note": "balance A and B 平衡两者"
+  },
+  {
+    "id": "greetings-19",
+    "speaker": "Alex",
+    "text": "I switched to a remote software developer role earlier this year.",
+    "translation": "我今年早些时候换成了一份远程软件开发的工作。",
+    "note": "remote role 远程职位"
+  },
+  {
+    "id": "greetings-20",
+    "speaker": "Mia",
+    "text": "Wow, working from home must be super convenient and flexible!",
+    "translation": "哇，在家办公一定超级方便而且灵活吧！",
+    "note": "flexible 灵活的"
+  },
+  {
+    "id": "greetings-21",
+    "speaker": "Alex",
+    "text": "It really is, though sometimes I miss having colleagues around to talk to.",
+    "translation": "确实很方便，不过有时候我也挺怀念有同事在身边聊天交流的。",
+    "note": "miss doing 怀念做某事"
+  },
+  {
+    "id": "greetings-22",
+    "speaker": "Mia",
+    "text": "I can imagine that. Do you go to co-working spaces to break the routine?",
+    "translation": "我可以想象。你会去共享办公空间换换环境吗？",
+    "note": "break the routine 打破常规/换换口味"
+  },
+  {
+    "id": "greetings-23",
+    "speaker": "Alex",
+    "text": "Occasionally, yes. I also started going to the gym every morning.",
+    "translation": "偶尔会去。而且我现在每天早晨都坚持去健身房。",
+    "note": "occasionally 偶尔"
+  },
+  {
+    "id": "greetings-24",
+    "speaker": "Mia",
+    "text": "Good for you! Morning workouts are a great way to boost your energy.",
+    "translation": "真棒！晨练确实是提升一天精力的好方法。",
+    "note": "Good for you 为你感到高兴"
+  },
+  {
+    "id": "greetings-25",
+    "speaker": "Alex",
+    "text": "Definitely. It helps me stay focused throughout the workday.",
+    "translation": "绝对是这样。它能帮我在整个工作日保持专注。",
+    "note": "throughout 贯穿整个过程"
+  },
+  {
+    "id": "greetings-26",
+    "speaker": "Mia",
+    "text": "I should really pick up exercise again. I have been sitting at my desk way too much.",
+    "translation": "我也真该重新把运动捡起来了，最近坐在桌前的时间实在太久了。",
+    "note": "pick up 重新开始做"
+  },
+  {
+    "id": "greetings-27",
+    "speaker": "Alex",
+    "text": "You can start small, like taking a twenty-minute walk after lunch.",
+    "translation": "你可以从小目标开始，比如午饭后散步二十分钟。",
+    "note": "start small 从小事做起"
+  },
+  {
+    "id": "greetings-28",
+    "speaker": "Mia",
+    "text": "That is a practical idea. I will try to start doing that from tomorrow.",
+    "translation": "这个建议很实用，我打算从明天开始尝试一下。",
+    "note": "practical 实用的"
+  },
+  {
+    "id": "greetings-29",
+    "speaker": "Alex",
+    "text": "Let me know how it goes! Consistency is key with healthy habits.",
+    "translation": "告诉我效果如何！养成健康习惯关键在于坚持。",
+    "note": "consistency 持之以恒"
+  },
+  {
+    "id": "greetings-30",
+    "speaker": "Mia",
+    "text": "I will! Thanks for the encouragement, Alex.",
+    "translation": "我会的！谢谢你的鼓励，Alex。",
+    "note": "encouragement 鼓励"
+  },
+  {
+    "id": "greetings-31",
+    "speaker": "Alex",
+    "text": "Here we are! What would you like to drink today, Mia?",
+    "translation": "咱们到啦！Mia，你今天想喝点什么？",
+    "note": "Here we are 我们到了"
+  },
+  {
+    "id": "greetings-32",
+    "speaker": "Mia",
+    "text": "I think I will get an iced oat milk latte. How about you?",
+    "translation": "我想点一杯冰燕麦拿铁。你呢？",
+    "note": "oat milk 燕麦奶"
+  },
+  {
+    "id": "greetings-33",
+    "speaker": "Alex",
+    "text": "Sounds good. I will order an Americano with an extra shot of espresso.",
+    "translation": "听起来不错。我点一杯双倍浓缩的冰美式吧。",
+    "note": "extra shot 加一份浓缩"
+  },
+  {
+    "id": "greetings-34",
+    "speaker": "Mia",
+    "text": "Please let me pay! It is my treat since we have not met for so long.",
+    "translation": "这次请务必让我付钱！好久没见，我请客。",
+    "note": "It is my treat 我请客"
+  },
+  {
+    "id": "greetings-35",
+    "speaker": "Alex",
+    "text": "Are you sure? I was ready to buy your coffee!",
+    "translation": "你确定吗？我原本打算请你的呢！",
+    "note": "ready to 准备好"
+  },
+  {
+    "id": "greetings-36",
+    "speaker": "Mia",
+    "text": "I insist! You can get the bill next time when we have lunch.",
+    "translation": "听我的！下次咱们一起吃午饭时你再请回来。",
+    "note": "I insist 我坚持"
+  },
+  {
+    "id": "greetings-37",
+    "speaker": "Alex",
+    "text": "Alright, fair enough. Thank you, Mia!",
+    "translation": "好吧，那听你的，谢谢你啦，Mia！",
+    "note": "fair enough 很公平/没问题"
+  },
+  {
+    "id": "greetings-38",
+    "speaker": "Mia",
+    "text": "You are very welcome. Let us find a quiet corner table over there.",
+    "translation": "不客气！咱们去那边找个安静的靠角桌吧。",
+    "note": "corner table 靠角桌"
+  },
+  {
+    "id": "greetings-39",
+    "speaker": "Alex",
+    "text": "Great spot. I will grab some napkins and sugar packets for us.",
+    "translation": "位置真不错。我去拿些餐巾纸和糖包过来。",
+    "note": "grab 取/拿"
+  },
+  {
+    "id": "greetings-40",
+    "speaker": "Mia",
+    "text": "Thanks! The atmosphere in this cafe is really relaxing.",
+    "translation": "多谢！这家咖啡馆的气氛真的很让人放松。",
+    "note": "atmosphere 氛围"
+  },
+  {
+    "id": "greetings-41",
+    "speaker": "Alex",
+    "text": "It really is. The weather outside is getting quite chilly lately, isn't it?",
+    "translation": "确实。最近外面的天气开始变凉了，不是吗？",
+    "note": "chilly 凉爽的/微冷的"
+  },
+  {
+    "id": "greetings-42",
+    "speaker": "Mia",
+    "text": "Yes! Autumn is definitely here. It is my absolute favorite season of the year.",
+    "translation": "是的！秋天真的到了。这是我一年中最喜欢的季节了。",
+    "note": "absolute favorite 最喜欢的"
+  },
+  {
+    "id": "greetings-43",
+    "speaker": "Alex",
+    "text": "Mine too! The foliage looks gorgeous when the leaves change color.",
+    "translation": "我也是！当树叶变色时，树木风景真的非常美。",
+    "note": "foliage 树叶/叶子"
+  },
+  {
+    "id": "greetings-44",
+    "speaker": "Mia",
+    "text": "Exactly! And the temperature is just perfect for outdoor activities.",
+    "translation": "太对啦！而且这个温度特别适合户外活动。",
+    "note": "outdoor activities 户外活动"
+  },
+  {
+    "id": "greetings-45",
+    "speaker": "Alex",
+    "text": "Have you been on any weekend hiking trips recently?",
+    "translation": "你最近周末有去徒步旅行吗？",
+    "note": "hiking trip 徒步旅行"
+  },
+  {
+    "id": "greetings-46",
+    "speaker": "Mia",
+    "text": "I went to Oak Mountain last weekend with some friends. The view was breathtaking!",
+    "translation": "我上周末和几个朋友去了橡树山，景色简直美不胜收！",
+    "note": "breathtaking 令人窒息的美"
+  },
+  {
+    "id": "greetings-47",
+    "speaker": "Alex",
+    "text": "I have been meaning to go there! Was the trail difficult to climb?",
+    "translation": "我一直打算去那儿呢！那条山路好爬吗？",
+    "note": "have been meaning to 计划/打算已久"
+  },
+  {
+    "id": "greetings-48",
+    "speaker": "Mia",
+    "text": "Not at all. It is a gentle slope, perfect for beginners and casual walking.",
+    "translation": "一点也不难，都是缓坡，非常适合初学者和日常散步。",
+    "note": "gentle slope 缓坡"
+  },
+  {
+    "id": "greetings-49",
+    "speaker": "Alex",
+    "text": "That is encouraging to hear. I will probably check it out this Saturday.",
+    "translation": "听你这么说我就放心了，我本周六可能就去看看。",
+    "note": "check it out 实地看看"
+  },
+  {
+    "id": "greetings-50",
+    "speaker": "Mia",
+    "text": "You definitely should! Just don't forget to wear a warm jacket.",
+    "translation": "你绝对应该去！别忘了穿一件保暖的外套就行。",
+    "note": "warm jacket 保暖外套"
+  },
+  {
+    "id": "greetings-51",
+    "speaker": "Alex",
+    "text": "Will do! Aside from hiking, have you picked up any new hobbies lately?",
+    "translation": "好的！除了徒步，你最近有培养什么新兴趣吗？",
+    "note": "aside from 除了之外"
+  },
+  {
+    "id": "greetings-52",
+    "speaker": "Mia",
+    "text": "I started taking pottery classes on Sunday afternoons. It is super therapeutic.",
+    "translation": "我开始在周日下午上陶艺课了，感觉超级治愈。",
+    "note": "therapeutic 治愈的/舒缓的"
+  },
+  {
+    "id": "greetings-53",
+    "speaker": "Alex",
+    "text": "Pottery? That sounds fascinating! Have you made anything usable yet?",
+    "translation": "陶艺？听起来太有意思了！你做出过什么能用的成品吗？",
+    "note": "fascinating 迷人的/有趣的"
+  },
+  {
+    "id": "greetings-54",
+    "speaker": "Mia",
+    "text": "Haha, I made a coffee mug! It looks a bit lopsided, but I use it every day.",
+    "translation": "哈哈，我做了一个马克杯！虽然看起来有点歪歪扭扭，但我每天都用。",
+    "note": "lopsided 不对称的/歪斜的"
+  },
+  {
+    "id": "greetings-55",
+    "speaker": "Alex",
+    "text": "Handmade items always have a unique character. You should be proud of it!",
+    "translation": "手工制作的东西总是有独特的韵味，你应该为此感到自豪！",
+    "note": "unique character 独特韵味"
+  },
+  {
+    "id": "greetings-56",
+    "speaker": "Mia",
+    "text": "Thanks! What about you, Alex? Any good books or shows you would recommend?",
+    "translation": "谢谢！你呢，Alex？最近有什么好看的书或者剧推荐吗？",
+    "note": "recommend 推荐"
+  },
+  {
+    "id": "greetings-57",
+    "speaker": "Alex",
+    "text": "I recently finished reading a documentary book on human behavior. It was eye-opening.",
+    "translation": "我最近读完了一本关于人类行为的纪实书，非常令人开阔眼界。",
+    "note": "eye-opening 大开眼界的"
+  },
+  {
+    "id": "greetings-58",
+    "speaker": "Mia",
+    "text": "Oh, that sounds intriguing. Send me the title when you get a chance!",
+    "translation": "哦，听起来很有吸引力。你有空的时候把书名发给我吧！",
+    "note": "intriguing 很有吸引力的"
+  },
+  {
+    "id": "greetings-59",
+    "speaker": "Alex",
+    "text": "Sure thing! I will text you the link later this evening.",
+    "translation": "没问题！我今晚晚些时候把链接发给你。",
+    "note": "text 发生短信/消息"
+  },
+  {
+    "id": "greetings-60",
+    "speaker": "Mia",
+    "text": "Awesome, I am looking forward to reading it.",
+    "translation": "太棒了，我很期待阅读它。",
+    "note": "look forward to 期待"
+  },
+  {
+    "id": "greetings-61",
+    "speaker": "Alex",
+    "text": "By the way, how is your younger brother doing? Is he still in university?",
+    "translation": "顺便问一下，你弟弟最近怎么样？他还在读大学吗？",
+    "note": "by the way 顺便提一下"
+  },
+  {
+    "id": "greetings-62",
+    "speaker": "Mia",
+    "text": "He just graduated last June! He got a job at an IT firm in Seattle.",
+    "translation": "他去年六月刚毕业！现在在西雅图一家 IT 公司找到工作了。",
+    "note": "graduate 毕业"
+  },
+  {
+    "id": "greetings-63",
+    "speaker": "Alex",
+    "text": "Time really flies! It feels like he was in high school just yesterday.",
+    "translation": "时间过得真快！感觉他昨天还在上高中似的。",
+    "note": "time flies 光阴似箭"
+  },
+  {
+    "id": "greetings-64",
+    "speaker": "Mia",
+    "text": "I know, right? We are all so proud of his independence.",
+    "translation": "谁说不是呢！我们都为他的独立感到无比自豪。",
+    "note": "independence 独立"
+  },
+  {
+    "id": "greetings-65",
+    "speaker": "Alex",
+    "text": "And how are your parents holding up? Are they still living in the old house?",
+    "translation": "那你的父母身体还好吗？他们还住在老房子里吗？",
+    "note": "hold up 维持状态/近况如何"
+  },
+  {
+    "id": "greetings-66",
+    "speaker": "Mia",
+    "text": "They are doing great! They actually adopted a golden retriever puppy last month.",
+    "translation": "他们近来非常好！上个月他们还领养了一只金毛寻回犬幼犬呢。",
+    "note": "adopt 领养"
+  },
+  {
+    "id": "greetings-67",
+    "speaker": "Alex",
+    "text": "A puppy? That must bring so much joy and energy to their daily life!",
+    "translation": "一只小狗？那一定会给他们的日常生活带来很多快乐和活力！",
+    "note": "bring joy 带来快乐"
+  },
+  {
+    "id": "greetings-68",
+    "speaker": "Mia",
+    "text": "It definitely does. My mom spends half her day playing with him in the yard.",
+    "translation": "绝对是这样，我妈妈每天半天时间都在院子里陪它玩。",
+    "note": "spend time doing 花时间做某事"
+  },
+  {
+    "id": "greetings-69",
+    "speaker": "Alex",
+    "text": "That is wonderful to hear. Family pets really bring people together.",
+    "translation": "听到这些真令人高兴。家庭宠物确实能让大家更亲近。",
+    "note": "bring people together 凝聚大家"
+  },
+  {
+    "id": "greetings-70",
+    "speaker": "Mia",
+    "text": "They truly do. How are your folks doing these days?",
+    "translation": "确实如此。你的家人最近怎么样？",
+    "note": "folks 家人/父母"
+  },
+  {
+    "id": "greetings-71",
+    "speaker": "Alex",
+    "text": "They are doing well! In fact, we are planning a family trip for Thanksgiving.",
+    "translation": "他们也都挺好的！实际上，我们正在计划感恩节期间的家庭旅行呢。",
+    "note": "family trip 家庭旅行"
+  },
+  {
+    "id": "greetings-72",
+    "speaker": "Mia",
+    "text": "Oh, nice! Where are you guys heading for the holiday?",
+    "translation": "哇，真不错！假期你们大家打算去哪儿呀？",
+    "note": "head for 前往"
+  },
+  {
+    "id": "greetings-73",
+    "speaker": "Alex",
+    "text": "We are thinking about renting a cabin near the national park.",
+    "translation": "我们打算在国家公园附近租一栋木屋。",
+    "note": "cabin 木屋"
+  },
+  {
+    "id": "greetings-74",
+    "speaker": "Mia",
+    "text": "That sounds cozy! Perfect for sitting around a fireplace with hot chocolate.",
+    "translation": "听起来真惬意！围坐在火炉旁喝热巧克力最合适不过了。",
+    "note": "cozy 温暖舒适的"
+  },
+  {
+    "id": "greetings-75",
+    "speaker": "Alex",
+    "text": "Exactly my plan! We haven't had a proper family holiday in two years.",
+    "translation": "正合我意！我们已经两年没有好好过一个家庭假期了。",
+    "note": "proper 正式的/像样的"
+  },
+  {
+    "id": "greetings-76",
+    "speaker": "Mia",
+    "text": "Then you all definitely deserve this break. I hope you have a great time!",
+    "translation": "那你们绝对值得好好放松一下。祝你们玩得开心！",
+    "note": "deserve 应得/值得"
+  },
+  {
+    "id": "greetings-77",
+    "speaker": "Alex",
+    "text": "Thanks, Mia. What about your holiday plans? Staying local or traveling?",
+    "translation": "谢谢 Mia！你假期有什么计划？留本地还是出去旅游？",
+    "note": "stay local 留在当地"
+  },
+  {
+    "id": "greetings-78",
+    "speaker": "Mia",
+    "text": "I am staying local. I plan to use the time to rest and finish some oil paintings.",
+    "translation": "我留在本地，打算利用这段时间休息一下，再画完几幅油画。",
+    "note": "oil painting 油画"
+  },
+  {
+    "id": "greetings-79",
+    "speaker": "Alex",
+    "text": "A peaceful holiday sounds equally delightful.",
+    "translation": "一个安静的假期听起来同样令人愉悦。",
+    "note": "delightful 令人高兴的"
+  },
+  {
+    "id": "greetings-80",
+    "speaker": "Mia",
+    "text": "Agreed. Sometimes doing nothing is the best way to recharge.",
+    "translation": "赞同。有时候什么都不做就是最好的充电方式。",
+    "note": "recharge 充电/恢复精力"
+  },
+  {
+    "id": "greetings-81",
+    "speaker": "Alex",
+    "text": "Speaking of hanging out, we shouldn't wait another year to catch up again!",
+    "translation": "说到聚聚，我们可不能再等一年才重新聚会了！",
+    "note": "speaking of 说到"
+  },
+  {
+    "id": "greetings-82",
+    "speaker": "Mia",
+    "text": "I agree completely! Are you free sometime next week for dinner?",
+    "translation": "我完全赞同！你下周什么时候有空一起吃个晚饭吗？",
+    "note": "agree completely 完全赞成"
+  },
+  {
+    "id": "greetings-83",
+    "speaker": "Alex",
+    "text": "Thursday or Friday night works great for me. Which day do you prefer?",
+    "translation": "周四或周五晚上我都可以。你比较偏好哪一天？",
+    "note": "prefer 更喜欢"
+  },
+  {
+    "id": "greetings-84",
+    "speaker": "Mia",
+    "text": "Friday night would be ideal! We can celebrate the end of the workweek.",
+    "translation": "周五晚上最理想啦！我们可以顺便庆祝工作周的结束。",
+    "note": "ideal 理想的"
+  },
+  {
+    "id": "greetings-85",
+    "speaker": "Alex",
+    "text": "Friday it is! Do you still have the same phone number?",
+    "translation": "那就周五！你的手机号还是以前那个吗？",
+    "note": "Friday it is 就定在周五了"
+  },
+  {
+    "id": "greetings-86",
+    "speaker": "Mia",
+    "text": "Yes, same number. But let me make sure I have your current one as well.",
+    "translation": "是的，没变。不过让我确认一下我存的是不是你现在的号码。",
+    "note": "current 当前的"
+  },
+  {
+    "id": "greetings-87",
+    "speaker": "Alex",
+    "text": "My number ends in 4892. I will send a quick wave on messaging app.",
+    "translation": "我的号码尾号是 4892，我现在在通讯软件上给你发个打招呼消息。",
+    "note": "send a wave 发个打招呼"
+  },
+  {
+    "id": "greetings-88",
+    "speaker": "Mia",
+    "text": "Got it! I just received your message. I will save your contact details.",
+    "translation": "收到啦！我刚收到你的消息，马上存一下你的联系方式。",
+    "note": "contact details 联系方式"
+  },
+  {
+    "id": "greetings-89",
+    "speaker": "Alex",
+    "text": "Great! I will look up a nice Italian restaurant and send you the address.",
+    "translation": "太棒了！我找一家不错的意式餐厅，把地址发给你。",
+    "note": "look up 查找"
+  },
+  {
+    "id": "greetings-90",
+    "speaker": "Mia",
+    "text": "Sounds mouth-watering! I love Italian food.",
+    "translation": "听起来让人流口水！我很喜欢意式料理。",
+    "note": "mouth-watering 令人垂涎的"
+  },
+  {
+    "id": "greetings-91",
+    "speaker": "Mia",
+    "text": "Oh, look at the time! It is almost 10:20. I need to run to my appointment.",
+    "translation": "哦看下时间！都快 10 点 20 了，我得赶紧去赴约了。",
+    "note": "look at the time 看时间"
+  },
+  {
+    "id": "greetings-92",
+    "speaker": "Alex",
+    "text": "No worries at all! I don't want to make you late for your meeting.",
+    "translation": "完全没关系！我可不能让你开会迟到了。",
+    "note": "make someone late 让人迟到"
+  },
+  {
+    "id": "greetings-93",
+    "speaker": "Mia",
+    "text": "It was so wonderful catching up with you today, Alex.",
+    "translation": "今天能和你聚在一起聊聊天真是太好了，Alex。",
+    "note": "catch up with 叙旧"
+  },
+  {
+    "id": "greetings-94",
+    "speaker": "Alex",
+    "text": "Likewise! I am really glad we bumped into each other.",
+    "translation": "我也一样！真的很开心今天能偶遇你。",
+    "note": "bump into 偶遇"
+  },
+  {
+    "id": "greetings-95",
+    "speaker": "Mia",
+    "text": "Thanks for walking with me to the cafe. Take care of yourself!",
+    "translation": "谢谢你陪我走过来咖啡馆，多保重！",
+    "note": "take care of yourself 保重"
+  },
+  {
+    "id": "greetings-96",
+    "speaker": "Alex",
+    "text": "You too, Mia! Have a productive meeting!",
+    "translation": "你也是，Mia！祝你接下来的会议高效顺利！",
+    "note": "productive 高效的/有成效的"
+  },
+  {
+    "id": "greetings-97",
+    "speaker": "Mia",
+    "text": "Will do! I will talk to you soon about Friday dinner details.",
+    "translation": "好的！我过几天跟你联系沟通周五晚餐的细节。",
+    "note": "talk to you soon 稍后聊"
+  },
+  {
+    "id": "greetings-98",
+    "speaker": "Alex",
+    "text": "Sounds like a plan. Text me whenever you are free.",
+    "translation": "就这么定啦！你有空随时给我发消息。",
+    "note": "sounds like a plan 就这么定了"
+  },
+  {
+    "id": "greetings-99",
+    "speaker": "Mia",
+    "text": "Have a great rest of your day, Alex! Bye!",
+    "translation": "祝你度过愉快的一天，Alex！再见！",
+    "note": "have a great rest of your day 祝一天愉快"
+  },
+  {
+    "id": "greetings-100",
+    "speaker": "Alex",
+    "text": "Goodbye, Mia! See you on Friday!",
+    "translation": "再见，Mia！周五见！",
+    "note": "see you on Friday 周五见"
+  }
+],
   travel: travelLines,
   business: businessLines,
   housing: housingLines,
