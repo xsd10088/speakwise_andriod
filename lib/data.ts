@@ -1121,7 +1121,708 @@ export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
     "note": "see you on Friday 周五见"
   }
 ],
-  travel: travelLines,
+  travel: [
+  {
+    "id": "travel-1",
+    "speaker": "Alex",
+    "text": "Hey Mia! I'm so excited about our trip to Tokyo this week!",
+    "translation": "嘿 Mia！我对于我们本周的东京之旅感到太兴奋了！",
+    "note": "be excited about 对感到兴奋"
+  },
+  {
+    "id": "travel-2",
+    "speaker": "Mia",
+    "text": "Me too, Alex! Have you double-checked our flight booking details yet?",
+    "translation": "我也是，Alex！你重新核对过我们的航班预订信息了吗？",
+    "note": "double-check 再次核对"
+  },
+  {
+    "id": "travel-3",
+    "speaker": "Alex",
+    "text": "Yes, our flight departs tomorrow morning at nine from terminal two.",
+    "translation": "是的，我们的航班明天早上九点从二号航站楼起飞。",
+    "note": "terminal 航站楼"
+  },
+  {
+    "id": "travel-4",
+    "speaker": "Mia",
+    "text": "Great! We should probably get to the airport at least three hours early.",
+    "translation": "太好了！我们可能应该至少提前三个小时到达机场。",
+    "note": "at least 至少"
+  },
+  {
+    "id": "travel-5",
+    "speaker": "Alex",
+    "text": "Agreed. I'll order an airport taxi to pick us up at five thirty.",
+    "translation": "同意。我会叫一辆机场出租车在五点半来接我们。",
+    "note": "pick up 接人"
+  },
+  {
+    "id": "travel-6",
+    "speaker": "Mia",
+    "text": "Sounds like a solid plan. Is your luggage fully packed?",
+    "translation": "听起来是个稳妥的计划。你的行李全装好了吗？",
+    "note": "solid plan 稳妥/可靠的计划"
+  },
+  {
+    "id": "travel-7",
+    "speaker": "Alex",
+    "text": "Almost! I just need to pack my power bank and passport.",
+    "translation": "快好了！我只需要把充电宝和护照装进去。",
+    "note": "power bank 充电宝"
+  },
+  {
+    "id": "travel-8",
+    "speaker": "Mia",
+    "text": "Don't forget to convert some currency or notify your bank about international travel.",
+    "translation": "别忘了兑换一些外币，或者通知你的银行你要出国旅行。",
+    "note": "convert currency 兑换外币"
+  },
+  {
+    "id": "travel-9",
+    "speaker": "Alex",
+    "text": "Good call. I already exchanged some yen and activated my roaming data.",
+    "translation": "提醒得好。我已经换了一些日元，并开通了漫游流量。",
+    "note": "roaming data 漫游数据"
+  },
+  {
+    "id": "travel-10",
+    "speaker": "Mia",
+    "text": "Awesome! Let's get a good night's sleep so we have energy for tomorrow.",
+    "translation": "太棒了！今晚咱们好好睡一觉，这样明天才有精力。",
+    "note": "good night's sleep 好好睡一觉"
+  },
+  {
+    "id": "travel-11",
+    "speaker": "Alex",
+    "text": "Here we are at the check-in counter. The queue is surprisingly short!",
+    "translation": "我们到值机柜台了。队伍出乎意料地短呢！",
+    "note": "check-in counter 值机柜台"
+  },
+  {
+    "id": "travel-12",
+    "speaker": "Mia",
+    "text": "That is a relief. Should we ask for window seats together?",
+    "translation": "真让人松了一口气。咱们要不要要求靠窗挨着的座位？",
+    "note": "relief 宽慰/松一口气"
+  },
+  {
+    "id": "travel-13",
+    "speaker": "Alex",
+    "text": "Definitely! I'll hand the agent our passports and booking confirmation.",
+    "translation": "那必须的！我这就把护照和预订确认单交给工作人员。",
+    "note": "booking confirmation 预订确认单"
+  },
+  {
+    "id": "travel-14",
+    "speaker": "Mia",
+    "text": "Make sure our carry-on bags meet the weight limit requirements.",
+    "translation": "确保我们的随身携带行李符合重量限制要求。",
+    "note": "carry-on bag 随身行李"
+  },
+  {
+    "id": "travel-15",
+    "speaker": "Alex",
+    "text": "We are good to go! Security check is right ahead of us.",
+    "translation": "搞定了！安全检查就在我们正前方。",
+    "note": "good to go 准备就绪"
+  },
+  {
+    "id": "travel-16",
+    "speaker": "Mia",
+    "text": "Remember to take your laptop and liquids out of your backpack.",
+    "translation": "记得把笔记本电脑和液体从背包里拿出来。",
+    "note": "liquids 液体"
+  },
+  {
+    "id": "travel-17",
+    "speaker": "Alex",
+    "text": "Got it. After security, let me grab a bottle of water near our departure gate.",
+    "translation": "知道了。过完安检后，我去登机口附近买瓶水。",
+    "note": "departure gate 登机口"
+  },
+  {
+    "id": "travel-18",
+    "speaker": "Mia",
+    "text": "Look, boarding has just started! Let's scan our boarding passes.",
+    "translation": "看，开始登机了！咱们去刷登机牌吧。",
+    "note": "boarding pass 登机牌"
+  },
+  {
+    "id": "travel-19",
+    "speaker": "Alex",
+    "text": "Here are our seats in row fifteen. Put your overhead bag right here.",
+    "translation": "这是我们在第十五排的位置。把你的随身包放在上面的行李架上吧。",
+    "note": "overhead compartment/bag 头顶行李架/箱"
+  },
+  {
+    "id": "travel-20",
+    "speaker": "Mia",
+    "text": "Thanks, Alex. Fasten your seatbelt; we are about to take off!",
+    "translation": "谢谢 Alex。系好安全带，我们马上要起飞了！",
+    "note": "fasten seatbelt 系紧安全带"
+  },
+  {
+    "id": "travel-21",
+    "speaker": "Alex",
+    "text": "We have finally landed in Narita Airport! That was a smooth flight.",
+    "translation": "我们终于降落在成田机场了！这一程飞行很平稳。",
+    "note": "smooth flight 平稳的飞行"
+  },
+  {
+    "id": "travel-22",
+    "speaker": "Mia",
+    "text": "It really was. Now let's follow the signs to immigration and customs.",
+    "translation": "确实很平稳。现在咱们顺着指示牌去入境和海关检查吧。",
+    "note": "immigration 入境检查"
+  },
+  {
+    "id": "travel-23",
+    "speaker": "Alex",
+    "text": "Have your arrival card and passport ready for the officer.",
+    "translation": "把你的入境卡和护照准备好，给官员查验。",
+    "note": "arrival card 入境卡"
+  },
+  {
+    "id": "travel-24",
+    "speaker": "Mia",
+    "text": "All cleared! Now we just need to collect our checked bags at carousel three.",
+    "translation": "全过关了！现在我们只需要去三号行李转盘取托运行李。",
+    "note": "baggage carousel 行李传送带"
+  },
+  {
+    "id": "travel-25",
+    "speaker": "Alex",
+    "text": "There is my blue suitcase. Grab yours, and let's head to the transit hall.",
+    "translation": "那边是我的蓝色行李箱。拿着你的，咱们去交通大厅吧。",
+    "note": "head to 前往"
+  },
+  {
+    "id": "travel-26",
+    "speaker": "Mia",
+    "text": "Should we take the express train or an airport bus to the city center?",
+    "translation": "我们是坐特快列车还是机场大巴去市中心？",
+    "note": "express train 特快列车"
+  },
+  {
+    "id": "travel-27",
+    "speaker": "Alex",
+    "text": "The express train is much faster and avoids potential traffic jams.",
+    "translation": "特快列车快得多，而且能避免潜在的交通拥堵。",
+    "note": "traffic jam 交通拥堵"
+  },
+  {
+    "id": "travel-28",
+    "speaker": "Mia",
+    "text": "Sounds great. Let's buy two rechargeable transit cards at the machine.",
+    "translation": "听起来棒极了。咱们在售票机上买两张可充值的交通卡吧。",
+    "note": "rechargeable 可充值的"
+  },
+  {
+    "id": "travel-29",
+    "speaker": "Alex",
+    "text": "I got the cards. We can tap them at the turnstile to enter the platform.",
+    "translation": "我买好卡了。我们在闸机上刷卡就可以进站台。",
+    "note": "turnstile 旋转闸机"
+  },
+  {
+    "id": "travel-30",
+    "speaker": "Mia",
+    "text": "The view outside the window is wonderful. Welcome to Japan!",
+    "translation": "窗外的景色真美。欢迎来到日本！",
+    "note": "Welcome to 欢迎来到"
+  },
+  {
+    "id": "travel-31",
+    "speaker": "Alex",
+    "text": "We arrived at the hotel front desk. Hello, we have a reservation under Alex.",
+    "translation": "我们到酒店前台了。你好，我们用 Alex 的名字预订了房间。",
+    "note": "make a reservation 预订"
+  },
+  {
+    "id": "travel-32",
+    "speaker": "Mia",
+    "text": "Could we please request a non-smoking room on a higher floor with a view?",
+    "translation": "请问我们能否要间高层带景观的无烟房？",
+    "note": "non-smoking room 无烟房"
+  },
+  {
+    "id": "travel-33",
+    "speaker": "Alex",
+    "text": "The receptionist said our room is on the twelfth floor, facing the tower.",
+    "translation": "前台接待员说我们的房间在十二楼，面向电视塔。",
+    "note": "receptionist 前台接待员"
+  },
+  {
+    "id": "travel-34",
+    "speaker": "Mia",
+    "text": "That is fantastic! Here are the room key cards and breakfast vouchers.",
+    "translation": "太棒了！这是房卡和早餐券。",
+    "note": "voucher 代金券/凭证"
+  },
+  {
+    "id": "travel-35",
+    "speaker": "Alex",
+    "text": "Let's take the elevator up and drop our heavy luggage first.",
+    "translation": "咱们坐电梯上去，先把沉重的行李放一下。",
+    "note": "drop luggage 放行李"
+  },
+  {
+    "id": "travel-36",
+    "speaker": "Mia",
+    "text": "The room is so clean and cozy! But wait, where is the hairdryer?",
+    "translation": "房间真干净舒服！不过等等，吹风机在哪里？",
+    "note": "cozy 温暖舒适的"
+  },
+  {
+    "id": "travel-37",
+    "speaker": "Alex",
+    "text": "It should be in the drawer under the bathroom sink, or I can call room service.",
+    "translation": "应该在浴室洗手盆下面的抽屉里，或者我可以打电话给客房服务。",
+    "note": "room service 客房服务"
+  },
+  {
+    "id": "travel-38",
+    "speaker": "Mia",
+    "text": "Ah, I found it! Also, what is the Wi-Fi password for guests?",
+    "translation": "啊，我找到了！另外，给客人用的 Wi-Fi 密码是什么？",
+    "note": "Wi-Fi password 无线网密码"
+  },
+  {
+    "id": "travel-39",
+    "speaker": "Alex",
+    "text": "It is written on the welcome leaflet next to the desk.",
+    "translation": "写在桌子旁边的欢迎宣传册上呢。",
+    "note": "leaflet 宣传册/说明页"
+  },
+  {
+    "id": "travel-40",
+    "speaker": "Mia",
+    "text": "Got it connected. Now let's plan our afternoon sightseeing tour!",
+    "translation": "连上啦。现在咱们来规划下午的观光行程吧！",
+    "note": "sightseeing tour 观光游"
+  },
+  {
+    "id": "travel-41",
+    "speaker": "Alex",
+    "text": "Which attraction should we visit first, the historic temple or the park?",
+    "translation": "我们先去哪个景点，古老的寺庙还是公园？",
+    "note": "attraction 景点"
+  },
+  {
+    "id": "travel-42",
+    "speaker": "Mia",
+    "text": "Let's visit the temple first while the daylight is still good.",
+    "translation": "趁着天色还早，我们先去寺庙吧。",
+    "note": "daylight 日光/白天"
+  },
+  {
+    "id": "travel-43",
+    "speaker": "Alex",
+    "text": "Excuse me, sir. Could you tell us which subway exit leads to the temple?",
+    "translation": "打扰一下，先生。您能告诉我们哪个地铁出口通往寺庙吗？",
+    "note": "subway exit 地铁出口"
+  },
+  {
+    "id": "travel-44",
+    "speaker": "Mia",
+    "text": "The local resident said we should take exit four and turn left.",
+    "translation": "当地居民说我们应该走四号出口然后左转。",
+    "note": "local resident 当地居民"
+  },
+  {
+    "id": "travel-45",
+    "speaker": "Alex",
+    "text": "There it is! The traditional architecture looks breathtaking up close.",
+    "translation": "就在那边！近看这古建筑简直令人叹为观止。",
+    "note": "breathtaking 令人屏息的/壮观的"
+  },
+  {
+    "id": "travel-46",
+    "speaker": "Mia",
+    "text": "We need to purchase admission tickets at the main entrance booth.",
+    "translation": "我们需要在大门的售票亭购买门票。",
+    "note": "admission ticket 门票"
+  },
+  {
+    "id": "travel-47",
+    "speaker": "Alex",
+    "text": "Two adult tickets, please. Is photography allowed inside the inner courtyard?",
+    "translation": "请给我两张成人票。内院里允许拍照吗？",
+    "note": "photography allowed 允许拍照"
+  },
+  {
+    "id": "travel-48",
+    "speaker": "Mia",
+    "text": "The sign says no flash photography, but regular photos are fine.",
+    "translation": "告示牌写着禁止使用闪光灯拍照，但普通拍照是可以的。",
+    "note": "flash photography 闪光灯拍照"
+  },
+  {
+    "id": "travel-49",
+    "speaker": "Alex",
+    "text": "Stand near the ancient gate, Mia! I'll take a nice photo of you.",
+    "translation": "站在古门旁边，Mia！我给你拍张好看的照片。",
+    "note": "take a photo 拍照"
+  },
+  {
+    "id": "travel-50",
+    "speaker": "Mia",
+    "text": "Say cheese! Make sure to capture the colorful maple leaves in the background.",
+    "translation": "笑一个！一定要把背景里色彩斑斓的枫叶拍进去。",
+    "note": "capture 捕捉/拍下"
+  },
+  {
+    "id": "travel-51",
+    "speaker": "Alex",
+    "text": "All that walking made me starving. Time for some famous local cuisine!",
+    "translation": "走了这么久我肚子都饿扁了。是时候品尝著名的本地美食了！",
+    "note": "local cuisine 本地美食"
+  },
+  {
+    "id": "travel-52",
+    "speaker": "Mia",
+    "text": "I spotted an authentic ramen restaurant with high ratings online.",
+    "translation": "我发现了一家网上评价很高的正宗拉面馆。",
+    "note": "authentic 正宗的"
+  },
+  {
+    "id": "travel-53",
+    "speaker": "Alex",
+    "text": "Table for two, please! Is there an English menu available?",
+    "translation": "两位，谢谢！请问有英文菜单吗？",
+    "note": "English menu 英文菜单"
+  },
+  {
+    "id": "travel-54",
+    "speaker": "Mia",
+    "text": "Yes, they have a menu with photos. I will order the tonkotsu specialty.",
+    "translation": "有的，他们有带图片的菜单。我打算点招牌豚骨拉面。",
+    "note": "specialty 招牌/特色菜"
+  },
+  {
+    "id": "travel-55",
+    "speaker": "Alex",
+    "text": "I'll go for the spicy miso ramen with extra soft-boiled eggs.",
+    "translation": "我要辣味味噌拉面，额外加糖心蛋。",
+    "note": "soft-boiled egg 糖心蛋/半熟蛋"
+  },
+  {
+    "id": "travel-56",
+    "speaker": "Mia",
+    "text": "Would you like to try some side dishes like pan-fried gyoza dumplings?",
+    "translation": "你想尝尝像煎饺这样的配菜吗？",
+    "note": "side dish 配菜/小吃"
+  },
+  {
+    "id": "travel-57",
+    "speaker": "Alex",
+    "text": "Definitely, let's share an order of dumplings and green tea.",
+    "translation": "当然，咱们拼一份煎饺和绿茶吧。",
+    "note": "share an order 分享一份"
+  },
+  {
+    "id": "travel-58",
+    "speaker": "Mia",
+    "text": "The rich broth is absolutely delicious! This is the best ramen I've ever had.",
+    "translation": "浓郁的汤底真的太美味了！这是我吃过最好的拉面。",
+    "note": "rich broth 浓郁的汤底"
+  },
+  {
+    "id": "travel-59",
+    "speaker": "Alex",
+    "text": "I completely agree. Excuse me, could we please have the bill?",
+    "translation": "我完全同意。打扰一下，结账谢谢！",
+    "note": "have the bill 结账"
+  },
+  {
+    "id": "travel-60",
+    "speaker": "Mia",
+    "text": "They accept credit card payments, so no need to use our cash.",
+    "translation": "他们接受信用卡付款，所以不需要用现金。",
+    "note": "credit card payment 信用卡支付"
+  },
+  {
+    "id": "travel-61",
+    "speaker": "Alex",
+    "text": "Let's stroll down this famous shopping street to buy gifts for family.",
+    "translation": "咱们去这条著名的商业街逛逛，给家人买些礼物吧。",
+    "note": "stroll down 漫步/逛"
+  },
+  {
+    "id": "travel-62",
+    "speaker": "Mia",
+    "text": "I want to buy some traditional matcha snacks and handcrafted souvenirs.",
+    "translation": "我想买一些传统的抹茶零食和手工艺纪念品。",
+    "note": "handcrafted 手工制作的"
+  },
+  {
+    "id": "travel-63",
+    "speaker": "Alex",
+    "text": "Look at these delicate ceramic teacups. They look high quality.",
+    "translation": "看看这些精美的陶瓷茶杯，看起来品质很高。",
+    "note": "delicate 精致的/精美的"
+  },
+  {
+    "id": "travel-64",
+    "speaker": "Mia",
+    "text": "Excuse me, how much is this boxed gift set of green tea biscuits?",
+    "translation": "请问这一盒绿茶饼干礼盒多少钱？",
+    "note": "boxed gift set 礼盒装"
+  },
+  {
+    "id": "travel-65",
+    "speaker": "Alex",
+    "text": "The shopkeeper says if we spend over five thousand yen, it is tax-free!",
+    "translation": "店主说如果我们消费超过五千日元就可以免税！",
+    "note": "tax-free 免税"
+  },
+  {
+    "id": "travel-66",
+    "speaker": "Mia",
+    "text": "That is great! I will show my passport to process the tax refund.",
+    "translation": "那太好了！我会出示护照来办理退税。",
+    "note": "tax refund 退税"
+  },
+  {
+    "id": "travel-67",
+    "speaker": "Alex",
+    "text": "Can you gift-wrap these two items separately, please?",
+    "translation": "麻烦您能把这两件物品分别包装成礼品吗？",
+    "note": "gift-wrap 礼品包装"
+  },
+  {
+    "id": "travel-68",
+    "speaker": "Mia",
+    "text": "They wrapped them so neatly with beautiful ribbon.",
+    "translation": "他们用漂亮的丝带包装得非常整齐。",
+    "note": "neatly 整洁地"
+  },
+  {
+    "id": "travel-69",
+    "speaker": "Alex",
+    "text": "My shopping bags are getting pretty heavy. Should we take a break?",
+    "translation": "我的购物袋变得相当重了。咱们要不要休息一下？",
+    "note": "take a break 休息一下"
+  },
+  {
+    "id": "travel-70",
+    "speaker": "Mia",
+    "text": "Let's rest at that tea house nearby and sample some fresh matcha ice cream.",
+    "translation": "咱们去附近的那家茶室歇歇脚，品尝些新鲜的抹茶冰淇淋吧。",
+    "note": "sample 体验/品尝"
+  },
+  {
+    "id": "travel-71",
+    "speaker": "Alex",
+    "text": "For tomorrow's day trip to Mount Fuji, I rented a car online.",
+    "translation": "为了明天去富士山的日游，我在网上租了一辆车。",
+    "note": "day trip 一日游"
+  },
+  {
+    "id": "travel-72",
+    "speaker": "Mia",
+    "text": "Awesome! Do you have an international driving permit with you?",
+    "translation": "太棒了！你随身带国际驾照了吗？",
+    "note": "international driving permit 国际驾照"
+  },
+  {
+    "id": "travel-73",
+    "speaker": "Alex",
+    "text": "Yes, I brought my driver's license and the permit. Everything is ready.",
+    "translation": "带了，我带了本国驾照和国际驾照。一切准备就绪。",
+    "note": "driver's license 驾照"
+  },
+  {
+    "id": "travel-74",
+    "speaker": "Mia",
+    "text": "Remember that they drive on the left side of the road here in Japan!",
+    "translation": "记得在日本这里他们是在道路左侧行驶的！",
+    "note": "drive on the left 左侧行驶"
+  },
+  {
+    "id": "travel-75",
+    "speaker": "Alex",
+    "text": "Right! I'll pay extra attention to the navigation and speed limit.",
+    "translation": "对！我会格外注意导航和限速。",
+    "note": "speed limit 限速"
+  },
+  {
+    "id": "travel-76",
+    "speaker": "Mia",
+    "text": "The scenic highway along Lake Kawaguchi is breathtaking.",
+    "translation": "沿着河口湖的景观公路风景太美了。",
+    "note": "scenic highway 景观公路"
+  },
+  {
+    "id": "travel-77",
+    "speaker": "Alex",
+    "text": "Look over there! Mount Fuji is clearly visible under the bright blue sky.",
+    "translation": "看那边！在明亮的蓝天之下，富士山清晰可见。",
+    "note": "clearly visible 清晰可见"
+  },
+  {
+    "id": "travel-78",
+    "speaker": "Mia",
+    "text": "Let's pull over at the next designated viewpoint to take pictures.",
+    "translation": "咱们在下一个指定的观景台靠边停车拍照吧。",
+    "note": "pull over 靠边停车"
+  },
+  {
+    "id": "travel-79",
+    "speaker": "Alex",
+    "text": "Good idea. I'll park in the designated parking space near the lake.",
+    "translation": "好主意。我会停在湖边指定的停车位里。",
+    "note": "parking space 停车位"
+  },
+  {
+    "id": "travel-80",
+    "speaker": "Mia",
+    "text": "Breathing in this fresh mountain air feels so refreshing!",
+    "translation": "呼吸着这里新鲜的山区空气让人感觉神清气爽！",
+    "note": "refreshing 令人清爽的"
+  },
+  {
+    "id": "travel-81",
+    "speaker": "Alex",
+    "text": "Oh no, Mia! I think I misplaced our train return ticket!",
+    "translation": "糟糕，Mia！我想我把我们返回的火车票放错地方了！",
+    "note": "misplace 放错位置/弄丢"
+  },
+  {
+    "id": "travel-82",
+    "speaker": "Mia",
+    "text": "Don't panic. Check your coat pockets and your backpack compartments.",
+    "translation": "别慌。查查你的外衣口袋和背包隔层。",
+    "note": "don't panic 别慌张"
+  },
+  {
+    "id": "travel-83",
+    "speaker": "Alex",
+    "text": "Phew, what a relief! It was inside the zipped inner pocket all along.",
+    "translation": "呼，太松一口气了！它一直在拉链内袋里呢。",
+    "note": "what a relief 真是松了一口气"
+  },
+  {
+    "id": "travel-84",
+    "speaker": "Mia",
+    "text": "It also looks like it is starting to rain heavily outside.",
+    "translation": "而且外面看起来开始下大雨了。",
+    "note": "rain heavily 下大雨"
+  },
+  {
+    "id": "travel-85",
+    "speaker": "Alex",
+    "text": "We can buy a couple of transparent umbrellas at the convenience store.",
+    "translation": "我们可以去便利店买两把透明雨伞。",
+    "note": "convenience store 便利店"
+  },
+  {
+    "id": "travel-86",
+    "speaker": "Mia",
+    "text": "Good plan. Should we alter our schedule and visit an indoor museum instead?",
+    "translation": "好计划。咱们要不要修改一下行程，改去室内博物馆？",
+    "note": "alter schedule 修改行程"
+  },
+  {
+    "id": "travel-87",
+    "speaker": "Alex",
+    "text": "That is a smart adjustment. The art museum nearby has wonderful exhibitions.",
+    "translation": "真是明智的调整。附近的艺术博物馆有很棒的展览。",
+    "note": "smart adjustment 明智的调整"
+  },
+  {
+    "id": "travel-88",
+    "speaker": "Mia",
+    "text": "Traveling is all about being flexible when unexpected things happen.",
+    "translation": "旅行的真谛就在于当意外发生时能保持灵活应对。",
+    "note": "be flexible 保持灵活"
+  },
+  {
+    "id": "travel-89",
+    "speaker": "Alex",
+    "text": "You are so right. Exploring the museum turned out to be a highlight!",
+    "translation": "你说得太对了。逛博物馆结果成了这次旅行的一大亮点！",
+    "note": "turn out to be 结果是"
+  },
+  {
+    "id": "travel-90",
+    "speaker": "Mia",
+    "text": "The rain has stopped, and there is a gorgeous rainbow in the sky!",
+    "translation": "雨停了，天空出现了一道美丽的彩虹！",
+    "note": "gorgeous rainbow 美丽的彩虹"
+  },
+  {
+    "id": "travel-91",
+    "speaker": "Alex",
+    "text": "I can't believe tomorrow is already the last day of our journey.",
+    "translation": "真不敢相信明天已经是我们旅程的最后一天了。",
+    "note": "last day 最后一天"
+  },
+  {
+    "id": "travel-92",
+    "speaker": "Mia",
+    "text": "Time flew by so fast! We should ask the front desk for late check-out.",
+    "translation": "时间过得太快了！我们应该向前台申请延迟退房。",
+    "note": "late check-out 延迟退房"
+  },
+  {
+    "id": "travel-93",
+    "speaker": "Alex",
+    "text": "I asked, and they extended our check-out time to one o'clock for free.",
+    "translation": "我问过了，他们免费把我们的退房时间延长到了一点。",
+    "note": "extend 延长"
+  },
+  {
+    "id": "travel-94",
+    "speaker": "Mia",
+    "text": "That gives us plenty of time to pack without feeling rushed.",
+    "translation": "这样我们就有了充足的时间收拾行李，不用感到手忙脚乱了。",
+    "note": "plenty of 充裕的"
+  },
+  {
+    "id": "travel-95",
+    "speaker": "Alex",
+    "text": "Let's double-check all the drawers and closet hangers to leave nothing behind.",
+    "translation": "咱们再仔细检查一遍所有抽屉和衣柜架子，别遗留任何东西。",
+    "note": "leave behind 遗留"
+  },
+  {
+    "id": "travel-96",
+    "speaker": "Mia",
+    "text": "Everything is packed in our luggage. We are ready to settle the final hotel bill.",
+    "translation": "东西都装进行李了。我们准备好结清最终的酒店账单了。",
+    "note": "settle the bill 结清账单"
+  },
+  {
+    "id": "travel-97",
+    "speaker": "Alex",
+    "text": "The hotel staff helped us call a shuttle to the airport. Very convenient!",
+    "translation": "酒店工作人员帮我们叫了去机场的班车，非常方便！",
+    "note": "shuttle 班车/接驳车"
+  },
+  {
+    "id": "travel-98",
+    "speaker": "Mia",
+    "text": "This trip has been full of unforgettable memories and rich experiences.",
+    "translation": "这次旅行充满了难忘的回忆和丰富多彩的体验。",
+    "note": "unforgettable memories 难忘的回忆"
+  },
+  {
+    "id": "travel-99",
+    "speaker": "Alex",
+    "text": "Where should we travel for our next adventure, Mia?",
+    "translation": "下一次探险我们去哪里旅行呢，Mia？",
+    "note": "adventure 探险/冒险之旅"
+  },
+  {
+    "id": "travel-100",
+    "speaker": "Mia",
+    "text": "Wherever we go, as long as it is a new adventure! Safe flight home, Alex!",
+    "translation": "去哪都行，只要是新的探险！祝回家航班平安，Alex！",
+    "note": "safe flight 航班顺利平安"
+  }
+],
   business: businessLines,
   housing: housingLines,
   medical: medicalLines,
