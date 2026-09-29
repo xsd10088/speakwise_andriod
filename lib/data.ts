@@ -1823,7 +1823,708 @@ export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
     "note": "safe flight 航班顺利平安"
   }
 ],
-  business: businessLines,
+  business: [
+  {
+    "id": "business-1",
+    "speaker": "Alex",
+    "text": "Good morning, Mia! Welcome to the team. Let me show you around the office.",
+    "translation": "早安，Mia！欢迎加入我们的团队。我带你参观一下办公室吧。",
+    "note": "show around 意为带某人参观。"
+  },
+  {
+    "id": "business-2",
+    "speaker": "Mia",
+    "text": "Thanks, Alex! I'm really excited to get started today.",
+    "translation": "谢谢你，Alex！今天能正式开始工作，我非常兴奋。",
+    "note": "get started 表达开始着手工作/做某事。"
+  },
+  {
+    "id": "business-3",
+    "speaker": "Alex",
+    "text": "Here is your desk, right next to mine. Your laptop and keycard are already set up.",
+    "translation": "这是你的办公桌，就在我旁边。你的电脑和门禁卡都已经准备好了。",
+    "note": "set up 指安装配置好。"
+  },
+  {
+    "id": "business-4",
+    "speaker": "Mia",
+    "text": "Perfect! Who should I contact if I have trouble setting up my email?",
+    "translation": "太好了！如果我在设置邮箱时遇到问题，应该联系谁？",
+    "note": "have trouble doing sth. 意为做某事有困难。"
+  },
+  {
+    "id": "business-5",
+    "speaker": "Alex",
+    "text": "You can send a message to IT support on Slack, or I can help you with it later.",
+    "translation": "你可以在 Slack 上给 IT 部门发消息，或者我待会儿帮你看。",
+    "note": "help sb. with sth. 意为在某方面帮助某人。"
+  },
+  {
+    "id": "business-6",
+    "speaker": "Mia",
+    "text": "That sounds great. What's on my schedule for this afternoon?",
+    "translation": "听起来不错。我今天下午的行程安排是什么？",
+    "note": "on one's schedule 表示在某人的日程表上。"
+  },
+  {
+    "id": "business-7",
+    "speaker": "Alex",
+    "text": "We have an orientation meeting with HR at two, followed by a quick chat with our manager.",
+    "translation": "下午两点我们和人力资源部有个入职培训，之后和主管简单聊聊。",
+    "note": "followed by... 结构用于连接紧接着发生的活动。"
+  },
+  {
+    "id": "business-8",
+    "speaker": "Mia",
+    "text": "Got it. Is there any document I should read beforehand?",
+    "translation": "明白了。请问有什么文档是我需要提前阅读的吗？",
+    "note": "beforehand 为副词，意为提前、事先。"
+  },
+  {
+    "id": "business-9",
+    "speaker": "Alex",
+    "text": "I've shared a link to our team's onboarding guide. Feel free to browse through it.",
+    "translation": "我已经分享了团队入职指南的链接，你可以随时浏览一下。",
+    "note": "browse through 表示粗略浏览。"
+  },
+  {
+    "id": "business-10",
+    "speaker": "Mia",
+    "text": "Wonderful, I'll dive into that right away. Appreciate your help!",
+    "translation": "太棒了，我这就去仔细看。多谢你的帮助！",
+    "note": "dive into 形象表达深入研究/专心投入做某事。"
+  },
+  {
+    "id": "business-11",
+    "speaker": "Alex",
+    "text": "Hey Mia, ready for our quick daily standup? It usually takes about ten minutes.",
+    "translation": "嗨 Mia，准备好参加我们的日常立会了吗？通常只需要大约十分钟。",
+    "note": "daily standup 指敏捷开发中的每日立会。"
+  },
+  {
+    "id": "business-12",
+    "speaker": "Mia",
+    "text": "Yes, I'm ready. What did you work on yesterday, Alex?",
+    "translation": "准备好了。Alex，你昨天主要做了什么工作？",
+    "note": "work on 意为从事于、致力于某项工作。"
+  },
+  {
+    "id": "business-13",
+    "speaker": "Alex",
+    "text": "I finished drafting the quarterly report and submitted it for review.",
+    "translation": "我完成了季度报告的初稿并提交审阅了。",
+    "note": "submit for review 指提交审核/评审。"
+  },
+  {
+    "id": "business-14",
+    "speaker": "Mia",
+    "text": "Great! Any blockers or issues preventing you from starting the next phase?",
+    "translation": "太好了！在启动下一阶段之前，有什么阻碍或困难吗？",
+    "note": "blocker 在职场中指工作中的阻碍因素。"
+  },
+  {
+    "id": "business-15",
+    "speaker": "Alex",
+    "text": "Not really, though I'm still waiting for feedback from the marketing team.",
+    "translation": "没什么大碍，不过我还在等市场部的反馈。",
+    "note": "wait for feedback 意为等待意见/反馈。"
+  },
+  {
+    "id": "business-16",
+    "speaker": "Mia",
+    "text": "I can follow up with them if you like. I have a sync with their lead at noon.",
+    "translation": "如果你需要，我可以帮你去跟进一下。我中午正好和他们负责人有个同步会。",
+    "note": "follow up with 意为与跟进/复核。"
+  },
+  {
+    "id": "business-17",
+    "speaker": "Alex",
+    "text": "That would be awesome. What are your main priorities for today?",
+    "translation": "那太棒了。你今天的主要优先任务是什么？",
+    "note": "priority 意为优先事项/头等大事。"
+  },
+  {
+    "id": "business-18",
+    "speaker": "Mia",
+    "text": "I'm planning to clean up the client database and update our sprint task board.",
+    "translation": "我打算清理客户数据库，并更新我们本周的看板任务表。",
+    "note": "clean up 意为整理/清理。"
+  },
+  {
+    "id": "business-19",
+    "speaker": "Alex",
+    "text": "Sounds like a solid plan. Let me know if you run into any permission issues.",
+    "translation": "听起来计划很周密。如果遇到权限问题，随时告诉我。",
+    "note": "run into 意为意外遇到/遭遇（困难等）。"
+  },
+  {
+    "id": "business-20",
+    "speaker": "Mia",
+    "text": "Will do! Let me drop a quick update in our Slack channel as well.",
+    "translation": "没问题！我也顺便在 Slack 频道里发个简短更新。",
+    "note": "drop an update 意为留下/发送一条更新消息。"
+  },
+  {
+    "id": "business-21",
+    "speaker": "Alex",
+    "text": "Now that the new client proposal is approved, we need to outline the project timeline.",
+    "translation": "既然新客户方案已通过，我们需要明确一下项目的时间线。",
+    "note": "outline 动词，表示列出提纲/概述。"
+  },
+  {
+    "id": "business-22",
+    "speaker": "Mia",
+    "text": "Agreed. Should we schedule a kickoff meeting with all stakeholders this Thursday?",
+    "translation": "同意。我们要不要这周四和所有利益相关方开个项目启动会？",
+    "note": "stakeholder 指项目中的利益相关者/关联方。"
+  },
+  {
+    "id": "business-23",
+    "speaker": "Alex",
+    "text": "Thursday works. We need to assign task owners before sending out the invites.",
+    "translation": "周四可以。在发送邀请函之前，我们需要指定各项任务的负责人。",
+    "note": "assign task owners 意为指定任务负责人。"
+  },
+  {
+    "id": "business-24",
+    "speaker": "Mia",
+    "text": "I can handle the technical specs while you lead the customer design phase.",
+    "translation": "我可以负责技术规格书，你来主导客户设计阶段。",
+    "note": "technical specs 是 technical specifications（技术规范/规格）的缩写。"
+  },
+  {
+    "id": "business-25",
+    "speaker": "Alex",
+    "text": "Sounds good. What is our target delivery date for the first prototype?",
+    "translation": "听起来不错。我们第一个原型的目标交付日期是什么时候？",
+    "note": "target delivery date 指目标交付日期。"
+  },
+  {
+    "id": "business-26",
+    "speaker": "Mia",
+    "text": "We are aiming for the end of next month, assuming no major delays occur.",
+    "translation": "假设没有出现重大延误的话，我们的目标是下个月底。",
+    "note": "aim for 意为以为目标。"
+  },
+  {
+    "id": "business-27",
+    "speaker": "Alex",
+    "text": "Let me build in a buffer week just in case something unexpected comes up.",
+    "translation": "我打算预留一周的缓冲期，以防万一出现意外情况。",
+    "note": "build in a buffer 指在时间或预算中留有缓冲余地。"
+  },
+  {
+    "id": "business-28",
+    "speaker": "Mia",
+    "text": "Good idea. Buffer time always keeps us from missing critical deadlines.",
+    "translation": "好主意。缓冲时间总能防止我们错过关键的截止日期。",
+    "note": "keep sb. from doing sth. 表示阻止/防止某人做某事。"
+  },
+  {
+    "id": "business-29",
+    "speaker": "Alex",
+    "text": "I'll draft the project schedule on Jira and send it around for comments.",
+    "translation": "我会在 Jira 上拟定项目进度表并发给大家征求意见。",
+    "note": "send around for comments 意为发给大家征求反馈。"
+  },
+  {
+    "id": "business-30",
+    "speaker": "Mia",
+    "text": "Great. Once everyone signs off, we can kick off full speed ahead.",
+    "translation": "太好了。一旦大家签字确认，我们就能全力以赴启动了。",
+    "note": "sign off 意为签字批准/认可；full speed ahead 意为全速推进。"
+  },
+  {
+    "id": "business-31",
+    "speaker": "Alex",
+    "text": "We need to coordinate with the design team regarding the brand assets for this campaign.",
+    "translation": "我们需要就本次活动品牌素材与设计团队进行协调。",
+    "note": "coordinate with 表示与协调/配合。"
+  },
+  {
+    "id": "business-32",
+    "speaker": "Mia",
+    "text": "I spoke with their lead earlier. They requested a clearer creative brief from us.",
+    "translation": "我早些时候和他们的组长谈过。他们希望我们提供一份更清晰的创意简报。",
+    "note": "creative brief 指创意简报/需求文档。"
+  },
+  {
+    "id": "business-33",
+    "speaker": "Alex",
+    "text": "Makes sense. Let me update the requirements document to include their design guidelines.",
+    "translation": "有道理。我把他们的设计规范补充到需求文档里。",
+    "note": "makes sense 常用口语，意为有道理/合理。"
+  },
+  {
+    "id": "business-34",
+    "speaker": "Mia",
+    "text": "Thanks. Also, the finance team needs our quarterly budget estimate by 5 PM.",
+    "translation": "谢谢。另外，财务部需要我们在下午 5 点前提交季度预算估计。",
+    "note": "budget estimate 意为预算估计/预算案。"
+  },
+  {
+    "id": "business-35",
+    "speaker": "Alex",
+    "text": "I've already compiled the numbers. I'll forward the spreadsheet to you right now.",
+    "translation": "数据我已经汇总好了。我这就把电子表格转发给你。",
+    "note": "compile numbers 意为收集汇总数据。"
+  },
+  {
+    "id": "business-36",
+    "speaker": "Mia",
+    "text": "Excellent. I'll cross-check the figures before sending them over to finance.",
+    "translation": "太棒了。在发给财务之前，我会核对一下数据。",
+    "note": "cross-check 意为交叉核对/复核。"
+  },
+  {
+    "id": "business-37",
+    "speaker": "Alex",
+    "text": "Do we need approval from legal for the vendor agreement changes?",
+    "translation": "供应商协议的变更是否需要法务部门审批？",
+    "note": "vendor agreement 指供应商合同/协议。"
+  },
+  {
+    "id": "business-38",
+    "speaker": "Mia",
+    "text": "Yes, legal compliance is mandatory for any modified terms. I'll flag it for review.",
+    "translation": "是的，任何修改后的条款都必须经过法务合规审核。我会标记出来请他们审阅。",
+    "note": "mandatory 意为强制性的、必须的。"
+  },
+  {
+    "id": "business-39",
+    "speaker": "Alex",
+    "text": "Appreciate it, Mia. Seamless cross-team collaboration saves us so much hassle.",
+    "translation": "多谢你，Mia。流畅的跨部门协作能帮我们省去很多麻烦。",
+    "note": "hassle 意为麻烦、困难。"
+  },
+  {
+    "id": "business-40",
+    "speaker": "Mia",
+    "text": "Absolutely. Open communication keeps everyone aligned on the same page.",
+    "translation": "确实。开放的沟通能让大家的步调保持一致。",
+    "note": "on the same page 表达达成共识/意见一致。"
+  },
+  {
+    "id": "business-41",
+    "speaker": "Alex",
+    "text": "Are all the slides ready for tomorrow's presentation with the executive board?",
+    "translation": "明天向高管层汇报的演示幻灯片都准备好了吗？",
+    "note": "executive board 指执行董事会/高管层。"
+  },
+  {
+    "id": "business-42",
+    "speaker": "Mia",
+    "text": "Almost. I just need to polish the ROI graph and add customer testimonials.",
+    "translation": "差不多了。我只需要优化一下投资回报率图表，并加上客户评价。",
+    "note": "ROI 是 Return on Investment（投资回报率）的缩写。"
+  },
+  {
+    "id": "business-43",
+    "speaker": "Alex",
+    "text": "Don't forget to highlight our product's key competitive advantages in slide five.",
+    "translation": "别忘了在第 5 页幻灯片突出我们产品的核心竞争优势。",
+    "note": "competitive advantage 意为竞争优势。"
+  },
+  {
+    "id": "business-44",
+    "speaker": "Mia",
+    "text": "Good point. I'll reframe the wording so it clearly emphasizes cost efficiency.",
+    "translation": "提得好。我会调整措辞，明确强调成本效益。",
+    "note": "reframe 意为重构/重新表述。"
+  },
+  {
+    "id": "business-45",
+    "speaker": "Alex",
+    "text": "Who will be handling the Q&A section at the end of our talk?",
+    "translation": "演讲结束后的问答环节由谁来负责？",
+    "note": "Q&A section 指问答环节。"
+  },
+  {
+    "id": "business-46",
+    "speaker": "Mia",
+    "text": "We can split it. You answer technical questions, and I'll address pricing concerns.",
+    "translation": "我们可以分工。你解答技术问题，我来回答价格方面的疑问。",
+    "note": "split 意为分工/划分；address concerns 意为回应关切/解决疑虑。"
+  },
+  {
+    "id": "business-47",
+    "speaker": "Alex",
+    "text": "That works for me. Should we do a dry run this afternoon to check the timing?",
+    "translation": "我没问题。我们下午要不要试讲一遍，把控一下时间？",
+    "note": "dry run 指演练/彩排/试讲。"
+  },
+  {
+    "id": "business-48",
+    "speaker": "Mia",
+    "text": "Yes, please. A 20-minute practice run will boost our confidence significantly.",
+    "translation": "好啊。20 分钟的演练能大幅提升我们的自信。",
+    "note": "boost confidence 意为增强信心。"
+  },
+  {
+    "id": "business-49",
+    "speaker": "Alex",
+    "text": "Perfect. I'll reserve conference room B for us at three o'clock.",
+    "translation": "太好了。我预订下午 3 点的 B 会议室。",
+    "note": "reserve 意为预订。"
+  },
+  {
+    "id": "business-50",
+    "speaker": "Mia",
+    "text": "Great, see you there. Let me quickly review my notes beforehand.",
+    "translation": "好的，到时候见。我先快速复习一下讲稿笔记。",
+    "note": "review notes 意为复习/查看笔记。"
+  },
+  {
+    "id": "business-51",
+    "speaker": "Alex",
+    "text": "Mia, we need to review our operational budget for the upcoming quarter.",
+    "translation": "Mia，我们需要审查一下下一季度的运营预算。",
+    "note": "operational budget 指运营预算。"
+  },
+  {
+    "id": "business-52",
+    "speaker": "Mia",
+    "text": "Right. The software license expenses went up by fifteen percent this month.",
+    "translation": "是的。这个月软件许可费用上涨了 15%。",
+    "note": "license expense 意为许可/授权费用。"
+  },
+  {
+    "id": "business-53",
+    "speaker": "Alex",
+    "text": "Can we negotiate a bulk discount with the SaaS vendor to reduce costs?",
+    "translation": "我们能否和 SaaS 供应商谈判拿个批量折扣来降低成本？",
+    "note": "bulk discount 意为团购/批量折扣。"
+  },
+  {
+    "id": "business-54",
+    "speaker": "Mia",
+    "text": "I'll reach out to their account manager today and ask about custom plan options.",
+    "translation": "我今天就联系他们的客户经理，询问自定义方案选项。",
+    "note": "account manager 指客户经理。"
+  },
+  {
+    "id": "business-55",
+    "speaker": "Alex",
+    "text": "Good. Also, do we have enough budget left to hire a freelance graphic designer?",
+    "translation": "很好。另外，我们还有足够的预算雇一位兼职平面设计师吗？",
+    "note": "freelance 意为自由职业的/兼职的。"
+  },
+  {
+    "id": "business-56",
+    "speaker": "Mia",
+    "text": "If we trim down marketing ad spend slightly, we can easily cover the designer's fee.",
+    "translation": "如果我们稍微缩减营销广告支出，就能轻松覆盖设计师的费用。",
+    "note": "trim down 意为削减/修剪。"
+  },
+  {
+    "id": "business-57",
+    "speaker": "Alex",
+    "text": "That makes sense. Quality visuals will bring us better engagement anyway.",
+    "translation": "有道理。高质量的视觉效果本来也能带来更高的互动率。",
+    "note": "engagement 在营销中指用户互动/参与度。"
+  },
+  {
+    "id": "business-58",
+    "speaker": "Mia",
+    "text": "Exactly. I'll adjust the budget spreadsheet and send you the updated numbers.",
+    "translation": "完全同意。我会调整预算表并将更新后的数据发给你。",
+    "note": "adjust 意为调整。"
+  },
+  {
+    "id": "business-59",
+    "speaker": "Alex",
+    "text": "Thanks! Make sure to put a copy in our team's shared Drive folder.",
+    "translation": "谢谢！记得在团队共享网盘文件夹里存一份。",
+    "note": "shared Drive folder 指共享云盘文件夹。"
+  },
+  {
+    "id": "business-60",
+    "speaker": "Mia",
+    "text": "Done. Everything is properly logged and ready for approval.",
+    "translation": "好了。所有内容都已妥善登记，等待审批。",
+    "note": "properly logged 意为妥善记录/登记。"
+  },
+  {
+    "id": "business-61",
+    "speaker": "Alex",
+    "text": "How did your mid-year performance review go with the team lead?",
+    "translation": "你和团队主管的年中绩效评估沟通得怎么样？",
+    "note": "performance review 指绩效评估/考核。"
+  },
+  {
+    "id": "business-62",
+    "speaker": "Mia",
+    "text": "It went really well! We discussed my achievements and areas for growth.",
+    "translation": "非常顺利！我们讨论了我取得的成绩和需要提升的领域。",
+    "note": "areas for growth 表达改进/提升的领域，比 weaknesses 更得体。"
+  },
+  {
+    "id": "business-63",
+    "speaker": "Alex",
+    "text": "That's great to hear. Did you talk about setting new quarterly OKRs?",
+    "translation": "听起来真棒。你们讨论设定新的季度 OKR 了吗？",
+    "note": "OKR 指 Objectives and Key Results（目标与关键结果）。"
+  },
+  {
+    "id": "business-64",
+    "speaker": "Mia",
+    "text": "Yes, my primary objective is to lead the migration to the new cloud infrastructure.",
+    "translation": "讨论了，我的主要目标是主导向新云基础架构的迁移。",
+    "note": "cloud infrastructure 指云端基础设施。"
+  },
+  {
+    "id": "business-65",
+    "speaker": "Alex",
+    "text": "That's a challenging task, but I know you'll excel at it.",
+    "translation": "这是项很有挑战性的任务，但我知道你一定能做得很好。",
+    "note": "excel at 意为擅长/在表现出色。"
+  },
+  {
+    "id": "business-66",
+    "speaker": "Mia",
+    "text": "Thank you for the encouragement! What about your feedback session, Alex?",
+    "translation": "谢谢你的鼓励！Alex，你的反馈沟通怎么样？",
+    "note": "feedback session 指反馈对话/会议。"
+  },
+  {
+    "id": "business-67",
+    "speaker": "Alex",
+    "text": "My manager suggested I take on more leadership responsibilities in project coordination.",
+    "translation": "我主管建议我在项目协调中承担更多领导职责。",
+    "note": "take on responsibilities 意为承担职责。"
+  },
+  {
+    "id": "business-68",
+    "speaker": "Mia",
+    "text": "Congratulations! That's a huge step forward in your career trajectory.",
+    "translation": "恭喜！这是你职业生涯发展轨迹上的重要一步。",
+    "note": "career trajectory 指职业发展轨迹。"
+  },
+  {
+    "id": "business-69",
+    "speaker": "Alex",
+    "text": "Thanks, Mia. I'm taking leadership training courses to hone my management skills.",
+    "translation": "谢谢你，Mia。我正在参加领导力培训课程，以打磨管理技能。",
+    "note": "hone skills 意为磨炼/提升技能。"
+  },
+  {
+    "id": "business-70",
+    "speaker": "Mia",
+    "text": "That's proactive! Continuous professional development is key to career success.",
+    "translation": "真积极！持续的职业发展是事业成功的关键。",
+    "note": "proactive 意为积极主动的。"
+  },
+  {
+    "id": "business-71",
+    "speaker": "Alex",
+    "text": "Houston, we have a problem. The staging server crashed during our test run.",
+    "translation": "麻烦大了。测试服务器在我们的演练过程中崩溃了。",
+    "note": "staging server 指预发布/测试服务器；crash 指系统或服务器崩溃。"
+  },
+  {
+    "id": "business-72",
+    "speaker": "Mia",
+    "text": "Oh no! Do we know what caused the crash or how severe the outage is?",
+    "translation": "糟糕！我们知道是什么原因导致崩溃，或者故障有多严重吗？",
+    "note": "outage 指停机/故障/中断。"
+  },
+  {
+    "id": "business-73",
+    "speaker": "Alex",
+    "text": "It looks like a memory leak in the database queries. Tech leads are investigating.",
+    "translation": "看起来是数据库查询中的内存泄漏。技术主管正在调查。",
+    "note": "memory leak 指内存泄漏。"
+  },
+  {
+    "id": "business-74",
+    "speaker": "Mia",
+    "text": "Should we notify the client that today's demo might be delayed by an hour?",
+    "translation": "我们需要通知客户今天的演示可能会推迟一个小时吗？",
+    "note": "delay by... 表示推迟/延后时间。"
+  },
+  {
+    "id": "business-75",
+    "speaker": "Alex",
+    "text": "Yes, it's better to manage their expectations early rather than miss the slot.",
+    "translation": "是的，越早管理客户预期越好，免得错过时间窗口。",
+    "note": "manage expectations 意为管理预期。"
+  },
+  {
+    "id": "business-76",
+    "speaker": "Mia",
+    "text": "I'll draft an email immediately explaining the brief technical hiccup.",
+    "translation": "我立刻写封邮件，说明这个短暂的技术小故障。",
+    "note": "hiccup 形象指微小的故障/小插曲。"
+  },
+  {
+    "id": "business-77",
+    "speaker": "Alex",
+    "text": "Thanks, Mia. Keep the tone professional and reassuring.",
+    "translation": "谢谢，Mia。语气保持专业且让人安心。",
+    "note": "reassuring 意为使人安心的。"
+  },
+  {
+    "id": "business-78",
+    "speaker": "Mia",
+    "text": "Got it. The DevOps team says the server will be back online in twenty minutes.",
+    "translation": "明白了。运维团队说服务器将在 20 分钟内恢复在线。",
+    "note": "back online 意为恢复上线/重新连线。"
+  },
+  {
+    "id": "business-79",
+    "speaker": "Alex",
+    "text": "Whew, what a relief! Crisis averted thanks to quick action from everyone.",
+    "translation": "呼，松了一口气！幸好大家行动迅速，化解了危机。",
+    "note": "crisis averted 意为危机解除/化险为夷。"
+  },
+  {
+    "id": "business-80",
+    "speaker": "Mia",
+    "text": "Absolutely. We should conduct a post-mortem meeting tomorrow to prevent recurrence.",
+    "translation": "确实。我们明天应该开个复盘会，防止再次发生。",
+    "note": "post-mortem meeting 在职场中指项目或事故后的复盘总结会。"
+  },
+  {
+    "id": "business-81",
+    "speaker": "Alex",
+    "text": "Hey Mia, are you joining the virtual town hall meeting via Zoom?",
+    "translation": "嗨 Mia，你会通过 Zoom 参加线上全员大会吗？",
+    "note": "town hall meeting 指全公司/全员参与的大会/沟通会。"
+  },
+  {
+    "id": "business-82",
+    "speaker": "Mia",
+    "text": "Yes, I'm logging in now. Can you hear me clearly, or am I on mute?",
+    "translation": "会，我正在登录。你能听清我说话吗，还是我静音了？",
+    "note": "on mute 意为处于静音状态。"
+  },
+  {
+    "id": "business-83",
+    "speaker": "Alex",
+    "text": "I can hear you loud and clear. Your connection speed seems very stable today.",
+    "translation": "听得很清楚。你今天的网络连接看起来非常稳定。",
+    "note": "loud and clear 意为非常清晰。"
+  },
+  {
+    "id": "business-84",
+    "speaker": "Mia",
+    "text": "Great. I'll share my screen to present the monthly progress report.",
+    "translation": "太好了。我一会儿共享屏幕来展示月度进度报告。",
+    "note": "share screen 指共享屏幕。"
+  },
+  {
+    "id": "business-85",
+    "speaker": "Alex",
+    "text": "Go ahead. Let me know if you run into any latency during screen sharing.",
+    "translation": "请吧。如果屏幕共享时遇到延迟，随时告诉我。",
+    "note": "latency 指网络延迟。"
+  },
+  {
+    "id": "business-86",
+    "speaker": "Mia",
+    "text": "Will do. Working remotely has really improved my time management skills.",
+    "translation": "没问题。远程办公确实提升了我的时间管理能力。",
+    "note": "work remotely 意为远程办公。"
+  },
+  {
+    "id": "business-87",
+    "speaker": "Alex",
+    "text": "Same here, although I do miss our spontaneous coffee break catch-ups.",
+    "translation": "我也一样，虽然我确实很怀念我们平时喝咖啡时的随性聊天。",
+    "note": "catch-up 指非正式的聊天/交流。"
+  },
+  {
+    "id": "business-88",
+    "speaker": "Mia",
+    "text": "Me too! We should definitely plan a hybrid team lunch next week.",
+    "translation": "我也是！我们下周一定要计划一次线下混合团队聚餐。",
+    "note": "hybrid 指线上线下结合/混合的。"
+  },
+  {
+    "id": "business-89",
+    "speaker": "Alex",
+    "text": "Count me in! I'll ping the team on Slack to pick a suitable venue.",
+    "translation": "算我一个！我在 Slack 上发消息问问大家，挑个合适的地点。",
+    "note": "count sb. in 意为把某人算进去；ping 意为发消息联系。"
+  },
+  {
+    "id": "business-90",
+    "speaker": "Mia",
+    "text": "Perfect. Hybrid workplace culture works best when social connections stay strong.",
+    "translation": "完美。只有当社交联系保持紧密时，混合办公文化才能发挥最佳效果。",
+    "note": "hybrid workplace 指混合式办公场所/模式。"
+  },
+  {
+    "id": "business-91",
+    "speaker": "Alex",
+    "text": "Fantastic news! The client just signed the final contract renewal.",
+    "translation": "好消息！客户刚刚签署了最终的续约合同。",
+    "note": "contract renewal 指合同续签/续约。"
+  },
+  {
+    "id": "business-92",
+    "speaker": "Mia",
+    "text": "Wow, congratulations! That's our biggest deal signed this quarter!",
+    "translation": "哇，恭喜！这是我们本季度签下的最大一笔订单！",
+    "note": "deal 意为交易/订单。"
+  },
+  {
+    "id": "business-93",
+    "speaker": "Alex",
+    "text": "I couldn't have done it without your exceptional support during negotiation.",
+    "translation": "没有你在谈判期间的卓越支持，我一个人是做不成的。",
+    "note": "negotiation 意为商务谈判。"
+  },
+  {
+    "id": "business-94",
+    "speaker": "Mia",
+    "text": "It was truly a team effort. Everyone worked tirelessly to push this forward.",
+    "translation": "这完全是团队努力的结果。大家都为了推进项目而不懈努力。",
+    "note": "team effort 指团队努力/合作。"
+  },
+  {
+    "id": "business-95",
+    "speaker": "Alex",
+    "text": "Our director wants to order catering to celebrate this major win on Friday.",
+    "translation": "我们的总监想在周五订餐饮外卖，来庆祝这一重大胜利。",
+    "note": "catering 意为餐饮服务/外卖供餐。"
+  },
+  {
+    "id": "business-96",
+    "speaker": "Mia",
+    "text": "That sounds wonderful! We all deserve a break after such an intensive sprint.",
+    "translation": "听起来太棒了！经过这么紧张的高强度冲刺，大家都值得放松一下。",
+    "note": "deserve a break 意为值得休整/放松。"
+  },
+  {
+    "id": "business-97",
+    "speaker": "Alex",
+    "text": "I'll make sure to summarize our lessons learned for future projects as well.",
+    "translation": "我也会总结经验教训，为未来的项目提供参考。",
+    "note": "lessons learned 指经验教训/总结。"
+  },
+  {
+    "id": "business-98",
+    "speaker": "Mia",
+    "text": "That'll be very valuable for onboarding new project managers in the future.",
+    "translation": "这对以后培训新的项目经理会非常有价值。",
+    "note": "valuable 意为有价值的/宝贵的。"
+  },
+  {
+    "id": "business-99",
+    "speaker": "Alex",
+    "text": "Here's to many more successful projects ahead of us, Mia!",
+    "translation": "祝我们未来能取得更多成功的项目，Mia！",
+    "note": "Here's to... 常用祝酒词表达，为干杯/祝愿。"
+  },
+  {
+    "id": "business-100",
+    "speaker": "Mia",
+    "text": "Cheers to that! Onward and upward to our next milestone!",
+    "translation": "干杯！让我们朝下一个里程碑继续前行！",
+    "note": "onward and upward 表达蒸蒸日上/不断前行；milestone 指里程碑。"
+  }
+],
   housing: housingLines,
   medical: medicalLines,
   banking: bankingLines,
