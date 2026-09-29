@@ -2525,7 +2525,708 @@ export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
     "note": "onward and upward 表达蒸蒸日上/不断前行；milestone 指里程碑。"
   }
 ],
-  housing: housingLines,
+  housing: [
+  {
+    "id": "housing-1",
+    "speaker": "Alex",
+    "text": "Hi Mia, I saw you looking at apartment listings. Are you planning to move soon?",
+    "translation": "嗨 Mia，我看到你在看租房列表。你近期打算搬家吗？",
+    "note": "apartment listings 指房屋出租列表/房源信息。"
+  },
+  {
+    "id": "housing-2",
+    "speaker": "Mia",
+    "text": "Yes, Alex! My current lease expires next month, so I'm searching for a new place.",
+    "translation": "是的，Alex！我现在的租约下个月就到期了，所以我正在找新房子。",
+    "note": "lease expires 表示租约到期。"
+  },
+  {
+    "id": "housing-3",
+    "speaker": "Alex",
+    "text": "What kind of apartment are you looking for? A studio or a one-bedroom?",
+    "translation": "你想找什么样的公寓？开间还是一居室？",
+    "note": "studio 指单间公寓/开间；one-bedroom 指一居室公寓。"
+  },
+  {
+    "id": "housing-4",
+    "speaker": "Mia",
+    "text": "I'm hoping to find a furnished one-bedroom close to the subway line.",
+    "translation": "我希望找一套带家具、离地铁线近的一居室。",
+    "note": "furnished 表示配备家具的。"
+  },
+  {
+    "id": "housing-5",
+    "speaker": "Alex",
+    "text": "That makes sense. What is your maximum budget for monthly rent?",
+    "translation": "有道理。你每月租金的最大预算是多少？",
+    "note": "monthly rent 意为每月租金。"
+  },
+  {
+    "id": "housing-6",
+    "speaker": "Mia",
+    "text": "My budget is around $1,500 per month, including basic utility fees.",
+    "translation": "我的预算在每月 1500 美元左右，最好包含基础水电网费。",
+    "note": "utility fees 指水电气网等公用事业费。"
+  },
+  {
+    "id": "housing-7",
+    "speaker": "Alex",
+    "text": "Have you tried checking online rental platforms or local agency websites?",
+    "translation": "你有试过查看线上租房平台或本地中介网站吗？",
+    "note": "rental platform 意为租房平台。"
+  },
+  {
+    "id": "housing-8",
+    "speaker": "Mia",
+    "text": "I've been browsing rental apps daily, but good options get snatched up quickly.",
+    "translation": "我每天都在刷租房 App，但好的房源很快就被抢光了。",
+    "note": "snatch up 表示被迅速抢走/抢购。"
+  },
+  {
+    "id": "housing-9",
+    "speaker": "Alex",
+    "text": "A friend of mine mentioned an available apartment in downtown yesterday.",
+    "translation": "我一个朋友昨天提到市中心有一套空置的公寓待租。",
+    "note": "available 在租房语境中表示待出租的/可用的。"
+  },
+  {
+    "id": "housing-10",
+    "speaker": "Mia",
+    "text": "Really? Could you send me the listing details? I'd love to check it out!",
+    "translation": "真的吗？你能把房源详情发给我吗？我很想去看看！",
+    "note": "check sth. out 意为去看看/去了解。"
+  },
+  {
+    "id": "housing-11",
+    "speaker": "Alex",
+    "text": "I just sent you the link. It's a newly renovated apartment on Oak Street.",
+    "translation": "我刚刚把链接发给你了。是橡树街上一套重新装修过的公寓。",
+    "note": "newly renovated 表示新装修的。"
+  },
+  {
+    "id": "housing-12",
+    "speaker": "Mia",
+    "text": "Thanks! The pictures look great. I'll call the leasing agent right away.",
+    "translation": "谢谢！照片看起来很棒。我这就给租赁中介打电话。",
+    "note": "leasing agent 指房屋租赁中介/经纪人。"
+  },
+  {
+    "id": "housing-13",
+    "speaker": "Alex",
+    "text": "Make sure to ask if the place is available for immediate move-in.",
+    "translation": "记得问问这房子能不能随时入住。",
+    "note": "immediate move-in 意为随时入住/立即入住。"
+  },
+  {
+    "id": "housing-14",
+    "speaker": "Mia",
+    "text": "Hello, I'm calling regarding the one-bedroom apartment listed on Oak Street.",
+    "translation": "您好，我打过来是想咨询一下橡树街上挂出的那套一居室公寓。",
+    "note": "call regarding... 表达打电话咨询关于的事宜。"
+  },
+  {
+    "id": "housing-15",
+    "speaker": "Alex",
+    "text": "Hi! Yes, it's still available. Would you like to schedule an apartment tour?",
+    "translation": "你好！是的，房子还在。你想预约实地看房吗？",
+    "note": "apartment tour 指实地看房/看房流程。"
+  },
+  {
+    "id": "housing-16",
+    "speaker": "Mia",
+    "text": "Absolutely. Is it possible to view the apartment this Saturday afternoon?",
+    "translation": "当然可以。请问这周六下午方便看房吗？",
+    "note": "view the apartment 意为看房。"
+  },
+  {
+    "id": "housing-17",
+    "speaker": "Alex",
+    "text": "Saturday at two o'clock works for me. I'll meet you right outside the main entrance.",
+    "translation": "周六下午两点可以。到时候我们在公寓正门口碰面。",
+    "note": "works for me 意为对我来说时间合适。"
+  },
+  {
+    "id": "housing-18",
+    "speaker": "Mia",
+    "text": "Perfect. Could you confirm what utilities are included in the monthly rent?",
+    "translation": "太好了。能否确认一下每月租金里包含了哪些公用事业费？",
+    "note": "included in... 表示包含在之中。"
+  },
+  {
+    "id": "housing-19",
+    "speaker": "Alex",
+    "text": "Water and trash removal are included, but electricity and internet are separate.",
+    "translation": "包含水费和垃圾处理费，但电费和网费是需要自理的。",
+    "note": "trash removal 指垃圾清理费。"
+  },
+  {
+    "id": "housing-20",
+    "speaker": "Mia",
+    "text": "Understood. I look forward to meeting you on Saturday afternoon!",
+    "translation": "明白了。期待周六下午与您见面！",
+    "note": "look forward to doing sth. 表示期待做某事。"
+  },
+  {
+    "id": "housing-21",
+    "speaker": "Alex",
+    "text": "Welcome to the apartment, Mia! As you can see, it has plenty of natural light.",
+    "translation": "欢迎来到这套公寓，Mia！正如你所见，采光非常充沛。",
+    "note": "natural light 指自然采光/光线。"
+  },
+  {
+    "id": "housing-22",
+    "speaker": "Mia",
+    "text": "Wow, the living room is so spacious! Is heating and air conditioning installed?",
+    "translation": "哇，客厅非常宽敞！请问安装了暖气和空调吗？",
+    "note": "spacious 意为宽敞的。"
+  },
+  {
+    "id": "housing-23",
+    "speaker": "Alex",
+    "text": "Yes, central heating and air conditioning are fully operational and easy to control.",
+    "translation": "是的，中央冷暖空调运转良好且操作简便。",
+    "note": "fully operational 表示运转良好的/可正常使用的。"
+  },
+  {
+    "id": "housing-24",
+    "speaker": "Mia",
+    "text": "That's great. Let me quickly check the kitchen appliances and water pressure.",
+    "translation": "太好了。让我快速检查一下厨房家电和水压。",
+    "note": "water pressure 意为水压。"
+  },
+  {
+    "id": "housing-25",
+    "speaker": "Alex",
+    "text": "All appliances, including the refrigerator and dishwasher, were updated last year.",
+    "translation": "包括冰箱和洗碗机在内的所有家电都是去年刚更新的。",
+    "note": "refrigerator 意为冰箱；dishwasher 指洗碗机。"
+  },
+  {
+    "id": "housing-26",
+    "speaker": "Mia",
+    "text": "Everything looks very clean. Are pets allowed in this building?",
+    "translation": "看起来都非常干净。这栋楼允许养宠物吗？",
+    "note": "pets allowed 意为允许养宠物。"
+  },
+  {
+    "id": "housing-27",
+    "speaker": "Alex",
+    "text": "Small pets like cats are allowed, but a pet deposit is required upon signing.",
+    "translation": "允许养猫等小型宠物，但签约时需要缴纳宠物押金。",
+    "note": "pet deposit 指宠物押金。"
+  },
+  {
+    "id": "housing-28",
+    "speaker": "Mia",
+    "text": "Is there a dedicated parking space assigned to this unit?",
+    "translation": "这套房子有配备专属停车位吗？",
+    "note": "dedicated parking space 指专用/固定车位。"
+  },
+  {
+    "id": "housing-29",
+    "speaker": "Alex",
+    "text": "Yes, one underground parking spot is included in the rental price.",
+    "translation": "有的，租金里已经包含了一个地下停车位。",
+    "note": "underground parking spot 指地下停车位。"
+  },
+  {
+    "id": "housing-30",
+    "speaker": "Mia",
+    "text": "Excellent. I really like the layout and the quiet neighborhood atmosphere.",
+    "translation": "太棒了。我非常喜欢这里的户型布局和安静的社区氛围。",
+    "note": "layout 指房屋户型/格局。"
+  },
+  {
+    "id": "housing-31",
+    "speaker": "Alex",
+    "text": "I'm glad you like it! Are you interested in submitting an application today?",
+    "translation": "很高兴你喜欢！你今天有兴趣提交租房申请吗？",
+    "note": "submit an application 意为提交申请。"
+  },
+  {
+    "id": "housing-32",
+    "speaker": "Mia",
+    "text": "I am, but is the monthly rent price negotiable if I sign a two-year lease?",
+    "translation": "我有意向，不过如果我签两年长租，月租金还有商量空间吗？",
+    "note": "negotiable 意为可协商的/可议价的。"
+  },
+  {
+    "id": "housing-33",
+    "speaker": "Alex",
+    "text": "I can talk to the landlord and see if they can offer a slight discount.",
+    "translation": "我可以去和房东沟通一下，看看能不能给点小折扣。",
+    "note": "landlord 指房东。"
+  },
+  {
+    "id": "housing-34",
+    "speaker": "Mia",
+    "text": "That would be wonderful. I'd be willing to sign for two years if it's $1,400.",
+    "translation": "那太好了。如果是 1400 美元的话，我愿意签两年。",
+    "note": "be willing to do sth. 表示愿意做某事。"
+  },
+  {
+    "id": "housing-35",
+    "speaker": "Alex",
+    "text": "Let me check with the owner right now... Okay, they agreed to $1,420 per month.",
+    "translation": "我和房东确认一下好了，他们同意按每月 1420 美元出租。",
+    "note": "check with sb. 意为与某人核对/沟通。"
+  },
+  {
+    "id": "housing-36",
+    "speaker": "Mia",
+    "text": "That sounds fair to me. What are the standard lease terms and conditions?",
+    "translation": "听起来蛮合理的。标准租约条款和条件有哪些？",
+    "note": "terms and conditions 指条款与条件。"
+  },
+  {
+    "id": "housing-37",
+    "speaker": "Alex",
+    "text": "The lease runs for 24 months, with rent due on the first day of each month.",
+    "translation": "租期为 24 个月，租金需要在每月第一天支付。",
+    "note": "rent due 表示租金到期应付。"
+  },
+  {
+    "id": "housing-38",
+    "speaker": "Mia",
+    "text": "Is there a grace period for rent payments if the first falls on a weekend?",
+    "translation": "如果每月一号恰好逢周末，交租金有宽限期吗？",
+    "note": "grace period 指宽限期。"
+  },
+  {
+    "id": "housing-39",
+    "speaker": "Alex",
+    "text": "Yes, there is a three-day grace period before any late fee is applied.",
+    "translation": "有的，在产生滞纳金之前有 3 天的付款宽限期。",
+    "note": "late fee 指滞纳金/迟交罚款。"
+  },
+  {
+    "id": "housing-40",
+    "speaker": "Mia",
+    "text": "Great, that gives me peace of mind regarding monthly payments.",
+    "translation": "太好了，这样我在交租金方面就放心多了。",
+    "note": "peace of mind 意为安心/放宽心。"
+  },
+  {
+    "id": "housing-41",
+    "speaker": "Alex",
+    "text": "Now we need to process the rental application and background credit check.",
+    "translation": "现在我们需要处理租房申请并进行背景信用调查。",
+    "note": "credit check 指信用背景调查。"
+  },
+  {
+    "id": "housing-42",
+    "speaker": "Mia",
+    "text": "Sure. What documents do I need to provide for the credit check?",
+    "translation": "没问题。做信用调查我需要提供什么材料？",
+    "note": "documents 意为文件/证件材料。"
+  },
+  {
+    "id": "housing-43",
+    "speaker": "Alex",
+    "text": "Please provide a copy of your ID, recent pay stubs, and employment verification.",
+    "translation": "请提供身份证件复印件、近期的工资单以及在职证明。",
+    "note": "pay stub 指工资单；employment verification 指在职证明。"
+  },
+  {
+    "id": "housing-44",
+    "speaker": "Mia",
+    "text": "I have those documents ready in my email. I'll send them over immediately.",
+    "translation": "这些材料我邮箱里都有现成的，我这就发过去。",
+    "note": "send sth. over 意为发送过去。"
+  },
+  {
+    "id": "housing-45",
+    "speaker": "Alex",
+    "text": "Perfect. Once approved, you'll need to pay the first month's rent and security deposit.",
+    "translation": "很好。一旦审核通过，你需要支付首月租金和押金。",
+    "note": "security deposit 指房屋租房押金。"
+  },
+  {
+    "id": "housing-46",
+    "speaker": "Mia",
+    "text": "How much is the security deposit for this apartment?",
+    "translation": "这套公寓的租房押金是多少钱？",
+    "note": "how much is... 常用作询问价格费用。"
+  },
+  {
+    "id": "housing-47",
+    "speaker": "Alex",
+    "text": "The deposit equals one month's rent, which will be held in an escrow account.",
+    "translation": "押金等于一个月租金，将存放在第三方托管账户中。",
+    "note": "escrow account 指第三方托管账户。"
+  },
+  {
+    "id": "housing-48",
+    "speaker": "Mia",
+    "text": "Understood. Will the deposit be fully refunded when I move out?",
+    "translation": "明白了。在我搬走退房时押金会全额退还吗？",
+    "note": "fully refunded 意为全额退还。"
+  },
+  {
+    "id": "housing-49",
+    "speaker": "Alex",
+    "text": "Yes, provided the apartment is returned in good condition without damages.",
+    "translation": "是的，前提是房屋退还时完好无损。",
+    "note": "provided (that) 引导条件状语，意为前提是/只要。"
+  },
+  {
+    "id": "housing-50",
+    "speaker": "Mia",
+    "text": "Excellent. Let's go ahead and sign the digital lease agreement.",
+    "translation": "太好了。那我们这就开始签署电子租赁合同吧。",
+    "note": "digital lease agreement 指电子租赁合同。"
+  },
+  {
+    "id": "housing-51",
+    "speaker": "Alex",
+    "text": "Here are your new apartment keys and electronic building access fob!",
+    "translation": "给，这是你的新家钥匙和门禁感应卡！",
+    "note": "access fob 指门禁感应卡/钥匙扣。"
+  },
+  {
+    "id": "housing-52",
+    "speaker": "Mia",
+    "text": "Thank you so much! What time am I allowed to reserve the elevator for moving day?",
+    "translation": "太感谢了！我搬家那天可以预约什么时间段使用电梯？",
+    "note": "reserve the elevator 指预约搬家电梯。"
+  },
+  {
+    "id": "housing-53",
+    "speaker": "Alex",
+    "text": "You can reserve the freight elevator between 9 AM and 4 PM on weekends.",
+    "translation": "周末上午 9 点到下午 4 点之间可以预约货梯。",
+    "note": "freight elevator 指货梯/载货电梯。"
+  },
+  {
+    "id": "housing-54",
+    "speaker": "Mia",
+    "text": "Got it. I'll book the 10 AM slot with the building manager.",
+    "translation": "收到。我会向楼管预约上午 10 点的时段。",
+    "note": "slot 指时间段。"
+  },
+  {
+    "id": "housing-55",
+    "speaker": "Alex",
+    "text": "Don't forget to transfer the electricity service to your name before moving in.",
+    "translation": "入住前别忘了把电费账户过户到你的名下。",
+    "note": "transfer electricity service 指办理用电账户过户。"
+  },
+  {
+    "id": "housing-56",
+    "speaker": "Mia",
+    "text": "Right. I've already set up the electric and Wi-Fi accounts online for activation tomorrow.",
+    "translation": "对的。我已经在线提交了用电和宽带开户，明天就会激活。",
+    "note": "activation 意为开通/激活。"
+  },
+  {
+    "id": "housing-57",
+    "speaker": "Alex",
+    "text": "Smart move! Remember to complete the move-in inspection checklist today.",
+    "translation": "明智！记得今天填写完入住检验清单。",
+    "note": "inspection checklist 指入住检验清单。"
+  },
+  {
+    "id": "housing-58",
+    "speaker": "Mia",
+    "text": "Yes, I'm taking photos of all existing scratches or marks for documentation.",
+    "translation": "好的，我正在对所有原有的划痕和痕迹拍照存档。",
+    "note": "documentation 意为留存凭证/归档。"
+  },
+  {
+    "id": "housing-59",
+    "speaker": "Alex",
+    "text": "That's a great habit to protect your security deposit later on.",
+    "translation": "这是个好习惯，以后能很好地保障你的押金退还。",
+    "note": "protect security deposit 意为保障押金退还。"
+  },
+  {
+    "id": "housing-60",
+    "speaker": "Mia",
+    "text": "Definitely. Now I'm ready to unload the moving truck and unpack.",
+    "translation": "确实。现在我准备卸搬家车并拆包整理了。",
+    "note": "unpack 意为拆包整理整理行李。"
+  },
+  {
+    "id": "housing-61",
+    "speaker": "Alex",
+    "text": "Hi Mia, how are you settling into your new apartment after two weeks?",
+    "translation": "嗨 Mia，搬进来两周了，在新家安顿得怎么样？",
+    "note": "settle in 意为安顿下来/适应新环境。"
+  },
+  {
+    "id": "housing-62",
+    "speaker": "Mia",
+    "text": "Everything is great, but I noticed the bathroom faucet is dripping constantly.",
+    "translation": "一切都很好，但我发现浴室的水龙头一直在不停滴水。",
+    "note": "faucet is dripping 表示水龙头在滴水。"
+  },
+  {
+    "id": "housing-63",
+    "speaker": "Alex",
+    "text": "Oh, you should submit a maintenance request through our tenant portal.",
+    "translation": "哦，你可以通过我们的租户平台提交一份报修申请。",
+    "note": "maintenance request 指报修单；tenant portal 指租户系统/门户。"
+  },
+  {
+    "id": "housing-64",
+    "speaker": "Mia",
+    "text": "How long does maintenance usually take to respond to non-emergency repairs?",
+    "translation": "一般非紧急修缮报修，维修人员多长时间会回应？",
+    "note": "non-emergency repairs 指非紧急维修。"
+  },
+  {
+    "id": "housing-65",
+    "speaker": "Alex",
+    "text": "Typically within 24 to 48 hours for general plumbing or fixture repairs.",
+    "translation": "普通管道或设施维修通常在 24 到 48 小时内处理。",
+    "note": "plumbing 指管道水暖系统。"
+  },
+  {
+    "id": "housing-66",
+    "speaker": "Mia",
+    "text": "That's quick. Is there an emergency contact for urgent issues like pipe bursts?",
+    "translation": "挺快的。如果遇到水管爆裂这种紧急情况，有紧急联系方式吗？",
+    "note": "pipe burst 指水管爆裂。"
+  },
+  {
+    "id": "housing-67",
+    "speaker": "Alex",
+    "text": "Yes, the 24/7 emergency hotline number is posted on the lobby notice board.",
+    "translation": "有的，24 小时紧急热线贴在大堂的公告栏上。",
+    "note": "notice board 意为公告栏。"
+  },
+  {
+    "id": "housing-68",
+    "speaker": "Mia",
+    "text": "Thanks, Alex. I'll submit the repair ticket right away on my phone.",
+    "translation": "多谢 Alex。我这就用手机提交报修单。",
+    "note": "repair ticket 指维修工单/报修单。"
+  },
+  {
+    "id": "housing-69",
+    "speaker": "Alex",
+    "text": "The maintenance technician will call before entering if you aren't home.",
+    "translation": "如果你不在家，维修技师进屋前会先给你打电话。",
+    "note": "technician 指技术人员/技师。"
+  },
+  {
+    "id": "housing-70",
+    "speaker": "Mia",
+    "text": "Perfect, I appreciate the prompt service from the management team.",
+    "translation": "太好了，非常感谢管理团队如此高效的服务。",
+    "note": "prompt service 意为及时高效的服务。"
+  },
+  {
+    "id": "housing-71",
+    "speaker": "Alex",
+    "text": "How are your upstairs neighbors? I hope the building is quiet at night.",
+    "translation": "你的楼上邻居怎么样？希望大楼晚上挺安静的。",
+    "note": "upstairs neighbors 指楼上邻居。"
+  },
+  {
+    "id": "housing-72",
+    "speaker": "Mia",
+    "text": "Generally quiet, though they occasionally play music late on Friday evenings.",
+    "translation": "总体很安静，不过他们偶尔会在周五晚上放音乐放得蛮晚。",
+    "note": "occasionally 意为偶尔/有时。"
+  },
+  {
+    "id": "housing-73",
+    "speaker": "Alex",
+    "text": "The building quiet hours start at 10 PM on weekdays and 11 PM on weekends.",
+    "translation": "大楼的安静时段是工作日晚 10 点开始，周末晚 11 点开始。",
+    "note": "quiet hours 指限制噪音的安静时段。"
+  },
+  {
+    "id": "housing-74",
+    "speaker": "Mia",
+    "text": "Good to know. Should I speak to them directly or inform the property manager?",
+    "translation": "了解了。我是应该直接找他们沟通，还是通知物业经理？",
+    "note": "property manager 指物业经理。"
+  },
+  {
+    "id": "housing-75",
+    "speaker": "Alex",
+    "text": "A polite chat usually works first, but management can step in if it persists.",
+    "translation": "礼貌沟通通常最有效，但如果情况持续，物业可以介入。",
+    "note": "step in 意为干预/介入。"
+  },
+  {
+    "id": "housing-76",
+    "speaker": "Mia",
+    "text": "I'll try talking to them friendly first if it happens again.",
+    "translation": "如果再出现这种情况，我会先友好地跟他们聊聊。",
+    "note": "talk to sb. friendly 意为友好地沟通。"
+  },
+  {
+    "id": "housing-77",
+    "speaker": "Alex",
+    "text": "Also, please remember that trash sorting rules are strictly enforced here.",
+    "translation": "另外请记住，我们这里对垃圾分类规则执行得非常严格。",
+    "note": "trash sorting 意为垃圾分类。"
+  },
+  {
+    "id": "housing-78",
+    "speaker": "Mia",
+    "text": "Where are the recycling bins located for glass and paper waste?",
+    "translation": "回收玻璃和纸质废物的回收桶在哪里？",
+    "note": "recycling bins 意为分类回收桶。"
+  },
+  {
+    "id": "housing-79",
+    "speaker": "Alex",
+    "text": "They are in the basement garbage room right next to the elevator entrance.",
+    "translation": "都在地下室的垃圾房里，就在电梯入口旁边。",
+    "note": "basement garbage room 指地下垃圾房。"
+  },
+  {
+    "id": "housing-80",
+    "speaker": "Mia",
+    "text": "Thanks for letting me know. I'll make sure to follow the recycling guidelines.",
+    "translation": "谢谢告知。我一定会遵守垃圾分类指引的。",
+    "note": "guidelines 意为指引/规范。"
+  },
+  {
+    "id": "housing-81",
+    "speaker": "Alex",
+    "text": "Time flies! Your two-year lease is coming up for renewal in two months.",
+    "translation": "时间飞逝！你为期两年的租约再过两个月就要续约了。",
+    "note": "time flies 意为时光飞逝；renewal 指续约。"
+  },
+  {
+    "id": "housing-82",
+    "speaker": "Mia",
+    "text": "Indeed! I've really enjoyed living here and would like to extend my lease.",
+    "translation": "确实！我在这里住得非常开心，很想延长租约。",
+    "note": "extend my lease 意为延长/续签租约。"
+  },
+  {
+    "id": "housing-83",
+    "speaker": "Alex",
+    "text": "We'd love to have you stay. Management sent over the renewal terms today.",
+    "translation": "我们非常欢迎你留下来。管理层今天发来了续约条款。",
+    "note": "renewal terms 指续约条款。"
+  },
+  {
+    "id": "housing-84",
+    "speaker": "Mia",
+    "text": "Is there any change in monthly rent for the upcoming year?",
+    "translation": "请问新的一年月租金有什么变化吗？",
+    "note": "upcoming year 指来年/下一年。"
+  },
+  {
+    "id": "housing-85",
+    "speaker": "Alex",
+    "text": "There is a modest three percent increase to keep up with property market inflation.",
+    "translation": "租金有 3% 的微幅上涨，以跟上房产市场的通货膨胀率。",
+    "note": "modest 意为适度的/微幅的；inflation 指通货膨胀。"
+  },
+  {
+    "id": "housing-86",
+    "speaker": "Mia",
+    "text": "That's reasonable given how much local rental prices have risen lately.",
+    "translation": "考虑到最近当地租金上涨的幅度，这个涨幅还算合理。",
+    "note": "given... 介词用法，意为考虑到/鉴于。"
+  },
+  {
+    "id": "housing-87",
+    "speaker": "Alex",
+    "text": "Great! If you accept, we can send the renewal agreement via e-signature.",
+    "translation": "太好了！如果你接受的话，我们可以把续约协议通过电子签名发给你。",
+    "note": "e-signature 指电子签名。"
+  },
+  {
+    "id": "housing-88",
+    "speaker": "Mia",
+    "text": "Yes, please send it over. I'm happy to renew for another year.",
+    "translation": "好的，请发过来吧。我很乐意再续租一年。",
+    "note": "renew for another year 意为再续租一年。"
+  },
+  {
+    "id": "housing-89",
+    "speaker": "Alex",
+    "text": "Thank you for being such a responsible tenant, Mia!",
+    "translation": "感谢你一直是一位这么省心、有责任感的租客，Mia！",
+    "note": "responsible tenant 指省心/靠谱的租客。"
+  },
+  {
+    "id": "housing-90",
+    "speaker": "Mia",
+    "text": "Thank you for always being so responsive and helpful with everything!",
+    "translation": "也感谢你们总是沟通顺畅、热心帮我解决各种问题！",
+    "note": "responsive 意为积极回应的/沟通顺畅的。"
+  },
+  {
+    "id": "housing-91",
+    "speaker": "Alex",
+    "text": "Fast forward to the end of your stayare you ready for the final move-out walk-through?",
+    "translation": "时光快进到退房时刻你准备好做最终的退房查房走查了吗？",
+    "note": "move-out walk-through 指退房查房/验收走查。"
+  },
+  {
+    "id": "housing-92",
+    "speaker": "Mia",
+    "text": "Yes, I've cleared out all my furniture and had the carpets professionally cleaned.",
+    "translation": "是的，我清空了所有家具，并请专业人员清洗了地毯。",
+    "note": "clear out 意为清空/搬离。"
+  },
+  {
+    "id": "housing-93",
+    "speaker": "Alex",
+    "text": "Excellent! Let's inspect the walls, floors, and kitchen appliances together.",
+    "translation": "太棒了！我们一起检查一下墙面、地板和厨房家电。",
+    "note": "inspect 意为检查/检验。"
+  },
+  {
+    "id": "housing-94",
+    "speaker": "Mia",
+    "text": "Here is the initial move-in checklist we filled out two years ago.",
+    "translation": "给，这是我们两年前填写的那份入住初始检查清单。",
+    "note": "move-in checklist 指入住检查清单。"
+  },
+  {
+    "id": "housing-95",
+    "speaker": "Alex",
+    "text": "Everything is in immaculate shape. Minor paint scuffs are considered normal wear and tear.",
+    "translation": "所有东西都完好如新。墙面微小的划痕属于正常的合理磨损。",
+    "note": "immaculate 意为完美洁净的；wear and tear 指正常磨损。"
+  },
+  {
+    "id": "housing-96",
+    "speaker": "Mia",
+    "text": "Glad to hear that! When can I expect to receive my security deposit refund?",
+    "translation": "听到这个真高兴！我大概什么时候能收到退还的租房押金？",
+    "note": "deposit refund 指押金退还。"
+  },
+  {
+    "id": "housing-97",
+    "speaker": "Alex",
+    "text": "The full deposit will be refunded to your bank account within fourteen business days.",
+    "translation": "全额押金将在 14 个工作日内退还至你的银行账户。",
+    "note": "business days 指工作日。"
+  },
+  {
+    "id": "housing-98",
+    "speaker": "Mia",
+    "text": "Perfect. I've already updated my forwarding address on the online portal.",
+    "translation": "太好了。我已经在线上系统里更新了我的新接收地址。",
+    "note": "forwarding address 指新联系/转寄地址。"
+  },
+  {
+    "id": "housing-99",
+    "speaker": "Alex",
+    "text": "It was a pleasure having you as a tenant. Best of luck in your new chapter!",
+    "translation": "很高兴你曾是我们的租客。祝你在新的人生篇章里一切顺利！",
+    "note": "new chapter 表达人生新篇章。"
+  },
+  {
+    "id": "housing-100",
+    "speaker": "Mia",
+    "text": "Thank you for everything, Alex! It was a fantastic living experience.",
+    "translation": "感谢你所做的一切，Alex！这是一次非常棒的居住体验。",
+    "note": "living experience 意为居住体验。"
+  }
+],
   medical: medicalLines,
   banking: bankingLines,
   shopping: shoppingLines,
