@@ -419,6 +419,108 @@ const shoppingLines: ListeningLine[] = [
 ];
 
 export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
+  school: [
+    { id: "school-1", speaker: "Alex", text: "Good morning, Professor Davis. Do you have a quick moment to talk about the upcoming assignment?", translation: "早上好，戴维斯教授。您现在有空聊一下接下来的作业吗？", note: "教授/老师称呼：Professor + 姓氏" },
+    { id: "school-2", speaker: "Mia", text: "Morning, Alex. Yes, come on in. Is this about the research proposal for our history module?", translation: "早上好，亚历克斯。可以，请进。这是关于我们历史模块的研究开题报告吗？", note: "module 意为课程模块" },
+    { id: "school-3", speaker: "Alex", text: "Actually, it is. I wanted to double-check if primary source interviews are strictly required for the final paper.", translation: "其实是的。我想确认一下期末论文是否强制要求进行第一手资料的采访。" },
+    { id: "school-4", speaker: "Mia", text: "They aren't strictly mandatory, but incorporating interviews or field notes will definitely boost your grade.", translation: "并不是强制必须的，但如果能加入采访或实地笔记，肯定会给你的成绩加分。" },
+    { id: "school-5", speaker: "Alex", text: "That makes sense. I was thinking of interviewing a local archivist, but I'm worried about scheduling conflicts.", translation: "有道理。我原本打算采访一位当地档案管理员，但有点担心时间冲突。" },
+    { id: "school-6", speaker: "Mia", text: "That sounds like a brilliant topic! Have you tried reaching out via email with a flexible time window?", translation: "听起来是个极好的主题！你试过通过邮件联系并给出弹性的时间范围吗？" },
+    { id: "school-7", speaker: "Alex", text: "Not yet, but I can draft something this afternoon and send it over. Should I CC you on that?", translation: "还没试过，但我今天下午可以起草一份发过去。我需要抄送（CC）您吗？" },
+    { id: "school-8", speaker: "Mia", text: "There's no need to CC me, but make sure you mention that this is for a university research project.", translation: "不需要抄送我，但一定要在信中提及这是为了大学的研究项目。" },
+    { id: "school-9", speaker: "Alex", text: "Got it. Also, regarding the citation format, do we stick to APA or Chicago style for this paper?", translation: "明白了。另外，关于引用格式，这篇论文我们统一用 APA 还是芝加哥格式？" },
+    { id: "school-10", speaker: "Mia", text: "The department guidelines specify APA 7th edition for all history and social science submissions.", translation: "系里的指导方针规定，所有历史和社会科学类的提交统一使用 APA 第七版。" },
+    { id: "school-11", speaker: "Alex", text: "Perfect. I'll make sure my bibliography and in-text citations follow APA strictly.", translation: "太好了。我会确保我的参考文献和文内引用严格遵循 APA 规范。" },
+    { id: "school-12", speaker: "Mia", text: "Excellent. Let me know if you encounter any roadblocks while drafting your methodology section.", translation: "很好。如果在起草研究方法部分时遇到任何阻碍，随时告诉我。" },
+    { id: "school-13", speaker: "Alex", text: "Thank you, Professor Davis. I appreciate your guidance on this.", translation: "谢谢你，戴维斯教授。非常感谢您在这方面的指导。" },
+    { id: "school-14", speaker: "Mia", text: "Anytime, Alex. Good luck with the initial outreach, and keep me posted.", translation: "别客气，亚历克斯。祝你初步联络顺利，有进展随时向我汇报。" },
+    { id: "school-15", speaker: "Alex", text: "Excuse me, could you point me toward the main campus library's digital archives section?", translation: "打扰一下，请问主校区图书馆的数字档案区怎么走？" },
+    { id: "school-16", speaker: "Mia", text: "Sure thing! Head straight down this corridor, take the elevator to the third floor, and it's on your left.", translation: "没问题！顺着这条走廊直走，乘电梯到三楼，就在你左手边。" },
+    { id: "school-17", speaker: "Alex", text: "Is a student ID card required to access those restricted databases from the library terminals?", translation: "在图书馆终端访问那些受限制的数据库需要学生证吗？" },
+    { id: "school-18", speaker: "Mia", text: "Yes, you'll need to swipe your card at the turnstile and log in using your university single sign-on.", translation: "是的，你需要在闸机刷卡，并使用学校的统一身份认证登录。" },
+    { id: "school-19", speaker: "Alex", text: "Wonderful. Do you know if we can access those journals remotely from our off-campus apartments?", translation: "太好了。你知道我们在校外公寓能不能远程访问这些期刊吗？" },
+    { id: "school-20", speaker: "Mia", text: "Definitely, just log into the library portal through the university VPN before clicking any database links.", translation: "当然可以，只要在点击任何数据库链接之前，先通过学校 VPN 登录图书馆门户即可。" },
+    { id: "school-21", speaker: "Alex", text: "Hi, I'd like to add a supplementary course to my schedule, but the registration window seems to be closed.", translation: "你好，我想在课表中加一门辅修课，但注册窗口好像已经关闭了。" },
+    { id: "school-22", speaker: "Mia", text: "You'll need an add/drop slip signed by the course instructor and your academic advisor first.", translation: "你首先需要一张由任课教师和学术导师签字的选退课申请表（add/drop slip）。" },
+    { id: "school-23", speaker: "Alex", text: "Where can I pick up a physical copy of that form? Is it available online as a PDF?", translation: "我在哪里可以领到这张表格的纸质版？网上有 PDF 版本可以下载吗？" },
+    { id: "school-24", speaker: "Mia", text: "You can download it directly from the registrar's office website under the student forms tab.", translation: "你可以直接从教务处网站的学生表格标签页下下载。" },
+    { id: "school-25", speaker: "Alex", text: "Got it. Once I get the signatures, do I submit it back here or upload it to the student portal?", translation: "明白了。拿到签字后，我是交回这里，还是上传到学生门户网站？" },
+    { id: "school-26", speaker: "Mia", text: "Bring the signed physical copy directly to our front desk, and we will process the override within 24 hours.", translation: "请把签好字的纸质版直接送到我们前台，我们会在 24 小时内处理特批。" },
+    { id: "school-27", speaker: "Alex", text: "Thank you so much for clarifying that process for me.", translation: "非常感谢您帮我理清这个流程。" },
+    { id: "school-28", speaker: "Mia", text: "No problem at all. Just make sure you submit it before Friday afternoon to avoid late fees.", translation: "一点也不麻烦。只要确保在周五下午之前提交，以免产生滞纳金。" },
+    { id: "school-29", speaker: "Alex", text: "Hi everyone, welcome to today's study group session. Shall we start by reviewing last week's lecture notes?", translation: "大家好，欢迎来到今天的学习小组。我们先从复习上周的讲义开始好吗？" },
+    { id: "school-30", speaker: "Mia", text: "Sounds good to me. I had trouble understanding the section on macroeconomic equilibrium models.", translation: "听起来不错。我对宏观经济均衡模型那一节的内容有点理解困难。" },
+    { id: "school-31", speaker: "Alex", text: "Ah, that part was tricky. Basically, it deals with the intersection of aggregate demand and aggregate supply.", translation: "啊，那部分确实挺棘手。基本上，它处理的是总需求和总供给的交点问题。" },
+    { id: "school-32", speaker: "Mia", text: "Right, but how does fiscal policy shift the curve in the short run versus the long run?", translation: "对，但财政政策在短期和长期内是如何移动这条曲线的呢？" },
+    { id: "school-33", speaker: "Alex", text: "In the short run, government spending shifts the aggregate demand curve outward, raising output and prices.", translation: "在短期内，政府支出会使总需求曲线向外移动，从而提高产出和物价。" },
+    { id: "school-34", speaker: "Mia", text: "And in the long run, prices adjust completely, so output returns to its natural rate, right?", translation: "而在长期内，价格会完全调整，因此产出会回到其自然水平，对吧？" },
+    { id: "school-35", speaker: "Alex", text: "Spot on! You've got the core concept down completely.", translation: "完全正确！你已经彻底掌握核心概念了。" },
+    { id: "school-36", speaker: "Mia", text: "That makes much more sense now that you explained it with a graph.", translation: "你用图表一解释，现在好懂多了。" },
+    { id: "school-37", speaker: "Alex", text: "Let's move on to practice question number four from the handout. Who wants to take the lead?", translation: "我们接着看讲义上的第四道练习题。谁来带头解答一下？" },
+    { id: "school-38", speaker: "Mia", text: "I can try. The question asks us to calculate the marginal propensity to consume given a disposable income change.", translation: "我来试试吧。题目要求我们根据可支配收入的变化来计算边际消费倾向。" },
+    { id: "school-39", speaker: "Alex", text: "Go ahead, we are listening. Walk us through your calculation steps.", translation: "请讲，我们听着呢。把你的计算步骤跟大家理一遍。" },
+    { id: "school-40", speaker: "Mia", text: "We divide the change in consumer spending by the change in disposable income, which gives us 0.75.", translation: "我们将消费支出的变化量除以可支配收入的变化量，得出的结果是 0.75。" },
+    { id: "school-41", speaker: "Alex", text: "Brilliant, that matches the answer key precisely.", translation: "太棒了，这跟标准答案完全吻合。" },
+    { id: "school-42", speaker: "Mia", text: "Awesome! Teamwork really helps clear up these complex formulas.", translation: "太棒了！团队合作确实有助于搞懂这些复杂的公式。" },
+    { id: "school-43", speaker: "Alex", text: "Excuse me, I'm looking for the university's career counseling and internship placement office.", translation: "打扰一下，我在找学校的就业咨询和实习分配办公室。" },
+    { id: "school-44", speaker: "Mia", text: "You're in the right building. Take the stairs down to the ground floor, and it's suite 102.", translation: "你没找错楼。走楼梯到一楼，102 房间就是。" },
+    { id: "school-45", speaker: "Alex", text: "Do I need to book an appointment online beforehand, or do they accept walk-in consultations?", translation: "我需要提前在网上预约，还是他们接受临时上门咨询？" },
+    { id: "school-46", speaker: "Mia", text: "For resume reviews, they have drop-in hours every Tuesday afternoon without an appointment.", translation: "对于简历修改，他们每周二下午设有名额开放时间，无需预约。" },
+    { id: "school-47", speaker: "Alex", text: "That is extremely convenient. Are mock interview sessions also available there?", translation: "那太方便了。那里也提供模拟面试训练吗？" },
+    { id: "school-48", speaker: "Mia", text: "Yes, but those require prior online booking because they pair you with industry mentors.", translation: "是的，不过模拟面试需要提前网上预约，因为他们会为你安排行业导师。" },
+    { id: "school-49", speaker: "Alex", text: "I will make sure to schedule one through the student portal tonight.", translation: "我今晚一定通过学生门户网站预约一个。" },
+    { id: "school-50", speaker: "Mia", text: "Good idea, slots fill up fast as the autumn recruitment season approaches.", translation: "好主意，随着秋季招聘季临近，名额很快就会报满。" },
+    { id: "school-51", speaker: "Alex", text: "Hi, I received an email notification that my student accommodation housing contract is up for renewal.", translation: "你好，我收到一封邮件通知，说我的学生宿舍合同快到期需要续签了。" },
+    { id: "school-52", speaker: "Mia", text: "That's correct. The priority renewal window for current residents closes at the end of this month.", translation: "没错。现住学生的优先续签窗口在本月底关闭。" },
+    { id: "school-53", speaker: "Alex", text: "Can I request to switch to a different room type or building for the upcoming academic year?", translation: "我可以申请在接下来的学年换到不同的房型或楼栋吗？" },
+    { id: "school-54", speaker: "Mia", text: "Room transfer requests are processed based on availability and a lottery system.", translation: "换房申请是根据房源情况和抽签系统来处理的。" },
+    { id: "school-55", speaker: "Alex", text: "If I choose to stay in my current double room, do I still need to submit a new application?", translation: "如果我选择留在现在的双人间，还需要提交新的申请吗？" },
+    { id: "school-56", speaker: "Mia", text: "You just need to click the auto-renew button on your housing portal dashboard.", translation: "你只需要点击宿舍门户控制面板上的自动续签按钮即可。" },
+    { id: "school-57", speaker: "Alex", text: "Does the renewal rate include utility fees and high-speed campus internet access?", translation: "续签费用包含水电费和校园高速网络接入费吗？" },
+    { id: "school-58", speaker: "Mia", text: "All utilities and internet are fully included in the standard semester housing fee.", translation: "所有水电费和网络都完全包含在标准的学期住宿费中。" },
+    { id: "school-59", speaker: "Alex", text: "That is a huge relief. I'll complete the renewal confirmation right away.", translation: "那就彻底放心了。我马上完成续签确认。" },
+    { id: "school-60", speaker: "Mia", text: "Great. Make sure you check your email for the updated payment schedule confirmation.", translation: "很好。确保查看你的电子邮件以获取更新后的缴费日程确认。" },
+    { id: "school-61", speaker: "Alex", text: "Hello, I'd like to check out these three reference textbooks from the reserve desk.", translation: "你好，我想从保留图书柜台借阅这三本参考教科书。" },
+    { id: "school-62", speaker: "Mia", text: "Sure, please hand me your student ID card. Keep in mind these are overnight loans only.", translation: "好的，请把学生证交给我。请记住，这些书仅限过夜借阅。" },
+    { id: "school-63", speaker: "Alex", text: "Understood. When exactly do they need to be returned tomorrow morning?", translation: "明白了。明天早上具体什么时间必须还回来？" },
+    { id: "school-64", speaker: "Mia", text: "They must be returned to this front desk by 9:00 AM sharp to avoid overdue fines.", translation: "必须在明天上午 9 点整之前归还到这个前台，以免产生逾期罚款。" },
+    { id: "school-65", speaker: "Alex", text: "What happens if the library is closed due to a public holiday or unexpected weather?", translation: "如果因为公众假期或突发天气图书馆闭馆了怎么办？" },
+    { id: "school-66", speaker: "Mia", text: "You can drop them into the external book drop slot located near the main entrance gates.", translation: "你可以把书投进正门入口附近的室外还书箱里。" },
+    { id: "school-67", speaker: "Alex", text: "Good to know. Can I renew them online if I need them for another day?", translation: "好的，明白了。如果我多需要一天，可以在网上续借吗？" },
+    { id: "school-68", speaker: "Mia", text: "Reserve items cannot be renewed online if other students have placed a hold on them.", translation: "如果其他学生已经预约了这些保留图书，就无法在网上续借。" },
+    { id: "school-69", speaker: "Alex", text: "Makes sense. I'll make sure to finish my chapter reading tonight then.", translation: "有道理。那今晚我一定抓紧把这一章看完。" },
+    { id: "school-70", speaker: "Mia", text: "Good luck with your reading! Let us know if you need any scanner assistance.", translation: "祝你阅读顺利！如果需要任何扫描仪方面的帮助，随时告诉我们。" },
+    { id: "school-71", speaker: "Alex", text: "Hi Dr. Evans, I'm writing to request an extension for our upcoming research paper deadline.", translation: "嗨，埃文斯博士，我写信是想申请将我们即将到期的研究论文截止日期延期。" },
+    { id: "school-72", speaker: "Mia", text: "Hello Alex. University policy requires official documentation for extension requests. What is the reason?", translation: "你好，亚历克斯。学校政策规定延期申请必须提供官方证明。原因是什么？" },
+    { id: "school-73", speaker: "Alex", text: "I caught a severe flu earlier this week and had to visit the campus medical center.", translation: "我本周早些时候得了重感冒，不得不去了一趟校医院。" },
+    { id: "school-74", speaker: "Mia", text: "I'm sorry to hear that. Please forward the medical certificate issued by the campus clinic.", translation: "听到这个我很遗憾。请转发一下校医诊所开具的医疗证明。" },
+    { id: "school-75", speaker: "Alex", text: "I've already attached the PDF note to this email thread for your review.", translation: "我已经将 PDF 证明附件随这封邮件发给您审阅了。" },
+    { id: "school-76", speaker: "Mia", text: "Received and verified. I can grant you a 48-hour extension until this coming Sunday midnight.", translation: "已收到并核实。我可以给你宽限 48 小时，直到本周日午夜。" },
+    { id: "school-77", speaker: "Alex", text: "Thank you so much for your understanding and flexibility, Dr. Evans.", translation: "非常感谢您的理解与通融，埃文斯博士。" },
+    { id: "school-78", speaker: "Mia", text: "Take care of your health first, and make sure to submit it through the portal once ready.", translation: "先照顾好自己的身体，准备好后务必通过门户网站提交。" },
+    { id: "school-79", speaker: "Alex", text: "Excuse me, where is the IT service desk located for resetting my student account password?", translation: "打扰一下，重置学生账户密码的 IT 服务台在哪里？" },
+    { id: "school-80", speaker: "Mia", text: "It's on the lower level of the computer science building, right next to the main computer lab.", translation: "在计算机科学大楼的负一层，紧挨着主计算机实验室。" },
+    { id: "school-81", speaker: "Alex", text: "Do I need to bring any form of identity verification, like my passport or driver's license?", translation: "我需要带任何身份证明文件吗，比如护照或驾照？" },
+    { id: "school-82", speaker: "Mia", text: "Your physical student ID card is sufficient for identity verification at the counter.", translation: "你的实体学生证就足够在柜台进行身份核验了。" },
+    { id: "school-83", speaker: "Alex", text: "How long does the password reset process usually take?", translation: "密码重置过程通常需要多长时间？" },
+    { id: "school-84", speaker: "Mia", text: "It takes less than five minutes as long as your account details are verified.", translation: "只要你的账户信息核实无误，不到五分钟就能搞定。" },
+    { id: "school-85", speaker: "Alex", text: "Fantastic. My multi-factor authentication app got locked out after I switched phones.", translation: "太棒了。我换手机后，多因素认证（MFA）应用被锁定了。" },
+    { id: "school-86", speaker: "Mia", text: "The technicians can easily rebind your authenticator app right at the service desk.", translation: "技术人员可以直接在服务台帮你重新绑定认证应用。" },
+    { id: "school-87", speaker: "Alex", text: "Hi, I'd like to book a group study room in the library for our project presentation rehearsal.", translation: "你好，我想在图书馆预订一间小组自习室，用于我们的项目展示排练。" },
+    { id: "school-88", speaker: "Mia", text: "Sure thing. Which date and time slot would you prefer for your reservation?", translation: "没问题。你倾向于预订哪个日期和时间段？" },
+    { id: "school-89", speaker: "Alex", text: "This Thursday from 3 PM to 5 PM if a room with a projector is available.", translation: "本周四下午 3 点到 5 点，如果有带投影仪的房间的话。" },
+    { id: "school-90", speaker: "Mia", text: "Let me check the booking system. Room 402 is free during that time window.", translation: "我查一下预订系统。402 房间在那段时间是空着的。" },
+    { id: "school-91", speaker: "Alex", text: "That's wonderful. Can you please lock it in under my student ID number?", translation: "太好了。能帮我用学号锁定这个房间吗？" },
+    { id: "school-92", speaker: "Mia", text: "Done. A confirmation email with your room passcode has been sent to your inbox.", translation: "搞定。带有房间密码的确认邮件已经发送到你的收件箱了。" },
+    { id: "school-93", speaker: "Alex", text: "Do we need to pick up any physical key or equipment from the front desk beforehand?", translation: "我们需要提前去前台领取实体钥匙或任何设备吗？" },
+    { id: "school-94", speaker: "Mia", text: "No physical key is needed; the room opens automatically using your student ID card scan.", translation: "不需要实体钥匙，刷你的学生证就可以自动开门。" },
+    { id: "school-95", speaker: "Alex", text: "Thank you for your prompt assistance with this reservation.", translation: "感谢你迅速帮我办妥这次预订。" },
+    { id: "school-96", speaker: "Mia", text: "You're welcome. Good luck with your project presentation rehearsal!", translation: "不客气。祝你们的项目展示排练顺利！" },
+    { id: "school-97", speaker: "Alex", text: "Excuse me, is this the venue where the undergraduate academic advising seminar is being held?", translation: "打扰一下，这里是本科生学术指导讲座的举办地点吗？" },
+    { id: "school-98", speaker: "Mia", text: "Yes, you're in the right place. Please sign your name on the attendance sheet by the entrance.", translation: "是的，你没走错地方。请在入口处的签到表上签个名。" },
+    { id: "school-99", speaker: "Alex", text: "Are informational brochures and course planning worksheets available for everyone to take?", translation: "宣传册和选课规划表是每个人都可以拿一份吗？" },
+    { id: "school-100", speaker: "Mia", text: "Help yourself to a folder on the table, and feel free to grab a seat near the front.", translation: "桌上的文件夹大家自取，请随便在前排附近找个座位坐下。" }
+  ],
   greetings: [
   {
     "id": "greetings-1",
@@ -6736,710 +6838,7 @@ export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
     "translation": "非常客气！无论何时需要市政帮助，请随时与我们联系！",
     "note": "municipal assistance 指市政帮助/协助。"
   }
-],
-  education: [
-  {
-    "id": "education-1",
-    "speaker": "Alex",
-    "text": "Good afternoon, Mrs. Mia. I'd like to discuss my son's recent academic progress in mathematics.",
-    "translation": "下午好，Mia 老师。我想和您讨论一下我儿子最近在数学方面的学业进展。",
-    "note": "academic progress 指学业进展/学习情况。"
-  },
-  {
-    "id": "education-2",
-    "speaker": "Mia",
-    "text": "Hello Alex! Overall he is doing well, though he could benefit from extra practice in algebra.",
-    "translation": "你好 Alex！总体来说他表现不错，不过如果在代数方面多加练习会更有进步。",
-    "note": "benefit from 意为受益于/得益于；algebra 指代数。"
-  },
-  {
-    "id": "education-3",
-    "speaker": "Alex",
-    "text": "Does he actively participate during classroom discussions and group project activities?",
-    "translation": "他在课堂讨论和小组项目活动中表现积极吗？",
-    "note": "actively participate 指积极参与。"
-  },
-  {
-    "id": "education-4",
-    "speaker": "Mia",
-    "text": "Yes, he is very engaged, but he sometimes hesitates to ask for help when confused.",
-    "translation": "是的，他非常投入，但遇到不懂的地方时有时会犹豫要不要寻求帮助。",
-    "note": "hesitate to 意为犹豫/迟疑做某事。"
-  },
-  {
-    "id": "education-5",
-    "speaker": "Alex",
-    "text": "How can we best support his learning habits at home during the evening?",
-    "translation": "我们晚上在家里应该如何更好地支持他的学习习惯？",
-    "note": "learning habits 指学习习惯。"
-  },
-  {
-    "id": "education-6",
-    "speaker": "Mia",
-    "text": "Establishing a quiet, dedicated study space and reviewing homework together daily makes a big difference.",
-    "translation": "建立一个安静专用的学习空间，并每天一起复习功课，效果会非常显著。",
-    "note": "dedicated study space 指专用的学习空间；makes a big difference 意为有很大改善/起大作用。"
-  },
-  {
-    "id": "education-7",
-    "speaker": "Alex",
-    "text": "Are there supplemental learning resources or online portals you recommend for extra practice?",
-    "translation": "您有推荐用于额外练习的补充学习资源或在线平台吗？",
-    "note": "supplemental learning resources 指补充学习资源。"
-  },
-  {
-    "id": "education-8",
-    "speaker": "Mia",
-    "text": "Our school platform provides customized practice modules that align with the current curriculum.",
-    "translation": "我们学校的平台提供与当前课程同步的定制练习模块。",
-    "note": "align with 意为与保持一致/同步；curriculum 指学校课程。"
-  },
-  {
-    "id": "education-9",
-    "speaker": "Alex",
-    "text": "Thank you! I will schedule a follow-up meeting with you after the mid-term examinations.",
-    "translation": "谢谢您！期中考试后我会再和您预约一次后续面谈。",
-    "note": "mid-term examinations 指期中考试。"
-  },
-  {
-    "id": "education-10",
-    "speaker": "Mia",
-    "text": "You are always welcome! Continuous communication between home and school ensures student success.",
-    "translation": "随时欢迎！家校之间保持持续的沟通能更好地保障学生的成功。",
-    "note": "home and school communication 指家校沟通。"
-  },
-  {
-    "id": "education-11",
-    "speaker": "Alex",
-    "text": "Hi Mia, I am looking to enroll my daughter in the upcoming fall semester for ninth grade.",
-    "translation": "嗨 Mia，我想为我女儿办理今年秋季学期的九年级入学注册。",
-    "note": "enroll 意为注册/登记入学；fall semester 指秋季学期。"
-  },
-  {
-    "id": "education-12",
-    "speaker": "Mia",
-    "text": "Welcome to our school! First, we need you to complete the official registration form online.",
-    "translation": "欢迎来到我们学校！首先，需要您在线填写官方入学注册表。",
-    "note": "registration form 指注册申请表。"
-  },
-  {
-    "id": "education-13",
-    "speaker": "Alex",
-    "text": "What official identification and residency verification documents are required for submission?",
-    "translation": "需要提交哪些官方身份证明和居住地核实材料？",
-    "note": "residency verification 指居住证明/户籍核验。"
-  },
-  {
-    "id": "education-14",
-    "speaker": "Mia",
-    "text": "Please provide her birth certificate, immunization records, and a recent utility bill as proof of address.",
-    "translation": "请提供她的出生证明、疫苗接种记录，以及一张最近的公共事业账单作为地址证明。",
-    "note": "immunization records 指疫苗接种记录；proof of address 指地址证明。"
-  },
-  {
-    "id": "education-15",
-    "speaker": "Alex",
-    "text": "My family recently relocated from another school district; do I need official transcripts?",
-    "translation": "我们家最近刚从另一个学区搬过来，我需要提交官方成绩单吗？",
-    "note": "school district 指学区；official transcripts 指官方成绩单/学业档案。"
-  },
-  {
-    "id": "education-16",
-    "speaker": "Mia",
-    "text": "Yes, we will need sealed academic transcripts directly from her previous school district.",
-    "translation": "是的，我们需要由她原学区直接寄出的盖章密封成绩单。",
-    "note": "sealed academic transcripts 指密封的官方学业成绩单。"
-  },
-  {
-    "id": "education-17",
-    "speaker": "Alex",
-    "text": "Is there an entrance assessment or placement test required for new transfer students?",
-    "translation": "新转学生需要参加入学评估或分班测试吗？",
-    "note": "placement test 指分班/水平测试。"
-  },
-  {
-    "id": "education-18",
-    "speaker": "Mia",
-    "text": "We administer a brief placement test in English and math to assign appropriate course levels.",
-    "translation": "我们会安排简短的英语和数学分班测试，以便安排合适的课程难度等级。",
-    "note": "assign course levels 意为匹配/安排课程等级。"
-  },
-  {
-    "id": "education-19",
-    "speaker": "Alex",
-    "text": "When will we receive formal confirmation regarding her enrollment approval status?",
-    "translation": "我们什么时候能收到关于她录取审批状态的正式确认？",
-    "note": "enrollment approval status 指录取/入学审批状态。"
-  },
-  {
-    "id": "education-20",
-    "speaker": "Mia",
-    "text": "Once all documents are verified, official confirmation letters are sent out within five business days.",
-    "translation": "一旦所有文件核验无误，官方确认信会在 5 个工作日内寄出。",
-    "note": "verified 意为核实/校验。"
-  },
-  {
-    "id": "education-21",
-    "speaker": "Alex",
-    "text": "Good morning, Mia. I need some academic guidance regarding my senior year course load selection.",
-    "translation": "早上好，Mia 老师。关于我高三学年的选课组合，我想寻求一些学业指导。",
-    "note": "senior year 指高三/大学四年级；course load 指课程负担/选课量。"
-  },
-  {
-    "id": "education-22",
-    "speaker": "Mia",
-    "text": "Glad to help, Alex. Are you planning to fulfill prerequisite requirements for university admissions?",
-    "translation": "很高兴能帮到你，Alex。你打算满足大学录取的先修课程要求吗？",
-    "note": "prerequisite requirements 指先修课要求/预备条件。"
-  },
-  {
-    "id": "education-23",
-    "speaker": "Alex",
-    "text": "Yes, I am aiming for a science degree, so I want to enroll in Advanced Placement Chemistry.",
-    "translation": "是的，我打算报考理科学位，所以想选修 AP 化学课程。",
-    "note": "Advanced Placement (AP) 指大学先修课程。"
-  },
-  {
-    "id": "education-24",
-    "speaker": "Mia",
-    "text": "AP Chemistry is rigorous; I suggest balancing it with your humanities and elective requirements.",
-    "translation": "AP 化学难度很高；我建议你用人文必修课和选修课来平衡课程强度。",
-    "note": "rigorous 指严谨的/难度高的；electives 指选修课。"
-  },
-  {
-    "id": "education-25",
-    "speaker": "Alex",
-    "text": "Can I drop or switch an elective subject if the workload becomes overwhelming?",
-    "translation": "如果学业负担过重，我可以退选或更换某门选修课吗？",
-    "note": "overwhelming 意为令人不堪重负的；drop or switch 意为退选或调换。"
-  },
-  {
-    "id": "education-26",
-    "speaker": "Mia",
-    "text": "You have a two-week add-drop period at the start of the semester to adjust your schedule.",
-    "translation": "学期初有两周的补退选课窗口期，供你调整课程表。",
-    "note": "add-drop period 指（选课/退课）补退选期。"
-  },
-  {
-    "id": "education-27",
-    "speaker": "Alex",
-    "text": "How many total credit hours do I need to meet minimum graduation guidelines?",
-    "translation": "满足最低毕业标准总共需要多少学分？",
-    "note": "credit hours 指学分/学时。"
-  },
-  {
-    "id": "education-28",
-    "speaker": "Mia",
-    "text": "You need a minimum of twenty-four cumulative credits, including required physical education units.",
-    "translation": "你需要至少 24 个累积学分，其中包括必修的体育学分。",
-    "note": "cumulative credits 指累积学分。"
-  },
-  {
-    "id": "education-29",
-    "speaker": "Alex",
-    "text": "Should I schedule an appointment with a college career counselor this semester?",
-    "translation": "我这学期需要预约大学升学指导老师吗？",
-    "note": "college career counselor 指大学升学与职业指导老师。"
-  },
-  {
-    "id": "education-30",
-    "speaker": "Mia",
-    "text": "Absolutely, setting up early counseling sessions helps streamline college application timelines.",
-    "translation": "非常有必要，尽早预约面谈有助于规划和理清大学申请的时间线。",
-    "note": "streamline 意为简化/理顺（流程）。"
-  },
-  {
-    "id": "education-31",
-    "speaker": "Alex",
-    "text": "Good morning, Mia. I am calling to report that my son will be absent today due to a fever.",
-    "translation": "早上好，Mia 老师。我打电话来报备一下，我儿子今天因发烧请假。",
-    "note": "absent due to 意为因而缺席/请假。"
-  },
-  {
-    "id": "education-32",
-    "speaker": "Mia",
-    "text": "Thank you for informing us. I hope he recovers quickly. Will he be out for multiple days?",
-    "translation": "谢谢通知我们。希望他早日康复。他需要请假几天吗？",
-    "note": "recovers quickly 意为早日康复。"
-  },
-  {
-    "id": "education-33",
-    "speaker": "Alex",
-    "text": "The doctor advised him to rest at home for two days to ensure full recovery.",
-    "translation": "医生建议他在家休息两天，以确保彻底康复。",
-    "note": "full recovery 指彻底康复。"
-  },
-  {
-    "id": "education-34",
-    "speaker": "Mia",
-    "text": "Please submit a doctor's note upon his return so the absence can be officially excused.",
-    "translation": "请在他返校时提交一份诊断证明，以便将此次缺勤按正当请假处理。",
-    "note": "doctor's note 指医生诊断书/病假条；excused 意为（请假）获得批准的。"
-  },
-  {
-    "id": "education-35",
-    "speaker": "Alex",
-    "text": "How can he access his assigned daily homework and missed classroom lectures while resting?",
-    "translation": "他在家休息期间如何获取每天布置的作业和错过的课堂讲义？",
-    "note": "classroom lectures 指课堂讲义/课程内容。"
-  },
-  {
-    "id": "education-36",
-    "speaker": "Mia",
-    "text": "Teachers upload daily assignments and lecture slides to the online student portal by 3 PM.",
-    "translation": "老师们会在下午 3 点前将每日作业和课件上传至学生在线门户网站。",
-    "note": "student portal 指学生门户网站。"
-  },
-  {
-    "id": "education-37",
-    "speaker": "Alex",
-    "text": "What is the maximum number of unexcused absences allowed before academic warning letters are issued?",
-    "translation": "触发学业警告信之前，允许的最大非正当缺勤次数是多少？",
-    "note": "unexcused absences 指无故缺勤/未经批准的缺席；warning letters 指学业警告信。"
-  },
-  {
-    "id": "education-38",
-    "speaker": "Mia",
-    "text": "Exceeding five unexcused absences triggers an automated notification to parents and school counselors.",
-    "translation": "无故缺勤超过 5 次会触发给家长和学校辅导员的自动通知。",
-    "note": "triggers an automated notification 意为触发自动通知。"
-  },
-  {
-    "id": "education-39",
-    "speaker": "Alex",
-    "text": "Can he arrange make-up tests for the mid-term examinations missed during his sick leave?",
-    "translation": "他病假期间错过的期中考试能安排补考吗？",
-    "note": "make-up tests 指补考。"
-  },
-  {
-    "id": "education-40",
-    "speaker": "Mia",
-    "text": "Yes, course instructors will schedule make-up exams once he returns with official medical documentation.",
-    "translation": "可以的，在他带着官方医疗证明返校后，任课老师会为他安排补考。",
-    "note": "medical documentation 指医疗证明文件。"
-  },
-  {
-    "id": "education-41",
-    "speaker": "Alex",
-    "text": "Hi Mia, I am interested in joining the high school robotics club this semester.",
-    "translation": "嗨 Mia，这学期我很有兴趣加入高中机器人社团。",
-    "note": "robotics club 指机器人社团。"
-  },
-  {
-    "id": "education-42",
-    "speaker": "Mia",
-    "text": "That's wonderful! The robotics club meets every Tuesday and Thursday afternoon after school.",
-    "translation": "太棒了！机器人社团每周二和周四放学后都会举行例会。",
-    "note": "after school 意为放学后。"
-  },
-  {
-    "id": "education-43",
-    "speaker": "Alex",
-    "text": "Are there specific membership prerequisites or audition requirements to join the team?",
-    "translation": "加入社团有特定的门槛要求或选拔测试吗？",
-    "note": "prerequisites 指预备条件/门槛；audition requirements 指选拔/试演要求。"
-  },
-  {
-    "id": "education-44",
-    "speaker": "Mia",
-    "text": "No prior experience is required, but continuous commitment to regional competitions is expected.",
-    "translation": "不需要经验，但需要对参加区域竞赛保持持续的投入。",
-    "note": "prior experience 指先前经验；continuous commitment 指持续投入。"
-  },
-  {
-    "id": "education-45",
-    "speaker": "Alex",
-    "text": "Does participation in varsity sports clubs count toward fulfilling high school physical education credits?",
-    "translation": "参加校体育队可以折算为高中体育课的学分吗？",
-    "note": "varsity sports clubs 指学校代表队/校体育队；physical education credits 指体育学分。"
-  },
-  {
-    "id": "education-46",
-    "speaker": "Mia",
-    "text": "Yes, participating in a full season of varsity athletics grants one semester of physical education credit.",
-    "translation": "是的，参加一整季的校队体育运动可以获得一个学期的体育学分。",
-    "note": "varsity athletics 指校队体育运动。"
-  },
-  {
-    "id": "education-47",
-    "speaker": "Alex",
-    "text": "Where can I find the complete schedule for upcoming student club orientation fairs?",
-    "translation": "我在哪里可以找到即将举行的学生社团招新纳新集市的完整日程表？",
-    "note": "club orientation fairs 指社团招新/迎新集市。"
-  },
-  {
-    "id": "education-48",
-    "speaker": "Mia",
-    "text": "The student council posts the interactive club fair directory on the main bulletin board.",
-    "translation": "学生会在主公告栏上贴出了交互式社团集市指南。",
-    "note": "student council 指学生会；bulletin board 指公告栏。"
-  },
-  {
-    "id": "education-49",
-    "speaker": "Alex",
-    "text": "How can I apply for a leadership position in the student government association?",
-    "translation": "我该如何申请学生会中的干部/领导职位？",
-    "note": "leadership position 指领导/干部职位；student government association 指学生会组织。"
-  },
-  {
-    "id": "education-50",
-    "speaker": "Mia",
-    "text": "Candidate nomination forms are due next Friday, followed by campaign speech presentations.",
-    "translation": "候选人提名表截止日期是下周五，随后将进行竞选演说。",
-    "note": "nomination forms 指提名表；campaign speech 指竞选演讲。"
-  },
-  {
-    "id": "education-51",
-    "speaker": "Alex",
-    "text": "Excuse me, Mia. I need access to peer-reviewed academic journals for my history research paper.",
-    "translation": "打扰一下，Mia 老师。我需要查阅同行评审学术期刊来完成我的历史研究论文。",
-    "note": "peer-reviewed academic journals 指同行评审学术期刊；research paper 指研究论文。"
-  },
-  {
-    "id": "education-52",
-    "speaker": "Mia",
-    "text": "You can access our digital database subscriptions using your student login credentials.",
-    "translation": "你可以使用你的学生账号密码登录并使用我们学校购买的数字数据库。",
-    "note": "digital database subscriptions 指数字数据库订阅；login credentials 指登录凭证（账号密码）。"
-  },
-  {
-    "id": "education-53",
-    "speaker": "Alex",
-    "text": "What is the loan duration limit for borrowing physical reference books from the main library?",
-    "translation": "从总图书馆借阅实体参考书的借期上限是多少？",
-    "note": "loan duration limit 指借阅期限；reference books 指参考书/工具书。"
-  },
-  {
-    "id": "education-54",
-    "speaker": "Mia",
-    "text": "Standard loan periods are three weeks, with the option to renew online twice if no holds exist.",
-    "translation": "标准借期为 3 周，如果没人预约的话，可以在线上续借两次。",
-    "note": "renew online 意为线上续借；holds exist 意为有人预约挂号/预订。"
-  },
-  {
-    "id": "education-55",
-    "speaker": "Alex",
-    "text": "Can I reserve a quiet group study room for our term project collaboration?",
-    "translation": "我可以预约一个安静的小组研讨室用于我们学期项目的团队合作吗？",
-    "note": "group study room 指小组研讨/自习室；term project 指学期大作业/项目。"
-  },
-  {
-    "id": "education-56",
-    "speaker": "Mia",
-    "text": "Study rooms can be reserved up to seven days in advance through the library portal.",
-    "translation": "可以通过图书馆门户网站提前最多 7 天预约研讨室。",
-    "note": "in advance 意为提前。"
-  },
-  {
-    "id": "education-57",
-    "speaker": "Alex",
-    "text": "Are there printing and scanning facilities available for student use inside the library?",
-    "translation": "图书馆内部是否有供学生使用的打印和扫描设备？",
-    "note": "printing and scanning facilities 指打印和扫描设施。"
-  },
-  {
-    "id": "education-58",
-    "speaker": "Mia",
-    "text": "Yes, student ID cards are preloaded with printing credits at the beginning of each semester.",
-    "translation": "有的，每学期初，学生卡内都会预充值一定的打印额度。",
-    "note": "printing credits 指打印额度/点数。"
-  },
-  {
-    "id": "education-59",
-    "speaker": "Alex",
-    "text": "What happens if a borrowed library book is accidentally damaged or misplaced?",
-    "translation": "如果借阅的图书馆书籍不慎损坏或遗失了会怎么处理？",
-    "note": "misplaced 意为遗失/放错位置。"
-  },
-  {
-    "id": "education-60",
-    "speaker": "Mia",
-    "text": "A replacement fee equivalent to the item's current market value plus processing costs will be assessed.",
-    "translation": "将收取相当于该图书当前市场价格加上处理手续费的赔偿金。",
-    "note": "replacement fee 指重置/遗失赔偿金；assessed 意为评估/核算。"
-  },
-  {
-    "id": "education-61",
-    "speaker": "Alex",
-    "text": "Hi Mia, where is the school nurse's office located in case of a medical emergency?",
-    "translation": "嗨 Mia，如果遇到突发医疗状况，校医室在什么位置？",
-    "note": "school nurse's office 指校医室；medical emergency 指紧急医疗情况。"
-  },
-  {
-    "id": "education-62",
-    "speaker": "Mia",
-    "text": "The health clinic is on the first floor of the administrative building, next to the main lobby.",
-    "translation": "医务室在行政楼一楼，就在主大厅隔壁。",
-    "note": "administrative building 指行政楼；main lobby 指主大厅。"
-  },
-  {
-    "id": "education-63",
-    "speaker": "Alex",
-    "text": "Does the school provide confidential mental health counseling for students facing exam stress?",
-    "translation": "学校会为面临考试压力的学生提供保密的心理健康咨询服务吗？",
-    "note": "confidential mental health counseling 指保密的心理健康咨询。"
-  },
-  {
-    "id": "education-64",
-    "speaker": "Mia",
-    "text": "Yes, licensed guidance counselors offer confidential one-on-one sessions during regular school hours.",
-    "translation": "是的，持证心理辅导老师在正常上课时间提供保密的一对一咨询服务。",
-    "note": "guidance counselors 指心理/学业辅导老师。"
-  },
-  {
-    "id": "education-65",
-    "speaker": "Alex",
-    "text": "How does the school notify parents in the event of severe weather or emergency closures?",
-    "translation": "如果遇到恶劣天气或紧急停课，学校如何通知家长？",
-    "note": "emergency closures 指紧急停课/关闭校园。"
-  },
-  {
-    "id": "education-66",
-    "speaker": "Mia",
-    "text": "Emergency alerts are dispatched simultaneously via automated SMS text messages and email broadcasts.",
-    "translation": "紧急警报会通过自动短信和电子邮件群发同步推送给所有人。",
-    "note": "dispatched simultaneously 指同步发送/推送。"
-  },
-  {
-    "id": "education-67",
-    "speaker": "Alex",
-    "text": "What security protocols are in place to control visitor access during regular operating hours?",
-    "translation": "在日常教学时间内，有哪些安保规程来管制访客出入？",
-    "note": "security protocols 指安保规程/安全协议；visitor access 指访客出入。"
-  },
-  {
-    "id": "education-68",
-    "speaker": "Mia",
-    "text": "All visitors must check in at the security gate and wear a guest badge at all times.",
-    "translation": "所有访客都必须在门卫处登记，并全程佩戴访客证。",
-    "note": "guest badge 指访客证。"
-  },
-  {
-    "id": "education-69",
-    "speaker": "Alex",
-    "text": "Can students with food allergies request customized meal options in the school cafeteria?",
-    "translation": "对食物过敏的学生可以在学校食堂申请定制餐食吗？",
-    "note": "food allergies 指食物过敏；customized meal options 指定制餐食。"
-  },
-  {
-    "id": "education-70",
-    "speaker": "Mia",
-    "text": "Absolutely, our cafeteria staff provides allergen-free meal plan options upon dietary request.",
-    "translation": "完全可以，我们的食堂工作人员会根据膳食需求提供无过敏原的餐食选项。",
-    "note": "allergen-free 指无过敏原的。"
-  },
-  {
-    "id": "education-71",
-    "speaker": "Alex",
-    "text": "Good afternoon, Mia. I have questions regarding the tuition payment installment plan options.",
-    "translation": "下午好，Mia。关于学费分期付款计划的选项，我有几个问题。",
-    "note": "tuition payment installment plan 指学费分期付款计划。"
-  },
-  {
-    "id": "education-72",
-    "speaker": "Mia",
-    "text": "We offer quarterly payment plans that allow families to break down annual tuition into four installments.",
-    "translation": "我们提供季度付款计划，允许家庭将年度学费分为四期缴纳。",
-    "note": "quarterly payment plans 指季度分期付款计划。"
-  },
-  {
-    "id": "education-73",
-    "speaker": "Alex",
-    "text": "What merit-based scholarship opportunities are available for incoming undergraduate students?",
-    "translation": "对于即将入学的新生，有哪些基于优异成绩的奖学金机会？",
-    "note": "merit-based scholarship 指（基于优异表现的）奖学金。"
-  },
-  {
-    "id": "education-74",
-    "speaker": "Mia",
-    "text": "Academic excellence scholarships are awarded automatically based on high school GPA and entrance exam scores.",
-    "translation": "学业优秀奖学金会根据高中 GPA 和入学考试成绩自动评定发放。",
-    "note": "academic excellence 指学业优秀；GPA 指平均学分绩点。"
-  },
-  {
-    "id": "education-75",
-    "speaker": "Alex",
-    "text": "When is the final deadline to submit the Free Application for Federal Student Aid?",
-    "translation": "提交联邦学生资助申请表的最终截止日期是什么时候？",
-    "note": "FAFSA 指联邦学生资助申请表；final deadline 指最终截止日期。"
-  },
-  {
-    "id": "education-76",
-    "speaker": "Mia",
-    "text": "Financial aid forms should be completed by March first to maximize grant eligibility.",
-    "translation": "资助申请表应在 3 月 1 日前填写完毕，以最大化争取获得助学金的资格。",
-    "note": "grant eligibility 指助学金/赠款资格。"
-  },
-  {
-    "id": "education-77",
-    "speaker": "Alex",
-    "text": "Are work-study program opportunities open to full-time enrolled students on campus?",
-    "translation": "全日制在读学生可以在校园内申请勤工助学项目岗位吗？",
-    "note": "work-study program 指勤工助学项目；full-time enrolled 指全日制在读的。"
-  },
-  {
-    "id": "education-78",
-    "speaker": "Mia",
-    "text": "Yes, federal work-study positions are posted on the student employment portal each semester.",
-    "translation": "可以的，每学期学生就业门户网站上都会发布勤工助学的职位。",
-    "note": "student employment portal 指学生兼职/就业门户网站。"
-  },
-  {
-    "id": "education-79",
-    "speaker": "Alex",
-    "text": "Will a late payment fee be applied if tuition payments are delayed by a few days?",
-    "translation": "如果学费晚交了几天，会被收取滞纳金吗？",
-    "note": "late payment fee 指滞纳金/逾期费。"
-  },
-  {
-    "id": "education-80",
-    "speaker": "Mia",
-    "text": "A grace period of five days is granted before late charges accrue on unpaid balances.",
-    "translation": "在对未付余额收取滞纳金之前，有 5 天的宽限期。",
-    "note": "grace period 指宽限期；unpaid balances 指未付余额。"
-  },
-  {
-    "id": "education-81",
-    "speaker": "Alex",
-    "text": "Hi Mia, I want to verify if I have fulfilled all general education graduation requirements.",
-    "translation": "嗨 Mia，我想确认一下我是不是已经满足了所有通识教育的毕业要求。",
-    "note": "general education graduation requirements 指通识教育毕业要求。"
-  },
-  {
-    "id": "education-82",
-    "speaker": "Mia",
-    "text": "Let's conduct a degree audit review to ensure all course credits and community service hours are met.",
-    "translation": "我们来进行一次毕业/学位审计审查，确保所有课程学分和社区服务时长都符合标准。",
-    "note": "degree audit review 指学位/毕业审计审查。"
-  },
-  {
-    "id": "education-83",
-    "speaker": "Alex",
-    "text": "How many mandatory community service hours are required for high school graduation?",
-    "translation": "高中毕业需要完成多少个强制性的社区服务小时数？",
-    "note": "community service hours 指社区服务时长/义工时数。"
-  },
-  {
-    "id": "education-84",
-    "speaker": "Mia",
-    "text": "Students must complete a minimum of forty verified community service hours prior to graduation.",
-    "translation": "学生在毕业前必须完成至少 40 个经过核实的社区服务小时数。",
-    "note": "verified 指经过核实/认证的。"
-  },
-  {
-    "id": "education-85",
-    "speaker": "Alex",
-    "text": "When can graduating seniors order their official cap, gown, and graduation announcement packages?",
-    "translation": "应届毕业生什么时候可以订购官方学士服、学士帽以及毕业典礼喜报套件？",
-    "note": "graduating seniors 指应届毕业生；cap and gown 指学士帽和学士服。"
-  },
-  {
-    "id": "education-86",
-    "speaker": "Mia",
-    "text": "Graduation commencement orders are processed through the campus bookstore starting in February.",
-    "translation": "毕业典礼相关预订自 2 月份起由校园书店统一受理。",
-    "note": "commencement 意为毕业典礼/学位授予仪式。"
-  },
-  {
-    "id": "education-87",
-    "speaker": "Alex",
-    "text": "How can I request official academic transcripts to be sent to prospective employers?",
-    "translation": "我该如何申请将我的官方成绩单寄送给潜在的雇主？",
-    "note": "prospective employers 指潜在雇主。"
-  },
-  {
-    "id": "education-88",
-    "speaker": "Mia",
-    "text": "Official transcript requests can be submitted electronically through the registrar's online portal.",
-    "translation": "可以通过教务处的在线门户网站电子化提交官方成绩单寄送申请。",
-    "note": "registrar's online portal 指教务处在线门户网站。"
-  },
-  {
-    "id": "education-89",
-    "speaker": "Alex",
-    "text": "Will diplomas be distributed during the commencement ceremony or mailed afterward?",
-    "translation": "毕业证书是在毕业典礼现场发放，还是典礼后邮寄？",
-    "note": "diplomas 指毕业证书/学位证书；distributed 意为颁发/发放。"
-  },
-  {
-    "id": "education-90",
-    "speaker": "Mia",
-    "text": "Diploma covers are handed out on stage, while actual certified diplomas are mailed within four weeks.",
-    "translation": "典礼台上会颁发证书外壳，而正式的盖章毕业证书会在 4 周内按地址寄出。",
-    "note": "diploma covers 指毕业证书外壳/封皮。"
-  },
-  {
-    "id": "education-91",
-    "speaker": "Alex",
-    "text": "Good morning, Mia. My son has a documented learning disability and needs academic accommodations.",
-    "translation": "早上好，Mia。我儿子有经医学证明的学习障碍，需要学业支持与便利调整。",
-    "note": "learning disability 指学习障碍；academic accommodations 指学业支持/合理便利。"
-  },
-  {
-    "id": "education-92",
-    "speaker": "Mia",
-    "text": "We can schedule an Individualized Education Program meeting to evaluate his specific learning needs.",
-    "translation": "我们可以安排一次个性化教育计划会议，来评估他的具体学习需求。",
-    "note": "Individualized Education Program (IEP) 指个性化教育计划。"
-  },
-  {
-    "id": "education-93",
-    "speaker": "Alex",
-    "text": "What extended time accommodations are available for standardized testing and term exams?",
-    "translation": "对于标准化考试和期末考试，有哪些延长考试时间的便利措施？",
-    "note": "extended time accommodations 指延长考试时间等辅助支持。"
-  },
-  {
-    "id": "education-94",
-    "speaker": "Mia",
-    "text": "Eligible students may receive fifty percent extra time along with distraction-reduced testing environments.",
-    "translation": "符合条件的学生可以获得额外 50% 的考试时间，以及减少干扰的单独考场环境。",
-    "note": "distraction-reduced testing environments 指减少干扰的考试环境。"
-  },
-  {
-    "id": "education-95",
-    "speaker": "Alex",
-    "text": "Do classroom teachers receive formal training on implementing student accommodation plans?",
-    "translation": "任课教师接受过关于落实学生辅助方案的正规培训吗？",
-    "note": "accommodation plans 指辅助/便利方案。"
-  },
-  {
-    "id": "education-96",
-    "speaker": "Mia",
-    "text": "Yes, special education specialists collaborate closely with subject teachers to ensure plan adherence.",
-    "translation": "是的，特教专家会与学科教师紧密配合，确保方案得到精准落实。",
-    "note": "special education specialists 指特殊教育专家；adherence 指遵守/落实。"
-  },
-  {
-    "id": "education-97",
-    "speaker": "Alex",
-    "text": "How frequently are student Individualized Education Programs reviewed and updated?",
-    "translation": "学生的个性化教育计划多久进行一次审阅和更新？",
-    "note": "reviewed and updated 意为审阅并更新。"
-  },
-  {
-    "id": "education-98",
-    "speaker": "Mia",
-    "text": "IEP goals are reviewed annually with parents, school psychologists, and academic advisors.",
-    "translation": "IEP 目标每年会由家长、学校心理学家以及学业导师共同进行年度复审。",
-    "note": "school psychologists 指学校心理学家。"
-  },
-  {
-    "id": "education-99",
-    "speaker": "Alex",
-    "text": "Thank you so much for your dedicated guidance and comprehensive support throughout this process!",
-    "translation": "非常感谢您在整个过程中提供的专注指导和全方位支持！",
-    "note": "comprehensive support 指全方位/综合支持。"
-  },
-  {
-    "id": "education-100",
-    "speaker": "Mia",
-    "text": "You are very welcome! We are committed to fostering an inclusive and supportive educational environment!",
-    "translation": "非常客气！我们致力于营造一个包容且充满支持的教育环境！",
-    "note": "inclusive and supportive 指包容且提供支持的。"
-  }
-],
-  extra1: Array.from({ length: 100 }, (_, i) => ({ 
+],extra1: Array.from({ length: 100 }, (_, i) => ({ 
     id: `extra1-${i+1}`, 
     speaker: i%2===0?"Alex":"Mia", 
     text: `Extra1 line ${i+1}`, 
