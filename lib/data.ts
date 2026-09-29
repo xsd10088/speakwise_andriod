@@ -3227,30 +3227,4218 @@ export const SCENE_CONTENT: Record<SceneKey, ListeningLine[]> = {
     "note": "living experience 意为居住体验。"
   }
 ],
-  medical: medicalLines,
-  banking: bankingLines,
-  shopping: shoppingLines,
-  transit: Array.from({ length: 100 }, (_, i) => ({ 
-    id: `transit-${i+1}`, 
-    speaker: i%2===0?"Alex":"Mia", 
-    text: `Transit line ${i+1}`, 
-    translation: `交通句 ${i+1}`,
-    note: `transit note ${i+1}`
-  })),
-  government: Array.from({ length: 100 }, (_, i) => ({ 
-    id: `government-${i+1}`, 
-    speaker: i%2===0?"Alex":"Mia", 
-    text: `Government line ${i+1}`, 
-    translation: `政务句 ${i+1}`,
-    note: `government note ${i+1}`
-  })),
-  school: Array.from({ length: 100 }, (_, i) => ({ 
-    id: `school-${i+1}`, 
-    speaker: i%2===0?"Alex":"Mia", 
-    text: `School line ${i+1}`, 
-    translation: `学校句 ${i+1}`,
-    note: `school note ${i+1}`
-  })),
+  medical: [
+  {
+    "id": "medical-1",
+    "speaker": "Alex",
+    "text": "Good morning, I'd like to make an appointment with Dr. Smith for a routine check-up.",
+    "translation": "早安，我想预约 Smith 医生的例行体检。",
+    "note": "make an appointment 意为预约（看医生/会议）。"
+  },
+  {
+    "id": "medical-2",
+    "speaker": "Mia",
+    "text": "Sure thing! Is this your first time visiting our clinic, or are you a returning patient?",
+    "translation": "好的！请问您是第一次来我们诊所，还是复诊患者？",
+    "note": "returning patient 指复诊患者/老患者。"
+  },
+  {
+    "id": "medical-3",
+    "speaker": "Alex",
+    "text": "I'm a returning patient. My contact number is on file under Alex Johnson.",
+    "translation": "我是复诊患者。我的联系电话已登记在 Alex Johnson 名下。",
+    "note": "on file 表示已存档/记录在案。"
+  },
+  {
+    "id": "medical-4",
+    "speaker": "Mia",
+    "text": "Great! Dr. Smith has an opening this Thursday at ten in the morning. Does that work?",
+    "translation": "太好了！Smith 医生本周四上午 10 点有空档，您方便吗？",
+    "note": "have an opening 指有空闲/有预约空缺。"
+  },
+  {
+    "id": "medical-5",
+    "speaker": "Alex",
+    "text": "Thursday at ten works well. Do I need to fast before coming in for blood tests?",
+    "translation": "周四上午 10 点可以。抽血检查前我需要禁食吗？",
+    "note": "fast 动词，表示禁食/禁水（通常指体检前）。"
+  },
+  {
+    "id": "medical-6",
+    "speaker": "Mia",
+    "text": "Yes, please refrain from eating or drinking anything except water for eight hours prior.",
+    "translation": "是的，请在看诊前 8 小时内禁食，但可以适当饮水。",
+    "note": "refrain from... 意为克制/切勿做某事。"
+  },
+  {
+    "id": "medical-7",
+    "speaker": "Alex",
+    "text": "Understood. Should I bring my current medical records or insurance card with me?",
+    "translation": "明白了。我需要带现有的病历或医保卡过来吗？",
+    "note": "medical records 指病历档案/医疗记录。"
+  },
+  {
+    "id": "medical-8",
+    "speaker": "Mia",
+    "text": "Just bring a valid photo ID and your insurance card to complete the check-in.",
+    "translation": "只需带上有效身份证件和医保卡，以便完成签到手续。",
+    "note": "valid photo ID 意为有效带照片的身份证件。"
+  },
+  {
+    "id": "medical-9",
+    "speaker": "Alex",
+    "text": "Perfect, thank you for your help. I will see you on Thursday morning.",
+    "translation": "太好了，非常感谢你的帮助。我们周四上午见。",
+    "note": "complete check-in 意为完成签到/登记。"
+  },
+  {
+    "id": "medical-10",
+    "speaker": "Mia",
+    "text": "You're welcome! Please arrive ten minutes early to fill out a brief form.",
+    "translation": "不客气！请提前 10 分钟到达，填一份简短的表格。",
+    "note": "fill out a form 意为填写表格。"
+  },
+  {
+    "id": "medical-11",
+    "speaker": "Alex",
+    "text": "Good morning, Dr. Mia. I've been feeling under the weather for the past three days.",
+    "translation": "早安，Mia 医生。过去三天我一直感觉身体不适。",
+    "note": "under the weather 为地道口语，意为身体微恙/不太舒服。"
+  },
+  {
+    "id": "medical-12",
+    "speaker": "Mia",
+    "text": "I'm sorry to hear that, Alex. Can you describe your main symptoms for me?",
+    "translation": "很遗憾听到这个，Alex。你能给我描述一下主要症状吗？",
+    "note": "symptom 意为症状。"
+  },
+  {
+    "id": "medical-13",
+    "speaker": "Alex",
+    "text": "I have a mild fever, a sore throat, and a persistent dry cough at night.",
+    "translation": "我有点低烧，嗓子疼，而且晚上一直干咳。",
+    "note": "sore throat 意为咽喉疼痛；persistent dry cough 意为持续性干咳。"
+  },
+  {
+    "id": "medical-14",
+    "speaker": "Mia",
+    "text": "I see. Have you noticed any shortness of breath or fatigue lately?",
+    "translation": "了解了。你最近有没有感到呼吸急促或者全身乏力？",
+    "note": "shortness of breath 指呼吸急促/气短；fatigue 指疲劳/乏力。"
+  },
+  {
+    "id": "medical-15",
+    "speaker": "Alex",
+    "text": "I do feel quite fatigued, but my breathing feels totally normal.",
+    "translation": "我确实感觉蛮疲惫的，但呼吸完全正常。",
+    "note": "fatigued 意为感到疲倦的。"
+  },
+  {
+    "id": "medical-16",
+    "speaker": "Mia",
+    "text": "Let me take your temperature and check your blood pressure first.",
+    "translation": "让我先给你量一下体温，测一下血压。",
+    "note": "take your temperature 意为量体温；blood pressure 指血压。"
+  },
+  {
+    "id": "medical-17",
+    "speaker": "Alex",
+    "text": "Sure. Your thermometer says my temperature is 38 degrees Celsius.",
+    "translation": "好的。你的体温计显示我的体温是 38 摄氏度。",
+    "note": "degrees Celsius 意为摄氏度。"
+  },
+  {
+    "id": "medical-18",
+    "speaker": "Mia",
+    "text": "That is indeed a mild fever. Let me examine your throat with a light.",
+    "translation": "确实是低烧。我用压舌板和灯光检查一下你的喉咙。",
+    "note": "examine 意为检查/诊察。"
+  },
+  {
+    "id": "medical-19",
+    "speaker": "Alex",
+    "text": "Ah... is it inflamed or infected?",
+    "translation": "啊发炎还是感染了？",
+    "note": "inflamed 意为发炎的；infected 意为受感染的。"
+  },
+  {
+    "id": "medical-20",
+    "speaker": "Mia",
+    "text": "It looks slightly red and swollen, which points to a common viral infection.",
+    "translation": "看起来微红肿胀，这指向普通的病毒感染。",
+    "note": "viral infection 指病毒感染。"
+  },
+  {
+    "id": "medical-21",
+    "speaker": "Alex",
+    "text": "Should I get a flu test or a throat swab to rule out bacterial infection?",
+    "translation": "我需要做流感检测或咽拭子来排除细菌感染吗？",
+    "note": "throat swab 指咽拭子测试；rule out 意为排除（疾病等）。"
+  },
+  {
+    "id": "medical-22",
+    "speaker": "Mia",
+    "text": "Yes, I'll take a quick swab test. It only takes a couple of minutes.",
+    "translation": "好的，我会做一个快速拭子检测。只需要几分钟的时间。",
+    "note": "take a swab test 指做拭子采样检测。"
+  },
+  {
+    "id": "medical-23",
+    "speaker": "Alex",
+    "text": "Ouch, that was a bit ticklish! How soon will the test results come back?",
+    "translation": "哎呀，有点痒痒的！测试结果多久能出来？",
+    "note": "ticklish 意为发痒的/怕痒的。"
+  },
+  {
+    "id": "medical-24",
+    "speaker": "Mia",
+    "text": "The rapid swab test will give us results in about fifteen minutes.",
+    "translation": "快速拭子检测大概 15 分钟内就能出结果。",
+    "note": "rapid test 指快速检测。"
+  },
+  {
+    "id": "medical-25",
+    "speaker": "Alex",
+    "text": "While we wait, should we also do a routine blood pressure monitoring?",
+    "translation": "在等待期间，我们需要做个例行血压监测吗？",
+    "note": "blood pressure monitoring 意为血压监测。"
+  },
+  {
+    "id": "medical-26",
+    "speaker": "Mia",
+    "text": "Good idea. Please roll up your sleeve so I can wrap the pressure cuff.",
+    "translation": "好主意。请卷起袖子，我来卷上血压袖带。",
+    "note": "pressure cuff 指（血压计的）袖带。"
+  },
+  {
+    "id": "medical-27",
+    "speaker": "Alex",
+    "text": "My blood pressure is usually around 120 over 80. Is it normal today?",
+    "translation": "我的血压平时大概在 120/80 左右。今天正常吗？",
+    "note": "120 over 80 指收缩压 120，舒张压 80。"
+  },
+  {
+    "id": "medical-28",
+    "speaker": "Mia",
+    "text": "It's 118 over 78, which is perfectly within the healthy range.",
+    "translation": "是 118/78，完全在健康范围内。",
+    "note": "within the healthy range 意为在健康标准范围内。"
+  },
+  {
+    "id": "medical-29",
+    "speaker": "Alex",
+    "text": "That's a relief! What about the swab test result for my throat?",
+    "translation": "松了一口气！那我喉咙拭子的测试结果怎么样？",
+    "note": "that's a relief 意为令人松了一口气。"
+  },
+  {
+    "id": "medical-30",
+    "speaker": "Mia",
+    "text": "The test came back negative for strep throat, so it's strictly viral.",
+    "translation": "链球菌咽喉炎检测呈阴性，所以完全是普通的病毒感染。",
+    "note": "negative 在医学上意为（检测结果）阴性。"
+  },
+  {
+    "id": "medical-31",
+    "speaker": "Alex",
+    "text": "Since it's a viral infection, do I need to take antibiotics?",
+    "translation": "既然是病毒感染，我需要吃抗生素吗？",
+    "note": "antibiotics 意为抗生素/消炎药。"
+  },
+  {
+    "id": "medical-32",
+    "speaker": "Mia",
+    "text": "No, antibiotics are ineffective against viruses. Rest and hydration are best.",
+    "translation": "不需要，抗生素对病毒无效。休息和多喝水是最好的治疗方法。",
+    "note": "hydration 意为补充水分。"
+  },
+  {
+    "id": "medical-33",
+    "speaker": "Alex",
+    "text": "How many days should I stay home from work to rest and recover?",
+    "translation": "我应该请假居家休息恢复几天？",
+    "note": "stay home from work 意为请假不上班/居家。"
+  },
+  {
+    "id": "medical-34",
+    "speaker": "Mia",
+    "text": "I recommend resting at home for two days until your fever subsides completely.",
+    "translation": "我建议在家休息两天，直到体温完全退烧为止。",
+    "note": "subside 意为消退/平息。"
+  },
+  {
+    "id": "medical-35",
+    "speaker": "Alex",
+    "text": "Can you issue a medical certificate or doctor's note for my employer?",
+    "translation": "你能为我的雇主开一张病假证明书吗？",
+    "note": "doctor's note / medical certificate 指诊断书/病假条。"
+  },
+  {
+    "id": "medical-36",
+    "speaker": "Mia",
+    "text": "Of course. I'll print out a medical sick leave note for your company.",
+    "translation": "当然可以。我会打印一份公司的病假证明给您。",
+    "note": "sick leave note 意为病假单。"
+  },
+  {
+    "id": "medical-37",
+    "speaker": "Alex",
+    "text": "What should I do if my fever goes up above 39 degrees?",
+    "translation": "如果我的体温升到 39 度以上，我该怎么办？",
+    "note": "fever goes up 意为发烧加重/体温升高。"
+  },
+  {
+    "id": "medical-38",
+    "speaker": "Mia",
+    "text": "Take over-the-counter pain relievers like ibuprofen every six hours as needed.",
+    "translation": "需要时可以每 6 小时服用一次布洛芬等非处方止痛退烧药。",
+    "note": "over-the-counter (OTC) 指非处方药；ibuprofen 指布洛芬。"
+  },
+  {
+    "id": "medical-39",
+    "speaker": "Alex",
+    "text": "Got it. Is there any specific diet or warm fluids I should consume?",
+    "translation": "懂了。有什么特定饮食或温热流质食物是我应该补充的吗？",
+    "note": "warm fluids 指温热流质/温水。"
+  },
+  {
+    "id": "medical-40",
+    "speaker": "Mia",
+    "text": "Stick to light meals like warm soup, and drink plenty of honey lemon tea.",
+    "translation": "吃清淡一点的食物，比如热汤，并多喝柠檬蜂蜜水。",
+    "note": "stick to 意为坚持/保持（某种习惯/饮食）。"
+  },
+  {
+    "id": "medical-41",
+    "speaker": "Alex",
+    "text": "Thanks doctor! Now I'll head downstairs to the pharmacy to pick up my medicine.",
+    "translation": "谢谢医生！我现在去楼下药房取药。",
+    "note": "pharmacy 指药房/药店。"
+  },
+  {
+    "id": "medical-42",
+    "speaker": "Mia",
+    "text": "Hello! Welcome to the pharmacy. May I have your prescription slip?",
+    "translation": "您好！欢迎光临药房。请问有您的处方单吗？",
+    "note": "prescription slip 指医师处方单。"
+  },
+  {
+    "id": "medical-43",
+    "speaker": "Alex",
+    "text": "Here is the doctor's prescription for throat lozenges and nasal spray.",
+    "translation": "这是医生开的润喉片和喷鼻剂处方。",
+    "note": "throat lozenges 指润喉含片；nasal spray 指鼻喷剂。"
+  },
+  {
+    "id": "medical-44",
+    "speaker": "Mia",
+    "text": "Let me retrieve your medication. Do you have any known drug allergies?",
+    "translation": "我去为您拿药。请问您有任何已知的药物过敏史吗？",
+    "note": "drug allergies 指药物过敏。"
+  },
+  {
+    "id": "medical-45",
+    "speaker": "Alex",
+    "text": "No, I don't have any drug allergies that I know of.",
+    "translation": "没有，据我所知我没有任何药物过敏。",
+    "note": "known of 意为所了解/知晓的。"
+  },
+  {
+    "id": "medical-46",
+    "speaker": "Mia",
+    "text": "Great. Take one lozenge every four hours, and do not exceed six a day.",
+    "translation": "好的。每 4 小时含服一片润喉片，一天切勿超过 6 片。",
+    "note": "do not exceed 意为切勿超过。"
+  },
+  {
+    "id": "medical-47",
+    "speaker": "Alex",
+    "text": "How often should I use the nasal spray for my congested nose?",
+    "translation": "鼻塞时我应该隔多久用一次鼻喷剂？",
+    "note": "congested nose 指鼻塞。"
+  },
+  {
+    "id": "medical-48",
+    "speaker": "Mia",
+    "text": "Spray twice in each nostril every morning and evening after washing your face.",
+    "translation": "每天早晚洗脸后，每个鼻孔各喷两次。",
+    "note": "nostril 指鼻孔。"
+  },
+  {
+    "id": "medical-49",
+    "speaker": "Alex",
+    "text": "Should I take these medications before or after meals?",
+    "translation": "这些药我应该在饭前还是饭后服用？",
+    "note": "before or after meals 意为饭前还是饭后。"
+  },
+  {
+    "id": "medical-50",
+    "speaker": "Mia",
+    "text": "Take them after meals to avoid any potential stomach discomfort.",
+    "translation": "饭后服用，以避免任何潜在的胃部不适。",
+    "note": "stomach discomfort 指胃部不适。"
+  },
+  {
+    "id": "medical-51",
+    "speaker": "Alex",
+    "text": "Hi Mia, I'm due for my bi-annual dental cleaning and check-up today.",
+    "translation": "嗨 Mia，我今天该做半年一次的牙齿洁治和检查了。",
+    "note": "bi-annual 意为一年两次的/每半年的；dental cleaning 指洗牙。"
+  },
+  {
+    "id": "medical-52",
+    "speaker": "Mia",
+    "text": "Great! Please sit back in the dental chair. Have you experienced tooth pain?",
+    "translation": "太好了！请在诊疗椅上躺好。你最近有牙痛的情况吗？",
+    "note": "dental chair 指牙科诊疗椅。"
+  },
+  {
+    "id": "medical-53",
+    "speaker": "Alex",
+    "text": "Occasionally my lower molars feel sensitive when drinking ice water.",
+    "translation": "偶尔喝冰水的时候，我下排的臼齿会感觉发酸过敏。",
+    "note": "molar 指臼齿/大牙；sensitive 意为敏感的/酸软的。"
+  },
+  {
+    "id": "medical-54",
+    "speaker": "Mia",
+    "text": "I see. That might indicate mild enamel erosion or early tooth decay.",
+    "translation": "了解。这可能意味着轻微的牙釉质侵蚀或早期龋齿。",
+    "note": "enamel erosion 指牙釉质磨损/侵蚀；tooth decay 指龋齿/蛀牙。"
+  },
+  {
+    "id": "medical-55",
+    "speaker": "Alex",
+    "text": "Let me know if I need any fillings or specialized fluoride treatment.",
+    "translation": "如果我需要补牙或专门的含氟护理，请告诉我。",
+    "note": "filling 指补牙/充填物；fluoride treatment 指涂氟治疗。"
+  },
+  {
+    "id": "medical-56",
+    "speaker": "Mia",
+    "text": "Luckily, there are no cavities. The sensitivity is from brushing too hard.",
+    "translation": "幸运的是没有龋洞。敏感是因为刷牙太用力造成的。",
+    "note": "cavity 指龋洞/蛀牙洞。"
+  },
+  {
+    "id": "medical-57",
+    "speaker": "Alex",
+    "text": "Really? Should I switch to a soft-bristle toothbrush?",
+    "translation": "真的吗？我需要换成软毛牙刷吗？",
+    "note": "soft-bristle toothbrush 指软毛牙刷。"
+  },
+  {
+    "id": "medical-58",
+    "speaker": "Mia",
+    "text": "Yes, and use a specialized toothpaste for sensitive teeth twice daily.",
+    "translation": "是的，并且每天使用两次抗敏感牙膏。",
+    "note": "sensitive teeth 意为抗过敏/敏感牙齿。"
+  },
+  {
+    "id": "medical-59",
+    "speaker": "Alex",
+    "text": "How often do you recommend using dental floss or an oral irrigator?",
+    "translation": "您建议多久使用一次牙线或水牙线？",
+    "note": "dental floss 指牙线；oral irrigator 指水牙线/冲牙器。"
+  },
+  {
+    "id": "medical-60",
+    "speaker": "Mia",
+    "text": "Floss at least once every night before bed to remove hidden plaque.",
+    "translation": "每天晚上睡前至少用一次牙线，清除隐蔽的牙菌斑。",
+    "note": "plaque 指牙菌斑。"
+  },
+  {
+    "id": "medical-61",
+    "speaker": "Alex",
+    "text": "Lately I've been feeling overwhelmed by work pressure and insomnia.",
+    "translation": "最近我感觉工作压力特别大，而且频繁失眠。",
+    "note": "overwhelmed 意为不堪重负的/难以承受的；insomnia 指失眠症。"
+  },
+  {
+    "id": "medical-62",
+    "speaker": "Mia",
+    "text": "Chronic stress can deeply affect your physical health and sleep cycles.",
+    "translation": "长期慢性压力会深远地影响你的身体健康和睡眠周期。",
+    "note": "chronic stress 指慢性压力；sleep cycle 指睡眠周期。"
+  },
+  {
+    "id": "medical-63",
+    "speaker": "Alex",
+    "text": "Is there any natural way to manage stress before resorting to sleeping pills?",
+    "translation": "在考虑吃安眠药之前，有什么自然减压的方法吗？",
+    "note": "resort to 意为诉诸于/采取（手段）；sleeping pills 指安眠药。"
+  },
+  {
+    "id": "medical-64",
+    "speaker": "Mia",
+    "text": "Practicing mindfulness meditation and regular aerobic exercise works wonders.",
+    "translation": "练习正念冥想和规律的有氧运动效果非常好。",
+    "note": "mindfulness meditation 指正念冥想；works wonders 意为创造奇迹/非常管用。"
+  },
+  {
+    "id": "medical-65",
+    "speaker": "Alex",
+    "text": "I've tried meditation, but my mind keeps racing with endless work tasks.",
+    "translation": "我试过冥想，但脑袋里总是停不下脑补各种工作任务。",
+    "note": "mind keeps racing 形象表达思绪万千/脑子停不下来。"
+  },
+  {
+    "id": "medical-66",
+    "speaker": "Mia",
+    "text": "Start with just five minutes of deep breathing exercises before bedtime.",
+    "translation": "可以先从睡前只需 5 分钟的深呼吸练习开始。",
+    "note": "deep breathing exercises 指深呼吸练习。"
+  },
+  {
+    "id": "medical-67",
+    "speaker": "Alex",
+    "text": "Should I also cut back on my afternoon coffee intake?",
+    "translation": "我是不是也应该减少下午的咖啡摄入量？",
+    "note": "cut back on 意为减少/削减。"
+  },
+  {
+    "id": "medical-68",
+    "speaker": "Mia",
+    "text": "Absolutely. Avoid caffeine after two PM to allow your brain to relax.",
+    "translation": "绝对是。下午 2 点之后尽量避免摄入咖啡因，让大脑得到放松。",
+    "note": "caffeine 意为咖啡因。"
+  },
+  {
+    "id": "medical-69",
+    "speaker": "Alex",
+    "text": "If the insomnia continues, should I book a session with a therapist?",
+    "translation": "如果失眠情况持续，我应该预约心理咨询师吗？",
+    "note": "therapist 指心理咨询师/治疗师。"
+  },
+  {
+    "id": "medical-70",
+    "speaker": "Mia",
+    "text": "Yes, talking to a mental health professional can provide personalized guidance.",
+    "translation": "是的，与心理健康专业人士倾诉可以提供个性化的指导。",
+    "note": "mental health professional 指心理健康专业人员。"
+  },
+  {
+    "id": "medical-71",
+    "speaker": "Alex",
+    "text": "Help! My friend twisted his ankle during basketball and cannot walk!",
+    "translation": "救命！我朋友打篮球时拧伤了脚踝，现在无法行走！",
+    "note": "twisted his ankle 意为拧伤/扭伤脚踝。"
+  },
+  {
+    "id": "medical-72",
+    "speaker": "Mia",
+    "text": "Please sit him down on the wheelchair. Let me check the swelling on his ankle.",
+    "translation": "请让他坐在轮椅上。我来检查一下他脚踝的肿胀情况。",
+    "note": "wheelchair 指轮椅；swelling 指肿胀/肿块。"
+  },
+  {
+    "id": "medical-73",
+    "speaker": "Alex",
+    "text": "Is it broken, or just a severe muscle sprain?",
+    "translation": "是骨折了，还是只是严重的肌肉拉伤/扭伤？",
+    "note": "muscle sprain 指肌肉扭伤。"
+  },
+  {
+    "id": "medical-74",
+    "speaker": "Mia",
+    "text": "We need an immediate X-ray scan to check for bone fractures.",
+    "translation": "我们需要立刻安排 X 光扫描，以排除骨折可能。",
+    "note": "X-ray scan 指X 光扫描；bone fracture 指骨折。"
+  },
+  {
+    "id": "medical-75",
+    "speaker": "Alex",
+    "text": "Where is the radiology department? I'll wheel him over right away.",
+    "translation": "放射科在哪里？我立刻推他过去。",
+    "note": "radiology department 指放射科/影像科。"
+  },
+  {
+    "id": "medical-76",
+    "speaker": "Mia",
+    "text": "Down the hallway to the left, room 102. The technician is waiting.",
+    "translation": "沿走廊向左走，102 房间。放射技师正在等待。",
+    "note": "hallway 指走廊/过道。"
+  },
+  {
+    "id": "medical-77",
+    "speaker": "Alex",
+    "text": "Here are the X-ray results, doctor. What is the diagnosis?",
+    "translation": "医生，这是 X 光检查结果。诊断结果是什么？",
+    "note": "diagnosis 指诊断结果。"
+  },
+  {
+    "id": "medical-78",
+    "speaker": "Mia",
+    "text": "The bone is intact! It's a ligament strain. We'll apply an ice pack and elastic bandage.",
+    "translation": "骨头完好无损！是韧带拉伤。我们会敷上冰袋并缠上弹性绷带。",
+    "note": "intact 意为完好无损的；elastic bandage 指弹性绷带。"
+  },
+  {
+    "id": "medical-79",
+    "speaker": "Alex",
+    "text": "Does he need crutches to move around for the next few days?",
+    "translation": "接下来几天他需要用双拐辅助行走吗？",
+    "note": "crutches 指双拐/拐杖。"
+  },
+  {
+    "id": "medical-80",
+    "speaker": "Mia",
+    "text": "Yes, use crutches and remember the RICE protocol: Rest, Ice, Compression, Elevation.",
+    "translation": "是的，使用拐杖，并记住 RICE 原则：休息、冰敷、包扎加压、抬高患处。",
+    "note": "RICE protocol 指急性损伤的RICE（休息冰敷加压抬高）处理原则。"
+  },
+  {
+    "id": "medical-81",
+    "speaker": "Alex",
+    "text": "Mia, I'm planning to revamp my daily routine to build better health habits.",
+    "translation": "Mia，我计划重构我的日常作息，培养更好的健康习惯。",
+    "note": "revamp 意为改进/重构；health habits 指健康习惯。"
+  },
+  {
+    "id": "medical-82",
+    "speaker": "Mia",
+    "text": "That's awesome! Balanced nutrition and consistent physical activity are foundational.",
+    "translation": "太棒了！均衡的营养和持之以恒的体育活动是健康的基石。",
+    "note": "balanced nutrition 指均衡营养。"
+  },
+  {
+    "id": "medical-83",
+    "speaker": "Alex",
+    "text": "What ratio of carbohydrates, protein, and healthy fats do you recommend?",
+    "translation": "你建议碳水化合物、蛋白质和健康脂肪按照什么比例分配？",
+    "note": "carbohydrates (carbs) 意为碳水化合物；protein 指蛋白质。"
+  },
+  {
+    "id": "medical-84",
+    "speaker": "Mia",
+    "text": "Aim for roughly 40 percent complex carbs, 30 percent protein, and 30 percent unsaturated fats.",
+    "translation": "目标大概是 40% 复合碳水、30% 蛋白质和 30% 不饱和脂肪。",
+    "note": "unsaturated fats 指不饱和脂肪。"
+  },
+  {
+    "id": "medical-85",
+    "speaker": "Alex",
+    "text": "How many days a week should I incorporate strength training and cardio?",
+    "translation": "我每周应该安排几天进行力量训练和有氧运动？",
+    "note": "strength training 指力量训练；cardio 指有氧运动。"
+  },
+  {
+    "id": "medical-86",
+    "speaker": "Mia",
+    "text": "Three days of resistance training combined with two days of moderate cardio is ideal.",
+    "translation": "三天阻力训练结合两天中等强度的有氧运动是比较理想的。",
+    "note": "resistance training 指阻力/力量训练。"
+  },
+  {
+    "id": "medical-87",
+    "speaker": "Alex",
+    "text": "Is it necessary to track my daily calorie intake using a fitness mobile app?",
+    "translation": "有必要用健身手机 App 来记录我每天的卡路里摄入吗？",
+    "note": "calorie intake 指卡路里摄入量。"
+  },
+  {
+    "id": "medical-88",
+    "speaker": "Mia",
+    "text": "It helps raise awareness initially, but focusing on whole food quality matters more.",
+    "translation": "刚开始有助于提升健康意识，但关注天然未加工食物的品质更重要。",
+    "note": "whole food 指未加工的天然完整食物。"
+  },
+  {
+    "id": "medical-89",
+    "speaker": "Alex",
+    "text": "What about staying hydrated? How much water should I drink daily?",
+    "translation": "那保持水分呢？我每天应该喝多少水？",
+    "note": "staying hydrated 意为保持水分充足。"
+  },
+  {
+    "id": "medical-90",
+    "speaker": "Mia",
+    "text": "Aim for at least two liters of water throughout the day, more if you sweat.",
+    "translation": "全天目标至少喝 2 升水，如果出汗多可以适当增加。",
+    "note": "two liters 意为两升。"
+  },
+  {
+    "id": "medical-91",
+    "speaker": "Alex",
+    "text": "Hello, I'm here to settle my hospital bill for today's consultation and laboratory tests.",
+    "translation": "您好，我是来结算今天门诊诊察和化验检查费用的。",
+    "note": "settle a bill 意为结账/结算账单；laboratory tests 指化验检查。"
+  },
+  {
+    "id": "medical-92",
+    "speaker": "Mia",
+    "text": "Sure thing! May I scan your health insurance policy card first?",
+    "translation": "好的！我可以先扫描一下您的医疗保险卡吗？",
+    "note": "insurance policy card 指医保卡/保单卡。"
+  },
+  {
+    "id": "medical-93",
+    "speaker": "Alex",
+    "text": "Here you go. Does my insurance plan cover prescription drugs in full?",
+    "translation": "给您。我的医保方案是全额报销处方药吗？",
+    "note": "cover in full 意为全额报销/覆盖。"
+  },
+  {
+    "id": "medical-94",
+    "speaker": "Mia",
+    "text": "Your policy covers 80 percent of prescription drugs, so there is a small co-pay.",
+    "translation": "您的保险报销 80% 的处方药费用，因此需要支付小额自付额。",
+    "note": "co-pay (copayment) 指医保自付额/自付费用。"
+  },
+  {
+    "id": "medical-95",
+    "speaker": "Alex",
+    "text": "How much is my out-of-pocket balance after insurance deduction?",
+    "translation": "扣除医保报销后，我的自费余额是多少？",
+    "note": "out-of-pocket balance 指个人自费金额。"
+  },
+  {
+    "id": "medical-96",
+    "speaker": "Mia",
+    "text": "Your remaining balance comes to $35, which includes the consultation fee.",
+    "translation": "您的剩余费用共计 35 美元，其中包含了门诊诊察费。",
+    "note": "consultation fee 指诊察费/会诊费。"
+  },
+  {
+    "id": "medical-97",
+    "speaker": "Alex",
+    "text": "Can I pay by credit card or mobile payment?",
+    "translation": "我可以刷信用卡或者用移动支付吗？",
+    "note": "credit card / mobile payment 指信用卡/移动支付。"
+  },
+  {
+    "id": "medical-98",
+    "speaker": "Mia",
+    "text": "Both options are accepted. Here is your receipt and itemized invoice.",
+    "translation": "两种方式都可以。这是您的收据和明细发票。",
+    "note": "itemized invoice 指分类明细发票。"
+  },
+  {
+    "id": "medical-99",
+    "speaker": "Alex",
+    "text": "Thank you! Will this receipt be needed if I claim additional wellness benefits?",
+    "translation": "谢谢！如果我要申请额外的健康福利报销，需要这张收据吗？",
+    "note": "wellness benefits 指健康福利/体检津贴。"
+  },
+  {
+    "id": "medical-100",
+    "speaker": "Mia",
+    "text": "Yes, keep this itemized receipt for your tax deductions or secondary insurance claim.",
+    "translation": "是的，请保留好这张明细收据，以便用于税前扣除或二次保险理赔。",
+    "note": "secondary insurance claim 指二次保险理赔。"
+  }
+],
+  banking: [
+  {
+    "id": "banking-1",
+    "speaker": "Alex",
+    "text": "Good morning, I'd like to open a checking account with your bank today.",
+    "translation": "早安，我今天想在你们银行开立一个支票账户。",
+    "note": "checking account 指支票账户/活期存款账户。"
+  },
+  {
+    "id": "banking-2",
+    "speaker": "Mia",
+    "text": "Welcome! I can certainly assist you with that. Do you have two forms of identification?",
+    "translation": "欢迎！我很高兴为您办理。请问您带了两种身份证明文件吗？",
+    "note": "forms of identification 指身份证明文件/证件。"
+  },
+  {
+    "id": "banking-3",
+    "speaker": "Alex",
+    "text": "Yes, I brought my passport and a recent utility bill as proof of address.",
+    "translation": "是的，我带了护照和最近的水电费账单作为地址证明。",
+    "note": "proof of address 指地址证明文件。"
+  },
+  {
+    "id": "banking-4",
+    "speaker": "Mia",
+    "text": "Perfect. Would you also like to link a savings account for automated transfers?",
+    "translation": "太好了。您是否还想关联一个储蓄账户以便进行自动转账？",
+    "note": "link an account 意为关联/绑定账户。"
+  },
+  {
+    "id": "banking-5",
+    "speaker": "Alex",
+    "text": "That sounds convenient. What is the minimum balance required to waive monthly fees?",
+    "translation": "听起来很方便。免除月管理费需要的最低账户余额是多少？",
+    "note": "waive monthly fees 意为免除月管理费。"
+  },
+  {
+    "id": "banking-6",
+    "speaker": "Mia",
+    "text": "For this account, maintaining a daily balance of $1,000 waives the monthly maintenance fee.",
+    "translation": "对于这个账户，保持每日 1,000 美元的余额即可免除月管理费。",
+    "note": "daily balance 指每日余额。"
+  },
+  {
+    "id": "banking-7",
+    "speaker": "Alex",
+    "text": "Got it. Can I set up online banking credentials right after opening the account?",
+    "translation": "明白了。开户后我能立刻设置网银登录凭证吗？",
+    "note": "online banking credentials 指网上银行登录凭证/账号密码。"
+  },
+  {
+    "id": "banking-8",
+    "speaker": "Mia",
+    "text": "Absolutely. I will guide you through registering on our mobile app before you leave.",
+    "translation": "当然可以。在您离开前，我会引导您在我们的移动 App 上完成注册。",
+    "note": "guide through 意为引导/一步步指导。"
+  },
+  {
+    "id": "banking-9",
+    "speaker": "Alex",
+    "text": "Is there an initial deposit required to activate the new account today?",
+    "translation": "今天激活新账户需要首笔存款吗？",
+    "note": "initial deposit 指首笔存款/开户预存金额。"
+  },
+  {
+    "id": "banking-10",
+    "speaker": "Mia",
+    "text": "Yes, a minimum initial deposit of fifty dollars is required to open it.",
+    "translation": "是的，开户需要至少预存 50 美元。",
+    "note": "minimum deposit 指最低存款额。"
+  },
+  {
+    "id": "banking-11",
+    "speaker": "Alex",
+    "text": "Hi Mia, I need to deposit a payroll check into my savings account.",
+    "translation": "嗨 Mia，我需要把一张工资支票存入我的储蓄账户。",
+    "note": "payroll check 指工资支票。"
+  },
+  {
+    "id": "banking-12",
+    "speaker": "Mia",
+    "text": "Sure! Please endorse the back of the check and hand it over to me.",
+    "translation": "好的！请在支票背面签名字背书，然后递给我。",
+    "note": "endorse a check 意为在支票背面签名背书。"
+  },
+  {
+    "id": "banking-13",
+    "speaker": "Alex",
+    "text": "Done. I'd also like to withdraw two hundred dollars in cash from checking.",
+    "translation": "好了。我还想从支票账户提取 200 美元现金。",
+    "note": "withdraw cash 意为提取现金。"
+  },
+  {
+    "id": "banking-14",
+    "speaker": "Mia",
+    "text": "Here is your cash. Would you prefer large bills or smaller denominations?",
+    "translation": "这是您的现金。您偏好大面额纸币还是小面额纸币？",
+    "note": "denominations 指（货币的）面额。"
+  },
+  {
+    "id": "banking-15",
+    "speaker": "Alex",
+    "text": "Two hundred-dollar bills would be great, thank you.",
+    "translation": "两张百元大钞就可以，谢谢。",
+    "note": "hundred-dollar bill 意为百元钞票。"
+  },
+  {
+    "id": "banking-16",
+    "speaker": "Mia",
+    "text": "Here you go. By the way, you can also process check deposits using our mobile ATM app.",
+    "translation": "给您。顺便提一下，您也可以用我们的手机 App 直接拍照存支票。",
+    "note": "process deposits 意为处理存款/办理存入。"
+  },
+  {
+    "id": "banking-17",
+    "speaker": "Alex",
+    "text": "Oh really? How do I deposit a check using my mobile phone?",
+    "translation": "真的吗？我该怎么用手机存支票呢？",
+    "note": "mobile check deposit 指手机拍照存支票。"
+  },
+  {
+    "id": "banking-18",
+    "speaker": "Mia",
+    "text": "Simply sign the check, take photos of the front and back, and submit it via app.",
+    "translation": "只需在支票上签名，拍下正面和背面，通过 App 提交即可。",
+    "note": "submit via app 意为通过应用提交。"
+  },
+  {
+    "id": "banking-19",
+    "speaker": "Alex",
+    "text": "What is the daily withdrawal limit if I use an ATM machine outside?",
+    "translation": "如果我在室外使用 ATM 机，每日取款限额是多少？",
+    "note": "daily withdrawal limit 指每日取款限额。"
+  },
+  {
+    "id": "banking-20",
+    "speaker": "Mia",
+    "text": "The standard daily ATM cash withdrawal limit is set at $1,000 per account.",
+    "translation": "每个账户的标准每日 ATM 现金取款限额为 1,000 美元。",
+    "note": "cash withdrawal 意为现金提取。"
+  },
+  {
+    "id": "banking-21",
+    "speaker": "Alex",
+    "text": "I need to send an international wire transfer to a supplier in Europe.",
+    "translation": "我需要向欧洲的一家供应商发送一笔跨国电汇。",
+    "note": "international wire transfer 指国际电汇/跨国汇款。"
+  },
+  {
+    "id": "banking-22",
+    "speaker": "Mia",
+    "text": "I can help with that. Do you have the recipient's IBAN and SWIFT code ready?",
+    "translation": "我可以帮您办理。请问您准备好收款人的 IBAN 和 SWIFT 代码了吗？",
+    "note": "IBAN / SWIFT code 为国际银行汇款专用账号与识别码。"
+  },
+  {
+    "id": "banking-23",
+    "speaker": "Alex",
+    "text": "Yes, I have all the banking details printed out on this document.",
+    "translation": "是的，我把所有的银行明细都打印在这份文件上了。",
+    "note": "banking details 指银行账户明细/信息。"
+  },
+  {
+    "id": "banking-24",
+    "speaker": "Mia",
+    "text": "Excellent. Please confirm if you want the transaction converted into Euros today.",
+    "translation": "太好了。请确认今天是否需要将这笔交易兑换成欧元。",
+    "note": "convert into 意为兑换成（某货币）。"
+  },
+  {
+    "id": "banking-25",
+    "speaker": "Alex",
+    "text": "Yes, please convert it to Euros. What is the wire transfer processing fee?",
+    "translation": "是的，请兑换成欧元。电汇手续费是多少？",
+    "note": "processing fee 指手续费/处理费。"
+  },
+  {
+    "id": "banking-26",
+    "speaker": "Mia",
+    "text": "Outgoing international wire transfers carry a flat processing fee of thirty dollars.",
+    "translation": "汇出的国际电汇收取 30 美元的固定手续费。",
+    "note": "flat fee 意为固定费用。"
+  },
+  {
+    "id": "banking-27",
+    "speaker": "Alex",
+    "text": "How many business days does it usually take for funds to arrive in the receiving account?",
+    "translation": "资金通常需要几个工作日才能到达收款账户？",
+    "note": "business days 指工作日；receiving account 指收款账户。"
+  },
+  {
+    "id": "banking-28",
+    "speaker": "Mia",
+    "text": "International transfers typically take one to three business days to clear completely.",
+    "translation": "国际汇款通常需要 1 到 3 个工作日才能完全到账结算。",
+    "note": "clear 动词，在金融中指结算/通关到账。"
+  },
+  {
+    "id": "banking-29",
+    "speaker": "Alex",
+    "text": "Will I receive a transaction reference number or confirmation receipt for tracking?",
+    "translation": "我会收到交易参考号或确认收据以便跟踪查询吗？",
+    "note": "transaction reference number 指交易参考号/追踪单号。"
+  },
+  {
+    "id": "banking-30",
+    "speaker": "Mia",
+    "text": "Yes, I will print out a wire transfer receipt containing your unique transaction reference code.",
+    "translation": "是的，我会打印一张包含您唯一交易参考码的电汇收据。",
+    "note": "confirmation receipt 指确认收据。"
+  },
+  {
+    "id": "banking-31",
+    "speaker": "Alex",
+    "text": "I'd like to apply for a cash-back credit card with low interest rates.",
+    "translation": "我想申请一张低利率的返现信用卡。",
+    "note": "cash-back credit card 指现金返还信用卡。"
+  },
+  {
+    "id": "banking-32",
+    "speaker": "Mia",
+    "text": "Great choice! We have a card offering two percent cash back on all grocery purchases.",
+    "translation": "明智的选择！我们有一张卡，所有超市购物均可享受 2% 的现金返还。",
+    "note": "grocery purchases 指超市/杂货消费。"
+  },
+  {
+    "id": "banking-33",
+    "speaker": "Alex",
+    "text": "What are the eligibility criteria and credit score requirements for this card?",
+    "translation": "申请这张卡需要满足什么资格条件和信用评分要求？",
+    "note": "eligibility criteria 指申请资格标准；credit score 指信用评分。"
+  },
+  {
+    "id": "banking-34",
+    "speaker": "Mia",
+    "text": "A good credit score above 700 and proof of steady annual income are required.",
+    "translation": "需要 700 分以上的良好信用评分以及稳定年收入证明。",
+    "note": "annual income 指年收入。"
+  },
+  {
+    "id": "banking-35",
+    "speaker": "Alex",
+    "text": "Will applying for a new credit card result in a hard inquiry on my credit report?",
+    "translation": "申请新信用卡会导致我的信用报告上出现硬查询（Hard Inquiry）吗？",
+    "note": "hard inquiry 指（影响信用分的）硬查询/硬拉记录。"
+  },
+  {
+    "id": "banking-36",
+    "speaker": "Mia",
+    "text": "Yes, submitting a credit card application will initiate a hard credit check.",
+    "translation": "是的，提交信用卡申请会触发一次硬性信用审查。",
+    "note": "hard credit check 意为硬性信用检查。"
+  },
+  {
+    "id": "banking-37",
+    "speaker": "Alex",
+    "text": "How long does the approval process take after submitting the online application?",
+    "translation": "提交在线申请后，审批流程需要多长时间？",
+    "note": "approval process 指审批流程。"
+  },
+  {
+    "id": "banking-38",
+    "speaker": "Mia",
+    "text": "Instant approval takes minutes online, and your physical card arrives within five business days.",
+    "translation": "线上秒批只需几分钟，您的实体卡会在 5 个工作日内寄达。",
+    "note": "physical card 指实体卡。"
+  },
+  {
+    "id": "banking-39",
+    "speaker": "Alex",
+    "text": "Can I set up automatic payments to pay off the full statement balance each month?",
+    "translation": "我可以设置自动还款，每月全额还清账单余额吗？",
+    "note": "statement balance 指账单余额/当期应还金额。"
+  },
+  {
+    "id": "banking-40",
+    "speaker": "Mia",
+    "text": "Yes, auto-pay prevents late payment fees and interest charges on your account.",
+    "translation": "可以的，自动还款可以避免产生滞纳金和利息支出。",
+    "note": "late payment fee 指滞纳金/逾期费。"
+  },
+  {
+    "id": "banking-41",
+    "speaker": "Alex",
+    "text": "I'm planning to buy my first home and want to inquire about mortgage interest rates.",
+    "translation": "我计划购买我的第一套房子，想咨询一下房贷利率。",
+    "note": "mortgage interest rates 指房屋贷款利率。"
+  },
+  {
+    "id": "banking-42",
+    "speaker": "Mia",
+    "text": "Congratulations! We offer fixed-rate and adjustable-rate mortgage loan options.",
+    "translation": "恭喜！我们提供固定利率和浮动利率房贷方案。",
+    "note": "fixed-rate / adjustable-rate mortgage 指固定/浮动利率房贷。"
+  },
+  {
+    "id": "banking-43",
+    "speaker": "Alex",
+    "text": "What is the current annual percentage rate for a thirty-year fixed mortgage?",
+    "translation": "30 年期固定利率房贷目前的年化利率是多少？",
+    "note": "annual percentage rate (APR) 指年化利率。"
+  },
+  {
+    "id": "banking-44",
+    "speaker": "Mia",
+    "text": "The current rate for a thirty-year fixed mortgage is approximately 6.5 percent.",
+    "translation": "目前 30 年期固定房贷利率约为 6.5%。",
+    "note": "fixed mortgage 指固定利率房贷。"
+  },
+  {
+    "id": "banking-45",
+    "speaker": "Alex",
+    "text": "What percentage down payment do I need to avoid paying private mortgage insurance?",
+    "translation": "需要多少比例的首付才能免买个人房贷保险（PMI）？",
+    "note": "down payment 指首付款；private mortgage insurance (PMI) 指房贷保险。"
+  },
+  {
+    "id": "banking-46",
+    "speaker": "Mia",
+    "text": "Putting down at least twenty percent avoids private mortgage insurance, or PMI.",
+    "translation": "支付至少 20% 的首付即可免除个人房贷保险（PMI）。",
+    "note": "put down 意为支付（首付）。"
+  },
+  {
+    "id": "banking-47",
+    "speaker": "Alex",
+    "text": "Can I get pre-approved for a home loan before putting an offer on a house?",
+    "translation": "在对房子出价之前，我可以先获得房屋贷款预批吗？",
+    "note": "get pre-approved 意为获得预先批准/获得预批信。"
+  },
+  {
+    "id": "banking-48",
+    "speaker": "Mia",
+    "text": "Yes, getting pre-approved gives sellers confidence in your financial capability.",
+    "translation": "是的，获得预批会让卖家对您的财务能力充满信心。",
+    "note": "financial capability 指财务能力/偿债能力。"
+  },
+  {
+    "id": "banking-49",
+    "speaker": "Alex",
+    "text": "What financial documents do I need to submit for mortgage pre-approval?",
+    "translation": "申请房贷预批我需要提交哪些财务文件？",
+    "note": "financial documents 指财务证明文件。"
+  },
+  {
+    "id": "banking-50",
+    "speaker": "Mia",
+    "text": "You'll need recent tax returns, pay stubs, and recent bank statements for review.",
+    "translation": "您需要提交近期的报税单、工资条和银行流水单以供审核。",
+    "note": "tax returns 指报税单；pay stubs 指工资条；bank statements 指银行流水。"
+  },
+  {
+    "id": "banking-51",
+    "speaker": "Alex",
+    "text": "I'm interested in exploring wealth management and investing my personal savings.",
+    "translation": "我对财富管理感兴趣，想把个人储蓄进行投资。",
+    "note": "wealth management 指财富管理/理财服务。"
+  },
+  {
+    "id": "banking-52",
+    "speaker": "Mia",
+    "text": "I can schedule a consultation for you with our certified financial advisor.",
+    "translation": "我可以为您预约与我们持证注册金融理财师的咨询会议。",
+    "note": "certified financial advisor 指持证金融理财顾问。"
+  },
+  {
+    "id": "banking-53",
+    "speaker": "Alex",
+    "text": "Do you offer index funds, mutual funds, or individual stock trading options?",
+    "translation": "你们提供指数基金、共同基金还是个股交易选项？",
+    "note": "index funds 指指数基金；mutual funds 指共同基金。"
+  },
+  {
+    "id": "banking-54",
+    "speaker": "Mia",
+    "text": "We offer all three, alongside low-cost ETF portfolios tailored to your risk tolerance.",
+    "translation": "这三种我们都提供，还有根据您的风险承受度量身定制的低成本 ETF 组合。",
+    "note": "risk tolerance 指风险承受能力。"
+  },
+  {
+    "id": "banking-55",
+    "speaker": "Alex",
+    "text": "What is risk tolerance, and how does it determine my investment strategy?",
+    "translation": "什么是风险承受能力？它如何决定我的投资策略？",
+    "note": "investment strategy 指投资策略。"
+  },
+  {
+    "id": "banking-56",
+    "speaker": "Mia",
+    "text": "Risk tolerance measures your comfort with market volatility and potential investment losses.",
+    "translation": "风险承受能力衡量您对市场波动和潜在投资亏损的心理承受度。",
+    "note": "market volatility 指市场波动。"
+  },
+  {
+    "id": "banking-57",
+    "speaker": "Alex",
+    "text": "I prefer a conservative investment strategy with steady, reliable long-term returns.",
+    "translation": "我更偏好稳健有长期可靠回报的保守型投资策略。",
+    "note": "conservative investment strategy 指保守型投资策略。"
+  },
+  {
+    "id": "banking-58",
+    "speaker": "Mia",
+    "text": "In that case, a diversified portfolio with bonds and dividend stocks fits best.",
+    "translation": "那种情况下，包含债券和高股息股票的分散化投资组合最适合您。",
+    "note": "diversified portfolio 指多元化投资组合；dividend stocks 指股息股。"
+  },
+  {
+    "id": "banking-59",
+    "speaker": "Alex",
+    "text": "Are there annual management fees for maintaining an investment portfolio here?",
+    "translation": "在这里维护理财投资组合有年度管理费吗？",
+    "note": "management fees 指管理费。"
+  },
+  {
+    "id": "banking-60",
+    "speaker": "Mia",
+    "text": "Our managed portfolios charge a modest annual fee of 0.25 percent of total assets.",
+    "translation": "我们的托管投资组合每年仅收取总资产 0.25% 的微薄管理费。",
+    "note": "managed portfolio 指托管投资组合。"
+  },
+  {
+    "id": "banking-61",
+    "speaker": "Alex",
+    "text": "Hi Mia, I'm traveling to Japan next week and need to exchange dollars for Yen.",
+    "translation": "嗨 Mia，我下周要去日本旅行，需要把美元兑换成日元。",
+    "note": "exchange dollars for Yen 意为将美元兑换成日元。"
+  },
+  {
+    "id": "banking-62",
+    "speaker": "Mia",
+    "text": "Certainly! Let me check today's foreign exchange rate for US dollars to Japanese Yen.",
+    "translation": "没问题！让我查一下今天美元兑日元的外汇牌价率。",
+    "note": "foreign exchange rate (forex rate) 指外汇汇率。"
+  },
+  {
+    "id": "banking-63",
+    "speaker": "Alex",
+    "text": "Are there any currency conversion fees or commission charges involved in the swap?",
+    "translation": "这次货币兑换包含货币转换费或手续费佣金吗？",
+    "note": "currency conversion fee 指货币转换费；commission charges 指佣金。"
+  },
+  {
+    "id": "banking-64",
+    "speaker": "Mia",
+    "text": "We charge a nominal foreign exchange fee of one percent above the wholesale rate.",
+    "translation": "我们在批发价基础上仅收取 1% 的象征性外汇服务费。",
+    "note": "wholesale rate 指批发汇率/银行间汇率。"
+  },
+  {
+    "id": "banking-65",
+    "speaker": "Alex",
+    "text": "Is Japanese Yen currently in stock at this branch, or do I need to order in advance?",
+    "translation": "这个分行目前有日元现钞库存吗，还是我需要提前预约？",
+    "note": "in stock 意为有现货/有现钞库存。"
+  },
+  {
+    "id": "banking-66",
+    "speaker": "Mia",
+    "text": "We have sufficient Yen notes in stock, so you can exchange it immediately today.",
+    "translation": "我们有充足的日元纸币库存，您今天就可以立刻兑换。",
+    "note": "Yen notes 指日元纸币/现钞。"
+  },
+  {
+    "id": "banking-67",
+    "speaker": "Alex",
+    "text": "Great! I'd like to exchange five hundred US dollars into Japanese Yen, please.",
+    "translation": "太好了！我想把 500 美元兑换成日元。",
+    "note": "exchange into 意为兑换成（某币种）。"
+  },
+  {
+    "id": "banking-68",
+    "speaker": "Mia",
+    "text": "That comes out to approximately 75,000 Yen based on today's exchange rate.",
+    "translation": "按照今天的汇率，大约可以兑换 75,000 日元。",
+    "note": "comes out to 意为算下来为/总计为。"
+  },
+  {
+    "id": "banking-69",
+    "speaker": "Alex",
+    "text": "Can I exchange unused Yen back into US dollars when I return from my trip?",
+    "translation": "旅行回来后，我能把没用完的日元换回美元吗？",
+    "note": "unused Yen 指没用完的日元。"
+  },
+  {
+    "id": "banking-70",
+    "speaker": "Mia",
+    "text": "Yes, you can exchange foreign banknotes back at any of our branch locations.",
+    "translation": "可以的，您可以在我们任何一家分行将外币钞票换回美元。",
+    "note": "foreign banknotes 指外币钞票。"
+  },
+  {
+    "id": "banking-71",
+    "speaker": "Alex",
+    "text": "I'm having trouble logging into my mobile banking application on my phone.",
+    "translation": "我在手机上登录手机银行 App 时遇到了麻烦。",
+    "note": "mobile banking application 指手机银行 App。"
+  },
+  {
+    "id": "banking-72",
+    "speaker": "Mia",
+    "text": "No worries. Have you tried resetting your password using two-factor authentication?",
+    "translation": "别担心。您尝试过用双重身份验证（2FA）重置密码吗？",
+    "note": "two-factor authentication (2FA) 指双重/二次身份验证。"
+  },
+  {
+    "id": "banking-73",
+    "speaker": "Alex",
+    "text": "I haven't received the verification code sent to my registered mobile phone number.",
+    "translation": "我还没收到发送到我登记手机号上的验证码。",
+    "note": "verification code 指验证码。"
+  },
+  {
+    "id": "banking-74",
+    "speaker": "Mia",
+    "text": "Let me update your mobile phone number on file to ensure code delivery works.",
+    "translation": "让我更新一下您存档的手机号码，以确保验证码能顺利送达。",
+    "note": "on file 意为存档的/记录在案的。"
+  },
+  {
+    "id": "banking-75",
+    "speaker": "Alex",
+    "text": "Is it safe to log into online banking when connected to public Wi-Fi networks?",
+    "translation": "连接公共 Wi-Fi 网络时登录网上银行安全吗？",
+    "note": "public Wi-Fi networks 指公共 Wi-Fi 网络。"
+  },
+  {
+    "id": "banking-76",
+    "speaker": "Mia",
+    "text": "We strongly recommend using cellular data or a VPN when accessing financial apps.",
+    "translation": "我们强烈建议使用蜂窝移动网络或 VPN 来访问金融应用。",
+    "note": "cellular data 指蜂窝移动数据。"
+  },
+  {
+    "id": "banking-77",
+    "speaker": "Alex",
+    "text": "How can I enable biometric authentication like fingerprint or facial recognition?",
+    "translation": "我该如何开启指纹或人脸识别等生物识别验证？",
+    "note": "biometric authentication 指生物识别认证（如指纹/刷脸）。"
+  },
+  {
+    "id": "banking-78",
+    "speaker": "Mia",
+    "text": "You can enable Face ID or fingerprint login directly in the app security settings.",
+    "translation": "您可以直接在 App 的安全设置里启用 Face ID 或指纹登录。",
+    "note": "security settings 指安全设置。"
+  },
+  {
+    "id": "banking-79",
+    "speaker": "Alex",
+    "text": "What should I do if I suspect my online banking password was compromised?",
+    "translation": "如果我怀疑我的网银密码泄露了，我该怎么办？",
+    "note": "compromised 意为（密码/安全）泄露或受威胁的。"
+  },
+  {
+    "id": "banking-80",
+    "speaker": "Mia",
+    "text": "Change your password immediately and contact our 24/7 fraud department right away.",
+    "translation": "请立即修改密码，并第一时间联系我们 24 小时防欺诈部门。",
+    "note": "fraud department 指反欺诈部门。"
+  },
+  {
+    "id": "banking-81",
+    "speaker": "Alex",
+    "text": "Emergency! I lost my debit card while taking the subway this afternoon!",
+    "translation": "紧急情况！我今天下午坐地铁时把借记卡弄丢了！",
+    "note": "debit card 指借记卡/储蓄卡。"
+  },
+  {
+    "id": "banking-82",
+    "speaker": "Mia",
+    "text": "Don't panic! I will freeze your card right now to prevent unauthorized transactions.",
+    "translation": "别慌！我现在就为您冻结这张卡，以防未经授权的盗刷交易。",
+    "note": "freeze your card 意为冻结你的银行卡；unauthorized transactions 指未经授权的盗刷。"
+  },
+  {
+    "id": "banking-83",
+    "speaker": "Alex",
+    "text": "Thank you! I noticed a suspicious transaction of fifty dollars on my account.",
+    "translation": "谢谢！我注意到我的账户上有一笔 50 美元的可疑交易。",
+    "note": "suspicious transaction 指可疑交易/异常交易。"
+  },
+  {
+    "id": "banking-84",
+    "speaker": "Mia",
+    "text": "I will file a fraud dispute claim for that charge immediately.",
+    "translation": "我会立刻就该笔扣款为您提交欺诈申诉申请。",
+    "note": "file a fraud dispute 意为提交欺诈盗刷申诉。"
+  },
+  {
+    "id": "banking-85",
+    "speaker": "Alex",
+    "text": "Will I receive a provisional credit while the fraud investigation is ongoing?",
+    "translation": "在欺诈调查进行期间，我会收到临时垫付款（Provisional Credit）吗？",
+    "note": "provisional credit 指（银行在调查盗刷时预先垫付给用户的）临时信用额/临时退款。"
+  },
+  {
+    "id": "banking-86",
+    "speaker": "Mia",
+    "text": "Yes, provisional credit is usually issued to your account within two business days.",
+    "translation": "是的，临时垫付款通常会在 2 个工作日内发放至您的账户。",
+    "note": "fraud investigation 指盗刷/欺诈调查。"
+  },
+  {
+    "id": "banking-87",
+    "speaker": "Alex",
+    "text": "How quickly can I get a replacement debit card issued to my home address?",
+    "translation": "重新制作一张补发借记卡寄到我家需要多久？",
+    "note": "replacement debit card 指补发/重制借记卡。"
+  },
+  {
+    "id": "banking-88",
+    "speaker": "Mia",
+    "text": "A new debit card will be mailed to you and will arrive in three to five business days.",
+    "translation": "一张新借记卡会邮寄给您，会在 3 到 5 个工作日内送达。",
+    "note": "mailed to you 意为邮寄给您。"
+  },
+  {
+    "id": "banking-89",
+    "speaker": "Alex",
+    "text": "Can I get a temporary debit card printed at this branch right now?",
+    "translation": "我可以在这个分行现场打印一张临时借记卡吗？",
+    "note": "temporary debit card 指临时借记卡。"
+  },
+  {
+    "id": "banking-90",
+    "speaker": "Mia",
+    "text": "Yes! I can print an instant-issue debit card for you at the counter in five minutes.",
+    "translation": "没问题！我可以在柜台 5 分钟内为您现场打印一张即时发行的借记卡。",
+    "note": "instant-issue 意为即时印发的。"
+  },
+  {
+    "id": "banking-91",
+    "speaker": "Alex",
+    "text": "I'm looking into starting a retirement account to save for my future.",
+    "translation": "我正在研究开设一个退休账户，为我的未来积蓄筹谋。",
+    "note": "retirement account 指退休金账户。"
+  },
+  {
+    "id": "banking-92",
+    "speaker": "Mia",
+    "text": "That's a wise decision! We offer Traditional IRAs and Roth IRAs for retirement savings.",
+    "translation": "这是明智的决定！我们提供传统 IRA 和 Roth IRA 个人退休账户存款服务。",
+    "note": "Traditional IRA / Roth IRA 为美国常见的两种个人退休金账户类型。"
+  },
+  {
+    "id": "banking-93",
+    "speaker": "Alex",
+    "text": "What is the main difference between a Traditional IRA and a Roth IRA?",
+    "translation": "传统 IRA 与 Roth IRA 之间的主要区别是什么？",
+    "note": "main difference 指主要区别。"
+  },
+  {
+    "id": "banking-94",
+    "speaker": "Mia",
+    "text": "Traditional IRAs offer tax-deductible contributions, while Roth IRAs allow tax-free withdrawals in retirement.",
+    "translation": "传统 IRA 提供税前抵扣供款，而 Roth IRA 则允许退休后免税提取。",
+    "note": "tax-deductible 意为可抵扣税款的；tax-free withdrawals 指免税提取。"
+  },
+  {
+    "id": "banking-95",
+    "speaker": "Alex",
+    "text": "Is there an annual contribution limit for an IRA account in 2026?",
+    "translation": "2026 年 IRA 账户有年度存入上限吗？",
+    "note": "annual contribution limit 指年度最高供款/存入上限。"
+  },
+  {
+    "id": "banking-96",
+    "speaker": "Mia",
+    "text": "Yes, the annual contribution limit for individuals under 50 is $7,000 per year.",
+    "translation": "有的，50 岁以下个人的年度存入上限为每年 7,000 美元。",
+    "note": "contribution limit 指存入上限。"
+  },
+  {
+    "id": "banking-97",
+    "speaker": "Alex",
+    "text": "Can I set up automatic monthly contributions directly from my checking account?",
+    "translation": "我可以设置直接从我的支票账户按月自动扣款存入吗？",
+    "note": "automatic monthly contributions 指按月自动扣款存入。"
+  },
+  {
+    "id": "banking-98",
+    "speaker": "Mia",
+    "text": "Yes, automated recurring transfers make consistent saving effortless and disciplined.",
+    "translation": "是的，自动定时转账能让持之以恒的储蓄变得轻松且有纪律。",
+    "note": "recurring transfers 指周期性自动转账。"
+  },
+  {
+    "id": "banking-99",
+    "speaker": "Alex",
+    "text": "Will the bank send me tax forms like 1099-INT at the end of the year?",
+    "translation": "年底银行会给我寄送像 1099-INT 这样的报税表格吗？",
+    "note": "1099-INT 为美国银行利息收入报税表格。"
+  },
+  {
+    "id": "banking-100",
+    "speaker": "Mia",
+    "text": "Yes, all relevant tax documents will be available for download in your online portal.",
+    "translation": "是的，所有相关的税务文件都可以直接在您的网银门户中下载。",
+    "note": "online portal 指网银门户系统。"
+  }
+],
+  shopping: [
+  {
+    "id": "shopping-1",
+    "speaker": "Alex",
+    "text": "Excuse me, could you tell me where I can find the men's casual jacket section?",
+    "translation": "打扰一下，能告诉我男士休闲外套区在哪里吗？",
+    "note": "casual jacket 指休闲外套/夹克。"
+  },
+  {
+    "id": "shopping-2",
+    "speaker": "Mia",
+    "text": "Of course! The men's casual outerwear is located on the second floor, right next to the elevators.",
+    "translation": "当然可以！男士休闲外套位于二楼，就在电梯旁边。",
+    "note": "outerwear 指外套/外衣。"
+  },
+  {
+    "id": "shopping-3",
+    "speaker": "Alex",
+    "text": "Thanks! Do you happen to carry winter coats in stock as well?",
+    "translation": "谢谢！请问你们店里也有冬用大衣现货吗？",
+    "note": "in stock 意为有现货/有库存。"
+  },
+  {
+    "id": "shopping-4",
+    "speaker": "Mia",
+    "text": "Yes, our new winter collection just arrived yesterday and is displayed near the main entrance.",
+    "translation": "是的，我们最新的冬季系列昨天刚到货，展示在大门入口附近。",
+    "note": "winter collection 指冬季新款/系列。"
+  },
+  {
+    "id": "shopping-5",
+    "speaker": "Alex",
+    "text": "Great! Are there any sales associates available on that floor to help me?",
+    "translation": "太好了！那一层有售货员可以帮我吗？",
+    "note": "sales associate 指售货员/店员。"
+  },
+  {
+    "id": "shopping-6",
+    "speaker": "Mia",
+    "text": "Yes, my colleague Sarah is working on the second floor and can assist you with sizes.",
+    "translation": "有的，我的同事 Sarah 在二楼值班，可以帮您挑选合适尺寸。",
+    "note": "assist with 意为协助/帮助。"
+  },
+  {
+    "id": "shopping-7",
+    "speaker": "Alex",
+    "text": "Awesome. By the way, where can I grab a shopping basket or cart?",
+    "translation": "太棒了。顺便问一下，我在哪里可以拿购物篮或推车？",
+    "note": "shopping basket / cart 指购物篮/购物推车。"
+  },
+  {
+    "id": "shopping-8",
+    "speaker": "Mia",
+    "text": "You can find clean shopping carts right beside the entrance turnstiles on the first floor.",
+    "translation": "一楼入口闸机旁就有干净的购物推车。",
+    "note": "entrance turnstiles 指入口旋转闸机。"
+  },
+  {
+    "id": "shopping-9",
+    "speaker": "Alex",
+    "text": "Perfect, thank you so much for pointing me in the right direction.",
+    "translation": "太好了，非常感谢您给我指明方向。",
+    "note": "point in the right direction 意为指引正确方向。"
+  },
+  {
+    "id": "shopping-10",
+    "speaker": "Mia",
+    "text": "You're very welcome! Let me know if you need anything else while browsing.",
+    "translation": "不客气！您选购时如果还需要其他帮助，随时告诉我。",
+    "note": "while browsing 意为在选购/浏览时。"
+  },
+  {
+    "id": "shopping-11",
+    "speaker": "Alex",
+    "text": "Hi Mia, I really like this navy blue sweater, but do you have it in a medium?",
+    "translation": "嗨 Mia，我很喜欢这件藏青色毛衣，但有中码的吗？",
+    "note": "navy blue 指藏青色/海军蓝；in a medium 指中码/M码。"
+  },
+  {
+    "id": "shopping-12",
+    "speaker": "Mia",
+    "text": "Let me check our stockroom for you. What size are you currently holding?",
+    "translation": "我帮您去库房查一下。您手里拿的是什么尺寸？",
+    "note": "stockroom 指库房/储藏室。"
+  },
+  {
+    "id": "shopping-13",
+    "speaker": "Alex",
+    "text": "I'm holding a large, but it looks a bit too baggy for my preference.",
+    "translation": "我拿的是大码，但看起来有点偏宽松，不太符合我的偏好。",
+    "note": "baggy 意为宽松的/松垮的。"
+  },
+  {
+    "id": "shopping-14",
+    "speaker": "Mia",
+    "text": "Good news! I found one medium left in navy blue in the back.",
+    "translation": "好消息！我在后库找到了最后一件藏青色中码。",
+    "note": "one left 意为还剩一件。"
+  },
+  {
+    "id": "shopping-15",
+    "speaker": "Alex",
+    "text": "That's wonderful! Where are the fitting rooms located so I can try it on?",
+    "translation": "太棒了！试衣间在哪里？我想试穿一下。",
+    "note": "fitting rooms 指试衣间；try it on 意为试穿。"
+  },
+  {
+    "id": "shopping-16",
+    "speaker": "Mia",
+    "text": "The fitting rooms are down the aisle to your left, right behind the shoe racks.",
+    "translation": "试衣间在您左手边的过道尽头，就在鞋架正后方。",
+    "note": "down the aisle 意为沿着过道。"
+  },
+  {
+    "id": "shopping-17",
+    "speaker": "Alex",
+    "text": "Thanks. Is there a limit on how many items I can take into the fitting room?",
+    "translation": "谢谢。带进试衣间的衣服数量有限制吗？",
+    "note": "limit on 意为在方面的限制。"
+  },
+  {
+    "id": "shopping-18",
+    "speaker": "Mia",
+    "text": "You can take up to six items at a time into the fitting room.",
+    "translation": "您一次最多可以带六件衣服进试衣间。",
+    "note": "up to 意为最多/多达。"
+  },
+  {
+    "id": "shopping-19",
+    "speaker": "Alex",
+    "text": "The medium fits perfectly around the shoulders! Does this fabric shrink after washing?",
+    "translation": "中码肩膀这里非常合身！这面料洗后会缩水吗？",
+    "note": "fits perfectly 意为非常合身；shrink 意为缩水。"
+  },
+  {
+    "id": "shopping-20",
+    "speaker": "Mia",
+    "text": "It's pre-shrunk cotton, but we recommend washing it in cold water to maintain the shape.",
+    "translation": "这是防缩水处理过的纯棉，但建议用冷水洗涤以保持版型。",
+    "note": "pre-shrunk cotton 指防缩水处理纯棉。"
+  },
+  {
+    "id": "shopping-21",
+    "speaker": "Alex",
+    "text": "Excuse me, is this rack of designer jeans included in the storewide clearance sale?",
+    "translation": "打扰一下，这一架设计师牛仔裤参与全店清仓打折吗？",
+    "note": "rack 指衣架/挂衣杆；clearance sale 指清仓大甩卖。"
+  },
+  {
+    "id": "shopping-22",
+    "speaker": "Mia",
+    "text": "Yes! Everything on that red rack is thirty percent off the tagged price.",
+    "translation": "是的！那个红架子上的所有商品均在吊牌价基础上打七折。",
+    "note": "tagged price 指吊牌价/标价；thirty percent off 意为打七折/优惠30%。"
+  },
+  {
+    "id": "shopping-23",
+    "speaker": "Alex",
+    "text": "That's a great deal. Can I combine this discount with my store member coupon?",
+    "translation": "真划算。这个折扣可以和我的会员优惠券叠加使用吗？",
+    "note": "combine discounts / stack discounts 意为叠加优惠。"
+  },
+  {
+    "id": "shopping-24",
+    "speaker": "Mia",
+    "text": "Unfortunately, promotional coupons cannot be stacked on clearance items.",
+    "translation": "很抱歉，促销优惠券不能与清仓商品叠加使用。",
+    "note": "stacked 意为（优惠等）叠加的。"
+  },
+  {
+    "id": "shopping-25",
+    "speaker": "Alex",
+    "text": "I see. How can I earn reward points on today's purchase then?",
+    "translation": "懂了。那我今天的消费怎么积累积分呢？",
+    "note": "earn reward points 意为赚取/积累积分。"
+  },
+  {
+    "id": "shopping-26",
+    "speaker": "Mia",
+    "text": "Simply enter your registered phone number at the checkout counter to accumulate points.",
+    "translation": "只需在结账柜台输入您注册的手机号即可积累积分。",
+    "note": "accumulate points 意为积分/累积积分。"
+  },
+  {
+    "id": "shopping-27",
+    "speaker": "Alex",
+    "text": "Is there a buy-one-get-one-free offer on socks or basic t-shirts today?",
+    "translation": "今天袜子或基础款 T 恤有买一送一的优惠吗？",
+    "note": "buy-one-get-one-free (BOGO) 指买一送一。"
+  },
+  {
+    "id": "shopping-28",
+    "speaker": "Mia",
+    "text": "Yes, our basic cotton t-shirts are buy-one-get-one half price right now.",
+    "translation": "有的，我们的纯棉基础款 T 恤现在买一件第二件半价。",
+    "note": "buy-one-get-one half price 指买一件第二件半价。"
+  },
+  {
+    "id": "shopping-29",
+    "speaker": "Alex",
+    "text": "Nice! Does the discount apply automatically at the register?",
+    "translation": "太好了！打折会在收银台自动扣减吗？",
+    "note": "apply automatically 意为自动生效/应用。"
+  },
+  {
+    "id": "shopping-30",
+    "speaker": "Mia",
+    "text": "Yes, the system will automatically deduct the discount when both items are scanned.",
+    "translation": "是的，两件商品扫描后，系统会自动扣减优惠额度。",
+    "note": "deduct 意为扣除/减去。"
+  },
+  {
+    "id": "shopping-31",
+    "speaker": "Alex",
+    "text": "Hi Mia, could you show me where the organic produce section is located?",
+    "translation": "嗨 Mia，能告诉我有机农产品区在哪里吗？",
+    "note": "organic produce section 指有机农产品/果蔬区。"
+  },
+  {
+    "id": "shopping-32",
+    "speaker": "Mia",
+    "text": "Sure! Fresh organic fruits and vegetables are in aisle three, near the bakery.",
+    "translation": "当然！新鲜有机水果和蔬菜在 3 号通道，靠近烘焙区。",
+    "note": "aisle 意为（超市/车厢）过道/通道。"
+  },
+  {
+    "id": "shopping-33",
+    "speaker": "Alex",
+    "text": "Great! Are these avocados ripe enough to eat today?",
+    "translation": "太好了！这些牛油果够熟、今天能吃吗？",
+    "note": "ripe 意为（水果/食物）成熟的。"
+  },
+  {
+    "id": "shopping-34",
+    "speaker": "Mia",
+    "text": "The ones with darker skin yield slightly to gentle pressure, so they are ready to eat.",
+    "translation": "表皮颜色较深的捏起来微软，今天就可以直接吃。",
+    "note": "yield to pressure 形象指受力按压会微凹/微软。"
+  },
+  {
+    "id": "shopping-35",
+    "speaker": "Alex",
+    "text": "Good tip! Do you also sell dairy-free almond milk or oat milk?",
+    "translation": "好技巧！你们也卖无乳制品杏仁奶或燕麦奶吗？",
+    "note": "dairy-free 指不含乳制品的；almond milk / oat milk 指杏仁奶/燕麦奶。"
+  },
+  {
+    "id": "shopping-36",
+    "speaker": "Mia",
+    "text": "Yes, plant-based dairy alternatives are stocked in refrigerated aisle five.",
+    "translation": "有的，植物基乳替代品保存在 5 号冷藏通道。",
+    "note": "plant-based dairy alternatives 指植物基乳替代品。"
+  },
+  {
+    "id": "shopping-37",
+    "speaker": "Alex",
+    "text": "What is the expiration date on this gallon of fresh whole milk?",
+    "translation": "这加仑新鲜全脂牛奶的保质期到什么时候？",
+    "note": "expiration date / sell-by date 指保质期/截止售卖日期。"
+  },
+  {
+    "id": "shopping-38",
+    "speaker": "Mia",
+    "text": "The sell-by date printed on the cap is October 15th, so it's fresh.",
+    "translation": "瓶盖上印的截止售卖日期是 10 月 15 日，非常新鲜。",
+    "note": "printed on the cap 意为印在瓶盖上的。"
+  },
+  {
+    "id": "shopping-39",
+    "speaker": "Alex",
+    "text": "Are there any discounts if I purchase fresh seafood in bulk today?",
+    "translation": "如果我今天批量购买新鲜海鲜，有什么优惠吗？",
+    "note": "in bulk 意为批量地/大量地。"
+  },
+  {
+    "id": "shopping-40",
+    "speaker": "Mia",
+    "text": "Purchasing over two kilograms of salmon qualifies for a ten percent bulk discount.",
+    "translation": "购买三文鱼超过 2 公斤可享受 10% 的批量折扣。",
+    "note": "qualify for 意为有资格享受。"
+  },
+  {
+    "id": "shopping-41",
+    "speaker": "Alex",
+    "text": "Hello, I'm looking for a noise-canceling wireless headset for commuting.",
+    "translation": "你好，我想买一副降噪无线耳机用于日常通勤。",
+    "note": "noise-canceling headset 指降噪耳机；commuting 指通勤。"
+  },
+  {
+    "id": "shopping-42",
+    "speaker": "Mia",
+    "text": "Welcome! We have the latest Bluetooth models with active noise cancellation over here.",
+    "translation": "欢迎！我们这边有带主动降噪功能的最新款蓝牙耳机。",
+    "note": "active noise cancellation (ANC) 指主动降噪功能。"
+  },
+  {
+    "id": "shopping-43",
+    "speaker": "Alex",
+    "text": "How long does the battery last on a single full charge?",
+    "translation": "单次充满电后电池续航时间有多长？",
+    "note": "battery last 意为电池续航；single full charge 指单次充满电。"
+  },
+  {
+    "id": "shopping-44",
+    "speaker": "Mia",
+    "text": "This model delivers up to thirty hours of continuous playback on a single charge.",
+    "translation": "这款型号在单次充电后可提供长达 30 小时的连续播放能力。",
+    "note": "continuous playback 指连续播放。"
+  },
+  {
+    "id": "shopping-45",
+    "speaker": "Alex",
+    "text": "Impressive! Does it come with a manufacturer warranty or store protection plan?",
+    "translation": "厉害！它附带原厂保修或门店质保方案吗？",
+    "note": "manufacturer warranty 指厂家保修；store protection plan 指商家质保方案。"
+  },
+  {
+    "id": "shopping-46",
+    "speaker": "Mia",
+    "text": "It includes a one-year standard warranty, and you can add a two-year extended plan.",
+    "translation": "它包含一年标准保修，您还可以加购两年延保方案。",
+    "note": "extended plan 指延保服务/计划。"
+  },
+  {
+    "id": "shopping-47",
+    "speaker": "Alex",
+    "text": "Can I test the sound quality and comfort on a demo unit before buying?",
+    "translation": "购买前我可以在样品试听机上测试音质和佩戴舒适度吗？",
+    "note": "demo unit 指展示样机/试用机。"
+  },
+  {
+    "id": "shopping-48",
+    "speaker": "Mia",
+    "text": "Of course! You can pair your smartphone with this display unit to play music.",
+    "translation": "当然可以！您可以将手机与这台展示样机配对播放音乐。",
+    "note": "pair with 意为（蓝牙）配对。"
+  },
+  {
+    "id": "shopping-49",
+    "speaker": "Alex",
+    "text": "The bass sounds crisp! What is included inside the retail packaging box?",
+    "translation": "低音听起来很清晰！零售包装盒里包含哪些配件？",
+    "note": "retail packaging box 指零售包装盒。"
+  },
+  {
+    "id": "shopping-50",
+    "speaker": "Mia",
+    "text": "It comes with a USB-C charging cable, audio jack cable, and a hard carrying case.",
+    "translation": "包含一条 USB-C 充电线、一条音频线和一个硬质收纳盒。",
+    "note": "hard carrying case 指硬质便携收纳盒。"
+  },
+  {
+    "id": "shopping-51",
+    "speaker": "Alex",
+    "text": "Hi, I'm ready to check out with these three items now.",
+    "translation": "嗨，我准备好结算这三件商品了。",
+    "note": "check out 意为结账/结算。"
+  },
+  {
+    "id": "shopping-52",
+    "speaker": "Mia",
+    "text": "Hello! Did you find everything you were looking for today?",
+    "translation": "您好！今天选购顺畅吗，东西都找到了吗？",
+    "note": "find everything you were looking for 柜台结账常用客套问候语。"
+  },
+  {
+    "id": "shopping-53",
+    "speaker": "Alex",
+    "text": "Yes, everything was easy to find. Do you accept contactless mobile payments?",
+    "translation": "是的，都很好找。你们接受非接触式手机移动支付吗？",
+    "note": "contactless mobile payments 指非接触式移动支付（如 Apple/Google Pay）。"
+  },
+  {
+    "id": "shopping-54",
+    "speaker": "Mia",
+    "text": "Yes, we accept Apple Pay, Google Pay, and all major credit cards.",
+    "translation": "是的，我们支持 Apple Pay、Google Pay 以及所有主流信用卡。",
+    "note": "major credit cards 指主流信用卡。"
+  },
+  {
+    "id": "shopping-55",
+    "speaker": "Alex",
+    "text": "Awesome. I'd also like to use this ten-dollar gift card toward my total.",
+    "translation": "太好了。我还想使用这张 10 美元的礼品卡来抵扣总价。",
+    "note": "gift card 指礼品卡/代金卡。"
+  },
+  {
+    "id": "shopping-56",
+    "speaker": "Mia",
+    "text": "No problem. Let me scan the barcode on your gift card first.",
+    "translation": "没问题。让我先扫描您礼品卡上的条形码。",
+    "note": "barcode 指条码/条形码。"
+  },
+  {
+    "id": "shopping-57",
+    "speaker": "Alex",
+    "text": "Would you like me to insert or tap my credit card for the remaining balance?",
+    "translation": "剩下的余款需要我插卡还是感应刷信用卡？",
+    "note": "insert or tap 指插卡还是感应刷卡。"
+  },
+  {
+    "id": "shopping-58",
+    "speaker": "Mia",
+    "text": "You can tap your card on the payment terminal once the prompt appears.",
+    "translation": "等提示出现后，您可以在 POS 机感应区刷卡即可。",
+    "note": "payment terminal 指支付终端/POS机。"
+  },
+  {
+    "id": "shopping-59",
+    "speaker": "Alex",
+    "text": "Do you charge extra for paper shopping bags at checkout?",
+    "translation": "结账时纸质购物袋需要额外收费吗？",
+    "note": "paper shopping bags 指纸质购物袋。"
+  },
+  {
+    "id": "shopping-60",
+    "speaker": "Mia",
+    "text": "Paper bags cost ten cents each, or you can use your own reusable tote bag.",
+    "translation": "纸袋每个 10 美分，或者您也可以使用自带的环保布袋。",
+    "note": "reusable tote bag 指可重复使用的环保袋/帆布袋。"
+  },
+  {
+    "id": "shopping-61",
+    "speaker": "Alex",
+    "text": "Hi Mia, I'd like to return this jacket I bought last week because it doesn't fit.",
+    "translation": "嗨 Mia，我想退掉上周买的这件外套，因为尺码不太合身。",
+    "note": "return an item 意为退货。"
+  },
+  {
+    "id": "shopping-62",
+    "speaker": "Mia",
+    "text": "I can process that return for you. Do you have the original store receipt?",
+    "translation": "我可以为您办理退货。请问您有原始小票吗？",
+    "note": "original store receipt 指原始购买凭证/小票。"
+  },
+  {
+    "id": "shopping-63",
+    "speaker": "Alex",
+    "text": "Yes, here is the paper receipt, and the price tags are still attached.",
+    "translation": "有的，这是纸质小票，价格吊牌也都还挂着。",
+    "note": "price tags are attached 意为吊牌未拆。"
+  },
+  {
+    "id": "shopping-64",
+    "speaker": "Mia",
+    "text": "Great! Since tags are intact, I can refund the full amount to your credit card.",
+    "translation": "太好了！既然吊牌完好无损，我可以全额退款到您的信用卡中。",
+    "note": "tags are intact 意为吊牌完好无损；refund the full amount 指全额退款。"
+  },
+  {
+    "id": "shopping-65",
+    "speaker": "Alex",
+    "text": "How many business days will it take for the refund to reflect on my statement?",
+    "translation": "退款需要几个工作日才能反映在我的账单上？",
+    "note": "reflect on statement 意为体现在账单上。"
+  },
+  {
+    "id": "shopping-66",
+    "speaker": "Mia",
+    "text": "It usually takes three to five business days for your bank to process the refund.",
+    "translation": "通常需要 3 到 5 个工作日，您的发卡行才能处理完这笔退款。",
+    "note": "process the refund 意为处理退款。"
+  },
+  {
+    "id": "shopping-67",
+    "speaker": "Alex",
+    "text": "What if I wanted to exchange it for a larger size instead of getting a refund?",
+    "translation": "如果我想换成更大尺码而不是退款，该怎么操作？",
+    "note": "exchange for a larger size 意为调换成更大尺寸。"
+  },
+  {
+    "id": "shopping-68",
+    "speaker": "Mia",
+    "text": "We can do a direct exchange right away if we have the size in stock.",
+    "translation": "只要我们库房有合适尺寸，立刻就可以为您办理现场等值调换。",
+    "note": "direct exchange 指直接调换/等价换货。"
+  },
+  {
+    "id": "shopping-69",
+    "speaker": "Alex",
+    "text": "What is your store's general return policy window for regular items?",
+    "translation": "你们店对普通商品的退货期限政策是多久？",
+    "note": "return policy window 指退货政策期限/退货窗口期。"
+  },
+  {
+    "id": "shopping-70",
+    "speaker": "Mia",
+    "text": "Our store policy allows returns and exchanges within thirty days of purchase.",
+    "translation": "我们门店政策允许购买后 30 天内办理退换货。",
+    "note": "within thirty days of purchase 意为购买后 30 天内。"
+  },
+  {
+    "id": "shopping-71",
+    "speaker": "Alex",
+    "text": "Hi Mia, I placed an online order for store pickup, is it ready for collection?",
+    "translation": "嗨 Mia，我在线下单选了到店自提，现在可以取货了吗？",
+    "note": "store pickup 意为到店自提/网订店取。"
+  },
+  {
+    "id": "shopping-72",
+    "speaker": "Mia",
+    "text": "Sure! May I see your order confirmation number and photo ID?",
+    "translation": "好的！可以看一下您的订单确认号和带照片的身份证件吗？",
+    "note": "order confirmation number 指订单确认号。"
+  },
+  {
+    "id": "shopping-73",
+    "speaker": "Alex",
+    "text": "Here is the confirmation email on my phone with the barcode.",
+    "translation": "这是我手机里带条形码的确认邮件。",
+    "note": "confirmation email 指确认电子邮件。"
+  },
+  {
+    "id": "shopping-74",
+    "speaker": "Mia",
+    "text": "Thank you. Let me retrieve your package from the back holding area.",
+    "translation": "谢谢。我去后方寄存区帮您提取包裹。",
+    "note": "retrieve your package 意为提取您的包裹。"
+  },
+  {
+    "id": "shopping-75",
+    "speaker": "Alex",
+    "text": "If I order online in the future, what is the threshold for free home delivery?",
+    "translation": "如果我以后网上下单，免费送货上门的门槛是多少？",
+    "note": "threshold for free delivery 指包邮/免费送货门槛。"
+  },
+  {
+    "id": "shopping-76",
+    "speaker": "Mia",
+    "text": "Orders over fifty dollars qualify for free standard home shipping.",
+    "translation": "订单金额满 50 美元即可享受免费标准快递送货上门。",
+    "note": "standard home shipping 指标准快递送货上门。"
+  },
+  {
+    "id": "shopping-77",
+    "speaker": "Alex",
+    "text": "How long does standard delivery usually take to arrive at my residential address?",
+    "translation": "标准配送通常需要多久送到我的居住地址？",
+    "note": "residential address 指居住地址。"
+  },
+  {
+    "id": "shopping-78",
+    "speaker": "Mia",
+    "text": "Standard shipping takes two to four business days, while express takes overnight.",
+    "translation": "标准快递需要 2 到 4 个工作日，而加急特快次日达。",
+    "note": "express shipping 指加急/特快配送；overnight 意为隔夜/次日达。"
+  },
+  {
+    "id": "shopping-79",
+    "speaker": "Alex",
+    "text": "Can I track the real-time courier status on your official mobile application?",
+    "translation": "我可以在你们官方 App 上追踪实时快递状态吗？",
+    "note": "real-time courier status 指实时快递状态。"
+  },
+  {
+    "id": "shopping-80",
+    "speaker": "Mia",
+    "text": "Yes, the app provides real-time GPS tracking and delivery notifications.",
+    "translation": "是的，App 提供实时 GPS 定位追踪和送达通知提醒。",
+    "note": "delivery notifications 指送达通知/物流提醒。"
+  },
+  {
+    "id": "shopping-81",
+    "speaker": "Alex",
+    "text": "I'm looking for a luxury leather handbag as an anniversary gift for my wife.",
+    "translation": "我想买一个奢华皮革手提包作为结婚纪念日礼物送给我妻子。",
+    "note": "luxury leather handbag 指奢华皮革手提包；anniversary gift 指周年纪念日礼物。"
+  },
+  {
+    "id": "shopping-82",
+    "speaker": "Mia",
+    "text": "How lovely! We have a handcrafted Italian leather collection right over here.",
+    "translation": "真贴心！我们这边正好有一系列手工制作的意大利皮革手袋。",
+    "note": "handcrafted 意为手工制作的。"
+  },
+  {
+    "id": "shopping-83",
+    "speaker": "Alex",
+    "text": "This designer bag looks exquisite. Is the leather genuine calfskin?",
+    "translation": "这款设计师手袋看起来精美极了。面料是真正的牛皮吗？",
+    "note": "exquisite 意为精美的/精致的；genuine calfskin 指真小牛皮。"
+  },
+  {
+    "id": "shopping-84",
+    "speaker": "Mia",
+    "text": "Yes, it is crafted from 100 percent full-grain genuine calfskin leather.",
+    "translation": "是的，它由 100% 粒面真小牛皮精制而成。",
+    "note": "full-grain leather 指头层/粒面皮。"
+  },
+  {
+    "id": "shopping-85",
+    "speaker": "Alex",
+    "text": "Can you provide a gift receipt and complimentary luxury gift wrapping?",
+    "translation": "你们能提供礼品小票和免费的高端礼品包装吗？",
+    "note": "gift receipt 指礼品小票（不标价格）；complimentary gift wrapping 指免费礼品包装。"
+  },
+  {
+    "id": "shopping-86",
+    "speaker": "Mia",
+    "text": "Absolutely! We provide elegant gift wrapping with a satin ribbon and gift receipt.",
+    "translation": "当然！我们提供带有缎带的优雅礼品包装以及礼品小票。",
+    "note": "satin ribbon 指缎带/丝带。"
+  },
+  {
+    "id": "shopping-87",
+    "speaker": "Alex",
+    "text": "Does this luxury handbag come with an authenticity certificate and dust bag?",
+    "translation": "这款奢华手袋附带正品防伪证书和防尘袋吗？",
+    "note": "authenticity certificate 指防伪/正品证书；dust bag 指防尘袋。"
+  },
+  {
+    "id": "shopping-88",
+    "speaker": "Mia",
+    "text": "Yes, every designer item comes with a stamped certificate of authenticity and dust bag.",
+    "translation": "是的，每件设计师商品都附带盖章的正品证书和专属防尘袋。",
+    "note": "stamped certificate 指盖章证明书。"
+  },
+  {
+    "id": "shopping-89",
+    "speaker": "Alex",
+    "text": "What happens if she wants to exchange it for a different color after the anniversary?",
+    "translation": "如果纪念日过后她想换个别的颜色，该怎么处理？",
+    "note": "exchange for a different color 意为调换成其他颜色。"
+  },
+  {
+    "id": "shopping-90",
+    "speaker": "Mia",
+    "text": "With the gift receipt, she can exchange it for any color or item within thirty days.",
+    "translation": "凭礼品小票，她可以在 30 天内自由调换任何颜色或同等价值商品。",
+    "note": "gift receipt 允许受赠人凭借不含价格的小票换货。"
+  },
+  {
+    "id": "shopping-91",
+    "speaker": "Alex",
+    "text": "Excuse me, I noticed a discrepancy between the shelf price and what was charged.",
+    "translation": "打扰一下，我注意到货架标价和结算收取的费用不一致。",
+    "note": "discrepancy 意为差异/不符之处；shelf price 指货架标价。"
+  },
+  {
+    "id": "shopping-92",
+    "speaker": "Mia",
+    "text": "I apologize for the confusion! Let me check the shelf tag price for you.",
+    "translation": "对于给您造成的困扰我深表抱歉！让我为您核对一下货架标签价格。",
+    "note": "apologize for the confusion 意为为造成的困惑/困扰致歉。"
+  },
+  {
+    "id": "shopping-93",
+    "speaker": "Alex",
+    "text": "The shelf label said $25, but the register receipt charged me $30.",
+    "translation": "货架标签写着 25 美元，但收银小票却收了我 30 美元。",
+    "note": "register receipt 指收银小票。"
+  },
+  {
+    "id": "shopping-94",
+    "speaker": "Mia",
+    "text": "You are completely right. I will adjust the price and refund the $5 difference.",
+    "translation": "您完全正确。我现在就为您调整价格并退还 5 美元的差价。",
+    "note": "refund the difference 意为退还差价。"
+  },
+  {
+    "id": "shopping-95",
+    "speaker": "Alex",
+    "text": "Thank you. Does your store offer a price matching policy against online competitors?",
+    "translation": "谢谢。你们门店对线上竞争对手提供比价退差价（Price Matching）政策吗？",
+    "note": "price matching policy 指价格匹配/比价退差价政策。"
+  },
+  {
+    "id": "shopping-96",
+    "speaker": "Mia",
+    "text": "Yes, we match lower prices from major authorized retail websites.",
+    "translation": "是的，我们匹配主流授权零售网站的更低价格。",
+    "note": "authorized retail websites 指官方授权零售网站。"
+  },
+  {
+    "id": "shopping-97",
+    "speaker": "Alex",
+    "text": "Here is the lower price listing on an authorized competitor's official website.",
+    "translation": "这是授权竞争对手官方网站上的更低价格页面。",
+    "note": "lower price listing 指更低价格商品页面/展示。"
+  },
+  {
+    "id": "shopping-98",
+    "speaker": "Mia",
+    "text": "Awesome! I will override the price to match that online listing for you.",
+    "translation": "太好了！我现在就手动改价，帮您匹配那个线上价格。",
+    "note": "override the price 意为（收银机上）手动修改/覆盖价格。"
+  },
+  {
+    "id": "shopping-99",
+    "speaker": "Alex",
+    "text": "I really appreciate your quick resolution and excellent customer service.",
+    "translation": "我非常感谢您快速的处理和出色的客户服务。",
+    "note": "quick resolution 意为快速解决。"
+  },
+  {
+    "id": "shopping-100",
+    "speaker": "Mia",
+    "text": "It's my pleasure! Thank you for shopping with us, and have a fantastic day!",
+    "translation": "这是我的荣幸！感谢您在本项目选购，祝您度过愉快的一天！",
+    "note": "have a fantastic day 常用客套结语。"
+  }
+],
+  transit: [
+  {
+    "id": "transit-1",
+    "speaker": "Alex",
+    "text": "Excuse me, does this bus go directly to the central train station?",
+    "translation": "打扰一下，这趟公交车直达火车总站吗？",
+    "note": "go directly to 意为直达。"
+  },
+  {
+    "id": "transit-2",
+    "speaker": "Mia",
+    "text": "No, you'll need to transfer to Route 15 at the city hall stop.",
+    "translation": "不直达，您需要在市政厅站换乘 15 路公交车。",
+    "note": "transfer to 意为换乘（某线路）。"
+  },
+  {
+    "id": "transit-3",
+    "speaker": "Alex",
+    "text": "How frequently do buses run on this route during peak hours?",
+    "translation": "高峰期这条线路的公交车发车频率是多少？",
+    "note": "peak hours 指交通高峰期；run frequently 意为高频发车。"
+  },
+  {
+    "id": "transit-4",
+    "speaker": "Mia",
+    "text": "They run every five minutes during morning rush hour, but every fifteen minutes during off-peak hours.",
+    "translation": "早高峰期间每 5 分钟一班，但在非高峰期则是每 15 分钟一班。",
+    "note": "rush hour 指高峰期；off-peak hours 指非高峰时段。"
+  },
+  {
+    "id": "transit-5",
+    "speaker": "Alex",
+    "text": "Which bus stop should I wait at for the westbound express line?",
+    "translation": "我应该在哪个公交站台等候西行的快线车？",
+    "note": "westbound express line 指西行快线。"
+  },
+  {
+    "id": "transit-6",
+    "speaker": "Mia",
+    "text": "Cross the street to the shelter opposite the pharmacy for the westbound route.",
+    "translation": "穿过马路到药店对面的候车亭乘坐西行线路。",
+    "note": "bus shelter 指公交候车亭。"
+  },
+  {
+    "id": "transit-7",
+    "speaker": "Alex",
+    "text": "Is there a real-time digital display showing estimated arrival times?",
+    "translation": "这里有显示预计到达时间的实时电子屏吗？",
+    "note": "real-time digital display 指实时电子显示屏。"
+  },
+  {
+    "id": "transit-8",
+    "speaker": "Mia",
+    "text": "Yes, the digital board on the signpost updates arrival times every thirty seconds.",
+    "translation": "有的，站牌上的电子屏每 30 秒更新一次到达时间。",
+    "note": "signpost 指站牌/路标。"
+  },
+  {
+    "id": "transit-9",
+    "speaker": "Alex",
+    "text": "Should I flag down the bus driver, or does it stop automatically at every station?",
+    "translation": "我是需要向公交车司机招手，还是逢站必停？",
+    "note": "flag down 意为招手示意停车。"
+  },
+  {
+    "id": "transit-10",
+    "speaker": "Mia",
+    "text": "It's best to raise your hand to hail the driver, especially if the stop is quiet.",
+    "translation": "最好举手招手示意，尤其是在人比较少的站点。",
+    "note": "hail the driver 意为向司机招手。"
+  },
+  {
+    "id": "transit-11",
+    "speaker": "Alex",
+    "text": "Hi Mia, can you tell me how to reach the international airport by subway?",
+    "translation": "嗨 Mia，你能告诉我怎么坐地铁去国际机场吗？",
+    "note": "reach... by subway 意为坐地铁前往某地。"
+  },
+  {
+    "id": "transit-12",
+    "speaker": "Mia",
+    "text": "Take the Line 2 southbound train for four stops, then transfer to Line 8 at Central Station.",
+    "translation": "乘坐 2 号线南行列车坐 4 站，然后在中心车站换乘 8 号线。",
+    "note": "southbound train 指南行列车。"
+  },
+  {
+    "id": "transit-13",
+    "speaker": "Alex",
+    "text": "Is the transfer between Line 2 and Line 8 a cross-platform transfer or a long walk?",
+    "translation": "2 号线和 8 号线换乘是同台换乘还是需要走很长一段路？",
+    "note": "cross-platform transfer 指同台/同站台换乘。"
+  },
+  {
+    "id": "transit-14",
+    "speaker": "Mia",
+    "text": "It's a short walking transfer across the underground concourse, taking about three minutes.",
+    "translation": "是在地下站厅走一小段路换乘，大约需要三分钟。",
+    "note": "underground concourse 指地下大厅/站厅。"
+  },
+  {
+    "id": "transit-15",
+    "speaker": "Alex",
+    "text": "Which exit should I take if I want to visit the national museum?",
+    "translation": "如果我想去国家博物馆，应该走哪个出口？",
+    "note": "which exit should I take 指我应该走哪个出口。"
+  },
+  {
+    "id": "transit-16",
+    "speaker": "Mia",
+    "text": "Exit B leads directly to the north plaza of the museum.",
+    "translation": "B 出口直通博物馆的北广场。",
+    "note": "lead directly to 意为直通/直接通向。"
+  },
+  {
+    "id": "transit-17",
+    "speaker": "Alex",
+    "text": "Are the metro trains equipped with air conditioning and free Wi-Fi?",
+    "translation": "地铁列车配备了空调和免费无线网络吗？",
+    "note": "equipped with 意为配备了。"
+  },
+  {
+    "id": "transit-18",
+    "speaker": "Mia",
+    "text": "Yes, all modern subway cars feature climate control and complimentary Wi-Fi connection.",
+    "translation": "是的，所有现代地铁车厢都配备了恒温空调和免费 Wi-Fi 连接。",
+    "note": "climate control 指自动空调/恒温系统；complimentary 指免费赠送的。"
+  },
+  {
+    "id": "transit-19",
+    "speaker": "Alex",
+    "text": "What is the last train time for Line 2 on weekday evenings?",
+    "translation": "工作日晚上 2 号线的末班车时间是几点？",
+    "note": "last train time 指末班车时间。"
+  },
+  {
+    "id": "transit-20",
+    "speaker": "Mia",
+    "text": "The last westbound train departs from the terminal station at precisely 11:30 PM.",
+    "translation": "最后一班西行列车于晚上 11:30 准时从始发站发出。",
+    "note": "terminal station 指终点站/始发站；precisely 意为精确地/准时地。"
+  },
+  {
+    "id": "transit-21",
+    "speaker": "Alex",
+    "text": "Where can I purchase a contactless transit pass for unlimited daily travel?",
+    "translation": "我在哪里可以购买无接触式交通日卡，无限次乘车？",
+    "note": "contactless transit pass 指感应式交通通行卡；unlimited daily travel 指日内无限次乘车。"
+  },
+  {
+    "id": "transit-22",
+    "speaker": "Mia",
+    "text": "You can buy a 24-hour day pass at any automated ticket vending machine.",
+    "translation": "您可以在任何一台自动售票机上购买 24 小时一日通票。",
+    "note": "automated ticket vending machine 指自动售票机。"
+  },
+  {
+    "id": "transit-23",
+    "speaker": "Alex",
+    "text": "Does the ticket machine accept cash and coins, or credit cards only?",
+    "translation": "售票机接受纸币和硬币吗，还是只支持信用卡？",
+    "note": "accept cash and coins 意为接受纸币和硬币。"
+  },
+  {
+    "id": "transit-24",
+    "speaker": "Mia",
+    "text": "It accepts exact cash, coins, credit cards, and contactless mobile wallets.",
+    "translation": "它接受不找零现金、硬币、信用卡以及非接触式移动支付。",
+    "note": "exact cash 指不找零的零钱现金；mobile wallets 指移动支付/电子钱包。"
+  },
+  {
+    "id": "transit-25",
+    "speaker": "Alex",
+    "text": "How do I tap my transit card at the turnstiles when entering?",
+    "translation": "进站时我该如何在闸机上刷交通卡？",
+    "note": "tap my card 意为刷卡/贴卡感应；turnstiles 指旋转闸机。"
+  },
+  {
+    "id": "transit-26",
+    "speaker": "Mia",
+    "text": "Hold your card flat against the green reader sensor until the gate opens.",
+    "translation": "将卡片平放在绿色读卡感应区上，直到闸机开启。",
+    "note": "reader sensor 指读卡感应器。"
+  },
+  {
+    "id": "transit-27",
+    "speaker": "Alex",
+    "text": "What should I do if my mobile QR ticket fails to scan at the gate?",
+    "translation": "如果我的手机二维码乘车码在闸机处扫描失败怎么办？",
+    "note": "mobile QR ticket 指手机二维码乘车码；fails to scan 意为扫描失败。"
+  },
+  {
+    "id": "transit-28",
+    "speaker": "Mia",
+    "text": "You can visit the customer service center near the turnstiles for assistance.",
+    "translation": "您可以前往闸机旁边的客户服务中心寻求帮助。",
+    "note": "customer service center 指客户服务中心/票务中心。"
+  },
+  {
+    "id": "transit-29",
+    "speaker": "Alex",
+    "text": "Is there a discounted fare for students or senior citizens?",
+    "translation": "学生或老年人有优惠票价吗？",
+    "note": "discounted fare 指折扣/优惠票价；senior citizens 指老年人。"
+  },
+  {
+    "id": "transit-30",
+    "speaker": "Mia",
+    "text": "Yes, qualified passengers with valid ID cards get a 50 percent concession rate.",
+    "translation": "有的，符合条件并持有有效证件的乘客可享受半价优惠。",
+    "note": "concession rate 指优惠票价率/减免票价。"
+  },
+  {
+    "id": "transit-31",
+    "speaker": "Alex",
+    "text": "Excuse me, which platform does the high-speed train to Boston depart from?",
+    "translation": "打扰一下，开往波士顿的高铁在哪个站台发车？",
+    "note": "high-speed train 指高速铁路/高铁；depart from 指从出发。"
+  },
+  {
+    "id": "transit-32",
+    "speaker": "Mia",
+    "text": "Train 104 departs from Platform 5 on the lower level in twenty minutes.",
+    "translation": "104 次列车 20 分钟后在下层的 5 号站台发车。",
+    "note": "lower level 指下层/地下层。"
+  },
+  {
+    "id": "transit-33",
+    "speaker": "Alex",
+    "text": "Is my ticket for a reserved seat or unreserved coach seating?",
+    "translation": "我的车票是对号入座的指定席还是非指定席车厢？",
+    "note": "reserved seat 指指定席/对号入座；unreserved seating 指自由席/非指定席。"
+  },
+  {
+    "id": "transit-34",
+    "speaker": "Mia",
+    "text": "Your ticket shows Car 3, Seat 12A, which is a reserved window seat.",
+    "translation": "您的车票显示为 3 号车厢 12A 座，这是指定靠窗座位。",
+    "note": "window seat 指靠窗座位。"
+  },
+  {
+    "id": "transit-35",
+    "speaker": "Alex",
+    "text": "Where can I store my heavy luggage inside the train compartment?",
+    "translation": "在火车车厢内我可以在哪里存放重型行李？",
+    "note": "train compartment 指火车车厢/隔间。"
+  },
+  {
+    "id": "transit-36",
+    "speaker": "Mia",
+    "text": "There are dedicated luggage racks at the end of each passenger car.",
+    "translation": "每节客车车厢尽头都设有专门的行李架。",
+    "note": "dedicated luggage racks 指专用行李架。"
+  },
+  {
+    "id": "transit-37",
+    "speaker": "Alex",
+    "text": "Does the train offer an onboard dining car or snack trolley service?",
+    "translation": "列车上提供餐车或移动售货推车服务吗？",
+    "note": "dining car 指餐车；snack trolley 指零食手推车。"
+  },
+  {
+    "id": "transit-38",
+    "speaker": "Mia",
+    "text": "Car 5 is the cafeteria car, and attendants move through with snack carts.",
+    "translation": "5 号车厢是餐车，乘务员也会推着小吃推车穿过车厢。",
+    "note": "cafeteria car 指自助餐车；attendants 指列车乘务人员。"
+  },
+  {
+    "id": "transit-39",
+    "speaker": "Alex",
+    "text": "Will the conductor inspect our tickets during the journey?",
+    "translation": "列车员会在行程中查验我们的车票吗？",
+    "note": "conductor 指列车长/检票员；inspect tickets 意为查验车票。"
+  },
+  {
+    "id": "transit-40",
+    "speaker": "Mia",
+    "text": "Yes, please keep your physical ticket or electronic barcode accessible.",
+    "translation": "是的，请将您的纸质车票或电子二维码存放在随手可取的地方。",
+    "note": "keep accessible 意为放在随时拿得到的地方。"
+  },
+  {
+    "id": "transit-41",
+    "speaker": "Alex",
+    "text": "Hi Mia, is it easy to hail a yellow cab on this avenue?",
+    "translation": "嗨 Mia，这条大路上容易打到黄色出租车吗？",
+    "note": "hail a cab 意为打车/招揽出租车；avenue 指大干道/林荫大道。"
+  },
+  {
+    "id": "transit-42",
+    "speaker": "Mia",
+    "text": "It's quite busy now, so using a rideshare app like Uber might be faster.",
+    "translation": "现在挺拥挤的，用 Uber 这类网约车软件可能会更快。",
+    "note": "rideshare app 指网约车应用。"
+  },
+  {
+    "id": "transit-43",
+    "speaker": "Alex",
+    "text": "How long is the estimated wait time for a rideshare vehicle?",
+    "translation": "网约车的预计等待时间是多久？",
+    "note": "estimated wait time 指预计等待时间。"
+  },
+  {
+    "id": "transit-44",
+    "speaker": "Mia",
+    "text": "The app indicates a driver will pick us up in roughly four minutes.",
+    "translation": "软件显示司机大约 4 分钟后就能来接我们。",
+    "note": "pick us up 意为接我们。"
+  },
+  {
+    "id": "transit-45",
+    "speaker": "Alex",
+    "text": "Could you ask the taxi driver to put our suitcases in the trunk?",
+    "translation": "你能让出租车司机把我们的行李箱放进后备箱吗？",
+    "note": "suitcases 指手提箱/行李箱；trunk 指汽车后备箱。"
+  },
+  {
+    "id": "transit-46",
+    "speaker": "Mia",
+    "text": "Sure! Driver, could you please pop the trunk for our luggage?",
+    "translation": "没问题！师傅，能麻烦您开一下后备箱放行李吗？",
+    "note": "pop the trunk 美式口语意为打开/弹开后备箱。"
+  },
+  {
+    "id": "transit-47",
+    "speaker": "Alex",
+    "text": "Is traffic heavy on the express highway heading to the city center?",
+    "translation": "去往市中心的快速高架路上交通拥堵吗？",
+    "note": "traffic heavy 意为交通拥堵/车流量大；express highway 指高速公路/快速路。"
+  },
+  {
+    "id": "transit-48",
+    "speaker": "Mia",
+    "text": "There's slight congestion near the bridge, but the rest of the highway is clear.",
+    "translation": "大桥附近有点拥堵，但高架路其余路段都很畅通。",
+    "note": "slight congestion 指轻度拥堵；clear 意为畅通无阻。"
+  },
+  {
+    "id": "transit-49",
+    "speaker": "Alex",
+    "text": "Should we pay the highway toll fees separately or with the fare?",
+    "translation": "我们需要单独支付高速过路费还是和车费一并结算？",
+    "note": "toll fees 指通行费/过路费。"
+  },
+  {
+    "id": "transit-50",
+    "speaker": "Mia",
+    "text": "Toll fees will be automatically added to the final trip total in the app.",
+    "translation": "过路费会自动添加进 App 的最终行程总额中。",
+    "note": "trip total 指行程总费用。"
+  },
+  {
+    "id": "transit-51",
+    "speaker": "Alex",
+    "text": "Attention passengers, why has our subway train come to a complete stop?",
+    "translation": "各位乘客请注意，为什么我们的地铁列车完全停下来了？",
+    "note": "come to a complete stop 意为完全停下。"
+  },
+  {
+    "id": "transit-52",
+    "speaker": "Mia",
+    "text": "The operator announced a minor signal breakdown ahead on the tracks.",
+    "translation": "司乘人员广播说前面的轨道出现了轻微信号故障。",
+    "note": "signal breakdown 指信号故障。"
+  },
+  {
+    "id": "transit-53",
+    "speaker": "Alex",
+    "text": "How long are service delays expected to last due to this breakdown?",
+    "translation": "因为这次故障，预计服务延误会持续多久？",
+    "note": "service delays 指运营延误。"
+  },
+  {
+    "id": "transit-54",
+    "speaker": "Mia",
+    "text": "They estimate a delay of ten to fifteen minutes while technicians fix it.",
+    "translation": "他们估计技术人员修复期间会延误 10 到 15 分钟。",
+    "note": "estimate a delay 意为估计延误时间。"
+  },
+  {
+    "id": "transit-55",
+    "speaker": "Alex",
+    "text": "Will this bus route be detoured because of the marathon road closure?",
+    "translation": "这条公交线路会因为马拉松封路而绕行吗？",
+    "note": "detoured 意为绕行的；road closure 指道路封闭。"
+  },
+  {
+    "id": "transit-56",
+    "speaker": "Mia",
+    "text": "Yes, the bus will bypass Main Street and detour along Fifth Avenue instead.",
+    "translation": "是的，公交车将绕过主街，改沿第五大道绕行。",
+    "note": "bypass 意为绕过/避开。"
+  },
+  {
+    "id": "transit-57",
+    "speaker": "Alex",
+    "text": "Is there a replacement shuttle bus service available during maintenance?",
+    "translation": "检修期间有替换接驳公交车服务吗？",
+    "note": "replacement shuttle bus 指替代接驳巴士。"
+  },
+  {
+    "id": "transit-58",
+    "speaker": "Mia",
+    "text": "Yes, free shuttle buses are running between the two suspended metro stations.",
+    "translation": "有的，两座暂停服务的地铁站之间提供免费接驳公交车。",
+    "note": "suspended stations 指暂停运营的车站。"
+  },
+  {
+    "id": "transit-59",
+    "speaker": "Alex",
+    "text": "Can I request a delay certificate for my employer if I arrive late?",
+    "translation": "如果我迟到了，可以申请一张给雇主的晚点证明吗？",
+    "note": "delay certificate 指晚点/延误证明。"
+  },
+  {
+    "id": "transit-60",
+    "speaker": "Mia",
+    "text": "You can download an official proof-of-delay slip directly from the transit website.",
+    "translation": "您可以直接从交通部门官网上下载一份官方晚点证明。",
+    "note": "proof-of-delay slip 指晚点证明单。"
+  },
+  {
+    "id": "transit-61",
+    "speaker": "Alex",
+    "text": "Oh no! I think I left my backpack on the backseat of the bus.",
+    "translation": "糟糕！我想我把背包忘在公交车后排座位上了。",
+    "note": "left my backpack 意为遗忘/落下背包。"
+  },
+  {
+    "id": "transit-62",
+    "speaker": "Mia",
+    "text": "Don't panic! We should contact the transit lost and found department right away.",
+    "translation": "别慌！我们应该立刻联系交通失物招领处。",
+    "note": "lost and found department 指失物招领处。"
+  },
+  {
+    "id": "transit-63",
+    "speaker": "Alex",
+    "text": "What information do I need to provide when reporting a lost item?",
+    "translation": "在报失遗失物品时我需要提供哪些信息？",
+    "note": "reporting a lost item 意为报失遗失物品。"
+  },
+  {
+    "id": "transit-64",
+    "speaker": "Mia",
+    "text": "You need the bus route number, vehicle ID, and exact time you disembarked.",
+    "translation": "你需要提供公交线路号、车牌/车辆编号以及下车的准确时间。",
+    "note": "disembarked 意为（下车/下船/下飞机）。"
+  },
+  {
+    "id": "transit-65",
+    "speaker": "Alex",
+    "text": "Where is the main transit lost property office located?",
+    "translation": "主要的交通失物招领办公室在哪里？",
+    "note": "lost property office 指失物招领办公室。"
+  },
+  {
+    "id": "transit-66",
+    "speaker": "Mia",
+    "text": "It's situated inside the central bus terminal near the main ticket hall.",
+    "translation": "它位于中央公交总站内，靠近主售票大厅。",
+    "note": "situated 意为位于/坐落于。"
+  },
+  {
+    "id": "transit-67",
+    "speaker": "Alex",
+    "text": "Do they hold unclaimed items for a long period of time?",
+    "translation": "他们会长时间保存无人认领的物品吗？",
+    "note": "unclaimed items 指无人认领的物品。"
+  },
+  {
+    "id": "transit-68",
+    "speaker": "Mia",
+    "text": "Unclaimed personal belongings are stored safely for up to ninety days.",
+    "translation": "无人认领的个人物品最长会安全保存 90 天。",
+    "note": "personal belongings 指个人随身物品。"
+  },
+  {
+    "id": "transit-69",
+    "speaker": "Alex",
+    "text": "What document should I present to claim my missing property?",
+    "translation": "去领取遗失物品时我需要出示什么证件？",
+    "note": "claim missing property 意为领回遗失物品。"
+  },
+  {
+    "id": "transit-70",
+    "speaker": "Mia",
+    "text": "You'll need a valid photo ID and a detailed description of the contents.",
+    "translation": "你需要出示有效的带照片身份证件并详细描述包内物品。",
+    "note": "valid photo ID 指带照片的有效身份证件。"
+  },
+  {
+    "id": "transit-71",
+    "speaker": "Alex",
+    "text": "Hi Mia, what is the fastest way to travel from downtown to the airport?",
+    "translation": "嗨 Mia，从市中心到机场最快的方式是什么？",
+    "note": "fastest way to travel 意为最快的出行方式。"
+  },
+  {
+    "id": "transit-72",
+    "speaker": "Mia",
+    "text": "The express airport train takes only twenty-five minutes with no traffic delays.",
+    "translation": "机场快轨仅需 25 分钟，且不会受交通拥堵影响。",
+    "note": "express airport train 指机场快捷列车/快轨。"
+  },
+  {
+    "id": "transit-73",
+    "speaker": "Alex",
+    "text": "Does the airport shuttle train run round-the-clock during the night?",
+    "translation": "机场接驳列车夜间是 24 小时全天候运营吗？",
+    "note": "round-the-clock 意为全天候 24 小时地。"
+  },
+  {
+    "id": "transit-74",
+    "speaker": "Mia",
+    "text": "It runs every fifteen minutes during the day and every hour overnight.",
+    "translation": "白天每 15 分钟一班，夜间每小时一班。",
+    "note": "overnight 意为通宵/夜间。"
+  },
+  {
+    "id": "transit-75",
+    "speaker": "Alex",
+    "text": "Which airport terminal does international flight departures use?",
+    "translation": "国际航班离港使用哪一个机场航站楼？",
+    "note": "international flight departures 指国际航班出港/离港。"
+  },
+  {
+    "id": "transit-76",
+    "speaker": "Mia",
+    "text": "International flights depart from Terminal 3, which is the last stop on the line.",
+    "translation": "国际航班在 3 号航站楼离港，那是该线路的终点站。",
+    "note": "last stop on the line 指线路的终点站。"
+  },
+  {
+    "id": "transit-77",
+    "speaker": "Alex",
+    "text": "Is there an inter-terminal automated people mover system inside?",
+    "translation": "机场内部有航站楼之间的自动旅客捷运系统吗？",
+    "note": "automated people mover (APM) 指自动旅客捷运系统/航站楼小火车。"
+  },
+  {
+    "id": "transit-78",
+    "speaker": "Mia",
+    "text": "Yes, a free shuttle train connects Terminal 1, Terminal 2, and Terminal 3.",
+    "translation": "有的，免费接驳列车连接 1 号、2 号和 3 号航站楼。",
+    "note": "shuttle train 指短途接驳列车。"
+  },
+  {
+    "id": "transit-79",
+    "speaker": "Alex",
+    "text": "How early should we board the express train to guarantee timely check-in?",
+    "translation": "我们应该提前多久乘坐快轨以确保及时办理登机手续？",
+    "note": "timely check-in 意为及时办理登机手续。"
+  },
+  {
+    "id": "transit-80",
+    "speaker": "Mia",
+    "text": "I recommend taking the train at least three hours before your international flight.",
+    "translation": "我建议至少在国际航班起飞前 3 小时乘坐快轨。",
+    "note": "at least three hours before 意为至少提前 3 小时。"
+  },
+  {
+    "id": "transit-81",
+    "speaker": "Alex",
+    "text": "Mia, how do I unlock one of these dockless shared bicycles on the sidewalk?",
+    "translation": "Mia，我怎么解锁人行道上的这些无桩共享单车？",
+    "note": "dockless shared bicycles 指无桩共享单车。"
+  },
+  {
+    "id": "transit-82",
+    "speaker": "Mia",
+    "text": "Scan the QR code on the handlebars using the bike-share mobile application.",
+    "translation": "用共享单车移动应用扫描车把手上的二维码即可。",
+    "note": "handlebars 指自行车车把。"
+  },
+  {
+    "id": "transit-83",
+    "speaker": "Alex",
+    "text": "Is there a designated parking zone where I must leave the bicycle?",
+    "translation": "我有必须停放自行车的指定停车区吗？",
+    "note": "designated parking zone 指指定的停车区域。"
+  },
+  {
+    "id": "transit-84",
+    "speaker": "Mia",
+    "text": "Yes, you must park inside the painted white boxes to avoid extra fees.",
+    "translation": "是的，您必须停在画有白框的区域内以避免额外费用。",
+    "note": "avoid extra fees 意为避免产生额外费用。"
+  },
+  {
+    "id": "transit-85",
+    "speaker": "Alex",
+    "text": "Are there dedicated bike lanes along this major thoroughfare?",
+    "translation": "这条主干道旁有自行车专用道吗？",
+    "note": "dedicated bike lanes 指专用自行车道；thoroughfare 指交通干道。"
+  },
+  {
+    "id": "transit-86",
+    "speaker": "Mia",
+    "text": "Yes, there is a green-painted protected bike lane separated from traffic.",
+    "translation": "有的，有一条与机动车隔开的绿色标识专用自行车道。",
+    "note": "protected bike lane 指有物理隔离防护的自行车道。"
+  },
+  {
+    "id": "transit-87",
+    "speaker": "Alex",
+    "text": "What is the hourly rental rate for electric pedal-assist bikes?",
+    "translation": "电动助力自行车的每小时租金是多少？",
+    "note": "electric pedal-assist bikes 指电助力自行车。"
+  },
+  {
+    "id": "transit-88",
+    "speaker": "Mia",
+    "text": "It costs two dollars for the first thirty minutes and one dollar per half-hour after.",
+    "translation": "前 30 分钟 2 美元，之后每半小时 1 美元。",
+    "note": "per half-hour 意为每半小时。"
+  },
+  {
+    "id": "transit-89",
+    "speaker": "Alex",
+    "text": "Do I need to wear a helmet while riding a shared bike in this city?",
+    "translation": "在这座城市骑共享单车需要戴头盔吗？",
+    "note": "wear a helmet 意为戴头盔。"
+  },
+  {
+    "id": "transit-90",
+    "speaker": "Mia",
+    "text": "Helmets are strongly encouraged for safety, though only mandatory for minors.",
+    "translation": "为了安全强烈建议佩戴头盔，不过仅对未成年人是强制性的。",
+    "note": "mandatory 意为强制性的；minors 指未成年人。"
+  },
+  {
+    "id": "transit-91",
+    "speaker": "Alex",
+    "text": "Excuse me, I'm a bit lost. Is this the right direction for the harbor front?",
+    "translation": "打扰一下，我有点迷路了。这是去海港前沿的方向吗？",
+    "note": "harbor front 指海港前沿/码头区；a bit lost 意为有点迷路。"
+  },
+  {
+    "id": "transit-92",
+    "speaker": "Mia",
+    "text": "You're heading in the opposite direction. Turn around and walk three blocks east.",
+    "translation": "你走反方向了。调转方向往东走三个街区。",
+    "note": "opposite direction 指相反方向。"
+  },
+  {
+    "id": "transit-93",
+    "speaker": "Alex",
+    "text": "Is the harbor within walking distance, or should I take public transit?",
+    "translation": "海港在步行范围内吗，还是我应该坐公共交通？",
+    "note": "within walking distance 意为在步行距离内/走路可达。"
+  },
+  {
+    "id": "transit-94",
+    "speaker": "Mia",
+    "text": "It's about a twenty-minute walk, or a five-minute ride on the tram.",
+    "translation": "步行大约需要 20 分钟，或者坐有轨电车只需 5 分钟。",
+    "note": "ride on the tram 意为乘坐有轨电车。"
+  },
+  {
+    "id": "transit-95",
+    "speaker": "Alex",
+    "text": "Where can I catch the historic streetcar or heritage tram line?",
+    "translation": "我在哪里可以坐上历史悠久的街头电车或复古有轨电车？",
+    "note": "historic streetcar / heritage tram 指复古/历史有轨电车。"
+  },
+  {
+    "id": "transit-96",
+    "speaker": "Mia",
+    "text": "The tram stop is right around the corner next to the central fountain plaza.",
+    "translation": "电车站在转角处，就在中央喷泉广场旁边。",
+    "note": "fountain plaza 指喷泉广场。"
+  },
+  {
+    "id": "transit-97",
+    "speaker": "Alex",
+    "text": "Is public transportation safe to ride late at night for solo travelers?",
+    "translation": "对单身旅行者来说，深夜乘坐公共交通安全吗？",
+    "note": "solo travelers 指单身/单独旅行者。"
+  },
+  {
+    "id": "transit-98",
+    "speaker": "Mia",
+    "text": "It is generally very safe, but staying near illuminated areas is recommended.",
+    "translation": "总体上非常安全，但建议待在照明良好的区域。",
+    "note": "illuminated areas 指光线明亮/有照明的区域。"
+  },
+  {
+    "id": "transit-99",
+    "speaker": "Alex",
+    "text": "Thank you so much for your thorough transit directions and advice!",
+    "translation": "非常感谢你详尽的交通指引和建议！",
+    "note": "thorough transit directions 指详尽的交通指南/路线指引。"
+  },
+  {
+    "id": "transit-100",
+    "speaker": "Mia",
+    "text": "You're welcome! Enjoy your trip and have a safe journey around the city!",
+    "translation": "不客气！祝您旅途愉快，城市出行一路平安！",
+    "note": "have a safe journey 意为一路顺风/出行平安。"
+  }
+],
+  government: [
+  {
+    "id": "government-1",
+    "speaker": "Alex",
+    "text": "Good morning, I'd like to renew my passport before my current one expires next month.",
+    "translation": "早上好，我想在我的旧护照下个月过期前办理换发。",
+    "note": "expire 意为到期/失效。"
+  },
+  {
+    "id": "government-2",
+    "speaker": "Mia",
+    "text": "Certainly! Please fill out Form DS-11 and submit two recent passport-style photos.",
+    "translation": "好的！请填写 DS-11 表格，并提交两张最近的护照规格照片。",
+    "note": "passport-style photos 指护照规格照片。"
+  },
+  {
+    "id": "government-3",
+    "speaker": "Alex",
+    "text": "Is expedited processing available if I need the renewed passport within two weeks?",
+    "translation": "如果我需要在两周内拿到新护照，可以办理加急处理吗？",
+    "note": "expedited processing 指加急处理/加急办理。"
+  },
+  {
+    "id": "government-4",
+    "speaker": "Mia",
+    "text": "Yes, an expedited fee applies, which guarantees delivery within five business days.",
+    "translation": "可以的，需要支付加急费，保证在 5 个工作日内寄达。",
+    "note": "business days 指工作日。"
+  },
+  {
+    "id": "government-5",
+    "speaker": "Alex",
+    "text": "Do I need to schedule an appointment online, or do you accept walk-in applicants?",
+    "translation": "我需要在线预约吗，还是你们接受现场直接办理的申请人？",
+    "note": "walk-in applicants 指现场免预约申请人。"
+  },
+  {
+    "id": "government-6",
+    "speaker": "Mia",
+    "text": "We highly recommend booking an appointment online to avoid long waiting times.",
+    "translation": "我们强烈建议在网上预约，以避免长时间排队等候。",
+    "note": "booking an appointment 意为预约。"
+  },
+  {
+    "id": "government-7",
+    "speaker": "Alex",
+    "text": "What official identification documents should I bring to prove my legal citizenship?",
+    "translation": "我应该带什么官方身份证明文件来证明我的合法公民身份？",
+    "note": "legal citizenship 指合法公民身份。"
+  },
+  {
+    "id": "government-8",
+    "speaker": "Mia",
+    "text": "An original birth certificate or a naturalization certificate will serve as primary proof.",
+    "translation": "出生证明原件或入籍证明可作为主要证明材料。",
+    "note": "birth certificate 指出生证明；naturalization certificate 指入籍证明。"
+  },
+  {
+    "id": "government-9",
+    "speaker": "Alex",
+    "text": "Will my old passport be returned to me after the renewal process is complete?",
+    "translation": "换发手续完成后，我的旧护照会退还给我吗？",
+    "note": "renewal process 指换发/续期流程。"
+  },
+  {
+    "id": "government-10",
+    "speaker": "Mia",
+    "text": "Yes, your previous passport will be cancelled with punched holes and returned safely to you.",
+    "translation": "是的，您的旧护照会被打孔注销后安全退还给您。",
+    "note": "punched holes 指打孔（注销）。"
+  },
+  {
+    "id": "government-11",
+    "speaker": "Alex",
+    "text": "Hi Mia, I have a question regarding my annual property tax assessment notice.",
+    "translation": "嗨 Mia，我有一个关于我的年度房产税评估通知书的问题。",
+    "note": "property tax assessment 指房产税评估。"
+  },
+  {
+    "id": "government-12",
+    "speaker": "Mia",
+    "text": "Sure! What specific details about your tax evaluation would you like me to clarify?",
+    "translation": "好的！关于您的税务评估，您想让我解答什么具体的细节？",
+    "note": "tax evaluation 指税务评估。"
+  },
+  {
+    "id": "government-13",
+    "speaker": "Alex",
+    "text": "The assessed value of my property increased significantly this year without any major renovations.",
+    "translation": "今年我房产的评估价值大幅上升，但我并没有进行任何重大翻修。",
+    "note": "assessed value 指评估价值；renovations 指房屋翻修。"
+  },
+  {
+    "id": "government-14",
+    "speaker": "Mia",
+    "text": "You have the right to file an official tax appeal with the board of equalization.",
+    "translation": "您有权向税收复核委员会提出正式的税务申诉。",
+    "note": "tax appeal 指税务申诉；board of equalization 指税收复核委员会。"
+  },
+  {
+    "id": "government-15",
+    "speaker": "Alex",
+    "text": "What is the deadline for submitting the tax appeal application form?",
+    "translation": "提交税务申诉申请表的截止日期是什么时候？",
+    "note": "deadline for submitting 意为提交的截止日期。"
+  },
+  {
+    "id": "government-16",
+    "speaker": "Mia",
+    "text": "Appeals must be postmarked or submitted online within thirty days of the notice date.",
+    "translation": "申诉必须在通知发出之日起 30 天内盖邮戳寄出或在线提交。",
+    "note": "postmarked 指盖有邮戳的。"
+  },
+  {
+    "id": "government-17",
+    "speaker": "Alex",
+    "text": "Can I request an extension for paying my state income tax liabilities?",
+    "translation": "我可以申请延期缴纳我的州个人所得税应缴税款吗？",
+    "note": "tax liabilities 指应缴税额/税务负债。"
+  },
+  {
+    "id": "government-18",
+    "speaker": "Mia",
+    "text": "Yes, you can apply for an installment payment agreement through our revenue portal.",
+    "translation": "可以的，您可以通过我们的税务门户网站申请分期付款协议。",
+    "note": "installment payment agreement 指分期付款协议。"
+  },
+  {
+    "id": "government-19",
+    "speaker": "Alex",
+    "text": "Will interest charges accrue while my payment plan application is being reviewed?",
+    "translation": "在我的付款计划申请审核期间，会产生利息费用吗？",
+    "note": "interest charges accrue 意为产生/累积利息费用。"
+  },
+  {
+    "id": "government-20",
+    "speaker": "Mia",
+    "text": "Statutory interest continues to accrue, but penalty fees may be waived upon approval.",
+    "translation": "法定利息会继续累积，但申请批准后罚金可能会被豁免。",
+    "note": "statutory interest 指法定利息；waived 意为豁免/免除。"
+  },
+  {
+    "id": "government-21",
+    "speaker": "Alex",
+    "text": "Good morning, I want to register a new small business entity in this municipality.",
+    "translation": "早上好，我想在本市注册一个新的小型企业实体。",
+    "note": "business entity 指企业实体；municipality 指自治市/市政当局。"
+  },
+  {
+    "id": "government-22",
+    "speaker": "Mia",
+    "text": "Welcome! Will you be operating as a sole proprietorship or a limited liability company?",
+    "translation": "欢迎！您是以独资企业形式运营，还是作为有限责任公司运营？",
+    "note": "sole proprietorship 指独资企业；limited liability company (LLC) 指有限责任公司。"
+  },
+  {
+    "id": "government-23",
+    "speaker": "Alex",
+    "text": "I plan to incorporate as a limited liability company to protect personal assets.",
+    "translation": "我计划注册为有限责任公司，以保护个人资产。",
+    "note": "incorporate 意为注册成立公司；personal assets 指个人资产。"
+  },
+  {
+    "id": "government-24",
+    "speaker": "Mia",
+    "text": "Excellent. You will need to file Articles of Organization and obtain a federal Tax ID.",
+    "translation": "很好。你需要提交公司组织章程，并获取联邦纳税人识别号。",
+    "note": "Articles of Organization 指公司组织章程/成立注册文件。"
+  },
+  {
+    "id": "government-25",
+    "speaker": "Alex",
+    "text": "Does my retail storefront require a general commercial business license?",
+    "translation": "我的零售门店需要通用的商业营业执照吗？",
+    "note": "retail storefront 指零售门店；commercial business license 指商业营业执照。"
+  },
+  {
+    "id": "government-26",
+    "speaker": "Mia",
+    "text": "Yes, every commercial enterprise operating within city limits must hold a valid business license.",
+    "translation": "是的，在市区范围内运营的每家商业企业都必须持有有效的营业执照。",
+    "note": "city limits 指市区边界/市限范围。"
+  },
+  {
+    "id": "government-27",
+    "speaker": "Alex",
+    "text": "Are there special environmental permits needed for serving food and beverages?",
+    "translation": "提供餐饮服务需要特殊的环保许可证明吗？",
+    "note": "environmental permits 指环保许可证。"
+  },
+  {
+    "id": "government-28",
+    "speaker": "Mia",
+    "text": "Food establishments require a health department permit and an annual sanitation inspection.",
+    "translation": "餐饮机构需要卫生部门的许可证明，并接受年度卫生检查。",
+    "note": "health department permit 指卫生部门许可证；sanitation inspection 指卫生检查。"
+  },
+  {
+    "id": "government-29",
+    "speaker": "Alex",
+    "text": "How long does the background verification and license approval process typically take?",
+    "translation": "背景核查和执照审批流程通常需要多久？",
+    "note": "background verification 指背景核查。"
+  },
+  {
+    "id": "government-30",
+    "speaker": "Mia",
+    "text": "Once all supporting documents are verified, approval is usually issued within two weeks.",
+    "translation": "一旦所有证明材料核实无误，审批通常会在两周内批复。",
+    "note": "supporting documents 指支持性/证明材料。"
+  },
+  {
+    "id": "government-31",
+    "speaker": "Alex",
+    "text": "Hi Mia, I am planning to add a second-story wooden deck to my residential property.",
+    "translation": "嗨 Mia，我打算在我的住宅上加建一个二楼木制露台。",
+    "note": "second-story wooden deck 指二楼木质露台；residential property 指住宅物业。"
+  },
+  {
+    "id": "government-32",
+    "speaker": "Mia",
+    "text": "You will definitely need a structural building permit before starting construction.",
+    "translation": "在施工开始之前，您绝对需要一份结构建筑施工许可证。",
+    "note": "structural building permit 指结构建筑施工许可证。"
+  },
+  {
+    "id": "government-33",
+    "speaker": "Alex",
+    "text": "What architectural blueprints or site diagrams do I need to submit with the application?",
+    "translation": "申请时我需要提交哪些建筑蓝图或场地图纸？",
+    "note": "architectural blueprints 指建筑蓝图；site diagrams 指场地平面图。"
+  },
+  {
+    "id": "government-34",
+    "speaker": "Mia",
+    "text": "Please supply two sets of scaled architectural drawings and a property boundary survey map.",
+    "translation": "请提供两套按比例绘制的建筑图纸和一份产权边界测绘图。",
+    "note": "scaled drawings 指按比例绘制的图纸；boundary survey map 指边界测绘图。"
+  },
+  {
+    "id": "government-35",
+    "speaker": "Alex",
+    "text": "Does this construction project need to strictly comply with neighborhood zoning setbacks?",
+    "translation": "这个施工项目需要严格遵守社区规划退界规定吗？",
+    "note": "zoning setbacks 指规划退界/建筑后退距离。"
+  },
+  {
+    "id": "government-36",
+    "speaker": "Mia",
+    "text": "Yes, the deck must maintain a minimum distance of ten feet from the neighboring property line.",
+    "translation": "是的，露台必须与邻居的产权边界保持至少 10 英尺的距离。",
+    "note": "property line 指产权边界线。"
+  },
+  {
+    "id": "government-37",
+    "speaker": "Alex",
+    "text": "What happens if my proposed construction fails the initial building safety inspection?",
+    "translation": "如果我的拟建工程未通过初始建筑安全检查会怎样？",
+    "note": "building safety inspection 指建筑安全检查。"
+  },
+  {
+    "id": "government-38",
+    "speaker": "Mia",
+    "text": "The building inspector will issue a notice specifying necessary corrections before reinspection.",
+    "translation": "建筑检查员会开具通知，明确说明复检前所需做出的修改。",
+    "note": "notice specifying corrections 指限期整改通知。"
+  },
+  {
+    "id": "government-39",
+    "speaker": "Alex",
+    "text": "Is a public hearing required if I request a variance from current zoning ordinances?",
+    "translation": "如果我申请偏离现有规划条例的变更许可，需要举行公开听证会吗？",
+    "note": "variance 指规划变更许可/例外许可；zoning ordinances 指城市规划条例。"
+  },
+  {
+    "id": "government-40",
+    "speaker": "Mia",
+    "text": "Yes, the planning commission conducts a public hearing where neighbors can share input.",
+    "translation": "是的，规划委员会将举行公开听证会，邻居们可以在会上发表意见。",
+    "note": "planning commission 指规划委员会；public hearing 指公开听证会。"
+  },
+  {
+    "id": "government-41",
+    "speaker": "Alex",
+    "text": "Good morning, I need to obtain a certified copy of my official birth certificate.",
+    "translation": "早上好，我需要获取一份我的官方出生证明盖章副本。",
+    "note": "certified copy 指盖章/核证副本。"
+  },
+  {
+    "id": "government-42",
+    "speaker": "Mia",
+    "text": "I can help with that. Are you requesting the certificate for yourself or a immediate family member?",
+    "translation": "我可以帮您办理。您是为您自己还是直系亲属申请证明？",
+    "note": "immediate family member 指直系亲属。"
+  },
+  {
+    "id": "government-43",
+    "speaker": "Alex",
+    "text": "I am ordering it for myself to apply for a international travel visa.",
+    "translation": "我是为自己申请，用来办理国际旅行签证。",
+    "note": "international travel visa 指国际旅行签证。"
+  },
+  {
+    "id": "government-44",
+    "speaker": "Mia",
+    "text": "Please complete the application form and present a valid government-issued photo ID.",
+    "translation": "请填写申请表并出示有效的政府颁发带照片身份证件。",
+    "note": "government-issued photo ID 指政府颁发的带照片身份证件。"
+  },
+  {
+    "id": "government-45",
+    "speaker": "Alex",
+    "text": "Can I also register a foreign marriage certificate at this municipal registrar office?",
+    "translation": "我也可以在这个市政登记处登记一份国外的结婚证吗？",
+    "note": "registrar office 指户籍/登记处。"
+  },
+  {
+    "id": "government-46",
+    "speaker": "Mia",
+    "text": "Foreign certificates require an official translation and an apostille authentication seal.",
+    "translation": "国外的证明需要官方翻译件以及海牙认证印章。",
+    "note": "apostille authentication seal 指海牙认证/公证海牙印鉴。"
+  },
+  {
+    "id": "government-47",
+    "speaker": "Alex",
+    "text": "How much is the administrative fee for each certified vital record document?",
+    "translation": "每份核证生命统计记录文件的行政规费是多少？",
+    "note": "vital record 指生命统计记录（出生/死亡/婚姻等）。"
+  },
+  {
+    "id": "government-48",
+    "speaker": "Mia",
+    "text": "The initial certified copy costs twenty dollars, and additional copies are ten dollars each.",
+    "translation": "第一份核证副本费用为 20 美元，之后每增加一份为 10 美元。",
+    "note": "administrative fee 指行政规费。"
+  },
+  {
+    "id": "government-49",
+    "speaker": "Alex",
+    "text": "Can I request an official name change certificate through this public portal?",
+    "translation": "我可以通过这个公共门户网站申请官方更名证明吗？",
+    "note": "official name change certificate 指官方更名证明。"
+  },
+  {
+    "id": "government-50",
+    "speaker": "Mia",
+    "text": "Name change records are managed by the probate court, but we record the final court order.",
+    "translation": "更名记录由遗产与家事法院管理，但我们会对最终法院裁决书进行备案。",
+    "note": "probate court 指遗嘱检验与家事法院；court order 指法院裁定。"
+  },
+  {
+    "id": "government-51",
+    "speaker": "Alex",
+    "text": "Hi Mia, I would like to inquire about eligibility requirements for senior pension benefits.",
+    "translation": "嗨 Mia，我想咨询一下老年养老金福利的申请资格要求。",
+    "note": "eligibility requirements 指资格要求；senior pension benefits 指老年养老金福利。"
+  },
+  {
+    "id": "government-52",
+    "speaker": "Mia",
+    "text": "Eligibility is based on reaching retirement age and earning required work credits over time.",
+    "translation": "申请资格取决于达到法定退休年龄并在历年中积累足够的积分。",
+    "note": "work credits 指工作积分/社保点数。"
+  },
+  {
+    "id": "government-53",
+    "speaker": "Alex",
+    "text": "How do I submit an online application for unemployment compensation benefits?",
+    "translation": "我该如何在线提交失业补偿金福利的申请？",
+    "note": "unemployment compensation 指失业补偿金/失业救济。"
+  },
+  {
+    "id": "government-54",
+    "speaker": "Mia",
+    "text": "You can create an account on our department of labor portal and upload work records.",
+    "translation": "您可以在我们的劳工部门门户网站上注册账号并上传工作履历记录。",
+    "note": "department of labor 指劳工部/劳工局。"
+  },
+  {
+    "id": "government-55",
+    "speaker": "Alex",
+    "text": "What financial documentation is necessary to verify household income for Medicaid assistance?",
+    "translation": "核实医疗补助计划的家庭收入需要哪些财务证明文件？",
+    "note": "Medicaid assistance 指医疗补助计划；household income 指家庭总收入。"
+  },
+  {
+    "id": "government-56",
+    "speaker": "Mia",
+    "text": "Please bring recent pay stubs, bank statements, and your latest tax return form.",
+    "translation": "请带上最近的工资单、银行流水单以及最近一期的纳税申报表。",
+    "note": "pay stubs 指工资单；tax return form 指纳税申报表。"
+  },
+  {
+    "id": "government-57",
+    "speaker": "Alex",
+    "text": "Is disability benefit support available for individuals recovering from severe injuries?",
+    "translation": "从严重伤病中康复的人员可以获得伤残福利支持吗？",
+    "note": "disability benefit support 指伤残福利支持。"
+  },
+  {
+    "id": "government-58",
+    "speaker": "Mia",
+    "text": "Yes, provided a licensed medical practitioner completes the comprehensive medical evaluation form.",
+    "translation": "可以的，前提是有执业资质的医生填写完整的综合医学评估表。",
+    "note": "licensed medical practitioner 指执业医师；medical evaluation 指医学评估。"
+  },
+  {
+    "id": "government-59",
+    "speaker": "Alex",
+    "text": "When will my automatic monthly social security disbursement be deposited into my bank account?",
+    "translation": "我的每月自动社保发放款项什么时候会存入我的银行账户？",
+    "note": "monthly disbursement 指每月发放的款项。"
+  },
+  {
+    "id": "government-60",
+    "speaker": "Mia",
+    "text": "Monthly disbursements are directly deposited on the third Wednesday of every calendar month.",
+    "translation": "每月发放款项会在每个公历月的第三个星期三直接汇入账户。",
+    "note": "directly deposited 指直接存入/直汇。"
+  },
+  {
+    "id": "government-61",
+    "speaker": "Alex",
+    "text": "Good afternoon, I recently moved into this precinct and need to update my voter registration.",
+    "translation": "下午好，我最近搬到了这个选区，需要更新我的选民登记信息。",
+    "note": "precinct 指选区/警区；voter registration 指选民登记。"
+  },
+  {
+    "id": "government-62",
+    "speaker": "Mia",
+    "text": "I can update your residential address in the election system right away.",
+    "translation": "我可以在选举系统中立即更新您的居住地址。",
+    "note": "residential address 指居住地址。"
+  },
+  {
+    "id": "government-63",
+    "speaker": "Alex",
+    "text": "What is the deadline to register before the upcoming municipal general election?",
+    "translation": "在即将来临的市政大选之前，登记的截止日期是什么时候？",
+    "note": "municipal general election 指市政大选。"
+  },
+  {
+    "id": "government-64",
+    "speaker": "Mia",
+    "text": "Voter registration forms must be submitted twenty-one days prior to Election Day.",
+    "translation": "选民登记表必须在选举日之前 21 天提交。",
+    "note": "prior to 意为在之前。"
+  },
+  {
+    "id": "government-65",
+    "speaker": "Alex",
+    "text": "Can I request an mail-in absentee ballot if I am traveling during election week?",
+    "translation": "如果我在选举周期间旅行，可以申请邮寄缺席选票吗？",
+    "note": "mail-in absentee ballot 指邮寄/缺席选票。"
+  },
+  {
+    "id": "government-66",
+    "speaker": "Mia",
+    "text": "Yes, you can submit an absentee ballot request online up to one week before the vote.",
+    "translation": "可以的，您可以在投票日一周前在线提交缺席选票申请。",
+    "note": "absentee ballot request 指缺席选票申请。"
+  },
+  {
+    "id": "government-67",
+    "speaker": "Alex",
+    "text": "Where can I find information regarding local polling place locations and operating hours?",
+    "translation": "我在哪里可以找到有关本地投票站位置和开放时间的信息？",
+    "note": "polling place locations 指投票站地点。"
+  },
+  {
+    "id": "government-68",
+    "speaker": "Mia",
+    "text": "Our website provides an interactive map to locate your assigned polling station easily.",
+    "translation": "我们的网站提供交互式地图，可方便地查询您指定的投票站。",
+    "note": "assigned polling station 指指定的投票站。"
+  },
+  {
+    "id": "government-69",
+    "speaker": "Alex",
+    "text": "How can citizens participate in open town hall meetings regarding community budget allocations?",
+    "translation": "市民如何参加关于社区预算分配的公开市政厅会议？",
+    "note": "town hall meetings 指市政厅/市民大会；budget allocations 指预算分配。"
+  },
+  {
+    "id": "government-70",
+    "speaker": "Mia",
+    "text": "All city council sessions are open to the public, with time reserved for public comments.",
+    "translation": "所有市议会会议均向公众开放，并留有公众发言时间。",
+    "note": "city council sessions 指市议会会议；public comments 指公众发言。"
+  },
+  {
+    "id": "government-71",
+    "speaker": "Alex",
+    "text": "Hi Mia, I received a red-light camera traffic violation citation in the mail yesterday.",
+    "translation": "嗨 Mia，我昨天在邮件里收到了一张闯红灯摄像头交通违章罚单。",
+    "note": "traffic violation citation 指交通违章罚单/传票。"
+  },
+  {
+    "id": "government-72",
+    "speaker": "Mia",
+    "text": "You can either pay the civil fine online or contest the citation in traffic court.",
+    "translation": "您可以在线缴纳民事罚款，也可以在交通法庭对该罚单提出申诉/抗辩。",
+    "note": "contest the citation 意为对罚单提出申诉/质疑。"
+  },
+  {
+    "id": "government-73",
+    "speaker": "Alex",
+    "text": "How do I schedule a court hearing if I believe the camera system malfunctioned?",
+    "translation": "如果我认为摄像头系统发生了故障，该如何预约法庭听证会？",
+    "note": "court hearing 指法庭听证会；malfunctioned 意为发生故障。"
+  },
+  {
+    "id": "government-74",
+    "speaker": "Mia",
+    "text": "Check the box for 'request hearing' on the ticket and mail it within fifteen days.",
+    "translation": "在罚单上勾选申请听证选项，并在 15 天内寄回。",
+    "note": "request hearing 意为申请听证。"
+  },
+  {
+    "id": "government-75",
+    "speaker": "Alex",
+    "text": "Are driver points added to my motor vehicle record for camera-enforced tickets?",
+    "translation": "电子眼开出的罚单会在我的机动车驾驶记录上扣分吗？",
+    "note": "driver points 指驾驶扣分/记分；camera-enforced tickets 指电子眼/摄像头处罚单。"
+  },
+  {
+    "id": "government-76",
+    "speaker": "Mia",
+    "text": "Photo enforcement violations are treated as civil infractions, so no points are assessed.",
+    "translation": "拍照执法的违规行为视为民事违规，因此不会被记扣分。",
+    "note": "civil infractions 指民事违规行为；points are assessed 意为记扣分。"
+  },
+  {
+    "id": "government-77",
+    "speaker": "Alex",
+    "text": "Can I attend a defensive driving school to dismiss a speeding ticket fine?",
+    "translation": "我可以参加防御性驾驶学校的学习来撤销超速罚单吗？",
+    "note": "defensive driving school 指防御性驾驶学校；dismiss a fine 意为撤销/免除罚款。"
+  },
+  {
+    "id": "government-78",
+    "speaker": "Mia",
+    "text": "If you haven't taken the course in the past two years, you are eligible for dismissal.",
+    "translation": "如果您在过去两年内未参加过该课程，您有资格申请撤销。",
+    "note": "eligible for dismissal 意为有资格撤销。"
+  },
+  {
+    "id": "government-79",
+    "speaker": "Alex",
+    "text": "What happens if I fail to pay the traffic citation before the designated due date?",
+    "translation": "如果我未能在指定截止日期前缴纳交通违章罚款会怎样？",
+    "note": "designated due date 指指定的截止日期/到期日。"
+  },
+  {
+    "id": "government-80",
+    "speaker": "Mia",
+    "text": "Unpaid fines accrue late penalties and may lead to driver's license suspension.",
+    "translation": "未缴纳的罚款会产生滞纳金，并可能导致驾驶证被吊销。",
+    "note": "late penalties 指滞纳金；license suspension 指驾照吊销/暂扣。"
+  },
+  {
+    "id": "government-81",
+    "speaker": "Alex",
+    "text": "Good morning, I want to establish a new municipal water and waste utility account.",
+    "translation": "早上好，我想开立一个新的市政水务和垃圾处理公用事业账户。",
+    "note": "municipal water and waste utility 指市政水务与垃圾公用事业。"
+  },
+  {
+    "id": "government-82",
+    "speaker": "Mia",
+    "text": "Welcome! We will need your lease agreement or proof of home ownership to start service.",
+    "translation": "欢迎！我们需要您的租赁协议或房屋所有权证明来开通服务。",
+    "note": "proof of home ownership 指房屋所有权证明。"
+  },
+  {
+    "id": "government-83",
+    "speaker": "Alex",
+    "text": "What day of the week is residential trash and curbside recycling collected?",
+    "translation": "住宅垃圾和路边可回收物是每周哪一天清运？",
+    "note": "curbside recycling 指路边可回收物回收；collected 意为清运/收集。"
+  },
+  {
+    "id": "government-84",
+    "speaker": "Mia",
+    "text": "Refuse collection occurs every Tuesday morning, while recycling is picked up on Thursdays.",
+    "translation": "垃圾清运在每周二早晨，而可回收物则在周四回收。",
+    "note": "refuse collection 指垃圾清运。"
+  },
+  {
+    "id": "government-85",
+    "speaker": "Alex",
+    "text": "Who should I contact to report a damaged streetlight or a street pothole?",
+    "translation": "如果想报告路灯损坏或道路坑洼，我应该联系谁？",
+    "note": "damaged streetlight 指损坏的路灯；street pothole 指道路坑洼。"
+  },
+  {
+    "id": "government-86",
+    "speaker": "Mia",
+    "text": "You can report public infrastructure issues directly through our municipal 311 service portal.",
+    "translation": "您可以直接通过我们市政的 311 服务门户网站报告公共基础设施问题。",
+    "note": "public infrastructure issues 指公共基础设施问题；311 service portal 指311 市政服务门户。"
+  },
+  {
+    "id": "government-87",
+    "speaker": "Alex",
+    "text": "Does the city offer free tree trimming services for branches near power lines?",
+    "translation": "对于电力线附近的树枝，市政提供免费的树木修剪服务吗？",
+    "note": "tree trimming services 指树木修剪服务；power lines 指电力线。"
+  },
+  {
+    "id": "government-88",
+    "speaker": "Mia",
+    "text": "Yes, the public works department handles tree maintenance near utility lines for safety.",
+    "translation": "是的，市政工程部门负责处理公用事业管线附近的树木维护以确保安全。",
+    "note": "public works department 指市政工程部门。"
+  },
+  {
+    "id": "government-89",
+    "speaker": "Alex",
+    "text": "Is there a discount program for low-income households on monthly water bills?",
+    "translation": "针对低收入家庭的每月水费有折扣优惠计划吗？",
+    "note": "low-income households 指低收入家庭。"
+  },
+  {
+    "id": "government-90",
+    "speaker": "Mia",
+    "text": "Yes, eligible residents can apply for the utility assistance program to receive monthly credits.",
+    "translation": "有的，符合条件的居民可以申请公用事业援助计划以获取每月账单抵扣。",
+    "note": "utility assistance program 指公用事业援助计划。"
+  },
+  {
+    "id": "government-91",
+    "speaker": "Alex",
+    "text": "Hi Mia, how can I report a neighbor for violating local noise abatement ordinances?",
+    "translation": "嗨 Mia，我该如何举报邻居违反当地降噪法规的行为？",
+    "note": "noise abatement ordinances 指噪声控制/降噪法规。"
+  },
+  {
+    "id": "government-92",
+    "speaker": "Mia",
+    "text": "You can lodge a complaint with code enforcement during business hours, or contact non-emergency police.",
+    "translation": "您可以在工作时间内向规章执法部门投诉，或联系非紧急警察电话。",
+    "note": "code enforcement 指规章执法/城管部门；non-emergency police 指非紧急警察服务。"
+  },
+  {
+    "id": "government-93",
+    "speaker": "Alex",
+    "text": "What are the municipal rules regarding overgrown grass and unattended yard waste?",
+    "translation": "关于草坪过长和无人清理的庭院垃圾，市政有什么规定？",
+    "note": "overgrown grass 指过长的草坪；unattended yard waste 指无人清理的庭院堆积物。"
+  },
+  {
+    "id": "government-94",
+    "speaker": "Mia",
+    "text": "Grass must not exceed eight inches, and property owners receive notices for non-compliance.",
+    "translation": "草坪高度不得超过 8 英寸，违规产权人将收到整改通知。",
+    "note": "non-compliance 指不合规/违规。"
+  },
+  {
+    "id": "government-95",
+    "speaker": "Alex",
+    "text": "Where can I obtain a mandatory dog license and rabies vaccination tag?",
+    "translation": "我在哪里可以办理强制性的犬只许可证和狂犬病疫苗接种牌？",
+    "note": "mandatory dog license 指强制性犬只执照；rabies vaccination tag 指狂犬病疫苗接种牌。"
+  },
+  {
+    "id": "government-96",
+    "speaker": "Mia",
+    "text": "Animal control issues licenses at city hall upon presentation of valid vaccination records.",
+    "translation": "在出示有效的接种记录后，动物管理部门会在市政厅颁发执照。",
+    "note": "animal control 指动物管理部门。"
+  },
+  {
+    "id": "government-97",
+    "speaker": "Alex",
+    "text": "How can food service workers schedule a food handler safety certification class?",
+    "translation": "餐饮从业人员如何预约食品安全员认证课程？",
+    "note": "food handler safety certification 指食品从业人员安全认证。"
+  },
+  {
+    "id": "government-98",
+    "speaker": "Mia",
+    "text": "The health department hosts online and in-person safety courses every second Monday.",
+    "translation": "卫生部门在每个月的第二个星期一举办线上和线下安全课程。",
+    "note": "safety courses 指安全培训课程。"
+  },
+  {
+    "id": "government-99",
+    "speaker": "Alex",
+    "text": "Thank you so much for guiding me through all these governmental procedures!",
+    "translation": "非常感谢你指导我完成所有这些政府政务流程！",
+    "note": "governmental procedures 指政府政务流程。"
+  },
+  {
+    "id": "government-100",
+    "speaker": "Mia",
+    "text": "You're very welcome! Feel free to reach out whenever you need municipal assistance!",
+    "translation": "非常客气！无论何时需要市政帮助，请随时与我们联系！",
+    "note": "municipal assistance 指市政帮助/协助。"
+  }
+],
+  education: [
+  {
+    "id": "education-1",
+    "speaker": "Alex",
+    "text": "Good afternoon, Mrs. Mia. I'd like to discuss my son's recent academic progress in mathematics.",
+    "translation": "下午好，Mia 老师。我想和您讨论一下我儿子最近在数学方面的学业进展。",
+    "note": "academic progress 指学业进展/学习情况。"
+  },
+  {
+    "id": "education-2",
+    "speaker": "Mia",
+    "text": "Hello Alex! Overall he is doing well, though he could benefit from extra practice in algebra.",
+    "translation": "你好 Alex！总体来说他表现不错，不过如果在代数方面多加练习会更有进步。",
+    "note": "benefit from 意为受益于/得益于；algebra 指代数。"
+  },
+  {
+    "id": "education-3",
+    "speaker": "Alex",
+    "text": "Does he actively participate during classroom discussions and group project activities?",
+    "translation": "他在课堂讨论和小组项目活动中表现积极吗？",
+    "note": "actively participate 指积极参与。"
+  },
+  {
+    "id": "education-4",
+    "speaker": "Mia",
+    "text": "Yes, he is very engaged, but he sometimes hesitates to ask for help when confused.",
+    "translation": "是的，他非常投入，但遇到不懂的地方时有时会犹豫要不要寻求帮助。",
+    "note": "hesitate to 意为犹豫/迟疑做某事。"
+  },
+  {
+    "id": "education-5",
+    "speaker": "Alex",
+    "text": "How can we best support his learning habits at home during the evening?",
+    "translation": "我们晚上在家里应该如何更好地支持他的学习习惯？",
+    "note": "learning habits 指学习习惯。"
+  },
+  {
+    "id": "education-6",
+    "speaker": "Mia",
+    "text": "Establishing a quiet, dedicated study space and reviewing homework together daily makes a big difference.",
+    "translation": "建立一个安静专用的学习空间，并每天一起复习功课，效果会非常显著。",
+    "note": "dedicated study space 指专用的学习空间；makes a big difference 意为有很大改善/起大作用。"
+  },
+  {
+    "id": "education-7",
+    "speaker": "Alex",
+    "text": "Are there supplemental learning resources or online portals you recommend for extra practice?",
+    "translation": "您有推荐用于额外练习的补充学习资源或在线平台吗？",
+    "note": "supplemental learning resources 指补充学习资源。"
+  },
+  {
+    "id": "education-8",
+    "speaker": "Mia",
+    "text": "Our school platform provides customized practice modules that align with the current curriculum.",
+    "translation": "我们学校的平台提供与当前课程同步的定制练习模块。",
+    "note": "align with 意为与保持一致/同步；curriculum 指学校课程。"
+  },
+  {
+    "id": "education-9",
+    "speaker": "Alex",
+    "text": "Thank you! I will schedule a follow-up meeting with you after the mid-term examinations.",
+    "translation": "谢谢您！期中考试后我会再和您预约一次后续面谈。",
+    "note": "mid-term examinations 指期中考试。"
+  },
+  {
+    "id": "education-10",
+    "speaker": "Mia",
+    "text": "You are always welcome! Continuous communication between home and school ensures student success.",
+    "translation": "随时欢迎！家校之间保持持续的沟通能更好地保障学生的成功。",
+    "note": "home and school communication 指家校沟通。"
+  },
+  {
+    "id": "education-11",
+    "speaker": "Alex",
+    "text": "Hi Mia, I am looking to enroll my daughter in the upcoming fall semester for ninth grade.",
+    "translation": "嗨 Mia，我想为我女儿办理今年秋季学期的九年级入学注册。",
+    "note": "enroll 意为注册/登记入学；fall semester 指秋季学期。"
+  },
+  {
+    "id": "education-12",
+    "speaker": "Mia",
+    "text": "Welcome to our school! First, we need you to complete the official registration form online.",
+    "translation": "欢迎来到我们学校！首先，需要您在线填写官方入学注册表。",
+    "note": "registration form 指注册申请表。"
+  },
+  {
+    "id": "education-13",
+    "speaker": "Alex",
+    "text": "What official identification and residency verification documents are required for submission?",
+    "translation": "需要提交哪些官方身份证明和居住地核实材料？",
+    "note": "residency verification 指居住证明/户籍核验。"
+  },
+  {
+    "id": "education-14",
+    "speaker": "Mia",
+    "text": "Please provide her birth certificate, immunization records, and a recent utility bill as proof of address.",
+    "translation": "请提供她的出生证明、疫苗接种记录，以及一张最近的公共事业账单作为地址证明。",
+    "note": "immunization records 指疫苗接种记录；proof of address 指地址证明。"
+  },
+  {
+    "id": "education-15",
+    "speaker": "Alex",
+    "text": "My family recently relocated from another school district; do I need official transcripts?",
+    "translation": "我们家最近刚从另一个学区搬过来，我需要提交官方成绩单吗？",
+    "note": "school district 指学区；official transcripts 指官方成绩单/学业档案。"
+  },
+  {
+    "id": "education-16",
+    "speaker": "Mia",
+    "text": "Yes, we will need sealed academic transcripts directly from her previous school district.",
+    "translation": "是的，我们需要由她原学区直接寄出的盖章密封成绩单。",
+    "note": "sealed academic transcripts 指密封的官方学业成绩单。"
+  },
+  {
+    "id": "education-17",
+    "speaker": "Alex",
+    "text": "Is there an entrance assessment or placement test required for new transfer students?",
+    "translation": "新转学生需要参加入学评估或分班测试吗？",
+    "note": "placement test 指分班/水平测试。"
+  },
+  {
+    "id": "education-18",
+    "speaker": "Mia",
+    "text": "We administer a brief placement test in English and math to assign appropriate course levels.",
+    "translation": "我们会安排简短的英语和数学分班测试，以便安排合适的课程难度等级。",
+    "note": "assign course levels 意为匹配/安排课程等级。"
+  },
+  {
+    "id": "education-19",
+    "speaker": "Alex",
+    "text": "When will we receive formal confirmation regarding her enrollment approval status?",
+    "translation": "我们什么时候能收到关于她录取审批状态的正式确认？",
+    "note": "enrollment approval status 指录取/入学审批状态。"
+  },
+  {
+    "id": "education-20",
+    "speaker": "Mia",
+    "text": "Once all documents are verified, official confirmation letters are sent out within five business days.",
+    "translation": "一旦所有文件核验无误，官方确认信会在 5 个工作日内寄出。",
+    "note": "verified 意为核实/校验。"
+  },
+  {
+    "id": "education-21",
+    "speaker": "Alex",
+    "text": "Good morning, Mia. I need some academic guidance regarding my senior year course load selection.",
+    "translation": "早上好，Mia 老师。关于我高三学年的选课组合，我想寻求一些学业指导。",
+    "note": "senior year 指高三/大学四年级；course load 指课程负担/选课量。"
+  },
+  {
+    "id": "education-22",
+    "speaker": "Mia",
+    "text": "Glad to help, Alex. Are you planning to fulfill prerequisite requirements for university admissions?",
+    "translation": "很高兴能帮到你，Alex。你打算满足大学录取的先修课程要求吗？",
+    "note": "prerequisite requirements 指先修课要求/预备条件。"
+  },
+  {
+    "id": "education-23",
+    "speaker": "Alex",
+    "text": "Yes, I am aiming for a science degree, so I want to enroll in Advanced Placement Chemistry.",
+    "translation": "是的，我打算报考理科学位，所以想选修 AP 化学课程。",
+    "note": "Advanced Placement (AP) 指大学先修课程。"
+  },
+  {
+    "id": "education-24",
+    "speaker": "Mia",
+    "text": "AP Chemistry is rigorous; I suggest balancing it with your humanities and elective requirements.",
+    "translation": "AP 化学难度很高；我建议你用人文必修课和选修课来平衡课程强度。",
+    "note": "rigorous 指严谨的/难度高的；electives 指选修课。"
+  },
+  {
+    "id": "education-25",
+    "speaker": "Alex",
+    "text": "Can I drop or switch an elective subject if the workload becomes overwhelming?",
+    "translation": "如果学业负担过重，我可以退选或更换某门选修课吗？",
+    "note": "overwhelming 意为令人不堪重负的；drop or switch 意为退选或调换。"
+  },
+  {
+    "id": "education-26",
+    "speaker": "Mia",
+    "text": "You have a two-week add-drop period at the start of the semester to adjust your schedule.",
+    "translation": "学期初有两周的补退选课窗口期，供你调整课程表。",
+    "note": "add-drop period 指（选课/退课）补退选期。"
+  },
+  {
+    "id": "education-27",
+    "speaker": "Alex",
+    "text": "How many total credit hours do I need to meet minimum graduation guidelines?",
+    "translation": "满足最低毕业标准总共需要多少学分？",
+    "note": "credit hours 指学分/学时。"
+  },
+  {
+    "id": "education-28",
+    "speaker": "Mia",
+    "text": "You need a minimum of twenty-four cumulative credits, including required physical education units.",
+    "translation": "你需要至少 24 个累积学分，其中包括必修的体育学分。",
+    "note": "cumulative credits 指累积学分。"
+  },
+  {
+    "id": "education-29",
+    "speaker": "Alex",
+    "text": "Should I schedule an appointment with a college career counselor this semester?",
+    "translation": "我这学期需要预约大学升学指导老师吗？",
+    "note": "college career counselor 指大学升学与职业指导老师。"
+  },
+  {
+    "id": "education-30",
+    "speaker": "Mia",
+    "text": "Absolutely, setting up early counseling sessions helps streamline college application timelines.",
+    "translation": "非常有必要，尽早预约面谈有助于规划和理清大学申请的时间线。",
+    "note": "streamline 意为简化/理顺（流程）。"
+  },
+  {
+    "id": "education-31",
+    "speaker": "Alex",
+    "text": "Good morning, Mia. I am calling to report that my son will be absent today due to a fever.",
+    "translation": "早上好，Mia 老师。我打电话来报备一下，我儿子今天因发烧请假。",
+    "note": "absent due to 意为因而缺席/请假。"
+  },
+  {
+    "id": "education-32",
+    "speaker": "Mia",
+    "text": "Thank you for informing us. I hope he recovers quickly. Will he be out for multiple days?",
+    "translation": "谢谢通知我们。希望他早日康复。他需要请假几天吗？",
+    "note": "recovers quickly 意为早日康复。"
+  },
+  {
+    "id": "education-33",
+    "speaker": "Alex",
+    "text": "The doctor advised him to rest at home for two days to ensure full recovery.",
+    "translation": "医生建议他在家休息两天，以确保彻底康复。",
+    "note": "full recovery 指彻底康复。"
+  },
+  {
+    "id": "education-34",
+    "speaker": "Mia",
+    "text": "Please submit a doctor's note upon his return so the absence can be officially excused.",
+    "translation": "请在他返校时提交一份诊断证明，以便将此次缺勤按正当请假处理。",
+    "note": "doctor's note 指医生诊断书/病假条；excused 意为（请假）获得批准的。"
+  },
+  {
+    "id": "education-35",
+    "speaker": "Alex",
+    "text": "How can he access his assigned daily homework and missed classroom lectures while resting?",
+    "translation": "他在家休息期间如何获取每天布置的作业和错过的课堂讲义？",
+    "note": "classroom lectures 指课堂讲义/课程内容。"
+  },
+  {
+    "id": "education-36",
+    "speaker": "Mia",
+    "text": "Teachers upload daily assignments and lecture slides to the online student portal by 3 PM.",
+    "translation": "老师们会在下午 3 点前将每日作业和课件上传至学生在线门户网站。",
+    "note": "student portal 指学生门户网站。"
+  },
+  {
+    "id": "education-37",
+    "speaker": "Alex",
+    "text": "What is the maximum number of unexcused absences allowed before academic warning letters are issued?",
+    "translation": "触发学业警告信之前，允许的最大非正当缺勤次数是多少？",
+    "note": "unexcused absences 指无故缺勤/未经批准的缺席；warning letters 指学业警告信。"
+  },
+  {
+    "id": "education-38",
+    "speaker": "Mia",
+    "text": "Exceeding five unexcused absences triggers an automated notification to parents and school counselors.",
+    "translation": "无故缺勤超过 5 次会触发给家长和学校辅导员的自动通知。",
+    "note": "triggers an automated notification 意为触发自动通知。"
+  },
+  {
+    "id": "education-39",
+    "speaker": "Alex",
+    "text": "Can he arrange make-up tests for the mid-term examinations missed during his sick leave?",
+    "translation": "他病假期间错过的期中考试能安排补考吗？",
+    "note": "make-up tests 指补考。"
+  },
+  {
+    "id": "education-40",
+    "speaker": "Mia",
+    "text": "Yes, course instructors will schedule make-up exams once he returns with official medical documentation.",
+    "translation": "可以的，在他带着官方医疗证明返校后，任课老师会为他安排补考。",
+    "note": "medical documentation 指医疗证明文件。"
+  },
+  {
+    "id": "education-41",
+    "speaker": "Alex",
+    "text": "Hi Mia, I am interested in joining the high school robotics club this semester.",
+    "translation": "嗨 Mia，这学期我很有兴趣加入高中机器人社团。",
+    "note": "robotics club 指机器人社团。"
+  },
+  {
+    "id": "education-42",
+    "speaker": "Mia",
+    "text": "That's wonderful! The robotics club meets every Tuesday and Thursday afternoon after school.",
+    "translation": "太棒了！机器人社团每周二和周四放学后都会举行例会。",
+    "note": "after school 意为放学后。"
+  },
+  {
+    "id": "education-43",
+    "speaker": "Alex",
+    "text": "Are there specific membership prerequisites or audition requirements to join the team?",
+    "translation": "加入社团有特定的门槛要求或选拔测试吗？",
+    "note": "prerequisites 指预备条件/门槛；audition requirements 指选拔/试演要求。"
+  },
+  {
+    "id": "education-44",
+    "speaker": "Mia",
+    "text": "No prior experience is required, but continuous commitment to regional competitions is expected.",
+    "translation": "不需要经验，但需要对参加区域竞赛保持持续的投入。",
+    "note": "prior experience 指先前经验；continuous commitment 指持续投入。"
+  },
+  {
+    "id": "education-45",
+    "speaker": "Alex",
+    "text": "Does participation in varsity sports clubs count toward fulfilling high school physical education credits?",
+    "translation": "参加校体育队可以折算为高中体育课的学分吗？",
+    "note": "varsity sports clubs 指学校代表队/校体育队；physical education credits 指体育学分。"
+  },
+  {
+    "id": "education-46",
+    "speaker": "Mia",
+    "text": "Yes, participating in a full season of varsity athletics grants one semester of physical education credit.",
+    "translation": "是的，参加一整季的校队体育运动可以获得一个学期的体育学分。",
+    "note": "varsity athletics 指校队体育运动。"
+  },
+  {
+    "id": "education-47",
+    "speaker": "Alex",
+    "text": "Where can I find the complete schedule for upcoming student club orientation fairs?",
+    "translation": "我在哪里可以找到即将举行的学生社团招新纳新集市的完整日程表？",
+    "note": "club orientation fairs 指社团招新/迎新集市。"
+  },
+  {
+    "id": "education-48",
+    "speaker": "Mia",
+    "text": "The student council posts the interactive club fair directory on the main bulletin board.",
+    "translation": "学生会在主公告栏上贴出了交互式社团集市指南。",
+    "note": "student council 指学生会；bulletin board 指公告栏。"
+  },
+  {
+    "id": "education-49",
+    "speaker": "Alex",
+    "text": "How can I apply for a leadership position in the student government association?",
+    "translation": "我该如何申请学生会中的干部/领导职位？",
+    "note": "leadership position 指领导/干部职位；student government association 指学生会组织。"
+  },
+  {
+    "id": "education-50",
+    "speaker": "Mia",
+    "text": "Candidate nomination forms are due next Friday, followed by campaign speech presentations.",
+    "translation": "候选人提名表截止日期是下周五，随后将进行竞选演说。",
+    "note": "nomination forms 指提名表；campaign speech 指竞选演讲。"
+  },
+  {
+    "id": "education-51",
+    "speaker": "Alex",
+    "text": "Excuse me, Mia. I need access to peer-reviewed academic journals for my history research paper.",
+    "translation": "打扰一下，Mia 老师。我需要查阅同行评审学术期刊来完成我的历史研究论文。",
+    "note": "peer-reviewed academic journals 指同行评审学术期刊；research paper 指研究论文。"
+  },
+  {
+    "id": "education-52",
+    "speaker": "Mia",
+    "text": "You can access our digital database subscriptions using your student login credentials.",
+    "translation": "你可以使用你的学生账号密码登录并使用我们学校购买的数字数据库。",
+    "note": "digital database subscriptions 指数字数据库订阅；login credentials 指登录凭证（账号密码）。"
+  },
+  {
+    "id": "education-53",
+    "speaker": "Alex",
+    "text": "What is the loan duration limit for borrowing physical reference books from the main library?",
+    "translation": "从总图书馆借阅实体参考书的借期上限是多少？",
+    "note": "loan duration limit 指借阅期限；reference books 指参考书/工具书。"
+  },
+  {
+    "id": "education-54",
+    "speaker": "Mia",
+    "text": "Standard loan periods are three weeks, with the option to renew online twice if no holds exist.",
+    "translation": "标准借期为 3 周，如果没人预约的话，可以在线上续借两次。",
+    "note": "renew online 意为线上续借；holds exist 意为有人预约挂号/预订。"
+  },
+  {
+    "id": "education-55",
+    "speaker": "Alex",
+    "text": "Can I reserve a quiet group study room for our term project collaboration?",
+    "translation": "我可以预约一个安静的小组研讨室用于我们学期项目的团队合作吗？",
+    "note": "group study room 指小组研讨/自习室；term project 指学期大作业/项目。"
+  },
+  {
+    "id": "education-56",
+    "speaker": "Mia",
+    "text": "Study rooms can be reserved up to seven days in advance through the library portal.",
+    "translation": "可以通过图书馆门户网站提前最多 7 天预约研讨室。",
+    "note": "in advance 意为提前。"
+  },
+  {
+    "id": "education-57",
+    "speaker": "Alex",
+    "text": "Are there printing and scanning facilities available for student use inside the library?",
+    "translation": "图书馆内部是否有供学生使用的打印和扫描设备？",
+    "note": "printing and scanning facilities 指打印和扫描设施。"
+  },
+  {
+    "id": "education-58",
+    "speaker": "Mia",
+    "text": "Yes, student ID cards are preloaded with printing credits at the beginning of each semester.",
+    "translation": "有的，每学期初，学生卡内都会预充值一定的打印额度。",
+    "note": "printing credits 指打印额度/点数。"
+  },
+  {
+    "id": "education-59",
+    "speaker": "Alex",
+    "text": "What happens if a borrowed library book is accidentally damaged or misplaced?",
+    "translation": "如果借阅的图书馆书籍不慎损坏或遗失了会怎么处理？",
+    "note": "misplaced 意为遗失/放错位置。"
+  },
+  {
+    "id": "education-60",
+    "speaker": "Mia",
+    "text": "A replacement fee equivalent to the item's current market value plus processing costs will be assessed.",
+    "translation": "将收取相当于该图书当前市场价格加上处理手续费的赔偿金。",
+    "note": "replacement fee 指重置/遗失赔偿金；assessed 意为评估/核算。"
+  },
+  {
+    "id": "education-61",
+    "speaker": "Alex",
+    "text": "Hi Mia, where is the school nurse's office located in case of a medical emergency?",
+    "translation": "嗨 Mia，如果遇到突发医疗状况，校医室在什么位置？",
+    "note": "school nurse's office 指校医室；medical emergency 指紧急医疗情况。"
+  },
+  {
+    "id": "education-62",
+    "speaker": "Mia",
+    "text": "The health clinic is on the first floor of the administrative building, next to the main lobby.",
+    "translation": "医务室在行政楼一楼，就在主大厅隔壁。",
+    "note": "administrative building 指行政楼；main lobby 指主大厅。"
+  },
+  {
+    "id": "education-63",
+    "speaker": "Alex",
+    "text": "Does the school provide confidential mental health counseling for students facing exam stress?",
+    "translation": "学校会为面临考试压力的学生提供保密的心理健康咨询服务吗？",
+    "note": "confidential mental health counseling 指保密的心理健康咨询。"
+  },
+  {
+    "id": "education-64",
+    "speaker": "Mia",
+    "text": "Yes, licensed guidance counselors offer confidential one-on-one sessions during regular school hours.",
+    "translation": "是的，持证心理辅导老师在正常上课时间提供保密的一对一咨询服务。",
+    "note": "guidance counselors 指心理/学业辅导老师。"
+  },
+  {
+    "id": "education-65",
+    "speaker": "Alex",
+    "text": "How does the school notify parents in the event of severe weather or emergency closures?",
+    "translation": "如果遇到恶劣天气或紧急停课，学校如何通知家长？",
+    "note": "emergency closures 指紧急停课/关闭校园。"
+  },
+  {
+    "id": "education-66",
+    "speaker": "Mia",
+    "text": "Emergency alerts are dispatched simultaneously via automated SMS text messages and email broadcasts.",
+    "translation": "紧急警报会通过自动短信和电子邮件群发同步推送给所有人。",
+    "note": "dispatched simultaneously 指同步发送/推送。"
+  },
+  {
+    "id": "education-67",
+    "speaker": "Alex",
+    "text": "What security protocols are in place to control visitor access during regular operating hours?",
+    "translation": "在日常教学时间内，有哪些安保规程来管制访客出入？",
+    "note": "security protocols 指安保规程/安全协议；visitor access 指访客出入。"
+  },
+  {
+    "id": "education-68",
+    "speaker": "Mia",
+    "text": "All visitors must check in at the security gate and wear a guest badge at all times.",
+    "translation": "所有访客都必须在门卫处登记，并全程佩戴访客证。",
+    "note": "guest badge 指访客证。"
+  },
+  {
+    "id": "education-69",
+    "speaker": "Alex",
+    "text": "Can students with food allergies request customized meal options in the school cafeteria?",
+    "translation": "对食物过敏的学生可以在学校食堂申请定制餐食吗？",
+    "note": "food allergies 指食物过敏；customized meal options 指定制餐食。"
+  },
+  {
+    "id": "education-70",
+    "speaker": "Mia",
+    "text": "Absolutely, our cafeteria staff provides allergen-free meal plan options upon dietary request.",
+    "translation": "完全可以，我们的食堂工作人员会根据膳食需求提供无过敏原的餐食选项。",
+    "note": "allergen-free 指无过敏原的。"
+  },
+  {
+    "id": "education-71",
+    "speaker": "Alex",
+    "text": "Good afternoon, Mia. I have questions regarding the tuition payment installment plan options.",
+    "translation": "下午好，Mia。关于学费分期付款计划的选项，我有几个问题。",
+    "note": "tuition payment installment plan 指学费分期付款计划。"
+  },
+  {
+    "id": "education-72",
+    "speaker": "Mia",
+    "text": "We offer quarterly payment plans that allow families to break down annual tuition into four installments.",
+    "translation": "我们提供季度付款计划，允许家庭将年度学费分为四期缴纳。",
+    "note": "quarterly payment plans 指季度分期付款计划。"
+  },
+  {
+    "id": "education-73",
+    "speaker": "Alex",
+    "text": "What merit-based scholarship opportunities are available for incoming undergraduate students?",
+    "translation": "对于即将入学的新生，有哪些基于优异成绩的奖学金机会？",
+    "note": "merit-based scholarship 指（基于优异表现的）奖学金。"
+  },
+  {
+    "id": "education-74",
+    "speaker": "Mia",
+    "text": "Academic excellence scholarships are awarded automatically based on high school GPA and entrance exam scores.",
+    "translation": "学业优秀奖学金会根据高中 GPA 和入学考试成绩自动评定发放。",
+    "note": "academic excellence 指学业优秀；GPA 指平均学分绩点。"
+  },
+  {
+    "id": "education-75",
+    "speaker": "Alex",
+    "text": "When is the final deadline to submit the Free Application for Federal Student Aid?",
+    "translation": "提交联邦学生资助申请表的最终截止日期是什么时候？",
+    "note": "FAFSA 指联邦学生资助申请表；final deadline 指最终截止日期。"
+  },
+  {
+    "id": "education-76",
+    "speaker": "Mia",
+    "text": "Financial aid forms should be completed by March first to maximize grant eligibility.",
+    "translation": "资助申请表应在 3 月 1 日前填写完毕，以最大化争取获得助学金的资格。",
+    "note": "grant eligibility 指助学金/赠款资格。"
+  },
+  {
+    "id": "education-77",
+    "speaker": "Alex",
+    "text": "Are work-study program opportunities open to full-time enrolled students on campus?",
+    "translation": "全日制在读学生可以在校园内申请勤工助学项目岗位吗？",
+    "note": "work-study program 指勤工助学项目；full-time enrolled 指全日制在读的。"
+  },
+  {
+    "id": "education-78",
+    "speaker": "Mia",
+    "text": "Yes, federal work-study positions are posted on the student employment portal each semester.",
+    "translation": "可以的，每学期学生就业门户网站上都会发布勤工助学的职位。",
+    "note": "student employment portal 指学生兼职/就业门户网站。"
+  },
+  {
+    "id": "education-79",
+    "speaker": "Alex",
+    "text": "Will a late payment fee be applied if tuition payments are delayed by a few days?",
+    "translation": "如果学费晚交了几天，会被收取滞纳金吗？",
+    "note": "late payment fee 指滞纳金/逾期费。"
+  },
+  {
+    "id": "education-80",
+    "speaker": "Mia",
+    "text": "A grace period of five days is granted before late charges accrue on unpaid balances.",
+    "translation": "在对未付余额收取滞纳金之前，有 5 天的宽限期。",
+    "note": "grace period 指宽限期；unpaid balances 指未付余额。"
+  },
+  {
+    "id": "education-81",
+    "speaker": "Alex",
+    "text": "Hi Mia, I want to verify if I have fulfilled all general education graduation requirements.",
+    "translation": "嗨 Mia，我想确认一下我是不是已经满足了所有通识教育的毕业要求。",
+    "note": "general education graduation requirements 指通识教育毕业要求。"
+  },
+  {
+    "id": "education-82",
+    "speaker": "Mia",
+    "text": "Let's conduct a degree audit review to ensure all course credits and community service hours are met.",
+    "translation": "我们来进行一次毕业/学位审计审查，确保所有课程学分和社区服务时长都符合标准。",
+    "note": "degree audit review 指学位/毕业审计审查。"
+  },
+  {
+    "id": "education-83",
+    "speaker": "Alex",
+    "text": "How many mandatory community service hours are required for high school graduation?",
+    "translation": "高中毕业需要完成多少个强制性的社区服务小时数？",
+    "note": "community service hours 指社区服务时长/义工时数。"
+  },
+  {
+    "id": "education-84",
+    "speaker": "Mia",
+    "text": "Students must complete a minimum of forty verified community service hours prior to graduation.",
+    "translation": "学生在毕业前必须完成至少 40 个经过核实的社区服务小时数。",
+    "note": "verified 指经过核实/认证的。"
+  },
+  {
+    "id": "education-85",
+    "speaker": "Alex",
+    "text": "When can graduating seniors order their official cap, gown, and graduation announcement packages?",
+    "translation": "应届毕业生什么时候可以订购官方学士服、学士帽以及毕业典礼喜报套件？",
+    "note": "graduating seniors 指应届毕业生；cap and gown 指学士帽和学士服。"
+  },
+  {
+    "id": "education-86",
+    "speaker": "Mia",
+    "text": "Graduation commencement orders are processed through the campus bookstore starting in February.",
+    "translation": "毕业典礼相关预订自 2 月份起由校园书店统一受理。",
+    "note": "commencement 意为毕业典礼/学位授予仪式。"
+  },
+  {
+    "id": "education-87",
+    "speaker": "Alex",
+    "text": "How can I request official academic transcripts to be sent to prospective employers?",
+    "translation": "我该如何申请将我的官方成绩单寄送给潜在的雇主？",
+    "note": "prospective employers 指潜在雇主。"
+  },
+  {
+    "id": "education-88",
+    "speaker": "Mia",
+    "text": "Official transcript requests can be submitted electronically through the registrar's online portal.",
+    "translation": "可以通过教务处的在线门户网站电子化提交官方成绩单寄送申请。",
+    "note": "registrar's online portal 指教务处在线门户网站。"
+  },
+  {
+    "id": "education-89",
+    "speaker": "Alex",
+    "text": "Will diplomas be distributed during the commencement ceremony or mailed afterward?",
+    "translation": "毕业证书是在毕业典礼现场发放，还是典礼后邮寄？",
+    "note": "diplomas 指毕业证书/学位证书；distributed 意为颁发/发放。"
+  },
+  {
+    "id": "education-90",
+    "speaker": "Mia",
+    "text": "Diploma covers are handed out on stage, while actual certified diplomas are mailed within four weeks.",
+    "translation": "典礼台上会颁发证书外壳，而正式的盖章毕业证书会在 4 周内按地址寄出。",
+    "note": "diploma covers 指毕业证书外壳/封皮。"
+  },
+  {
+    "id": "education-91",
+    "speaker": "Alex",
+    "text": "Good morning, Mia. My son has a documented learning disability and needs academic accommodations.",
+    "translation": "早上好，Mia。我儿子有经医学证明的学习障碍，需要学业支持与便利调整。",
+    "note": "learning disability 指学习障碍；academic accommodations 指学业支持/合理便利。"
+  },
+  {
+    "id": "education-92",
+    "speaker": "Mia",
+    "text": "We can schedule an Individualized Education Program meeting to evaluate his specific learning needs.",
+    "translation": "我们可以安排一次个性化教育计划会议，来评估他的具体学习需求。",
+    "note": "Individualized Education Program (IEP) 指个性化教育计划。"
+  },
+  {
+    "id": "education-93",
+    "speaker": "Alex",
+    "text": "What extended time accommodations are available for standardized testing and term exams?",
+    "translation": "对于标准化考试和期末考试，有哪些延长考试时间的便利措施？",
+    "note": "extended time accommodations 指延长考试时间等辅助支持。"
+  },
+  {
+    "id": "education-94",
+    "speaker": "Mia",
+    "text": "Eligible students may receive fifty percent extra time along with distraction-reduced testing environments.",
+    "translation": "符合条件的学生可以获得额外 50% 的考试时间，以及减少干扰的单独考场环境。",
+    "note": "distraction-reduced testing environments 指减少干扰的考试环境。"
+  },
+  {
+    "id": "education-95",
+    "speaker": "Alex",
+    "text": "Do classroom teachers receive formal training on implementing student accommodation plans?",
+    "translation": "任课教师接受过关于落实学生辅助方案的正规培训吗？",
+    "note": "accommodation plans 指辅助/便利方案。"
+  },
+  {
+    "id": "education-96",
+    "speaker": "Mia",
+    "text": "Yes, special education specialists collaborate closely with subject teachers to ensure plan adherence.",
+    "translation": "是的，特教专家会与学科教师紧密配合，确保方案得到精准落实。",
+    "note": "special education specialists 指特殊教育专家；adherence 指遵守/落实。"
+  },
+  {
+    "id": "education-97",
+    "speaker": "Alex",
+    "text": "How frequently are student Individualized Education Programs reviewed and updated?",
+    "translation": "学生的个性化教育计划多久进行一次审阅和更新？",
+    "note": "reviewed and updated 意为审阅并更新。"
+  },
+  {
+    "id": "education-98",
+    "speaker": "Mia",
+    "text": "IEP goals are reviewed annually with parents, school psychologists, and academic advisors.",
+    "translation": "IEP 目标每年会由家长、学校心理学家以及学业导师共同进行年度复审。",
+    "note": "school psychologists 指学校心理学家。"
+  },
+  {
+    "id": "education-99",
+    "speaker": "Alex",
+    "text": "Thank you so much for your dedicated guidance and comprehensive support throughout this process!",
+    "translation": "非常感谢您在整个过程中提供的专注指导和全方位支持！",
+    "note": "comprehensive support 指全方位/综合支持。"
+  },
+  {
+    "id": "education-100",
+    "speaker": "Mia",
+    "text": "You are very welcome! We are committed to fostering an inclusive and supportive educational environment!",
+    "translation": "非常客气！我们致力于营造一个包容且充满支持的教育环境！",
+    "note": "inclusive and supportive 指包容且提供支持的。"
+  }
+],
   extra1: Array.from({ length: 100 }, (_, i) => ({ 
     id: `extra1-${i+1}`, 
     speaker: i%2===0?"Alex":"Mia", 
