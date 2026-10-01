@@ -29,8 +29,8 @@ describe("SpeakWise learning content", () => {
     }
   });
 
-  it("keeps Alex and Mia speaker labels in the practice dialogue", () => {
+  it("keeps Alex and Mike speaker labels in the practice dialogue", () => {
     expect(PRACTICE_DIALOGUE.some((line) => line.speaker === "Alex")).toBe(true);
-    expect(PRACTICE_DIALOGUE.some((line) => line.speaker === "Mia")).toBe(true);
+    expect(PRACTICE_DIALOGUE.some((line) => line.speaker === "Mike")).toBe(true);
   });
 });

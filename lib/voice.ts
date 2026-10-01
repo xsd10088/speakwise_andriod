@@ -1,6 +1,6 @@
 import type { Voice } from "expo-speech";
 
-export type Speaker = "Alex" | "Mia";
+export type Speaker = "Alex" | "Mike";
 
 export type VoiceSelection = {
   voice?: Voice;
@@ -11,19 +11,19 @@ export type VoiceSelection = {
 const PREFERRED_NAMES: Record<Speaker, RegExp[]> = {
   Alex: [
     /\balex\b/i,
-    /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur/i,
-    /male|george/i,
-  ],
-  Mia: [
-    /\bmia\b/i,
     /samantha|karen|susan|victoria|jenny|aria|hazel|libby|fiona|allison|ava|emma|joanna|kendra|kimberly|salli|ivy|moira|zira/i,
     /female|jenny|aria/i,
+  ],
+  Mike: [
+    /\bmike\b/i,
+    /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur/i,
+    /male|george/i,
   ],
 };
 
 const GENDER_NAMES: Record<Speaker, RegExp> = {
-  Alex: /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur|male|george/i,
-  Mia: /samantha|karen|susan|victoria|jenny|aria|hazel|libby|fiona|allison|ava|emma|joanna|kendra|kimberly|salli|ivy|moira|zira|female/i,
+  Alex: /samantha|karen|susan|victoria|jenny|aria|hazel|libby|fiona|allison|ava|emma|joanna|kendra|kimberly|salli|ivy|moira|zira|female/i,
+  Mike: /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur|male|george/i,
 };
 
 export function selectVoiceForSpeaker(voices: Voice[], speaker: Speaker): VoiceSelection {
