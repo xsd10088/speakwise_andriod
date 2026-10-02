@@ -86,6 +86,7 @@ export default function IndexScreen() {
   const completedRecordingUri = useRef<string | null>(null);
   const scrollViewRef = useRef<ScrollView>(null);
   const autoPlayedMessageIds = useRef(new Set<string>());
+  const speechRequestRef = useRef(0);
   const { width: screenWidth } = useWindowDimensions();
 
   useEffect(() => {
@@ -104,11 +105,43 @@ export default function IndexScreen() {
     };
   }, [selectedWord]);
 
+  const speakText = async (text: string, options: Speech.SpeechOptions = {}) => {
+    const content = text.trim();
+    if (!content) return;
+
+    const requestId = ++speechRequestRef.current;
+
+    try {
+      // Android stop() is asynchronous. Awaiting it prevents it from
+      // cancelling the utterance that starts immediately afterwards.
+      await Speech.stop();
+    } catch {
+      // There may be no active utterance; playback can still proceed.
+    }
+
+    if (requestId !== speechRequestRef.current) return;
+
+    Speech.speak(content, {
+      language: "en-US",
+      rate: 0.85,
+      pitch: 1.0,
+      ...options,
+      onDone: () => {
+        if (requestId === speechRequestRef.current) options.onDone?.();
+      },
+      onStopped: () => {
+        if (requestId === speechRequestRef.current) options.onStopped?.();
+      },
+      onError: (error) => {
+        if (requestId === speechRequestRef.current) options.onError?.(error);
+      },
+    });
+  };
+
   const handleWordPress = (word: string, example: string) => {
     setSelectedWord(word);
     setSelectedExample(example);
-    Speech.stop();
-    Speech.speak(word, { language: "en-US" });
+    void speakText(word);
   };
 
   // 场景切换
@@ -331,21 +364,17 @@ export default function IndexScreen() {
     if (!text.trim() || autoPlayedMessageIds.current.has(messageId)) return;
     autoPlayedMessageIds.current.add(messageId);
     setSpeakingMessageId(messageId);
-    try {
-      Speech.stop();
-      Speech.speak(text, {
-        language: "en-US",
-        onDone: () => setSpeakingMessageId((current) => (current === messageId ? null : current)),
-        onStopped: () => setSpeakingMessageId((current) => (current === messageId ? null : current)),
-        onError: (error) => {
-          console.error("Failed to play AI reply:", error);
-          setSpeakingMessageId((current) => (current === messageId ? null : current));
-        },
-      });
-    } catch (error) {
+    void speakText(text, {
+      onDone: () => setSpeakingMessageId((current) => (current === messageId ? null : current)),
+      onStopped: () => setSpeakingMessageId((current) => (current === messageId ? null : current)),
+      onError: (error) => {
+        console.error("Failed to play AI reply:", error);
+        setSpeakingMessageId((current) => (current === messageId ? null : current));
+      },
+    }).catch((error) => {
       console.error("Failed to start AI reply playback:", error);
       setSpeakingMessageId(null);
-    }
+    });
   };
 
   const handleSpeak = (messageId: string, text: string) => {
@@ -494,10 +523,7 @@ export default function IndexScreen() {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.suggestionSpeakButton}
-                  onPress={() => {
-                    Speech.stop();
-                    Speech.speak(suggestion.english, { language: "en-US" });
-                  }}
+                  onPress={() => void speakText(suggestion.english)}
                   accessibilityLabel={`播放提示${idx + 1}`}
                 >
                   <Text style={styles.suggestionSpeakButtonText}>🔊 语音</Text>

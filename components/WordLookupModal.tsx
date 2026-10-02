@@ -1,4 +1,5 @@
 import * as Speech from "expo-speech";
+import { useEffect, useRef } from "react";
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import type { WordDefinition } from "@/lib/word";
 
@@ -21,20 +22,64 @@ export function WordLookupModal({
   onSave,
   onClose,
 }: WordLookupModalProps) {
+  const speechRequestRef = useRef(0);
+
+  const stopSpeech = () => {
+    speechRequestRef.current += 1;
+    void Speech.stop().catch(() => {
+      // Speech.stop can reject when no utterance is active; this is safe to ignore.
+    });
+  };
+
+  const speakWord = async () => {
+    const text = word?.trim();
+  
+    if (!text) return;
+
+    const requestId = ++speechRequestRef.current;
+
+    try {
+      // Speech.stop is asynchronous on Android. Waiting for it prevents the
+      // stop operation from cancelling the new utterance below.
+      await Speech.stop();
+    } catch {
+      // Continue and try to speak even when there was no active utterance.
+    }
+
+    if (requestId !== speechRequestRef.current) return;
+
+    Speech.speak(text, {
+      language: "en-US",
+      rate: 0.85,
+      pitch: 1.0,
+    });
+  };
+
+  useEffect(() => {
+    if (!visible) return;
+
+    return () => {
+      stopSpeech();
+    };
+  }, [visible, word]);
+
+  const handleClose = () => {
+    stopSpeech();
+    onClose();
+  };
+
   if (!word) return null;
 
   return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
-      <Pressable style={styles.backdrop} onPress={onClose}>
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={handleClose}>
+      <Pressable style={styles.backdrop} onPress={handleClose}>
         <Pressable style={styles.card} onPress={(event) => event.stopPropagation()}>
           <View style={styles.titleRow}>
             <Text style={styles.word}>{word}</Text>
             <Pressable
               style={styles.speak}
-              onPress={() => {
-                Speech.stop();
-                Speech.speak(word, { language: "en-US" });
-              }}
+              onPress={speakWord}
+              accessibilityRole="button"
               accessibilityLabel={`朗读${word}`}
             >
               <Text style={styles.speakText}>🔊</Text>
@@ -51,7 +96,7 @@ export function WordLookupModal({
                 <Text style={styles.buttonText}>{isSaved ? "已收藏" : "加入生词本"}</Text>
               </Pressable>
             )}
-            <Pressable style={styles.secondaryButton} onPress={onClose}>
+            <Pressable style={styles.secondaryButton} onPress={handleClose}>
               <Text style={styles.secondaryText}>关闭</Text>
             </Pressable>
           </View>
