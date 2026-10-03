@@ -31,6 +31,7 @@ import {
   translateText,
   DialogueMessage,
 } from "../../lib/api";
+import { useWordbook } from "../../lib/wordbook";
 
 type Scene = (typeof SCENES)[number];
 type SuggestionCard = {
@@ -88,6 +89,7 @@ export default function IndexScreen() {
   const autoPlayedMessageIds = useRef(new Set<string>());
   const speechRequestRef = useRef(0);
   const { width: screenWidth } = useWindowDimensions();
+  const { words: savedWords, toggleWord, hasWord } = useWordbook();
 
   useEffect(() => {
     if (!selectedWord) {
@@ -584,6 +586,12 @@ export default function IndexScreen() {
         word={selectedWord}
         definition={selectedDefinition}
         example={selectedExample}
+        isSaved={selectedWord ? hasWord(selectedWord) : false}
+        onSave={() => {
+          if (selectedWord) {
+            toggleWord(selectedWord, selectedExample, SCENES.find((s) => s.key === selectedScene.key)?.title ?? "AI 对话");
+          }
+        }}
         onClose={() => setSelectedWord(null)}
       />
     </SafeAreaView>
