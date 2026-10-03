@@ -1,8 +1,8 @@
 import React from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
 
-// 使用 default import 匹配 export default IndexScreen
-import IndexScreen from "../app/tabs/index";
+// 使用 default import 匹配 export default PracticeScreen
+import PracticeScreen from "../app/tabs/practice";
 
 // 场景配置数据
 import { SCENES } from "../lib/data";
@@ -86,7 +86,7 @@ describe("PracticeScreen", () => {
   });
 
   it("renders every configured practice scene", async () => {
-    const { getByText } = render(<IndexScreen />);
+    const { getByText } = render(<PracticeScreen />);
 
     expect(getByText("AI 助手")).toBeTruthy();
     SCENES.forEach((scene) => {
@@ -95,7 +95,7 @@ describe("PracticeScreen", () => {
   });
 
   it("generates reply suggestions from the latest AI message", async () => {
-    const { getByLabelText, getByText } = render(<IndexScreen />);
+    const { getByLabelText, getByText } = render(<PracticeScreen />);
 
     fireEvent.press(getByLabelText("显示回复提示"));
 
@@ -114,7 +114,7 @@ describe("PracticeScreen", () => {
   });
 
   it("automatically reads a successful AI reply aloud", async () => {
-    const { getByPlaceholderText, getByText } = render(<IndexScreen />);
+    const { getByPlaceholderText, getByText } = render(<PracticeScreen />);
 
     const input = getByPlaceholderText("输入英文或点击麦克风录音...");
     fireEvent.changeText(input, "Hello");
@@ -130,7 +130,7 @@ describe("PracticeScreen", () => {
   });
 
   it("stops recording and places transcription in the reply input without sending", async () => {
-    const { getByPlaceholderText, getByText } = render(<IndexScreen />);
+    const { getByPlaceholderText, getByText } = render(<PracticeScreen />);
     const startButton = getByText("🎤");
     const input = getByPlaceholderText("输入英文或点击麦克风录音...");
 

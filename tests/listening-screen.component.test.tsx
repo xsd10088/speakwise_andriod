@@ -60,7 +60,7 @@ jest.mock("react-native", () => {
   };
 });
 
-import ListeningScreen from "../app/tabs/listening";
+import ListeningScreen from "../app/tabs/index";
 
 describe("ListeningScreen", () => {
   beforeEach(() => {

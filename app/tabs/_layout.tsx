@@ -1,7 +1,6 @@
 import { SymbolView } from "expo-symbols";
-import { Tabs, useRouter } from "expo-router";
+import { Tabs } from "expo-router";
 import { StyleSheet } from "react-native";
-import { useEffect } from "react";
 
 const icons = {
   practice: { ios: "mic.fill", android: "mic", web: "mic" },
@@ -10,12 +9,6 @@ const icons = {
 } as const;
 
 export default function TabLayout() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.replace("/(tabs)/listening");
-  }, [router]);
-
   return (
     <Tabs
       screenOptions={{
@@ -27,7 +20,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="listening"
+        name="index"
         options={{
           title: "听力训练",
           tabBarIcon: ({ color }) => (
@@ -36,7 +29,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="practice"
         options={{
           title: "AI口语练习",
           tabBarIcon: ({ color }) => (

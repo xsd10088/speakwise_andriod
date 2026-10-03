@@ -574,7 +574,7 @@ export function getWordDefinition(word: string): WordDefinition {
 }
 
 export function cleanLookupWord(word: string) {
-  return word.toLowerCase().replace(/[^a-z'-]/g, "");
+  return word.toLowerCase().replace(/[^a-z' -]/g, "").replace(/\s+/g, " ").trim();
 }
 
 const remoteCache = new Map<string, WordDefinition>();
