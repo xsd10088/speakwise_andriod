@@ -22,15 +22,32 @@ const PREFERRED_NAMES: Record<Speaker, RegExp[]> = {
 };
 
 const GENDER_NAMES: Record<Speaker, RegExp> = {
-  Alex: /samantha|karen|susan|victoria|jenny|aria|hazel|libby|fiona|allison|ava|emma|joanna|kendra|kimberly|salli|ivy|moira|zira|female/i,
-  Mike: /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur|male|george/i,
+  Alex:
+    /samantha|karen|susan|victoria|jenny|aria|hazel|libby|fiona|allison|ava|emma|joanna|kendra|kimberly|salli|ivy|moira|zira|female/i,
+  Mike:
+    /david|daniel|andrew|brian|guy|mark|ryan|tom|fred|ralph|oliver|arthur|male|george/i,
 };
 
-export function selectVoiceForSpeaker(voices: Voice[], speaker: Speaker): VoiceSelection {
-  const english = voices.filter((voice) => /^en([_-]|$)/i.test(voice.language));
+export function selectVoiceForSpeaker(
+  voices: Voice[],
+  speaker: Speaker,
+): VoiceSelection {
+  const english = voices.filter((voice) =>
+    /^en([_-]|$)/i.test(voice.language),
+  );
+
   const candidates = english.length > 0 ? english : voices;
-  const preferred = candidates.find((voice) => PREFERRED_NAMES[speaker].some((pattern) => pattern.test(`${voice.name} ${voice.identifier}`)));
-  const genderMatch = candidates.find((voice) => GENDER_NAMES[speaker].test(`${voice.name} ${voice.identifier}`));
+
+  const preferred = candidates.find((voice) =>
+    PREFERRED_NAMES[speaker].some((pattern) =>
+      pattern.test(`${voice.name} ${voice.identifier}`),
+    ),
+  );
+
+  const genderMatch = candidates.find((voice) =>
+    GENDER_NAMES[speaker].test(`${voice.name} ${voice.identifier}`),
+  );
+
   const voice = preferred ?? genderMatch;
 
   return {
@@ -40,6 +57,6 @@ export function selectVoiceForSpeaker(voices: Voice[], speaker: Speaker): VoiceS
   };
 }
 
-export function getSpeechRate(rate: number) {
+export function getSpeechRate(rate: number): number {
   return Math.max(0.5, Math.min(2, rate));
 }

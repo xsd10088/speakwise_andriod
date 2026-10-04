@@ -2,7 +2,9 @@
   "name": "speakwise-android",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.15.9",
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~57.0.17",
     "expo-audio": "~57.0.4",
     "expo-constants": "~57.0.15",
@@ -28,6 +30,7 @@
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.2.2",
+    "@vitest/utils": "^5.0.3",
     "jest": "^29.7.0",
     "jest-expo": "~57.0.5",
     "react-test-renderer": "19.2.3",
