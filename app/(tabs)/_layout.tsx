@@ -11,7 +11,7 @@ const COLORS = {
 export default function TabsLayout() {
   return (
     <Tabs
-      initialRouteName="index"
+      initialRouteName="listening"
       screenOptions={{
         headerShown: false,
 
@@ -30,6 +30,8 @@ export default function TabsLayout() {
           fontSize: 12,
           fontWeight: "700",
         },
+
+        tabBarIcon: () => null,
 
         sceneStyle: {
           backgroundColor: COLORS.background,
