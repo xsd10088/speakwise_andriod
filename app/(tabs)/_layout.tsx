@@ -39,14 +39,6 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
-        options={{
-          title: "口语练习",
-          tabBarLabel: "口语练习",
-        }}
-      />
-
-      <Tabs.Screen
         name="listening"
         options={{
           title: "听力训练",
@@ -55,10 +47,18 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
+        name="index"
+        options={{
+          title: "口语练习",
+          tabBarLabel: "口语练习",
+        }}
+      />
+
+      <Tabs.Screen
         name="progress"
         options={{
-          title: "我的",
-          tabBarLabel: "我的",
+          title: "我的进度",
+          tabBarLabel: "我的进度",
         }}
       />
     </Tabs>
