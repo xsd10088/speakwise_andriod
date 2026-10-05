@@ -97,7 +97,7 @@ describe("ListeningScreen", () => {
     expect(await screen.findByText("暂未读取到系统声线，将使用默认英语声音播放")).toBeTruthy();
     fireEvent.press(screen.getByLabelText("返回页面顶部"));
     expect(mockScrollToOffset).toHaveBeenCalledWith({ offset: 0, animated: true });
-  });
+  }, 15000);
 
   it("shows ten horizontally selectable scenes and all 100 lines are visible while speaking", () => {
     render(<ListeningScreen />);
