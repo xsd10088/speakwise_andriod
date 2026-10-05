@@ -1,4 +1,5 @@
 import { Tabs } from "expo-router";
+import { Pressable, StyleSheet } from "react-native";
 
 const COLORS = {
   background: "#061B46",
@@ -8,6 +9,27 @@ const COLORS = {
   activeBg: "#2F6BEB",
   inactive: "#9AA2B4",
 };
+
+const chipStyles = StyleSheet.create({
+  chip: {
+    flex: 1,
+    marginHorizontal: 3,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderRadius: 14,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  chipActive: {
+    backgroundColor: COLORS.activeBg,
+    borderColor: COLORS.activeBg,
+  },
+  chipIdle: {
+    backgroundColor: "transparent",
+    borderColor: COLORS.border,
+  },
+});
 
 export default function TabsLayout() {
   return (
@@ -27,24 +49,36 @@ export default function TabsLayout() {
           paddingBottom: 8,
         },
 
-        tabBarItemStyle: {
-          marginHorizontal: 3,
-          borderWidth: 1,
-          borderStyle: "solid",
-          borderColor: COLORS.border,
-          borderRadius: 14,
-          paddingVertical: 8,
-        },
-
-        tabBarActiveBackgroundColor: COLORS.activeBg,
-        tabBarInactiveBackgroundColor: "transparent",
-
         tabBarLabelStyle: {
           fontSize: 15,
           fontWeight: "800",
         },
 
         tabBarIcon: () => null,
+        tabBarIconStyle: { width: 0, height: 0 },
+
+        tabBarButton: ({
+          children,
+          style,
+          hoverEffect,
+          pressColor,
+          ref,
+          ...rest
+        }) => (
+          <Pressable
+            {...rest}
+            accessible
+            style={({ pressed }) => [
+              chipStyles.chip,
+              rest["aria-selected"]
+                ? chipStyles.chipActive
+                : chipStyles.chipIdle,
+              pressed ? { opacity: 0.75 } : null,
+            ]}
+          >
+            {children}
+          </Pressable>
+        ),
 
         sceneStyle: {
           backgroundColor: COLORS.background,
