@@ -16,6 +16,7 @@ import { ScreenContainer } from "@/components/ScreenContainer";
 import {
   getSceneLines,
   SCENES,
+  type DifficultyLevel,
   type ListeningLine,
   type SceneKey,
   type Speaker as DataSpeaker,
@@ -142,6 +143,7 @@ export default function ListeningScreen() {
   const { toggleWord, hasWord } = useWordbook();
 
   const [scene, setScene] = useState<SceneKey>("greetings");
+  const [difficulty, setDifficulty] = useState<DifficultyLevel>("advanced");
   const [selectedDefinition, setSelectedDefinition] =
     useState<WordDefinition | null>(null);
   const [selectedExample, setSelectedExample] = useState("");
@@ -153,7 +155,7 @@ export default function ListeningScreen() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [translated, setTranslated] = useState<Record<string, boolean>>({});
 
-  const lines = getSceneLines(scene);
+  const lines = getSceneLines(scene, difficulty);
 
   useEffect(() => {
     Speech.getAvailableVoicesAsync()
@@ -250,7 +252,42 @@ export default function ListeningScreen() {
                 <Text style={styles.kicker}>听力训练</Text>
               </View>
 
-              <Text style={styles.count}>100句</Text>
+              <View style={styles.difficultySelector}>
+                <Pressable
+                  onPress={() => setDifficulty("beginner")}
+                  style={[
+                    styles.difficultyButton,
+                    difficulty === "beginner" && styles.difficultyActive,
+                  ]}
+                  accessibilityLabel="选择低难度"
+                >
+                  <Text
+                    style={[
+                      styles.difficultyText,
+                      difficulty === "beginner" && styles.difficultyTextActive,
+                    ]}
+                  >
+                    低
+                  </Text>
+                </Pressable>
+                <Pressable
+                  onPress={() => setDifficulty("advanced")}
+                  style={[
+                    styles.difficultyButton,
+                    difficulty === "advanced" && styles.difficultyActive,
+                  ]}
+                  accessibilityLabel="选择高难度"
+                >
+                  <Text
+                    style={[
+                      styles.difficultyText,
+                      difficulty === "advanced" && styles.difficultyTextActive,
+                    ]}
+                  >
+                    高
+                  </Text>
+                </Pressable>
+              </View>
             </View>
 
             <View style={styles.hero}>
@@ -287,7 +324,7 @@ export default function ListeningScreen() {
             </Text>
 
             <Text style={styles.subtitle}>
-              100 句连续对话，逐句播放并点击单词查看发音和释义。
+              {lines.length} 句连续对话，逐句播放并点击单词查看发音和释义。
             </Text>
 
             <ScrollView
@@ -355,11 +392,11 @@ export default function ListeningScreen() {
                   playingAll && styles.stop,
                 ]}
                 accessibilityLabel={
-                  playingAll ? "停止播放全部" : "播放全部100句"
+                  playingAll ? "停止播放全部" : `播放全部${lines.length}句`
                 }
               >
                 <Text style={styles.buttonText}>
-                  {playingAll ? "■ 停止播放" : "▶ 一键播放 100 句"}
+                  {playingAll ? "■ 停止播放" : `▶ 一键播放 ${lines.length} 句`}
                 </Text>
               </Pressable>
 
@@ -501,12 +538,29 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginTop: 3,
   },
-  count: {
-    color: C.text,
+  difficultySelector: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  difficultyButton: {
     backgroundColor: C.soft,
     borderRadius: 18,
-    padding: 9,
-    fontWeight: "900",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  difficultyActive: {
+    backgroundColor: C.blue,
+    borderColor: "#78A1FF",
+  },
+  difficultyText: {
+    color: C.text,
+    fontSize: 12,
+    fontWeight: "700",
+  },
+  difficultyTextActive: {
+    color: "#F2F3F5",
   },
   hero: {
     alignItems: "center",
