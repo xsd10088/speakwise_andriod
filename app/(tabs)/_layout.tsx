@@ -4,7 +4,8 @@ const COLORS = {
   background: "#061B46",
   panel: "#0B2858",
   border: "#1E477C",
-  active: "#7DD3FC",
+  active: "#FFFFFF",
+  activeBg: "#2F6BEB",
   inactive: "#9AA2B4",
 };
 
@@ -21,14 +22,26 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: COLORS.background,
           borderTopColor: COLORS.border,
-          height: 64,
-          paddingTop: 6,
+          height: 72,
+          paddingTop: 8,
           paddingBottom: 8,
         },
 
+        tabBarItemStyle: {
+          marginHorizontal: 3,
+          borderWidth: 1,
+          borderStyle: "solid",
+          borderColor: COLORS.border,
+          borderRadius: 14,
+          paddingVertical: 8,
+        },
+
+        tabBarActiveBackgroundColor: COLORS.activeBg,
+        tabBarInactiveBackgroundColor: "transparent",
+
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "700",
+          fontSize: 15,
+          fontWeight: "800",
         },
 
         tabBarIcon: () => null,

@@ -143,7 +143,7 @@ export default function ListeningScreen() {
   const { toggleWord, hasWord } = useWordbook();
 
   const [scene, setScene] = useState<SceneKey>("greetings");
-  const [difficulty, setDifficulty] = useState<DifficultyLevel>("advanced");
+  const [difficulty, setDifficulty] = useState<DifficultyLevel>("beginner");
   const [selectedDefinition, setSelectedDefinition] =
     useState<WordDefinition | null>(null);
   const [selectedExample, setSelectedExample] = useState("");
