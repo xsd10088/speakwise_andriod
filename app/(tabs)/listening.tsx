@@ -271,6 +271,23 @@ export default function ListeningScreen() {
                   </Text>
                 </Pressable>
                 <Pressable
+                  onPress={() => setDifficulty("medium")}
+                  style={[
+                    styles.difficultyButton,
+                    difficulty === "medium" && styles.difficultyActive,
+                  ]}
+                  accessibilityLabel="选择中难度"
+                >
+                  <Text
+                    style={[
+                      styles.difficultyText,
+                      difficulty === "medium" && styles.difficultyTextActive,
+                    ]}
+                  >
+                    中
+                  </Text>
+                </Pressable>
+                <Pressable
                   onPress={() => setDifficulty("advanced")}
                   style={[
                     styles.difficultyButton,

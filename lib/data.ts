@@ -23,7 +23,7 @@ export type SceneKey =
   | "extra1"
   | "extra2";
 
-export type DifficultyLevel = "beginner" | "advanced";
+export type DifficultyLevel = "beginner" | "medium" | "advanced";
 
 export interface SceneInfo {
   key: SceneKey;
@@ -36,6 +36,7 @@ export type Scene = SceneInfo;
 
 export interface SceneContent {
   beginner: ListeningLine[];
+  medium?: ListeningLine[];
   advanced: ListeningLine[];
 }
 
@@ -151,6 +152,112 @@ const greetingsLinesBeginner: ListeningLine[] = [
   { id: "greetings-b-98", speaker: "Mia", text: "Excellent.", translation: "太棒了。", note: "praise" },
   { id: "greetings-b-99", speaker: "Alex", text: "Wonderful.", translation: "太好了。", note: "delight" },
   { id: "greetings-b-100", speaker: "Mia", text: "Fantastic.", translation: "太棒了。", note: "enthusiasm" }
+];
+
+// ==========================================
+// 18. 日常问候 (Greetings) - 中难度 100 句
+// ==========================================
+const greetingsLinesMedium: ListeningLine[] = [
+  { id: "greetings-m-1", speaker: "Alex", text: "It is really nice to see you again.", translation: "很高兴再次见到你。", note: "reunion greeting" },
+  { id: "greetings-m-2", speaker: "Mia", text: "I have missed our coffee chats lately, honestly.", translation: "我真的很想念我们平时的咖啡闲聊。", note: "expressing missing someone" },
+  { id: "greetings-m-3", speaker: "Alex", text: "We should catch up over lunch sometime soon.", translation: "我们应该找个时间一起吃午饭叙叙旧。", note: "suggesting a meetup" },
+  { id: "greetings-m-4", speaker: "Mia", text: "That sounds wonderful, I am free on Friday.", translation: "太好了，我周五有空。", note: "accepting a plan" },
+  { id: "greetings-m-5", speaker: "Alex", text: "How have you been feeling these days?", translation: "你这些天感觉怎么样？", note: "asking about wellbeing" },
+  { id: "greetings-m-6", speaker: "Mia", text: "Pretty good overall, just a little tired.", translation: "总体不错，就是有点累。", note: "brief status reply" },
+  { id: "greetings-m-7", speaker: "Alex", text: "I heard you started a new job recently.", translation: "我听说你最近开始了一份新工作。", note: "mentioning news" },
+  { id: "greetings-m-8", speaker: "Mia", text: "Yes, the work is challenging but quite rewarding.", translation: "是的，工作很有挑战但也很充实。", note: "confirming news" },
+  { id: "greetings-m-9", speaker: "Alex", text: "Congratulations, you definitely deserve this great opportunity.", translation: "恭喜你，这个机会你当之无愧。", note: "congratulating" },
+  { id: "greetings-m-10", speaker: "Mia", text: "Thank you so much for saying that.", translation: "非常感谢你这么说。", note: "thanking" },
+  { id: "greetings-m-11", speaker: "Alex", text: "Did you hear about the neighborhood book club?", translation: "你听说社区读书会了吗？", note: "asking about events" },
+  { id: "greetings-m-12", speaker: "Mia", text: "I have not, but I would love to join.", translation: "还没有，但我很想加入。", note: "showing interest" },
+  { id: "greetings-m-13", speaker: "Alex", text: "They meet every Wednesday evening at the library.", translation: "他们每周三晚上在图书馆聚会。", note: "giving details" },
+  { id: "greetings-m-14", speaker: "Mia", text: "That timing works perfectly with my weekly schedule.", translation: "这个时间跟我的日程完全吻合。", note: "agreeing on timing" },
+  { id: "greetings-m-15", speaker: "Alex", text: "Your new jacket looks really stylish, by the way.", translation: "顺便说一句，你的新夹克真好看。", note: "complimenting style" },
+  { id: "greetings-m-16", speaker: "Mia", text: "I bought it during the spring sale last week.", translation: "我上周春季打折时买的。", note: "shopping story" },
+  { id: "greetings-m-17", speaker: "Alex", text: "The weather is finally getting warmer this morning.", translation: "今天早上天气终于转暖了。", note: "weather small talk" },
+  { id: "greetings-m-18", speaker: "Mia", text: "I know, I am so ready for spring.", translation: "我知道，我已经迫不及待迎接春天了。", note: "seasonal feeling" },
+  { id: "greetings-m-19", speaker: "Alex", text: "Would you like to walk to the park?", translation: "你想一起去公园走走吗？", note: "suggesting a walk" },
+  { id: "greetings-m-20", speaker: "Mia", text: "Sure, I could use some fresh air today.", translation: "好啊，我今天正好需要新鲜空气。", note: "accepting invitation" },
+  { id: "greetings-m-21", speaker: "Alex", text: "I saw your photos from the weekend trip.", translation: "我看到你周末旅行的照片了。", note: "mentioning photos" },
+  { id: "greetings-m-22", speaker: "Mia", text: "We had such an amazing time upstate, truly.", translation: "我们在那边玩得真的很开心。", note: "trip recap" },
+  { id: "greetings-m-23", speaker: "Alex", text: "You should come along with us next time.", translation: "下次你也跟我们一起来吧。", note: "inviting along" },
+  { id: "greetings-m-24", speaker: "Mia", text: "I will bring my famous homemade snacks for sure.", translation: "我一定会带上我拿手的自制点心。", note: "offering to bring food" },
+  { id: "greetings-m-25", speaker: "Alex", text: "How is your mother doing after her surgery?", translation: "你妈妈手术后恢复得怎么样？", note: "asking about family" },
+  { id: "greetings-m-26", speaker: "Mia", text: "She is recovering well, thank you for asking.", translation: "她恢复得很好，谢谢你的关心。", note: "health update" },
+  { id: "greetings-m-27", speaker: "Alex", text: "Please give her my warmest regards, will you?", translation: "请代我向她致以最诚挚的问候。", note: "passing regards" },
+  { id: "greetings-m-28", speaker: "Mia", text: "I certainly will, she misses you very much.", translation: "我一定会的，她非常想念你。", note: "relaying message" },
+  { id: "greetings-m-29", speaker: "Alex", text: "I am learning to cook Italian food nowadays.", translation: "我最近在学做意大利菜。", note: "sharing a hobby" },
+  { id: "greetings-m-30", speaker: "Mia", text: "That is such a fun hobby to have.", translation: "这是个很有趣的爱好。", note: "encouraging hobby" },
+  { id: "greetings-m-31", speaker: "Alex", text: "Last night I made pasta from scratch myself.", translation: "昨晚我亲手做了意面。", note: "cooking story" },
+  { id: "greetings-m-32", speaker: "Mia", text: "Homemade pasta is honestly hard to mess up.", translation: "自制意面其实很难做砸。", note: "cooking tip" },
+  { id: "greetings-m-33", speaker: "Alex", text: "Can you recommend a good movie tonight?", translation: "你能推荐今晚看的好电影吗？", note: "asking for plans" },
+  { id: "greetings-m-34", speaker: "Mia", text: "There is a great comedy showing downtown now.", translation: "市中心现在有一部很棒的喜剧上映。", note: "recommending a movie" },
+  { id: "greetings-m-35", speaker: "Alex", text: "I might grab tickets before they sell out.", translation: "我可以在票售罄前买几张。", note: "planning to buy tickets" },
+  { id: "greetings-m-36", speaker: "Mia", text: "Do that, the show gets crowded on weekends.", translation: "快去买吧，周末场次人很多。", note: "warning about crowds" },
+  { id: "greetings-m-37", speaker: "Alex", text: "Your dog is so friendly, what is his name?", translation: "你的狗真友好，它叫什么名字？", note: "asking about a pet" },
+  { id: "greetings-m-38", speaker: "Mia", text: "His name is Biscuit, he loves meeting strangers.", translation: "它叫饼干，它喜欢跟陌生人玩。", note: "pet introduction" },
+  { id: "greetings-m-39", speaker: "Alex", text: "I remember you mentioned moving closer to work.", translation: "我记得你说过要搬到公司附近。", note: "recalling a move" },
+  { id: "greetings-m-40", speaker: "Mia", text: "The commute is much shorter now, thankfully.", translation: "现在通勤时间短多了，谢天谢地。", note: "commute update" },
+  { id: "greetings-m-41", speaker: "Alex", text: "It must be nice having extra free time.", translation: "多出来的空闲时间一定很好吧。", note: "commenting on free time" },
+  { id: "greetings-m-42", speaker: "Mia", text: "I have been reading more books lately, actually.", translation: "其实我最近读的书更多了。", note: "reading habit" },
+  { id: "greetings-m-43", speaker: "Alex", text: "What are you reading this month, may I ask?", translation: "能问一下你这个月在读什么吗？", note: "asking about reading" },
+  { id: "greetings-m-44", speaker: "Mia", text: "A mystery novel set in old Venice, Italy.", translation: "一本以古老威尼斯为背景的悬疑小说。", note: "book description" },
+  { id: "greetings-m-45", speaker: "Alex", text: "That sounds fascinating, I enjoy historical fiction too.", translation: "听起来很有意思，我也喜欢历史小说。", note: "sharing taste" },
+  { id: "greetings-m-46", speaker: "Mia", text: "We should exchange recommendations sometime very soon.", translation: "我们应该找个时间交换书单。", note: "suggesting exchange" },
+  { id: "greetings-m-47", speaker: "Alex", text: "I am planning a small birthday party for Sam.", translation: "我正计划为山姆办一个小型生日派对。", note: "announcing a party" },
+  { id: "greetings-m-48", speaker: "Mia", text: "What date is it, I need to check.", translation: "是哪天，我得查一下日历。", note: "asking for date" },
+  { id: "greetings-m-49", speaker: "Alex", text: "It is next Saturday evening at my place.", translation: "下周六晚上，在我家。", note: "giving party details" },
+  { id: "greetings-m-50", speaker: "Mia", text: "I will be there, thank you for inviting me.", translation: "我会到的，谢谢你的邀请。", note: "accepting invitation" },
+  { id: "greetings-m-51", speaker: "Alex", text: "Have you tried the new bakery on Main Street?", translation: "你去过主街新开的面包店吗？", note: "asking about food" },
+  { id: "greetings-m-52", speaker: "Mia", text: "Their croissants are absolutely fresh and buttery, wow.", translation: "他们的可颂绝对新鲜又黄油香。", note: "food review" },
+  { id: "greetings-m-53", speaker: "Alex", text: "I go there every Saturday morning for coffee.", translation: "我每周六早上去那里买咖啡。", note: "routine habit" },
+  { id: "greetings-m-54", speaker: "Mia", text: "The barista always remembers my usual order, amazingly.", translation: "咖啡师总能记住我的常点单。", note: "service compliment" },
+  { id: "greetings-m-55", speaker: "Alex", text: "Summer is almost here, can you believe it?", translation: "夏天快到了，你相信吗？", note: "seasonal remark" },
+  { id: "greetings-m-56", speaker: "Mia", text: "I cannot wait for the outdoor concerts again.", translation: "我等不及再去看户外音乐会了。", note: "looking forward" },
+  { id: "greetings-m-57", speaker: "Alex", text: "They announce the lineup online next week.", translation: "他们下周会在线上公布演出阵容。", note: "giving info" },
+  { id: "greetings-m-58", speaker: "Mia", text: "I hope my favorite band performs this year.", translation: "希望我最喜欢的乐队今年能演出。", note: "hoping for a band" },
+  { id: "greetings-m-59", speaker: "Alex", text: "You look great today, did you change your hair?", translation: "你今天看起来真棒，换发型了吗？", note: "complimenting hair" },
+  { id: "greetings-m-60", speaker: "Mia", text: "I got a subtle trim yesterday afternoon, thanks.", translation: "我昨天下午剪了个低调的发型。", note: "sharing a haircut" },
+  { id: "greetings-m-61", speaker: "Alex", text: "It suits you really well, very professional.", translation: "很适合你，显得很干练。", note: "style compliment" },
+  { id: "greetings-m-62", speaker: "Mia", text: "I appreciate that, you always say kind things.", translation: "谢谢，你总是说这么暖心的话。", note: "appreciating kindness" },
+  { id: "greetings-m-63", speaker: "Alex", text: "I am thinking of joining a morning yoga class.", translation: "我在考虑报一个晨间瑜伽课。", note: "fitness plan" },
+  { id: "greetings-m-64", speaker: "Mia", text: "Yoga helps me stay calm during busy weeks.", translation: "瑜伽能帮我在忙碌的周里保持平静。", note: "yoga benefit" },
+  { id: "greetings-m-65", speaker: "Alex", text: "Maybe we could attend a session together sometime.", translation: "要不我们找个时间一起去上一节课？", note: "inviting to class" },
+  { id: "greetings-m-66", speaker: "Mia", text: "That would be lovely, count me in please.", translation: "那太好了，算我一个。", note: "accepting offer" },
+  { id: "greetings-m-67", speaker: "Alex", text: "How was your flight back from Chicago?", translation: "你从芝加哥飞回来的航班怎么样？", note: "asking about travel" },
+  { id: "greetings-m-68", speaker: "Mia", text: "Smooth and quick, the pilot landed early.", translation: "很顺利也很快，飞行员提前落地了。", note: "flight review" },
+  { id: "greetings-m-69", speaker: "Alex", text: "Did you bring back any souvenirs for us?", translation: "你有没有给我们带纪念品回来？", note: "asking about souvenirs" },
+  { id: "greetings-m-70", speaker: "Mia", text: "I got deep dish pizza for everyone tonight.", translation: "我买了深盘披萨，今晚给大家吃。", note: "gift story" },
+  { id: "greetings-m-71", speaker: "Alex", text: "You are the best, I owe you one.", translation: "你最好了，我欠你一个人情。", note: "praising generosity" },
+  { id: "greetings-m-72", speaker: "Mia", text: "Just repay me with a good story.", translation: "用个好故事还我就行。", note: "playful repayment" },
+  { id: "greetings-m-73", speaker: "Alex", text: "I finally fixed the leaky kitchen faucet myself.", translation: "我终于自己修好了厨房漏水的水龙头。", note: "DIY story" },
+  { id: "greetings-m-74", speaker: "Mia", text: "Wow, you are becoming quite the handyman.", translation: "哇，你快变成土专家了。", note: "praising skills" },
+  { id: "greetings-m-75", speaker: "Alex", text: "YouTube tutorials make everything seem possible nowadays.", translation: "现在视频教程让一切看起来都可能。", note: "learning note" },
+  { id: "greetings-m-76", speaker: "Mia", text: "Be careful, some projects are harder than expected.", translation: "小心，有些项目比看起来更难。", note: "caution advice" },
+  { id: "greetings-m-77", speaker: "Alex", text: "I need to renew my driver's license soon.", translation: "我需要尽快更新驾照。", note: "errand plan" },
+  { id: "greetings-m-78", speaker: "Mia", text: "The office downtown opens early on Wednesdays.", translation: "市区的办事处周三早上早开门。", note: "office hours info" },
+  { id: "greetings-m-79", speaker: "Alex", text: "Should we go together next Wednesday morning?", translation: "我们下周三上午一起去好吗？", note: "suggesting a trip" },
+  { id: "greetings-m-80", speaker: "Mia", text: "Sure, I will drive us there this time.", translation: "好啊，这次我开车送我们去。", note: "offering to drive" },
+  { id: "greetings-m-81", speaker: "Alex", text: "I have been meaning to call my brother.", translation: "我一直想给我哥哥打个电话。", note: "family intention" },
+  { id: "greetings-m-82", speaker: "Mia", text: "He probably misses you, give him a ring.", translation: "他可能也想你，给他拨个号吧。", note: "urging a call" },
+  { id: "greetings-m-83", speaker: "Alex", text: "Maybe I will surprise him this weekend.", translation: "也许这个周末我给他一个惊喜。", note: "surprise plan" },
+  { id: "greetings-m-84", speaker: "Mia", text: "He will be so happy to hear you.", translation: "他听到你的消息一定会很高兴。", note: "predicting happiness" },
+  { id: "greetings-m-85", speaker: "Alex", text: "The farmers market opens early every Sunday now.", translation: "农贸市场现在每周日一大早就开市。", note: "market info" },
+  { id: "greetings-m-86", speaker: "Mia", text: "I want to buy fresh tomatoes and herbs.", translation: "我想买新鲜的番茄和香草。", note: "shopping plan" },
+  { id: "greetings-m-87", speaker: "Alex", text: "Let us meet there around nine thirty sharp.", translation: "我们九点半准时在那里碰头吧。", note: "setting a time" },
+  { id: "greetings-m-88", speaker: "Mia", text: "Perfect, I will bring my reusable tote bags.", translation: "好的，我会带上可重复使用的购物袋。", note: "preparing bags" },
+  { id: "greetings-m-89", speaker: "Alex", text: "I saw your name in the community newsletter.", translation: "我在社区简报上看到你的名字了。", note: "news mention" },
+  { id: "greetings-m-90", speaker: "Mia", text: "I volunteered for the neighborhood cleanup event.", translation: "我报名参加了社区清洁活动。", note: "volunteer story" },
+  { id: "greetings-m-91", speaker: "Alex", text: "That is such a generous thing to do.", translation: "这真是件充满爱心的善举。", note: "community spirit" },
+  { id: "greetings-m-92", speaker: "Mia", text: "Many neighbors joined, it felt really rewarding.", translation: "很多邻居都来了，感觉特别充实。", note: "event reflection" },
+  { id: "greetings-m-93", speaker: "Alex", text: "I hope we can chat again very soon.", translation: "希望我们很快能再聊天。", note: "farewell wish" },
+  { id: "greetings-m-94", speaker: "Mia", text: "Same here, our talks always brighten my day.", translation: "我也是，跟你聊天总让我开心。", note: "reciprocal warmth" },
+  { id: "greetings-m-95", speaker: "Alex", text: "Take care of yourself until we meet again.", translation: "在我们再见之前多保重。", note: "parting words" },
+  { id: "greetings-m-96", speaker: "Mia", text: "You too, have a wonderful rest of your day.", translation: "你也是，祝你今天剩下的时间都愉快。", note: "farewell reply" },
+  { id: "greetings-m-97", speaker: "Alex", text: "I must head home now, it is getting late.", translation: "我现在得回家了，天色不早了。", note: "leaving reason" },
+  { id: "greetings-m-98", speaker: "Mia", text: "Drive safely and text me when you arrive.", translation: "开车小心，到了给我发消息。", note: "safety wish" },
+  { id: "greetings-m-99", speaker: "Alex", text: "I will, good night and see you soon.", translation: "我会的，晚安，回头见。", note: "good night" },
+  { id: "greetings-m-100", speaker: "Mia", text: "Good night, sleep well and dream sweetly.", translation: "晚安，睡个好觉，做个好梦。", note: "night wish" }
 ];
 
 // ==========================================
@@ -2591,6 +2698,7 @@ const extra2Lines: ListeningLine[] = [
 export const SCENE_CONTENT: Record<SceneKey, SceneContent> = {
   greetings: {
     beginner: greetingsLinesBeginner,
+    medium: greetingsLinesMedium,
     advanced: greetingsLines
   },
   travel: {
