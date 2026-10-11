@@ -177,20 +177,24 @@ export default function ListeningScreen() {
     setSelectedDefinition(getWordDefinition(selectedWord));
 
     let active = true;
+    let dismissTimer: ReturnType<typeof setTimeout> | undefined;
 
     lookupWordDefinition(selectedWord).then((definition) => {
-      if (active) {
-        setSelectedDefinition(definition);
-      }
+      if (!active) return;
+      setSelectedDefinition(definition);
+      // 查词完成后再开始自动关闭计时，避免网络较慢时弹窗在结果返回前消失
+      dismissTimer = setTimeout(() => {
+        if (active) {
+          setSelectedWord(null);
+        }
+      }, 5000);
     });
-
-    const timer = setTimeout(() => {
-      setSelectedWord(null);
-    }, 5000);
 
     return () => {
       active = false;
-      clearTimeout(timer);
+      if (dismissTimer) {
+        clearTimeout(dismissTimer);
+      }
     };
   }, [selectedWord]);
 

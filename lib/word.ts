@@ -678,41 +678,212 @@ export function cleanLookupWord(word: string) {
 
 const remoteCache = new Map<string, WordDefinition>();
 
+const DICTIONARY_TIMEOUT_MS = 8_000;
+const TRANSLATION_TIMEOUT_MS = 8_000;
+const PRIMARY_RETRY_ATTEMPTS = 2;
+const RETRY_BACKOFF_MS = 500;
+
+type DictionaryResult = { phonetic: string; englishMeaning: string };
+
+type DictionaryApiEntry = {
+  phonetic?: string;
+  phonetics?: Array<{ text?: string; audio?: string }>;
+  meanings?: Array<{ definitions?: Array<{ definition?: string }> }>;
+};
+
+type WiktionaryResponse = { parse?: { wikitext?: { "*"?: string } } };
+
+type DatamuseEntry = { word?: string; defs?: string[] };
+
+async function fetchJsonWithTimeout<T>(url: string, timeoutMs: number): Promise<T> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+    return (await response.json()) as T;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchFromDictionaryApiDev(word: string): Promise<DictionaryResult | null> {
+  const payload = await fetchJsonWithTimeout<DictionaryApiEntry[]>(
+    `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
+    DICTIONARY_TIMEOUT_MS,
+  );
+  const entry = payload[0];
+  if (!entry) return null;
+
+  const phonetic = entry.phonetic || entry.phonetics?.find((item) => item.text)?.text || "";
+  const englishMeaning =
+    entry.meanings
+      ?.flatMap((meaning) => meaning.definitions ?? [])
+      .map((item) => item.definition)
+      .find(Boolean) || "";
+
+  if (!phonetic && !englishMeaning) return null;
+  return { phonetic, englishMeaning };
+}
+
+function extractEnglishSection(wikitext: string): string {
+  const lines = wikitext.split("\n");
+  const section: string[] = [];
+  let inEnglishSection = false;
+  for (const line of lines) {
+    if (/^==English==/.test(line)) {
+      inEnglishSection = true;
+      continue;
+    }
+    // A level-2 header (==Section==) ends the English section;
+    // level-3 headers (===Subsection===) belong to it.
+    if (inEnglishSection && /^==[^=]/.test(line)) break;
+    if (inEnglishSection) section.push(line);
+  }
+  return section.join("\n");
+}
+
+function extractWiktionaryPhonetic(wikitext: string): string {
+  const ipaMatch = extractEnglishSection(wikitext).match(/\{\{IPA\|([^}|]+)/);
+  if (!ipaMatch) return "";
+  const raw = ipaMatch[1].trim();
+  const slashed = raw.match(/\/[^/]+\//);
+  return slashed ? slashed[0] : `/${raw}/`;
+}
+
+function stripWikiMarkup(text: string): string {
+  return text
+    .replace(/<ref[^>]*>[\s\S]*?<\/ref>/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\{\{([^{}|]*\|)?([^{}]*)\}\}/g, "$2")
+    .replace(/\[\[(?:[^\]|]*\|)?([^\]]+)\]\]/g, "$1")
+    .replace(/'''/g, "")
+    .replace(/''/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractWiktionaryDefinition(wikitext: string): string {
+  for (const line of extractEnglishSection(wikitext).split("\n")) {
+    if (line.startsWith("# ")) {
+      return stripWikiMarkup(line.slice(2));
+    }
+  }
+  return "";
+}
+
+async function fetchFromWiktionary(word: string): Promise<DictionaryResult | null> {
+  const payload = await fetchJsonWithTimeout<WiktionaryResponse>(
+    `https://en.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(word)}&prop=wikitext&format=json&origin=*`,
+    DICTIONARY_TIMEOUT_MS,
+  );
+  const wikitext = payload?.parse?.wikitext?.["*"];
+  if (!wikitext) return null;
+
+  const phonetic = extractWiktionaryPhonetic(wikitext);
+  const englishMeaning = extractWiktionaryDefinition(wikitext);
+  if (!phonetic && !englishMeaning) return null;
+  return { phonetic, englishMeaning };
+}
+
+async function fetchFromDatamuse(word: string): Promise<DictionaryResult | null> {
+  const payload = await fetchJsonWithTimeout<DatamuseEntry[]>(
+    `https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d&max=1`,
+    DICTIONARY_TIMEOUT_MS,
+  );
+  const firstDef = payload?.[0]?.defs?.[0];
+  if (!firstDef) return null;
+  const englishMeaning = firstDef.replace(/^[a-z]+:/i, "").trim();
+  if (!englishMeaning) return null;
+  return { phonetic: "", englishMeaning };
+}
+
+async function fetchDictionaryResult(word: string): Promise<DictionaryResult | null> {
+  const sources = [fetchFromDictionaryApiDev, fetchFromWiktionary, fetchFromDatamuse];
+  for (let index = 0; index < sources.length; index++) {
+    const source = sources[index];
+    const attempts = index === 0 ? PRIMARY_RETRY_ATTEMPTS : 1;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      try {
+        const result = await source(word);
+        if (result) return result;
+      } catch {
+        // Source failed; retry the primary source, otherwise move to the next one.
+      }
+      if (attempt + 1 < attempts) {
+        await sleep(RETRY_BACKOFF_MS * (attempt + 1));
+      }
+    }
+  }
+  return null;
+}
+
+async function translateToChinese(text: string): Promise<string> {
+  try {
+    const payload = await fetchJsonWithTimeout<{
+      responseData?: { translatedText?: string };
+      responseStatus?: number;
+    }>(
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|zh-CN`,
+      TRANSLATION_TIMEOUT_MS,
+    );
+    const translated = payload?.responseData?.translatedText?.trim();
+    if (translated && payload?.responseStatus !== 429) {
+      return translated;
+    }
+  } catch {
+    // Fall through to the next translation provider.
+  }
+
+  try {
+    const payload = await fetchJsonWithTimeout<unknown[][]>(
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(text)}`,
+      TRANSLATION_TIMEOUT_MS,
+    );
+    const segments = payload?.[0];
+    const firstSegment = Array.isArray(segments) ? segments[0] : undefined;
+    const translated = Array.isArray(firstSegment) ? firstSegment[0] : undefined;
+    if (typeof translated === "string" && translated.trim()) {
+      return translated.trim();
+    }
+  } catch {
+    // No translation provider available.
+  }
+
+  return "";
+}
+
 export async function lookupWordDefinition(word: string): Promise<WordDefinition> {
   const clean = cleanLookupWord(word);
   const local = getWordDefinition(clean);
   if (!clean) return local;
+
   const cached = remoteCache.get(clean);
   if (cached) return cached;
-  try {
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(clean)}`);
-    if (!response.ok) return local;
-    const payload = await response.json() as Array<{
-      phonetic?: string;
-      phonetics?: Array<{ text?: string; audio?: string }>;
-      meanings?: Array<{ definitions?: Array<{ definition?: string }> }>;
-    }>;
-    const entry = payload[0];
-    
-    // 优先获取音标：先尝试 phonetic 字段，再从 phonetics 数组中查找有 text 的项
-    const phonetic = entry?.phonetic ?? entry?.phonetics?.find((item) => item.text)?.text ?? local.phonetic;
-    
-    // 获取英文释义
-    const englishMeaning = entry?.meanings?.flatMap((meaning) => meaning.definitions ?? []).map((item) => item.definition).find(Boolean);
-    
-    if (!englishMeaning) return { phonetic, meaning: local.meaning };
-    
-    try {
-      // 翻译英文释义为中文
-      const translationResponse = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(englishMeaning)}&langpair=en|zh-CN`);
-      const translationPayload = await translationResponse.json() as { responseData?: { translatedText?: string } };
-      const result = { phonetic, meaning: translationPayload.responseData?.translatedText?.trim() || local.meaning };
-      remoteCache.set(clean, result);
-      return result;
-    } catch {
-      return { phonetic, meaning: local.meaning };
-    }
-  } catch {
-    return local;
+
+  const remote = await fetchDictionaryResult(clean);
+  if (!remote) return local;
+
+  const phonetic = remote.phonetic || local.phonetic;
+  if (!remote.englishMeaning) {
+    return { phonetic, meaning: local.meaning };
   }
+
+  const translated = await translateToChinese(remote.englishMeaning);
+  if (!translated) {
+    // Translation failed; the English definition is still more useful than the
+    // "暂未找到释义" placeholder, so return it without caching so a later tap
+    // can retry the translation.
+    return { phonetic, meaning: remote.englishMeaning };
+  }
+
+  const result = { phonetic, meaning: translated };
+  remoteCache.set(clean, result);
+  return result;
 }
