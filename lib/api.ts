@@ -46,28 +46,115 @@ export const getApiBaseUrl = (): string => {
   return process.env.EXPO_PUBLIC_API_BASE_URL || process.env.EXPO_PUBLIC_API_URL || STATIC_API_BASE_URL;
 };
 
-async function callTrpcMutation<T>(path: string, inputData: Record<string, any>): Promise<T> {
+const DEFAULT_REQUEST_TIMEOUT_MS = 60_000;
+const MAX_RETRY_ATTEMPTS = 2;
+const MAX_DIALOGUE_HISTORY = 8;
+
+export class ApiTimeoutError extends Error {
+  constructor(timeoutMs: number) {
+    super(`Request timed out after ${timeoutMs}ms`);
+    this.name = "ApiTimeoutError";
+  }
+}
+
+export class TrpcHttpError extends Error {
+  status: number;
+
+  constructor(path: string, status: number) {
+    super(`tRPC ${path} failed: ${status}`);
+    this.name = "TrpcHttpError";
+    this.status = status;
+  }
+}
+
+type FetchOptions = Parameters<typeof fetch>[1];
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchWithTimeout(
+  url: string,
+  options: FetchOptions,
+  timeoutMs: number,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } catch (error) {
+    if (controller.signal.aborted) {
+      throw new ApiTimeoutError(timeoutMs);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function isRetryableApiError(error: unknown): boolean {
+  if (error instanceof ApiTimeoutError) {
+    return true;
+  }
+  if (error instanceof TrpcHttpError) {
+    return error.status === 429 || error.status >= 500;
+  }
+  if (error instanceof Error) {
+    return (
+      error.name === "AbortError" ||
+      error.name === "TypeError" ||
+      error.name === "SyntaxError"
+    );
+  }
+  return false;
+}
+
+async function callTrpcMutation<T>(
+  path: string,
+  inputData: Record<string, any>,
+  options: { timeoutMs?: number; retries?: number } = {},
+): Promise<T> {
   const baseUrl = getApiBaseUrl().replace(/\/$/, "");
   const url = `${baseUrl}/api/trpc/${path}?batch=1`;
+  const timeoutMs = options.timeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
+  const maxRetries = options.retries ?? MAX_RETRY_ATTEMPTS;
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ "0": { json: inputData } }),
-  });
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await fetchWithTimeout(
+        url,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ "0": { json: inputData } }),
+        },
+        timeoutMs,
+      );
 
-  if (!response.ok) {
-    throw new Error(`tRPC ${path} failed: ${response.status}`);
+      if (!response.ok) {
+        throw new TrpcHttpError(path, response.status);
+      }
+
+      const data = await response.json();
+      if (Array.isArray(data) && data[0]?.result?.data?.json) {
+        return data[0].result.data.json as T;
+      }
+      if (data?.result?.data?.json) {
+        return data.result.data.json as T;
+      }
+      return data as T;
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxRetries && isRetryableApiError(error)) {
+        await sleep(1000 * 2 ** attempt);
+        continue;
+      }
+      throw error;
+    }
   }
 
-  const data = await response.json();
-  if (Array.isArray(data) && data[0]?.result?.data?.json) {
-    return data[0].result.data.json as T;
-  }
-  if (data?.result?.data?.json) {
-    return data.result.data.json as T;
-  }
-  return data as T;
+  throw lastError instanceof Error ? lastError : new Error("tRPC call failed");
 }
 
 async function callTrpcMutationWithFallbacks<T>(paths: string[], inputData: Record<string, any>): Promise<T> {
@@ -97,9 +184,14 @@ export async function translateText(params: {
     language: params.targetLanguage,
   };
 
+  const source = params.sourceLanguage === "zh" ? "zh-CN" : "en";
+  const target = params.targetLanguage === "zh" ? "zh-CN" : "en";
+  const translationPath =
+    params.targetLanguage === "zh" ? "translation.toChinese" : "translation.toEnglish";
+
   try {
     const result = await callTrpcMutationWithFallbacks<any>(
-      ["dialogue.translate", "voice.translate", "translation.translate"],
+      [translationPath, "dialogue.translate", "voice.translate", "translation.translate"],
       input,
     );
     const text =
@@ -120,10 +212,10 @@ export async function translateText(params: {
     // Use the public translation fallback below when this deployment has no translation procedure.
   }
 
-  const source = params.sourceLanguage === "zh" ? "zh-CN" : "en";
-  const target = params.targetLanguage === "zh" ? "zh-CN" : "en";
-  const response = await fetch(
+  const response = await fetchWithTimeout(
     `https://api.mymemory.translated.net/get?q=${encodeURIComponent(params.text)}&langpair=${source}|${target}`,
+    {},
+    30_000,
   );
 
   if (!response.ok) {
@@ -172,7 +264,7 @@ export async function fetchDialogueSuggestions(params: {
     const res = await callTrpcMutationWithFallbacks<any>(["dialogue.suggestions", "voice.suggestions"], {
       level: params.level || "beginner",
       scene: params.scene || "greetings",
-      history: params.history || [],
+      history: (params.history || []).slice(-MAX_DIALOGUE_HISTORY),
       aiMessage: params.aiMessage,
     });
 
@@ -208,7 +300,7 @@ export async function replyToDialogue(params: {
     const res = await callTrpcMutationWithFallbacks<any>(["dialogue.reply", "voice.reply"], {
       level: params.level || "beginner",
       scene: params.scene || "greetings",
-      history: params.history || [],
+      history: params.history.slice(-MAX_DIALOGUE_HISTORY),
       userMessage: params.userMessage,
     });
 

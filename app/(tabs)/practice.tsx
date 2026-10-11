@@ -235,10 +235,16 @@ export default function IndexScreen() {
       speakAssistantReply(assistantMsg.id!, assistantMsg.text);
     } catch (error) {
       console.error("Failed to send dialogue message:", error);
+      const errorMessage =
+        error instanceof Error && error.name === "ApiTimeoutError"
+          ? "❌ AI response timed out, please try again."
+          : error instanceof Error && error.message?.startsWith("tRPC")
+            ? "❌ AI service error, please try again."
+            : "❌ Network error or connection failed, please try again.";
       const errorMsg: DialogueMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        text: "❌ Network error or connection failed, please try again.",
+        text: errorMessage,
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, errorMsg]);
