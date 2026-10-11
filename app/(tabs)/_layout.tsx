@@ -34,7 +34,7 @@ const chipStyles = StyleSheet.create({
 export default function TabsLayout() {
   return (
     <Tabs
-      initialRouteName="listening"
+      initialRouteName="index"
       screenOptions={{
         headerShown: false,
 
@@ -86,7 +86,7 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="listening"
+        name="index"
         options={{
           title: "听力训练",
           tabBarLabel: "听力训练",
@@ -94,7 +94,7 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="index"
+        name="practice"
         options={{
           title: "口语练习",
           tabBarLabel: "口语练习",

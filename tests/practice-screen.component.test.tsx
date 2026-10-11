@@ -2,7 +2,7 @@ import React from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
 
 // 使用 default import 匹配 export default PracticeScreen
-import PracticeScreen from "../app/(tabs)/index";
+import PracticeScreen from "../app/(tabs)/practice";
 // 场景配置数据
 import { SCENES } from "../lib/data";
 
