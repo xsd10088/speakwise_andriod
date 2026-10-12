@@ -53,7 +53,15 @@ const sceneOptions = SCENES.slice(0, 10) as {
 }[];
 
 function voiceSpeaker(speaker: DataSpeaker): VoiceSpeaker {
-  return speaker === "Alex" ? "Alex" : "Mike";
+  if (speaker === "Alex") {
+    return "Alex";
+  }
+
+  if (speaker === "Mia") {
+    return "Mia";
+  }
+
+  return "Mike";
 }
 
 function WordSentence({

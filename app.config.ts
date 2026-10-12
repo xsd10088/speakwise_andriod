@@ -40,6 +40,7 @@ const config: ExpoConfig = {
         backgroundColor: "#061B46",
       },
     ],
+    "./plugins/withGoogleTts",
   ],
 
   experiments: {
