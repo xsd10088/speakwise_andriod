@@ -85,7 +85,7 @@ class GoogleTtsModule(private val reactContext: ReactApplicationContext) :
   @ReactMethod
   fun openTtsSettings(promise: Promise) {
     try {
-      val intent = Intent(Settings.ACTION_TEXT_TO_SPEECH_SETTINGS).apply {
+      val intent = Intent(TTS_SETTINGS_ACTION).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       }
       reactContext.startActivity(intent)
@@ -100,6 +100,7 @@ class GoogleTtsModule(private val reactContext: ReactApplicationContext) :
     private const val GOOGLE_TTS_PACKAGE = "com.google.android.tts"
     private const val BUNDLED_APK_NAME = "google-tts.apk"
     private const val SETTING_TTS_DEFAULT_SYNTH = "tts_default_synth"
+    private const val TTS_SETTINGS_ACTION = "com.android.settings.TTS_SETTINGS"
   }
 }
 `;
