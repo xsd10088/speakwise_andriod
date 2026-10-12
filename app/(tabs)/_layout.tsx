@@ -108,6 +108,14 @@ export default function TabsLayout() {
           tabBarLabel: "我的进度",
         }}
       />
+
+      <Tabs.Screen
+        name="featured"
+        options={{
+          title: "精品听读",
+          tabBarLabel: "精品听读",
+        }}
+      />
     </Tabs>
   );
 }

@@ -109,7 +109,7 @@ function isRetryableApiError(error: unknown): boolean {
   return false;
 }
 
-async function callTrpcMutation<T>(
+export async function callTrpcMutation<T>(
   path: string,
   inputData: Record<string, any>,
   options: { timeoutMs?: number; retries?: number } = {},

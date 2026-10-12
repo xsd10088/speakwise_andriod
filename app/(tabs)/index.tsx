@@ -2,7 +2,6 @@ import * as Speech from "expo-speech";
 import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
-  Animated,
   FlatList,
   Image,
   Pressable,
@@ -13,6 +12,8 @@ import {
 } from "react-native";
 
 import { ScreenContainer } from "@/components/ScreenContainer";
+import { Waveform } from "@/components/Waveform";
+import { WordSentence } from "@/components/WordSentence";
 import {
   getSceneLines,
   SCENES,
@@ -62,87 +63,6 @@ function voiceSpeaker(speaker: DataSpeaker): VoiceSpeaker {
   }
 
   return "Mike";
-}
-
-function WordSentence({
-  text,
-  onWord,
-}: {
-  text: string;
-  onWord: (word: string) => void;
-}) {
-  return (
-    <Text style={styles.lineText}>
-      {text.split(/(\s+)/).map((part, index) =>
-        /\s+/.test(part) ? (
-          part
-        ) : (
-          <Text
-            key={`${part}-${index}`}
-            onPress={() => onWord(part)}
-            style={styles.word}
-          >
-            {part}
-          </Text>
-        ),
-      )}
-    </Text>
-  );
-}
-
-function Waveform({ active }: { active: boolean }) {
-  const bars = useRef(
-    [0, 1, 2, 3, 4, 5, 6].map(() => new Animated.Value(0.35)),
-  ).current;
-
-  useEffect(() => {
-    if (!active) {
-      bars.forEach((bar) => bar.setValue(0.35));
-      return;
-    }
-
-    const animations = bars.map((bar, index) =>
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(bar, {
-            toValue: 0.45 + (index % 3) * 0.2,
-            duration: 180 + index * 35,
-            useNativeDriver: true,
-          }),
-          Animated.timing(bar, {
-            toValue: 0.25 + ((index + 1) % 3) * 0.18,
-            duration: 180 + index * 25,
-            useNativeDriver: true,
-          }),
-        ]),
-      ),
-    );
-
-    animations.forEach((animation) => animation.start());
-
-    return () => {
-      animations.forEach((animation) => animation.stop());
-    };
-  }, [active, bars]);
-
-  return (
-    <View
-      style={styles.waveform}
-      accessibilityLabel={active ? "正在播放声波" : "播放声波"}
-    >
-      {bars.map((bar, index) => (
-        <Animated.View
-          key={index}
-          style={[
-            styles.waveBar,
-            {
-              transform: [{ scaleY: bar }],
-            },
-          ]}
-        />
-      ))}
-    </View>
-  );
 }
 
 export default function ListeningScreen() {
@@ -682,20 +602,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     marginTop: 10,
   },
-  waveform: {
-    height: 42,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 5,
-    marginTop: 12,
-  },
-  waveBar: {
-    width: 5,
-    height: 32,
-    borderRadius: 4,
-    backgroundColor: "#8DB0FF",
-  },
   sectionTitle: {
     color: C.text,
     fontSize: 19,
@@ -739,15 +645,6 @@ const styles = StyleSheet.create({
     backgroundColor: C.soft,
     borderRadius: 8,
     padding: 8,
-  },
-  lineText: {
-    color: C.text,
-    fontSize: 15,
-    lineHeight: 23,
-    marginTop: 10,
-  },
-  word: {
-    color: C.text,
   },
   translation: {
     color: C.muted,

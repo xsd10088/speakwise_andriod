@@ -36,6 +36,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# server prototype data (downloaded audio + store)
+server/data/
+
 # generated native folders
 /ios
 /android
