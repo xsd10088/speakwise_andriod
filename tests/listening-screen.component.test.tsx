@@ -15,26 +15,6 @@ jest.mock("expo-speech", () => ({
   default: { getAvailableVoicesAsync: jest.fn(() => ({ then: (resolve: (voices: unknown[]) => void) => { resolve([]); return { catch: () => undefined }; } })), speak: mockSpeak, stop: mockStop },
 }));
 
-jest.mock("expo-audio", () => ({
-  useAudioPlayer: jest.fn(() => ({
-    play: jest.fn(),
-    pause: jest.fn(),
-    replace: jest.fn(),
-    remove: jest.fn(),
-  })),
-  useAudioPlayerStatus: jest.fn(() => ({
-    didJustFinish: false,
-    error: null,
-    playing: false,
-  })),
-}));
-
-jest.mock("@/lib/tts", () => ({
-  getServerTtsAudioUri: jest.fn(
-    () => Promise.reject(new Error("TTS unavailable")),
-  ),
-}));
-
 jest.mock("@/components/ScreenContainer", () => {
   const RNReact = require("react");
   return {
@@ -93,7 +73,7 @@ describe("ListeningScreen", () => {
   it("exposes all supported playback speed controls", () => {
     render(<ListeningScreen />);
 
-    expect(screen.getByLabelText("选择0.75倍速")).toBeTruthy();
+    expect(screen.getByLabelText("选择0.5倍速")).toBeTruthy();
     expect(screen.getByLabelText("选择1倍速")).toBeTruthy();
     expect(screen.getByLabelText("选择1.25倍速")).toBeTruthy();
 

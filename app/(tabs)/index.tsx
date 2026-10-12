@@ -1,4 +1,3 @@
-import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
 import * as Speech from "expo-speech";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -22,7 +21,6 @@ import {
   type SceneKey,
   type Speaker as DataSpeaker,
 } from "@/lib/data";
-import { getServerTtsAudioUri } from "@/lib/tts";
 import {
   getSpeechRate,
   selectVoiceForSpeaker,
@@ -46,7 +44,7 @@ const C = {
   soft: "#162A57",
 };
 
-const SPEEDS = [0.75, 1, 1.25] as const;
+const SPEEDS = [0.5, 1, 1.25] as const;
 
 const sceneOptions = SCENES.slice(0, 10) as {
   key: SceneKey;
@@ -165,12 +163,6 @@ export default function ListeningScreen() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [translated, setTranslated] = useState<Record<string, boolean>>({});
 
-  const ttsPlayer = useAudioPlayer(null);
-  const ttsStatus = useAudioPlayerStatus(ttsPlayer);
-  const ttsRequestRef = useRef(0);
-  const ttsDoneRef = useRef<(() => void) | null>(null);
-  const ttsFallbackRef = useRef<(() => void) | null>(null);
-
   const lines = getSceneLines(scene, difficulty);
 
   useEffect(() => {
@@ -179,29 +171,9 @@ export default function ListeningScreen() {
       .catch(() => setVoices([]));
 
     return () => {
-      stopServerTts();
       Speech.stop?.();
     };
   }, []);
-
-  useEffect(() => {
-    if (ttsStatus.didJustFinish) {
-      const finish = ttsDoneRef.current;
-      ttsDoneRef.current = null;
-      ttsFallbackRef.current = null;
-      setActiveId(null);
-      finish?.();
-    }
-  }, [ttsStatus.didJustFinish]);
-
-  useEffect(() => {
-    if (ttsStatus.error) {
-      const fallback = ttsFallbackRef.current;
-      ttsDoneRef.current = null;
-      ttsFallbackRef.current = null;
-      fallback?.();
-    }
-  }, [ttsStatus.error]);
 
   useEffect(() => {
     if (!selectedWord) {
@@ -234,77 +206,34 @@ export default function ListeningScreen() {
     };
   }, [selectedWord]);
 
-  const stopServerTts = () => {
-    ttsRequestRef.current += 1;
-    ttsDoneRef.current = null;
-    ttsFallbackRef.current = null;
-    try {
-      ttsPlayer.pause();
-    } catch {
-      // 播放器已释放时忽略
-    }
-  };
-
   const speakLine = (
     line: ListeningLine,
     done?: () => void,
   ) => {
-    const requestId = ++ttsRequestRef.current;
     Speech.stop?.();
-    ttsPlayer.pause();
     setActiveId(line.id);
 
-    const rate = getSpeechRate(speed);
-    const speaker = voiceSpeaker(line.speaker);
+    const selectedVoice = selectVoiceForSpeaker(
+      voices,
+      voiceSpeaker(line.speaker),
+    );
 
-    const finish = () => {
-      setActiveId(null);
-      done?.();
+    const options: Speech.SpeechOptions = {
+      language: "en-US",
+      rate: getSpeechRate(speed),
+      onDone: () => {
+        setActiveId(null);
+        done?.();
+      },
+      onStopped: () => setActiveId(null),
+      onError: () => setActiveId(null),
     };
 
-    const speakLocally = async () => {
-      const selectedVoice = selectVoiceForSpeaker(voices, speaker);
+    if (selectedVoice.voice?.identifier) {
+      options.voice = selectedVoice.voice.identifier;
+    }
 
-      const options: Speech.SpeechOptions = {
-        language: "en-US",
-        rate,
-        onDone: finish,
-        onStopped: () => setActiveId(null),
-        onError: () => setActiveId(null),
-      };
-
-      if (selectedVoice.voice?.identifier) {
-        options.voice = selectedVoice.voice.identifier;
-      }
-
-      try {
-        await Speech.stop();
-      } catch {
-        // 没有正在播放的语音时可以安全忽略
-      }
-
-      Speech.speak?.(line.text, options);
-    };
-
-    ttsDoneRef.current = finish;
-    ttsFallbackRef.current = speakLocally;
-
-    getServerTtsAudioUri({ text: line.text, speaker, rate })
-      .then((uri) => {
-        if (requestId !== ttsRequestRef.current) {
-          return;
-        }
-        ttsPlayer.replace({ uri });
-        ttsPlayer.play();
-      })
-      .catch(() => {
-        if (requestId !== ttsRequestRef.current) {
-          return;
-        }
-        ttsDoneRef.current = null;
-        ttsFallbackRef.current = null;
-        void speakLocally();
-      });
+    Speech.speak?.(line.text, options);
   };
 
   const playAll = (index = 0) => {
@@ -439,7 +368,6 @@ export default function ListeningScreen() {
                     setScene(item.key);
                     setPlayingAll(false);
                     setActiveId(null);
-                    stopServerTts();
                     Speech.stop?.();
                   }}
                   style={[
@@ -481,7 +409,6 @@ export default function ListeningScreen() {
               <Pressable
                 onPress={() => {
                   if (playingAll) {
-                    stopServerTts();
                     Speech.stop?.();
                     setPlayingAll(false);
                     setActiveId(null);
@@ -543,7 +470,6 @@ export default function ListeningScreen() {
               onWord={(word) => {
                 setSelectedWord(word);
                 setSelectedExample(item.text);
-                stopServerTts();
                 Speech.stop?.();
                 Speech.speak?.(word, {
                   language: "en-US",
