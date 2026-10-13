@@ -1,4 +1,13 @@
-export type WordDefinition = { phonetic: string; meaning: string };
+export type WordMeaning = {
+  partOfSpeech: string;
+  definitions: string[];
+};
+
+export type WordDefinition = {
+  phonetic: string;
+  meaning: string;
+  meanings?: WordMeaning[];
+};
 
 const WORDS: Record<string, WordDefinition> = {
   responsibilities: { phonetic: "/rɪˌspɒnsəˈbɪlətiz/", meaning: "责任；职责" },
@@ -667,13 +676,138 @@ const WORDS: Record<string, WordDefinition> = {
   handler: { phonetic: "/ˈhændlər/", meaning: "从业人员" },
 };
 
+const PLACEHOLDER_MEANING = "暂未找到释义";
+
 export function getWordDefinition(word: string): WordDefinition {
   const clean = cleanLookupWord(word);
-  return WORDS[clean] ?? { phonetic: "", meaning: "暂未找到释义" };
+  return WORDS[clean] ?? { phonetic: "", meaning: PLACEHOLDER_MEANING };
 }
 
 export function cleanLookupWord(word: string) {
   return word.toLowerCase().replace(/[^a-z' -]/g, "").replace(/\s+/g, " ").trim();
+}
+
+const IRREGULAR_FORMS: Record<string, string> = {
+  am: "be", is: "be", are: "be", was: "be", were: "be", been: "be", being: "be",
+  has: "have", had: "have", having: "have",
+  does: "do", did: "do", doing: "do",
+  goes: "go", going: "go", went: "go", gone: "go",
+  makes: "make", making: "make", made: "make",
+  takes: "take", taking: "take", took: "take", taken: "take",
+  comes: "come", coming: "come", came: "come",
+  sees: "see", seeing: "see", saw: "see", seen: "see",
+  knows: "know", knowing: "know", knew: "know", known: "know",
+  writes: "write", writing: "write", wrote: "write", written: "write",
+  gives: "give", giving: "give", gave: "give", given: "give",
+  says: "say", saying: "say", said: "say",
+  tells: "tell", telling: "tell", told: "tell",
+  finds: "find", finding: "find", found: "find",
+  thinks: "think", thinking: "think", thought: "think",
+  buys: "buy", buying: "buy", bought: "buy",
+  brings: "bring", bringing: "bring", brought: "bring",
+  catches: "catch", catching: "catch", caught: "catch",
+  teaches: "teach", teaching: "teach", taught: "teach",
+  feels: "feel", feeling: "feel", felt: "feel",
+  leaves: "leave", leaving: "leave", left: "leave",
+  holds: "hold", holding: "hold", held: "hold",
+  keeps: "keep", keeping: "keep", kept: "keep",
+  loses: "lose", losing: "lose", lost: "lose",
+  means: "mean", meaning: "mean", meant: "mean",
+  meets: "meet", meeting: "meet", met: "meet",
+  pays: "pay", paying: "pay", paid: "pay",
+  sits: "sit", sitting: "sit", sat: "sit",
+  stands: "stand", standing: "stand", stood: "stand",
+  understands: "understand", understanding: "understand", understood: "understand",
+  grows: "grow", growing: "grow", grew: "grow", grown: "grow",
+  hears: "hear", hearing: "hear", heard: "hear",
+  begins: "begin", beginning: "begin", began: "begin", begun: "begin",
+  runs: "run", running: "run", ran: "run",
+  becomes: "become", becoming: "become", became: "become",
+  draws: "draw", drawing: "draw", drew: "draw", drawn: "draw",
+  falls: "fall", falling: "fall", fell: "fall", fallen: "fall",
+  flies: "fly", flying: "fly", flew: "fly", flown: "fly",
+  forgets: "forget", forgetting: "forget", forgot: "forget", forgotten: "forget",
+  gets: "get", getting: "get", got: "get", gotten: "get",
+  hides: "hide", hiding: "hide", hid: "hide", hidden: "hide",
+  leads: "lead", leading: "lead", led: "lead",
+  rides: "ride", riding: "ride", rode: "ride", ridden: "ride",
+  rises: "rise", rising: "rise", rose: "rise", risen: "rise",
+  shakes: "shake", shaking: "shake", shook: "shake", shaken: "shake",
+  shoots: "shoot", shooting: "shoot", shot: "shoot",
+  sings: "sing", singing: "sing", sang: "sing", sung: "sing",
+  sinks: "sink", sinking: "sink", sank: "sink", sunk: "sink",
+  sleeps: "sleep", sleeping: "sleep", slept: "sleep",
+  spends: "spend", spending: "spend", spent: "spend",
+  sticks: "stick", sticking: "stick", stuck: "stick",
+  strikes: "strike", striking: "strike", struck: "strike",
+  sweeps: "sweep", sweeping: "sweep", swept: "sweep",
+  swings: "swing", swinging: "swing", swung: "swing",
+  throws: "throw", throwing: "throw", threw: "throw", thrown: "throw",
+  wears: "wear", wearing: "wear", wore: "wear", worn: "wear",
+  wins: "win", winning: "win", won: "win",
+  chooses: "choose", choosing: "choose", chose: "choose", chosen: "choose",
+  fights: "fight", fighting: "fight", fought: "fight",
+  feeds: "feed", feeding: "feed", fed: "feed",
+  digs: "dig", digging: "dig", dug: "dig",
+  hangs: "hang", hanging: "hang", hung: "hang",
+  lays: "lay", laying: "lay", laid: "lay",
+  lends: "lend", lending: "lend", lent: "lend",
+  lights: "light", lighting: "light", lit: "light",
+  speaks: "speak", speaking: "speak", spoke: "speak", spoken: "speak",
+  drives: "drive", driving: "drive", drove: "drive", driven: "drive",
+  eats: "eat", eating: "eat", ate: "eat", eaten: "eat",
+  drinks: "drink", drinking: "drink", drank: "drink", drunk: "drink",
+};
+
+export function wordFormCandidates(word: string): string[] {
+  const candidates: string[] = [];
+
+  const irregular = IRREGULAR_FORMS[word];
+  if (irregular) {
+    candidates.push(irregular);
+  }
+
+  if (word.endsWith("ies") && word.length > 4) {
+    candidates.push(`${word.slice(0, -3)}y`);
+  } else if (word.endsWith("ves") && word.length > 4) {
+    candidates.push(`${word.slice(0, -3)}f`);
+    candidates.push(`${word.slice(0, -3)}fe`);
+  } else if (word.endsWith("es") && word.length > 3) {
+    if (/(?:x|z|ch|sh)es$/.test(word)) {
+      candidates.push(word.slice(0, -2));
+    } else {
+      candidates.push(word.slice(0, -1));
+      candidates.push(word.slice(0, -2));
+    }
+  } else if (word.endsWith("s") && !word.endsWith("ss") && word.length > 3) {
+    candidates.push(word.slice(0, -1));
+  }
+
+  if (word.endsWith("ed") && word.length > 4) {
+    const base = word.slice(0, -2);
+    candidates.push(base);
+    if (/(.)\1$/.test(base)) {
+      candidates.push(base.slice(0, -1));
+    }
+    candidates.push(`${base}e`);
+    if (/i$/.test(base)) {
+      candidates.push(`${base.slice(0, -1)}y`);
+    }
+  }
+
+  if (word.endsWith("ing") && word.length > 5) {
+    const base = word.slice(0, -3);
+    candidates.push(base);
+    if (/(.)\1$/.test(base)) {
+      candidates.push(base.slice(0, -1));
+    }
+    candidates.push(`${base}e`);
+    if (/i$/.test(base)) {
+      candidates.push(`${base.slice(0, -1)}y`);
+    }
+  }
+
+  return [...new Set(candidates)];
 }
 
 const remoteCache = new Map<string, WordDefinition>();
@@ -683,12 +817,19 @@ const TRANSLATION_TIMEOUT_MS = 8_000;
 const PRIMARY_RETRY_ATTEMPTS = 2;
 const RETRY_BACKOFF_MS = 500;
 
-type DictionaryResult = { phonetic: string; englishMeaning: string };
+type DictionaryResult = {
+  phonetic: string;
+  englishMeaning: string;
+  meanings?: WordMeaning[];
+};
 
 type DictionaryApiEntry = {
   phonetic?: string;
   phonetics?: Array<{ text?: string; audio?: string }>;
-  meanings?: Array<{ definitions?: Array<{ definition?: string }> }>;
+  meanings?: Array<{
+    partOfSpeech?: string;
+    definitions?: Array<{ definition?: string }>;
+  }>;
 };
 
 type WiktionaryResponse = { parse?: { wikitext?: { "*"?: string } } };
@@ -713,10 +854,13 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchFromDictionaryApiDev(word: string): Promise<DictionaryResult | null> {
+async function fetchFromDictionaryApiDev(
+  word: string,
+  timeoutMs: number,
+): Promise<DictionaryResult | null> {
   const payload = await fetchJsonWithTimeout<DictionaryApiEntry[]>(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
-    DICTIONARY_TIMEOUT_MS,
+    timeoutMs,
   );
   const entry = payload[0];
   if (!entry) return null;
@@ -727,9 +871,17 @@ async function fetchFromDictionaryApiDev(word: string): Promise<DictionaryResult
       ?.flatMap((meaning) => meaning.definitions ?? [])
       .map((item) => item.definition)
       .find(Boolean) || "";
+  const meanings = (entry.meanings ?? [])
+    .map((meaning) => ({
+      partOfSpeech: meaning.partOfSpeech ?? "",
+      definitions: (meaning.definitions ?? [])
+        .map((item) => item.definition ?? "")
+        .filter(Boolean),
+    }))
+    .filter((meaning) => meaning.definitions.length > 0);
 
-  if (!phonetic && !englishMeaning) return null;
-  return { phonetic, englishMeaning };
+  if (!phonetic && !englishMeaning && meanings.length === 0) return null;
+  return { phonetic, englishMeaning, meanings };
 }
 
 function extractEnglishSection(wikitext: string): string {
@@ -778,10 +930,13 @@ function extractWiktionaryDefinition(wikitext: string): string {
   return "";
 }
 
-async function fetchFromWiktionary(word: string): Promise<DictionaryResult | null> {
+async function fetchFromWiktionary(
+  word: string,
+  timeoutMs: number,
+): Promise<DictionaryResult | null> {
   const payload = await fetchJsonWithTimeout<WiktionaryResponse>(
     `https://en.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(word)}&prop=wikitext&format=json&origin=*`,
-    DICTIONARY_TIMEOUT_MS,
+    timeoutMs,
   );
   const wikitext = payload?.parse?.wikitext?.["*"];
   if (!wikitext) return null;
@@ -792,10 +947,13 @@ async function fetchFromWiktionary(word: string): Promise<DictionaryResult | nul
   return { phonetic, englishMeaning };
 }
 
-async function fetchFromDatamuse(word: string): Promise<DictionaryResult | null> {
+async function fetchFromDatamuse(
+  word: string,
+  timeoutMs: number,
+): Promise<DictionaryResult | null> {
   const payload = await fetchJsonWithTimeout<DatamuseEntry[]>(
     `https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d&max=1`,
-    DICTIONARY_TIMEOUT_MS,
+    timeoutMs,
   );
   const firstDef = payload?.[0]?.defs?.[0];
   if (!firstDef) return null;
@@ -804,14 +962,17 @@ async function fetchFromDatamuse(word: string): Promise<DictionaryResult | null>
   return { phonetic: "", englishMeaning };
 }
 
-async function fetchDictionaryResult(word: string): Promise<DictionaryResult | null> {
+async function fetchDictionaryResult(
+  word: string,
+  timeoutMs: number = DICTIONARY_TIMEOUT_MS,
+): Promise<DictionaryResult | null> {
   const sources = [fetchFromDictionaryApiDev, fetchFromWiktionary, fetchFromDatamuse];
   for (let index = 0; index < sources.length; index++) {
     const source = sources[index];
     const attempts = index === 0 ? PRIMARY_RETRY_ATTEMPTS : 1;
     for (let attempt = 0; attempt < attempts; attempt++) {
       try {
-        const result = await source(word);
+        const result = await source(word, timeoutMs);
         if (result) return result;
       } catch {
         // Source failed; retry the primary source, otherwise move to the next one.
@@ -824,7 +985,7 @@ async function fetchDictionaryResult(word: string): Promise<DictionaryResult | n
   return null;
 }
 
-async function translateToChinese(text: string): Promise<string> {
+export async function translateToChinese(text: string): Promise<string> {
   try {
     const payload = await fetchJsonWithTimeout<{
       responseData?: { translatedText?: string };
@@ -859,6 +1020,32 @@ async function translateToChinese(text: string): Promise<string> {
   return "";
 }
 
+const CANDIDATE_TIMEOUT_MS = 5_000;
+const REMOTE_CANDIDATE_ATTEMPTS = 2;
+
+async function buildRemoteResult(
+  cacheKey: string,
+  remote: DictionaryResult,
+  local: WordDefinition,
+): Promise<WordDefinition> {
+  const phonetic = remote.phonetic || local.phonetic;
+  if (!remote.englishMeaning) {
+    return { phonetic, meaning: local.meaning, meanings: remote.meanings };
+  }
+
+  const translated = await translateToChinese(remote.englishMeaning);
+  if (!translated) {
+    // Translation failed; the English definition is still more useful than the
+    // "暂未找到释义" placeholder, so return it without caching so a later tap
+    // can retry the translation.
+    return { phonetic, meaning: remote.englishMeaning, meanings: remote.meanings };
+  }
+
+  const result = { phonetic, meaning: translated, meanings: remote.meanings };
+  remoteCache.set(cacheKey, result);
+  return result;
+}
+
 export async function lookupWordDefinition(word: string): Promise<WordDefinition> {
   const clean = cleanLookupWord(word);
   const local = getWordDefinition(clean);
@@ -868,22 +1055,28 @@ export async function lookupWordDefinition(word: string): Promise<WordDefinition
   if (cached) return cached;
 
   const remote = await fetchDictionaryResult(clean);
-  if (!remote) return local;
-
-  const phonetic = remote.phonetic || local.phonetic;
-  if (!remote.englishMeaning) {
-    return { phonetic, meaning: local.meaning };
+  if (remote) {
+    return buildRemoteResult(clean, remote, local);
   }
 
-  const translated = await translateToChinese(remote.englishMeaning);
-  if (!translated) {
-    // Translation failed; the English definition is still more useful than the
-    // "暂未找到释义" placeholder, so return it without caching so a later tap
-    // can retry the translation.
-    return { phonetic, meaning: remote.englishMeaning };
+  // 变形词回退：远程词典对复数/过去式/进行时等变形词可能 404，
+  // 先按词形还原候选词查本地词库（离线可用），再查远程词典
+  const candidates = wordFormCandidates(clean);
+  for (const candidate of candidates) {
+    if (candidate === clean) continue;
+    const candidateLocal = getWordDefinition(candidate);
+    if (candidateLocal.meaning !== PLACEHOLDER_MEANING) {
+      return candidateLocal;
+    }
   }
 
-  const result = { phonetic, meaning: translated };
-  remoteCache.set(clean, result);
-  return result;
+  for (const candidate of candidates.slice(0, REMOTE_CANDIDATE_ATTEMPTS)) {
+    if (candidate === clean) continue;
+    const candidateRemote = await fetchDictionaryResult(candidate, CANDIDATE_TIMEOUT_MS);
+    if (candidateRemote) {
+      return buildRemoteResult(clean, candidateRemote, getWordDefinition(candidate));
+    }
+  }
+
+  return local;
 }

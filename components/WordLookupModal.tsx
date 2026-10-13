@@ -88,6 +88,23 @@ export function WordLookupModal({
           <Text style={styles.phonetic}>{definition?.phonetic || "正在补充音标…"}</Text>
           <Text style={styles.label}>中文意思</Text>
           <Text style={styles.meaning}>{definition?.meaning || "正在查询中文释义…"}</Text>
+          {definition?.meanings && definition.meanings.length > 0 && (
+            <View>
+              <Text style={styles.label}>英文释义</Text>
+              {definition.meanings.map((meaning, meaningIndex) => (
+                <View key={`${meaning.partOfSpeech}-${meaningIndex}`} style={styles.meaningItem}>
+                  <Text style={styles.partOfSpeech}>
+                    {meaning.partOfSpeech || "其他"}
+                  </Text>
+                  {meaning.definitions.map((item, definitionIndex) => (
+                    <Text key={`${item}-${definitionIndex}`} style={styles.definitionText}>
+                      {definitionIndex + 1}. {item}
+                    </Text>
+                  ))}
+                </View>
+              ))}
+            </View>
+          )}
           <Text style={styles.label}>例句</Text>
           <Text style={styles.example}>{example || "暂无例句"}</Text>
           <View style={styles.actions}>
@@ -116,6 +133,9 @@ const styles = StyleSheet.create({
   phonetic: { color: "#8DB0FF", fontSize: 17, minHeight: 24 },
   label: { color: "#9DB9FF", fontSize: 12, fontWeight: "800", marginTop: 9 },
   meaning: { color: "#F2F3F5", fontSize: 17, lineHeight: 24 },
+  meaningItem: { marginTop: 6, gap: 3 },
+  partOfSpeech: { color: "#C2A56D", fontSize: 12, fontWeight: "800" },
+  definitionText: { color: "#D5D9E2", fontSize: 14, lineHeight: 21 },
   example: { color: "#D5D9E2", fontSize: 15, lineHeight: 23 },
   actions: { flexDirection: "row", gap: 10, marginTop: 15 },
   primaryButton: { flex: 1, backgroundColor: "#2F6BEB", borderRadius: 11, padding: 12, alignItems: "center" },

@@ -11,10 +11,12 @@ import {
 } from "react-native";
 
 import { ScreenContainer } from "@/components/ScreenContainer";
+import { SentenceParseModal } from "@/components/SentenceParseModal";
 import { Waveform } from "@/components/Waveform";
 import { WordSentence } from "@/components/WordSentence";
 import { WordLookupModal } from "@/components/WordLookupModal";
 import type { ListeningLine } from "@/lib/data";
+import { parseSentence, type SentenceParse } from "@/lib/sentence";
 import {
   getSpeechRate,
   selectVoiceForSpeaker,
@@ -84,6 +86,10 @@ export default function FeaturedScreen() {
   const [playingAll, setPlayingAll] = useState(false);
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [translated, setTranslated] = useState<Record<string, boolean>>({});
+  const [parseSource, setParseSource] = useState<string | null>(null);
+  const [parsedSentence, setParsedSentence] = useState<SentenceParse | null>(null);
+  const [parsingSentence, setParsingSentence] = useState(false);
+  const parseRequestRef = useRef(0);
 
   const visibleCourses = useMemo(
     () => courses.filter((course) => course.level === level),
@@ -188,6 +194,38 @@ export default function FeaturedScreen() {
       }
     };
   }, [selectedWord]);
+
+  const parseLine = (line: ListeningLine) => {
+    const requestId = ++parseRequestRef.current;
+    setParseSource(line.text);
+    setParsedSentence(null);
+    setParsingSentence(true);
+    Speech.stop?.();
+
+    void parseSentence(line.text).then((result) => {
+      if (requestId !== parseRequestRef.current) return;
+      setParsedSentence(result);
+      setParsingSentence(false);
+    });
+  };
+
+  const closeParse = () => {
+    parseRequestRef.current += 1;
+    setParseSource(null);
+    setParsedSentence(null);
+    setParsingSentence(false);
+  };
+
+  const openWordFromParse = (word: string) => {
+    const example = parseSource ?? "";
+    closeParse();
+    setSelectedWord(word);
+    setSelectedExample(example);
+    Speech.stop?.();
+    Speech.speak?.(word, {
+      language: "en-US",
+    });
+  };
 
   const speakLine = (line: ListeningLine, done?: () => void) => {
     Speech.stop?.();
@@ -442,6 +480,7 @@ export default function FeaturedScreen() {
                   language: "en-US",
                 });
               }}
+              onSentence={() => parseLine(item)}
             />
 
             {translated[item.id] && (
@@ -449,6 +488,13 @@ export default function FeaturedScreen() {
             )}
 
             <View style={styles.actions}>
+              <Pressable
+                onPress={() => parseLine(item)}
+                accessibilityLabel={`解析第${index + 1}句`}
+              >
+                <Text style={styles.actionText}>解析</Text>
+              </Pressable>
+
               <Pressable
                 onPress={() =>
                   setTranslated((current) => ({
@@ -500,6 +546,14 @@ export default function FeaturedScreen() {
           );
         }}
         onClose={() => setSelectedWord(null)}
+      />
+
+      <SentenceParseModal
+        visible={Boolean(parseSource)}
+        parse={parsedSentence}
+        parsing={parsingSentence}
+        onWordLookup={openWordFromParse}
+        onClose={closeParse}
       />
     </ScreenContainer>
   );

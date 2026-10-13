@@ -1,24 +1,52 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react-native";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react-native";
+
+import type { SentenceParse } from "@/lib/sentence";
 
 const mockReact = React;
 const mockScrollToIndex = jest.fn();
 const mockScrollToOffset = jest.fn();
-const mockSpeak = jest.fn();
-const mockStop = jest.fn();
 
-jest.mock("expo-speech", () => ({
-  __esModule: true,
-  getAvailableVoicesAsync: jest.fn(() => ({ then: (resolve: (voices: unknown[]) => void) => { resolve([]); return { catch: () => undefined }; } })),
-  speak: mockSpeak,
-  stop: mockStop,
-  default: { getAvailableVoicesAsync: jest.fn(() => ({ then: (resolve: (voices: unknown[]) => void) => { resolve([]); return { catch: () => undefined }; } })), speak: mockSpeak, stop: mockStop },
-}));
+let resolveParse: ((parse: SentenceParse) => void) | undefined;
+
+// babel 把 import 的 require 提升到文件顶部（先于 const 初始化执行），
+// 因此 mock 工厂内不能直接引用后声明的变量——在工厂内部创建 jest.fn，
+// 再从被 mock 的模块实例上取回引用。
+jest.mock("expo-speech", () => {
+  const getAvailableVoicesAsync = jest.fn(() => ({
+    then: (resolve: (voices: unknown[]) => void) => {
+      resolve([]);
+      return { catch: () => undefined };
+    },
+  }));
+  const speak = jest.fn();
+  const stop = jest.fn(() => Promise.resolve());
+  return {
+    __esModule: true,
+    getAvailableVoicesAsync,
+    speak,
+    stop,
+    default: { getAvailableVoicesAsync, speak, stop },
+  };
+});
 
 jest.mock("@/components/ScreenContainer", () => {
   const RNReact = require("react");
   return {
     ScreenContainer: ({ children }: { children: React.ReactNode }) => RNReact.createElement(RNReact.Fragment, null, children),
+  };
+});
+
+jest.mock("@/lib/sentence", () => {
+  const actual = jest.requireActual("@/lib/sentence");
+  return {
+    ...actual,
+    parseSentence: jest.fn(),
   };
 });
 
@@ -48,6 +76,7 @@ jest.mock("react-native", () => {
     ActivityIndicator: host("ActivityIndicator"),
     Animated,
     Image: host("Image"),
+    Modal: host("Modal"),
     NativeModules: { ExpoModulesCoreJSLogger: { get: jest.fn(() => undefined) } },
     TurboModuleRegistry: { get: jest.fn(() => null) },
     FlatList,
@@ -61,6 +90,11 @@ jest.mock("react-native", () => {
 });
 
 import ListeningScreen from "../app/(tabs)/index";
+import { parseSentence } from "@/lib/sentence";
+import * as Speech from "expo-speech";
+
+const mockSpeak = Speech.speak as jest.Mock;
+const mockStop = Speech.stop as jest.Mock;
 
 describe("ListeningScreen", () => {
   beforeEach(() => {
@@ -68,6 +102,16 @@ describe("ListeningScreen", () => {
     mockScrollToOffset.mockClear();
     mockSpeak.mockClear();
     mockStop.mockClear();
+    resolveParse = undefined;
+    jest
+      .mocked(parseSentence)
+      .mockReset()
+      .mockImplementation(
+        () =>
+          new Promise<SentenceParse>((resolve) => {
+            resolveParse = resolve;
+          }),
+      );
   });
 
   it("exposes all supported playback speed controls", () => {
@@ -109,5 +153,28 @@ describe("ListeningScreen", () => {
     fireEvent.press(screen.getAllByText("语音")[0]);
     expect(screen.getByText("正在播放当前对话")).toBeTruthy();
     expect(screen.getAllByText("语音")).toHaveLength(100);
+  });
+
+  it("opens the sentence parse modal from the line actions", async () => {
+    render(<ListeningScreen />);
+
+    fireEvent.press(screen.getAllByText("解析")[0]);
+    expect(screen.getByText("正在解析…")).toBeTruthy();
+
+    await act(async () => {
+      resolveParse?.({
+        text: "Nice to meet you.",
+        translation: "很高兴见到你。",
+        words: [{ word: "nice", phonetic: "/naɪs/", meaning: "友好的；不错的" }],
+        phrases: ["nice", "to", "meet you"],
+      });
+    });
+
+    expect(screen.getByText("很高兴见到你。")).toBeTruthy();
+    expect(screen.getByText("meet you")).toBeTruthy();
+    expect(screen.getByText("/naɪs/")).toBeTruthy();
+
+    fireEvent.press(screen.getByText("✕"));
+    expect(screen.queryByText("正在解析…")).toBeNull();
   });
 });

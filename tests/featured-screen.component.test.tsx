@@ -8,6 +8,7 @@ import {
 } from "@testing-library/react-native";
 
 import type { WordDefinition } from "@/lib/word";
+import type { SentenceParse } from "@/lib/sentence";
 import type { VoaCourse, VoaLesson } from "@/lib/voa";
 
 const mockScrollToIndex = jest.fn();
@@ -99,14 +100,25 @@ jest.mock("@/lib/word", () => {
   };
 });
 
+jest.mock("@/lib/sentence", () => {
+  const actual = jest.requireActual("@/lib/sentence");
+  return {
+    ...actual,
+    parseSentence: jest.fn(),
+  };
+});
+
 import * as Speech from "expo-speech";
 import FeaturedScreen from "../app/(tabs)/featured";
 import { fetchVoaCourseDetail, fetchVoaCourses } from "@/lib/voa";
+import { parseSentence } from "@/lib/sentence";
 import { lookupWordDefinition } from "@/lib/word";
 import { WordbookProvider } from "@/lib/wordbook";
 
 const mockSpeak = Speech.speak as jest.Mock;
 const mockStop = Speech.stop as jest.Mock;
+
+let resolveParse: ((parse: SentenceParse) => void) | undefined;
 
 const serverCourse: VoaCourse = {
   id: "as-it-is-server",
@@ -146,6 +158,7 @@ async function renderFeatured() {
 describe("FeaturedScreen", () => {
   beforeEach(() => {
     resolveLookupWord = undefined;
+    resolveParse = undefined;
     mockScrollToIndex.mockClear();
     mockScrollToOffset.mockClear();
     mockSpeak.mockClear();
@@ -165,6 +178,15 @@ describe("FeaturedScreen", () => {
         () =>
           new Promise<WordDefinition>((resolve) => {
             resolveLookupWord = resolve;
+          }),
+      );
+    jest
+      .mocked(parseSentence)
+      .mockReset()
+      .mockImplementation(
+        () =>
+          new Promise<SentenceParse>((resolve) => {
+            resolveParse = resolve;
           }),
       );
   });
@@ -303,6 +325,34 @@ describe("FeaturedScreen", () => {
     await waitFor(() => {
       expect(screen.getByText("已收藏")).toBeTruthy();
     });
+  });
+
+  it("opens the sentence parse modal and drills into a word", async () => {
+    await renderFeatured();
+
+    fireEvent.press(screen.getAllByText("解析")[0]);
+    expect(screen.getByText("正在解析…")).toBeTruthy();
+
+    await act(async () => {
+      resolveParse?.({
+        text: FIRST_LINE_TEXT,
+        translation: FIRST_LINE_TRANSLATION,
+        words: [
+          { word: "korea", phonetic: "/kəˈriːə/", meaning: "韩国" },
+          { word: "south", phonetic: "", meaning: "暂未找到释义" },
+        ],
+        phrases: ["the number", "of babies born", "in south korea"],
+      });
+    });
+
+    expect(screen.getByText(FIRST_LINE_TRANSLATION)).toBeTruthy();
+    expect(screen.getByText("in south korea")).toBeTruthy();
+    expect(screen.getByText("/kəˈriːə/")).toBeTruthy();
+
+    fireEvent.press(screen.getByText("korea"));
+    // 查词弹窗接管，语句解析弹窗关闭
+    expect(screen.getByText("正在补充音标…")).toBeTruthy();
+    expect(screen.queryByText("正在解析…")).toBeNull();
   });
 
   it("returns to the top of the lesson list", async () => {

@@ -7,12 +7,14 @@ const C = {
 export function WordSentence({
   text,
   onWord,
+  onSentence,
 }: {
   text: string;
   onWord: (word: string) => void;
+  onSentence?: () => void;
 }) {
   return (
-    <Text style={styles.lineText}>
+    <Text style={styles.lineText} onLongPress={onSentence}>
       {text.split(/(\s+)/).map((part, index) =>
         /\s+/.test(part) ? (
           part
