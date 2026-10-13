@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { SUPPLEMENTARY_WORDS } from "./dictionary-data";
 import {
   cleanLookupWord,
   getWordDefinition,
@@ -284,5 +285,52 @@ describe("lookupWordDefinition", () => {
     const result = await lookupWordDefinition("xyzzyq");
     expect(result.phonetic).toBe("");
     expect(result.meaning).toBe("暂未找到释义");
+  });
+
+  it("rejects datamuse fuzzy matches that return a different word", async () => {
+    routeFetch([
+      ["https://api.dictionaryapi.dev/", () => jsonResponse([], 404)],
+      ["https://en.wiktionary.org/", () => jsonResponse({}, 404)],
+      [
+        "https://api.datamuse.com/",
+        // sp= 是模糊匹配：返回拼写相近的其他词（apple）而非查询词（aple）
+        () => jsonResponse([{ word: "apple", defs: ["noun:a round fruit"] }]),
+      ],
+    ]);
+
+    const result = await lookupWordDefinition("aple");
+    expect(result.meaning).toBe("暂未找到释义");
+  });
+
+  it("rejects wiktionary pages that resolve to a different title", async () => {
+    routeFetch([
+      ["https://api.dictionaryapi.dev/", () => jsonResponse([], 404)],
+      [
+        "https://en.wiktionary.org/",
+        () =>
+          jsonResponse({
+            parse: {
+              title: "Alexandra",
+              wikitext: { "*": "==English==\n# A female given name\n" },
+            },
+          }),
+      ],
+      ["https://api.datamuse.com/", () => jsonResponse([], 404)],
+    ]);
+
+    const result = await lookupWordDefinition("aple");
+    expect(result.meaning).toBe("暂未找到释义");
+  });
+
+  it("keeps supplementary dictionary meanings free of raw English", () => {
+    for (const [word, entry] of Object.entries(SUPPLEMENTARY_WORDS)) {
+      // 允许圆括号内的语法注释（如“是（be 第三人称单数）”），
+      // 其余部分不应出现英文单词（防止释义混入无关英文说明）。
+      const stripped = entry.meaning.replace(/（[^）]*）/g, "");
+      expect(
+        stripped,
+        `${word}: ${entry.meaning}`,
+      ).not.toMatch(/[A-Za-z]{2,}/);
+    }
   });
 });

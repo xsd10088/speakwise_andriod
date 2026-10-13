@@ -130,7 +130,7 @@ const WORDS: Record<string, WordDefinition> = {
   medications: { phonetic: "/ˌmedɪˈkeɪʃnz/", meaning: "药物；药品" },
   experienced: { phonetic: "/ɪkˈspɪəriənst/", meaning: "有经验的" },
   sensitivity: { phonetic: "/ˌsensəˈtɪvəti/", meaning: "敏感性；灵敏度" },
-  overwhelmed: { phonetic: "/ˌoʊvərˈwɛlmd/", meaning: " overwhelmed；不知所措" },
+  overwhelmed: { phonetic: "/ˌoʊvərˈwɛlmd/", meaning: "压倒；不知所措" },
   mindfulness: { phonetic: "/ˈmaɪndfəlnəs/", meaning: "正念；专注" },
 
 
@@ -700,7 +700,8 @@ const IRREGULAR_FORMS: Record<string, string> = {
   makes: "make", making: "make", made: "make",
   takes: "take", taking: "take", took: "take", taken: "take",
   comes: "come", coming: "come", came: "come",
-  sees: "see", seeing: "see", saw: "see", seen: "see",
+   sees: "see", seeing: "see", saw: "see", seen: "see",
+   sent: "send", sold: "sell",
   knows: "know", knowing: "know", knew: "know", known: "know",
   writes: "write", writing: "write", wrote: "write", written: "write",
   gives: "give", giving: "give", gave: "give", given: "give",
@@ -987,7 +988,9 @@ type DictionaryApiEntry = {
   }>;
 };
 
-type WiktionaryResponse = { parse?: { wikitext?: { "*"?: string } } };
+type WiktionaryResponse = {
+  parse?: { title?: string; wikitext?: { "*"?: string } };
+};
 
 type DatamuseEntry = { word?: string; defs?: string[] };
 
@@ -1092,6 +1095,13 @@ async function fetchFromWiktionary(
   const wikitext = payload?.parse?.wikitext?.["*"];
   if (!wikitext) return null;
 
+  // 确认解析到的页面就是查询词本身（action=parse 会跟随重定向，
+  // 标题不符说明跳到了无关词条，返回 null 交给下一个词典源）。
+  const title = payload?.parse?.title;
+  if (title && title.toLowerCase() !== word.toLowerCase()) {
+    return null;
+  }
+
   const phonetic = extractWiktionaryPhonetic(wikitext);
   const englishMeaning = extractWiktionaryDefinition(wikitext);
   if (!phonetic && !englishMeaning) return null;
@@ -1103,10 +1113,15 @@ async function fetchFromDatamuse(
   timeoutMs: number,
 ): Promise<DictionaryResult | null> {
   const payload = await fetchJsonWithTimeout<DatamuseEntry[]>(
-    `https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d&max=1`,
+    `https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d&max=10`,
     timeoutMs,
   );
-  const firstDef = payload?.[0]?.defs?.[0];
+  // sp= 是模糊匹配：返回结果可能包含拼写相近的其他词。
+  // 只接受与查询词完全一致的条目，避免把无关词的释义当作查询词的释义。
+  const match = payload?.find(
+    (item) => item.word?.toLowerCase() === word.toLowerCase(),
+  );
+  const firstDef = match?.defs?.[0];
   if (!firstDef) return null;
   const englishMeaning = firstDef.replace(/^[a-z]+:/i, "").trim();
   if (!englishMeaning) return null;
