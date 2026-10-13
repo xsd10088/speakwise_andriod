@@ -118,12 +118,27 @@ describe("parseSentence", () => {
     expect(result.phrases).toContain("of babies born");
   });
 
-  it("keeps an empty translation when every translation provider fails", async () => {
+  it("uses the known translation without fetching", async () => {
+    const result = await parseSentence(
+      "the number of babies born in South Korea increased",
+      "韩国新生儿数量九年来首次增长。",
+    );
+
+    expect(result.translation).toBe("韩国新生儿数量九年来首次增长。");
+    expect(result.words[0]).toEqual({
+      word: "the",
+      phonetic: "/ðə/",
+      meaning: "这；那；这些；那些",
+    });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("falls back to a word-by-word gloss when every translation provider fails", async () => {
     fetchMock.mockRejectedValue(new Error("offline"));
 
     const result = await parseSentence("hello world");
 
-    expect(result.translation).toBe("");
+    expect(result.translation).toBe("你好 world");
     expect(result.words.map((item) => item.word)).toEqual(["hello", "world"]);
     expect(result.words[0].meaning).toBe("你好");
   });

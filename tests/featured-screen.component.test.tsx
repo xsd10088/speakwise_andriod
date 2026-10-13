@@ -299,8 +299,9 @@ describe("FeaturedScreen", () => {
     fireEvent.press(screen.getAllByText("In")[0]);
     expect(mockSpeak).toHaveBeenCalledWith("In", { language: "en-US" });
 
-    expect(screen.getByText("正在补充音标…")).toBeTruthy();
-    expect(screen.getByText("暂未找到释义")).toBeTruthy();
+    // 离线词库命中：本地释义零网络立即展示
+    expect(screen.getByText("/ɪn/")).toBeTruthy();
+    expect(screen.getByText("在……里；用")).toBeTruthy();
 
     await act(async () => {
       resolveLookupWord?.({ phonetic: "/wɜːrk/", meaning: "工作" });

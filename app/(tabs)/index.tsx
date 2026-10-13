@@ -139,7 +139,7 @@ export default function ListeningScreen() {
     setParsingSentence(true);
     Speech.stop?.();
 
-    void parseSentence(line.text).then((result) => {
+    void parseSentence(line.text, line.translation).then((result) => {
       if (requestId !== parseRequestRef.current) return;
       setParsedSentence(result);
       setParsingSentence(false);

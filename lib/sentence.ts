@@ -2,6 +2,7 @@ import {
   cleanLookupWord,
   getWordDefinition,
   translateToChinese,
+  PLACEHOLDER_MEANING,
   type WordDefinition,
 } from "@/lib/word";
 
@@ -110,7 +111,23 @@ export function parseWords(words: string[]): ParsedWord[] {
   });
 }
 
-export async function parseSentence(text: string): Promise<SentenceParse> {
+// 离线兜底：翻译源不可用时，用离线词库逐词释义拼接
+function glossTranslation(words: string[]): string {
+  return words
+    .map((word) => {
+      const definition = getWordDefinition(word);
+      if (definition.meaning === PLACEHOLDER_MEANING) {
+        return word;
+      }
+      return definition.meaning.split("；")[0];
+    })
+    .join(" ");
+}
+
+export async function parseSentence(
+  text: string,
+  knownTranslation?: string,
+): Promise<SentenceParse> {
   const words = tokenizeSentence(text);
   const phrases = phrasesToText(chunkPhrases(words));
 
@@ -119,10 +136,18 @@ export async function parseSentence(text: string): Promise<SentenceParse> {
   }
 
   let translation = "";
-  try {
-    translation = (await translateToChinese(text)).trim();
-  } catch {
-    translation = "";
+  if (knownTranslation && knownTranslation.trim()) {
+    // 应用自带句子翻译：零网络，离线可用
+    translation = knownTranslation.trim();
+  } else {
+    try {
+      translation = (await translateToChinese(text)).trim();
+    } catch {
+      translation = "";
+    }
+    if (!translation) {
+      translation = glossTranslation(words);
+    }
   }
 
   return { text, translation, words: parseWords(words), phrases };

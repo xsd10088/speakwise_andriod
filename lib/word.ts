@@ -1,3 +1,5 @@
+import { SUPPLEMENTARY_WORDS } from "./dictionary-data";
+
 export type WordMeaning = {
   partOfSpeech: string;
   definitions: string[];
@@ -676,11 +678,14 @@ const WORDS: Record<string, WordDefinition> = {
   handler: { phonetic: "/ˈhændlər/", meaning: "从业人员" },
 };
 
-const PLACEHOLDER_MEANING = "暂未找到释义";
+export const PLACEHOLDER_MEANING = "暂未找到释义";
 
 export function getWordDefinition(word: string): WordDefinition {
   const clean = cleanLookupWord(word);
-  return WORDS[clean] ?? { phonetic: "", meaning: PLACEHOLDER_MEANING };
+  return (
+    WORDS[clean] ??
+    SUPPLEMENTARY_WORDS[clean] ?? { phonetic: "", meaning: PLACEHOLDER_MEANING }
+  );
 }
 
 export function cleanLookupWord(word: string) {
@@ -812,10 +817,160 @@ export function wordFormCandidates(word: string): string[] {
 
 const remoteCache = new Map<string, WordDefinition>();
 
+// ---- 持久化缓存（AsyncStorage）：远程成功的词永久离线可用 ----
+const PERSISTENT_CACHE_PREFIX = "speakwise-word-cache-v1:";
+const persistentCache = new Map<string, WordDefinition>();
+let persistentCacheLoaded = false;
+let persistentCacheLoading: Promise<void> | null = null;
+
+export type WordCacheStorage = {
+  getAllKeys(): Promise<readonly string[]>;
+  multiGet(
+    keys: readonly string[],
+  ): Promise<ReadonlyArray<[string, string | null]>>;
+  setItem(key: string, value: string): Promise<void>;
+};
+
+let cacheStorage: WordCacheStorage | null | undefined;
+
+export function setWordCacheStorage(storage: WordCacheStorage | null): void {
+  cacheStorage = storage;
+  persistentCacheLoaded = false;
+  persistentCacheLoading = null;
+  persistentCache.clear();
+  // 同时重置内存缓存与网络探测状态（测试隔离用）
+  remoteCache.clear();
+  networkHealthy = null;
+  networkCheckedAt = 0;
+}
+
+function isValidDefinition(value: unknown): value is WordDefinition {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  const item = value as Partial<WordDefinition>;
+  return typeof item.phonetic === "string" && typeof item.meaning === "string";
+}
+
+async function resolveCacheStorage(): Promise<WordCacheStorage | null> {
+  if (cacheStorage !== undefined) {
+    return cacheStorage;
+  }
+  try {
+    const mod = await import("@react-native-async-storage/async-storage");
+    cacheStorage = mod.default;
+  } catch {
+    cacheStorage = null;
+  }
+  return cacheStorage ?? null;
+}
+
+async function loadPersistentCache(): Promise<void> {
+  if (persistentCacheLoaded) {
+    return;
+  }
+  if (persistentCacheLoading) {
+    return persistentCacheLoading;
+  }
+  persistentCacheLoading = (async () => {
+    try {
+      const storage = await resolveCacheStorage();
+      if (!storage) {
+        return;
+      }
+      const keys = await storage.getAllKeys();
+      const wordKeys = keys.filter((key) =>
+        key.startsWith(PERSISTENT_CACHE_PREFIX),
+      );
+      if (wordKeys.length === 0) {
+        return;
+      }
+      const pairs = await storage.multiGet(wordKeys);
+      for (const [key, value] of pairs) {
+        if (!value) {
+          continue;
+        }
+        try {
+          const parsed: unknown = JSON.parse(value);
+          if (isValidDefinition(parsed)) {
+            persistentCache.set(
+              key.slice(PERSISTENT_CACHE_PREFIX.length),
+              parsed,
+            );
+          }
+        } catch {
+          // 跳过损坏的缓存条目
+        }
+      }
+    } catch {
+      // 存储不可用时仅用内存缓存
+    } finally {
+      persistentCacheLoaded = true;
+    }
+  })();
+  return persistentCacheLoading;
+}
+
+function persistCacheEntry(word: string, definition: WordDefinition): void {
+  persistentCache.set(word, definition);
+  void (async () => {
+    try {
+      const storage = await resolveCacheStorage();
+      if (!storage) {
+        return;
+      }
+      await storage.setItem(
+        PERSISTENT_CACHE_PREFIX + word,
+        JSON.stringify(definition),
+      );
+    } catch {
+      // 忽略持久化失败
+    }
+  })();
+}
+
+// ---- 网络健康探测：弱网时跳过远程，本地结果秒回 ----
+const NETWORK_PROBE_TIMEOUT_MS = 3_000;
+const NETWORK_PROBE_TTL_MS = 30_000;
+let networkHealthy: boolean | null = null;
+let networkCheckedAt = 0;
+
+async function probeUrl(url: string, timeoutMs: number): Promise<boolean> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    await fetch(url, { signal: controller.signal });
+    return true;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function probeNetworkAvailable(): Promise<boolean> {
+  const now = Date.now();
+  if (networkHealthy !== null && now - networkCheckedAt < NETWORK_PROBE_TTL_MS) {
+    return networkHealthy;
+  }
+  networkCheckedAt = now;
+  const probes = [
+    "https://api.dictionaryapi.dev/",
+    "https://en.wiktionary.org/",
+    "https://api.datamuse.com/",
+  ];
+  const healthy = await Promise.any(
+    probes.map((url) => probeUrl(url, NETWORK_PROBE_TIMEOUT_MS)),
+  ).then(
+    () => true,
+    () => false,
+  );
+  networkHealthy = healthy;
+  return healthy;
+}
+
 const DICTIONARY_TIMEOUT_MS = 8_000;
 const TRANSLATION_TIMEOUT_MS = 8_000;
-const PRIMARY_RETRY_ATTEMPTS = 2;
-const RETRY_BACKOFF_MS = 500;
 
 type DictionaryResult = {
   phonetic: string;
@@ -848,10 +1003,6 @@ async function fetchJsonWithTimeout<T>(url: string, timeoutMs: number): Promise<
   } finally {
     clearTimeout(timer);
   }
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function fetchFromDictionaryApiDev(
@@ -966,26 +1117,45 @@ async function fetchDictionaryResult(
   word: string,
   timeoutMs: number = DICTIONARY_TIMEOUT_MS,
 ): Promise<DictionaryResult | null> {
+  // 并行竞速：三个词典源同时发起，首个成功者胜出。
+  // 弱网下最坏耗时为单源超时（而非串行累加），避免长时间挂起。
   const sources = [fetchFromDictionaryApiDev, fetchFromWiktionary, fetchFromDatamuse];
-  for (let index = 0; index < sources.length; index++) {
-    const source = sources[index];
-    const attempts = index === 0 ? PRIMARY_RETRY_ATTEMPTS : 1;
-    for (let attempt = 0; attempt < attempts; attempt++) {
-      try {
-        const result = await source(word, timeoutMs);
-        if (result) return result;
-      } catch {
-        // Source failed; retry the primary source, otherwise move to the next one.
-      }
-      if (attempt + 1 < attempts) {
-        await sleep(RETRY_BACKOFF_MS * (attempt + 1));
-      }
-    }
+  try {
+    return await Promise.any(
+      sources.map((source) =>
+        source(word, timeoutMs).then((result) => {
+          if (!result) {
+            throw new Error("empty result");
+          }
+          return result;
+        }),
+      ),
+    );
+  } catch {
+    return null;
   }
-  return null;
 }
 
 export async function translateToChinese(text: string): Promise<string> {
+  // 并行竞速：两个翻译源同时发起，首个成功者胜出。
+  const providers = [translateViaMymemory, translateViaGoogle];
+  try {
+    return await Promise.any(
+      providers.map((provider) =>
+        provider(text).then((translated) => {
+          if (!translated) {
+            throw new Error("empty translation");
+          }
+          return translated;
+        }),
+      ),
+    );
+  } catch {
+    return "";
+  }
+}
+
+async function translateViaMymemory(text: string): Promise<string> {
   try {
     const payload = await fetchJsonWithTimeout<{
       responseData?: { translatedText?: string };
@@ -999,9 +1169,12 @@ export async function translateToChinese(text: string): Promise<string> {
       return translated;
     }
   } catch {
-    // Fall through to the next translation provider.
+    // 落到下一个翻译源
   }
+  return "";
+}
 
+async function translateViaGoogle(text: string): Promise<string> {
   try {
     const payload = await fetchJsonWithTimeout<unknown[][]>(
       `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(text)}`,
@@ -1014,9 +1187,8 @@ export async function translateToChinese(text: string): Promise<string> {
       return translated.trim();
     }
   } catch {
-    // No translation provider available.
+    // 无可用翻译源
   }
-
   return "";
 }
 
@@ -1043,40 +1215,70 @@ async function buildRemoteResult(
 
   const result = { phonetic, meaning: translated, meanings: remote.meanings };
   remoteCache.set(cacheKey, result);
+  // 远程成功的词持久化：跨会话离线可用
+  persistCacheEntry(cacheKey, result);
   return result;
 }
 
 export async function lookupWordDefinition(word: string): Promise<WordDefinition> {
   const clean = cleanLookupWord(word);
-  const local = getWordDefinition(clean);
-  if (!clean) return local;
-
-  const cached = remoteCache.get(clean);
-  if (cached) return cached;
-
-  const remote = await fetchDictionaryResult(clean);
-  if (remote) {
-    return buildRemoteResult(clean, remote, local);
+  if (!clean) {
+    return getWordDefinition(clean);
   }
 
-  // 变形词回退：远程词典对复数/过去式/进行时等变形词可能 404，
-  // 先按词形还原候选词查本地词库（离线可用），再查远程词典
+  // 1. 内存缓存
+  const cached = remoteCache.get(clean);
+  if (cached) {
+    return cached;
+  }
+
+  // 2. 持久化缓存（跨会话离线可用）
+  await loadPersistentCache();
+  const persisted = persistentCache.get(clean);
+  if (persisted) {
+    return persisted;
+  }
+
+  const local = getWordDefinition(clean);
+
+  // 3. 离线词库命中：直接返回，不依赖网络（对标可可英语内置词典优先）
+  if (local.meaning !== PLACEHOLDER_MEANING) {
+    return local;
+  }
+
+  // 4. 词形还原候选查离线词库（复数/过去式/进行时等变形词）
   const candidates = wordFormCandidates(clean);
   for (const candidate of candidates) {
-    if (candidate === clean) continue;
+    if (candidate === clean) {
+      continue;
+    }
     const candidateLocal = getWordDefinition(candidate);
     if (candidateLocal.meaning !== PLACEHOLDER_MEANING) {
       return candidateLocal;
     }
   }
 
-  for (const candidate of candidates.slice(0, REMOTE_CANDIDATE_ATTEMPTS)) {
-    if (candidate === clean) continue;
-    const candidateRemote = await fetchDictionaryResult(candidate, CANDIDATE_TIMEOUT_MS);
-    if (candidateRemote) {
-      return buildRemoteResult(clean, candidateRemote, getWordDefinition(candidate));
+  // 5. 远程词典（仅网络健康时；并行竞速）
+  if (await probeNetworkAvailable()) {
+    const remote = await fetchDictionaryResult(clean);
+    if (remote) {
+      return buildRemoteResult(clean, remote, local);
+    }
+    // 远程词典对变形词可能 404：按候选词查远程（限 2 候选）
+    for (const candidate of candidates.slice(0, REMOTE_CANDIDATE_ATTEMPTS)) {
+      if (candidate === clean) {
+        continue;
+      }
+      const candidateRemote = await fetchDictionaryResult(
+        candidate,
+        CANDIDATE_TIMEOUT_MS,
+      );
+      if (candidateRemote) {
+        return buildRemoteResult(clean, candidateRemote, getWordDefinition(candidate));
+      }
     }
   }
 
+  // 6. 全部失败：本地占位符
   return local;
 }

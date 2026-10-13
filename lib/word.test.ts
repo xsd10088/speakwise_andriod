@@ -1,15 +1,23 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanLookupWord, getWordDefinition, lookupWordDefinition } from "./word";
+import {
+  cleanLookupWord,
+  getWordDefinition,
+  lookupWordDefinition,
+  setWordCacheStorage,
+  type WordCacheStorage,
+} from "./word";
 
 const fetchMock = vi.fn();
 
 beforeEach(() => {
   fetchMock.mockReset();
   vi.stubGlobal("fetch", fetchMock);
+  setWordCacheStorage(null);
 });
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  setWordCacheStorage(null);
 });
 
 function jsonResponse(body: unknown, status = 200): Promise<Response> {
@@ -27,6 +35,21 @@ function routeFetch(handlers: Array<[string, () => Promise<Response>]>) {
     }
     throw new Error(`Unexpected fetch URL: ${url}`);
   });
+}
+
+function createMockStorage(initial: Record<string, string> = {}) {
+  const store = new Map<string, string>(Object.entries(initial));
+  const storage: WordCacheStorage = {
+    getAllKeys: async () => [...store.keys()],
+    multiGet: async (keys: readonly string[]) =>
+      keys.map(
+        (key) => [key, store.get(key) ?? null] as [string, string | null],
+      ),
+    setItem: async (key: string, value: string) => {
+      store.set(key, value);
+    },
+  };
+  return storage;
 }
 
 describe("cleanLookupWord", () => {
@@ -58,6 +81,13 @@ describe("lookupWordDefinition", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("returns the local definition for a local word without fetching", async () => {
+    const result = await lookupWordDefinition("hello");
+    expect(result.phonetic).toBe("/həˈloʊ/");
+    expect(result.meaning).toBe("你好");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("uses dictionaryapi.dev and caches the result", async () => {
     routeFetch([
       [
@@ -65,9 +95,9 @@ describe("lookupWordDefinition", () => {
         () =>
           jsonResponse([
             {
-              phonetic: "/wɜːrk/",
+              phonetic: "/ˈzaɪləfoʊ/",
               meanings: [
-                { definitions: [{ definition: "activity involving mental effort" }] },
+                { definitions: [{ definition: "a musical instrument" }] },
               ],
             },
           ]),
@@ -76,19 +106,72 @@ describe("lookupWordDefinition", () => {
         "https://api.mymemory.translated.net/",
         () =>
           jsonResponse({
-            responseData: { translatedText: "工作" },
+            responseData: { translatedText: "木琴" },
             responseStatus: 200,
           }),
       ],
     ]);
 
-    const first = await lookupWordDefinition("work");
-    expect(first.phonetic).toBe("/wɜːrk/");
-    expect(first.meaning).toBe("工作");
+    const first = await lookupWordDefinition("xylophone");
+    expect(first.phonetic).toBe("/ˈzaɪləfoʊ/");
+    expect(first.meaning).toBe("木琴");
 
-    const second = await lookupWordDefinition("work");
-    expect(second.meaning).toBe("工作");
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const callsAfterFirst = fetchMock.mock.calls.length;
+    expect(callsAfterFirst).toBeGreaterThan(0);
+
+    const second = await lookupWordDefinition("xylophone");
+    expect(second.meaning).toBe("木琴");
+    // 命中内存缓存：不再发起任何请求
+    expect(fetchMock.mock.calls.length).toBe(callsAfterFirst);
+  });
+
+  it("loads definitions from the persistent cache without fetching", async () => {
+    const storage = createMockStorage({
+      "speakwise-word-cache-v1:xylophone": JSON.stringify({
+        phonetic: "/ˈzaɪləfoʊ/",
+        meaning: "木琴",
+      }),
+    });
+    setWordCacheStorage(storage);
+
+    const result = await lookupWordDefinition("xylophone");
+    expect(result.phonetic).toBe("/ˈzaɪləfoʊ/");
+    expect(result.meaning).toBe("木琴");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("persists remote results to the cache storage", async () => {
+    const storage = createMockStorage();
+    setWordCacheStorage(storage);
+    routeFetch([
+      [
+        "https://api.dictionaryapi.dev/",
+        () =>
+          jsonResponse([
+            {
+              phonetic: "/ˈzaɪləfoʊ/",
+              meanings: [
+                { definitions: [{ definition: "a musical instrument" }] },
+              ],
+            },
+          ]),
+      ],
+      [
+        "https://api.mymemory.translated.net/",
+        () =>
+          jsonResponse({
+            responseData: { translatedText: "木琴" },
+            responseStatus: 200,
+          }),
+      ],
+    ]);
+
+    await lookupWordDefinition("xylophone");
+
+    await vi.waitFor(async () => {
+      const keys = await storage.getAllKeys();
+      expect(keys).toContain("speakwise-word-cache-v1:xylophone");
+    });
   });
 
   it("falls back to wiktionary when dictionaryapi.dev fails", async () => {
@@ -177,8 +260,8 @@ describe("lookupWordDefinition", () => {
         () =>
           jsonResponse([
             {
-              phonetic: "/ˈtaɪmɪŋ/",
-              meanings: [{ definitions: [{ definition: "the choice of when to do something" }] }],
+              phonetic: "/ˈzaɪləfoʊ/",
+              meanings: [{ definitions: [{ definition: "a musical instrument" }] }],
             },
           ]),
       ],
@@ -186,9 +269,9 @@ describe("lookupWordDefinition", () => {
       ["https://translate.googleapis.com/", () => Promise.reject(new Error("timeout"))],
     ]);
 
-    const result = await lookupWordDefinition("timing");
-    expect(result.phonetic).toBe("/ˈtaɪmɪŋ/");
-    expect(result.meaning).toBe("the choice of when to do something");
+    const result = await lookupWordDefinition("xylophone");
+    expect(result.phonetic).toBe("/ˈzaɪləfoʊ/");
+    expect(result.meaning).toBe("a musical instrument");
   });
 
   it("returns the local placeholder when every dictionary source fails", async () => {
