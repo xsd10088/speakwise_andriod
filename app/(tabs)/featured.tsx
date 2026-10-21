@@ -39,6 +39,11 @@ import {
   type VoaLesson,
   type VoaLevel,
 } from "@/lib/voa";
+import {
+  getKekeReadingCourses,
+  getKekeReadingLessons,
+  kekeReadingLessonToLines,
+} from "@/lib/keke-reading";
 
 const C = {
   bg: "#0B0C0F",
@@ -72,6 +77,7 @@ export default function FeaturedScreen() {
   const { toggleWord, hasWord } = useWordbook();
 
   const [level, setLevel] = useState<VoaLevel>(2);
+  const [module, setModule] = useState<"voa" | "keke">("voa");
   const [courses, setCourses] = useState<VoaCourse[]>(getLocalCourses);
   const [courseId, setCourseId] = useState<string | null>(null);
   const [lessons, setLessons] = useState<VoaLesson[]>([]);
@@ -124,6 +130,11 @@ export default function FeaturedScreen() {
     setLessons([]);
     setLessonId(null);
 
+    if (module === "keke") {
+      setCourses(getKekeReadingCourses() as unknown as VoaCourse[]);
+      return;
+    }
+
     let active = true;
     fetchVoaCourses(level)
       .then((fetched) => {
@@ -140,7 +151,7 @@ export default function FeaturedScreen() {
     return () => {
       active = false;
     };
-  }, [level]);
+  }, [level, module]);
 
   useEffect(() => {
     if (!activeCourse) {
@@ -150,6 +161,14 @@ export default function FeaturedScreen() {
     }
 
     setLessonId(null);
+
+    if (module === "keke") {
+      setLessons(
+        getKekeReadingLessons(activeCourse.id) as unknown as VoaLesson[],
+      );
+      return;
+    }
+
     setLessons(getLocalLessons(activeCourse.id));
 
     let active = true;
@@ -163,7 +182,7 @@ export default function FeaturedScreen() {
     return () => {
       active = false;
     };
-  }, [activeCourse?.id]);
+  }, [activeCourse?.id, module]);
 
   useEffect(() => {
     if (!selectedWord) {
@@ -279,43 +298,82 @@ export default function FeaturedScreen() {
             <View style={styles.nav}>
               <View>
                 <Text style={styles.brand}>S　英语口语</Text>
-                <Text style={styles.kicker}>精品听读 · VOA Learning English</Text>
+                <Text style={styles.kicker}>精品听读 · 双语名著</Text>
               </View>
 
-              <View style={styles.difficultySelector}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.levelRow}
+              >
                 {LEVELS.map((value) => (
                   <Pressable
                     key={value}
-                    onPress={() => setLevel(value)}
+                    onPress={() => {
+                      setLevel(value);
+                      setPlayingAll(false);
+                      setActiveId(null);
+                      Speech.stop?.();
+                    }}
                     style={[
-                      styles.difficultyButton,
-                      level === value && styles.difficultyActive,
+                      styles.levelTab,
+                      level === value && styles.levelActive,
                     ]}
-                    accessibilityLabel={`选择${VOA_LEVEL_TITLES[value]}`}
+                    accessibilityLabel={`选择 Level ${value}`}
                   >
-                    <Text
-                      style={[
-                        styles.difficultyText,
-                        level === value && styles.difficultyTextActive,
-                      ]}
-                    >
-                      {value === 1 ? "低" : value === 2 ? "中" : "高"}
-                    </Text>
+                    <Text style={styles.levelTabText}>Level {value}</Text>
                   </Pressable>
                 ))}
-              </View>
+              </ScrollView>
             </View>
+
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.moduleRow}
+            >
+              <Pressable
+                onPress={() => {
+                  setModule("voa");
+                  setPlayingAll(false);
+                  setActiveId(null);
+                  Speech.stop?.();
+                }}
+                style={[
+                  styles.moduleTab,
+                  module === "voa" && styles.moduleActive,
+                ]}
+              >
+                <Text style={styles.moduleTabText}>VOA Learning English</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => {
+                  setModule("keke");
+                  setPlayingAll(false);
+                  setActiveId(null);
+                  Speech.stop?.();
+                }}
+                style={[
+                  styles.moduleTab,
+                  module === "keke" && styles.moduleActive,
+                ]}
+              >
+                <Text style={styles.moduleTabText}>可可英语名著精读</Text>
+              </Pressable>
+            </ScrollView>
 
             <Text style={styles.title}>{VOA_LEVEL_TITLES[level]}</Text>
 
             <Text style={styles.subtitle}>
-              镜像 VOA Learning English 课程（美国政府作品，公共领域），国内无需 VPN 听读。
+              {module === "keke"
+                ? "可可英语精选经典名著双语对照课文，含英文原文与中文翻译。"
+                : "镜像 VOA Learning English 课程（美国政府作品，公共领域），国内无需 VPN 听读。"}
             </Text>
 
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.sceneRow}
+              contentContainerStyle={styles.cardRow}
             >
               {visibleCourses.map((course) => (
                 <Pressable
@@ -327,12 +385,14 @@ export default function FeaturedScreen() {
                     Speech.stop?.();
                   }}
                   style={[
-                    styles.scene,
-                    activeCourse?.id === course.id && styles.active,
+                    styles.card,
+                    activeCourse?.id === course.id && styles.cardActive,
                   ]}
                 >
-                  <Text style={styles.sceneTitle}>{course.title}</Text>
-                  <Text style={styles.sceneCount}>
+                  <Text style={styles.cardTitle} numberOfLines={2}>
+                    {course.title}
+                  </Text>
+                  <Text style={styles.cardCount}>
                     {course.lessonCount} 课
                   </Text>
                 </Pressable>
@@ -346,7 +406,7 @@ export default function FeaturedScreen() {
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.sceneRow}
+                contentContainerStyle={styles.cardRow}
               >
                 {lessons.map((lesson) => (
                   <Pressable
@@ -358,15 +418,15 @@ export default function FeaturedScreen() {
                       Speech.stop?.();
                     }}
                     style={[
-                      styles.lesson,
-                      activeLesson?.id === lesson.id && styles.active,
+                      styles.card,
+                      activeLesson?.id === lesson.id && styles.cardActive,
                     ]}
                   >
-                    <Text style={styles.lessonTitle} numberOfLines={2}>
+                    <Text style={styles.cardTitle} numberOfLines={2}>
                       {lesson.title}
                     </Text>
                     {lesson.durationSec ? (
-                      <Text style={styles.lessonDuration}>
+                      <Text style={styles.cardCount}>
                         {Math.floor(lesson.durationSec / 60)}:
                         {String(lesson.durationSec % 60).padStart(2, "0")}
                       </Text>
@@ -605,6 +665,27 @@ const styles = StyleSheet.create({
   difficultyTextActive: {
     color: "#F2F3F5",
   },
+  levelRow: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  levelTab: {
+    backgroundColor: C.soft,
+    borderRadius: 18,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  levelActive: {
+    backgroundColor: C.blue,
+    borderColor: "#78A1FF",
+  },
+  levelTabText: {
+    color: C.text,
+    fontSize: 12,
+    fontWeight: "700",
+  },
   title: {
     color: C.text,
     fontSize: 32,
@@ -618,6 +699,55 @@ const styles = StyleSheet.create({
   sceneRow: {
     gap: 8,
     paddingVertical: 12,
+  },
+  moduleRow: {
+    flexDirection: "row",
+    gap: 8,
+    paddingVertical: 12,
+  },
+  moduleTab: {
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 12,
+    padding: 10,
+    minWidth: 110,
+  },
+  moduleTabText: {
+    color: C.text,
+    fontSize: 12,
+    fontWeight: "800",
+  },
+  moduleActive: {
+    backgroundColor: C.blue,
+    borderColor: "#78A1FF",
+  },
+  cardRow: {
+    flexDirection: "row",
+    gap: 8,
+    paddingVertical: 12,
+  },
+  card: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 12,
+    padding: 10,
+    maxWidth: "32%",
+  },
+  cardTitle: {
+    color: C.text,
+    fontSize: 12,
+    fontWeight: "800",
+    lineHeight: 17,
+  },
+  cardCount: {
+    color: C.muted,
+    fontSize: 10,
+    marginTop: 4,
+  },
+  cardActive: {
+    backgroundColor: C.blue,
+    borderColor: "#78A1FF",
   },
   scene: {
     borderWidth: 1,

@@ -194,9 +194,9 @@ describe("FeaturedScreen", () => {
   it("renders the level selector and the local fallback course for the default level", async () => {
     await renderFeatured();
 
-    expect(screen.getByLabelText("选择Level 1 入门")).toBeTruthy();
-    expect(screen.getByLabelText("选择Level 2 进阶")).toBeTruthy();
-    expect(screen.getByLabelText("选择Level 3 高级")).toBeTruthy();
+    expect(screen.getByLabelText("选择 Level 1")).toBeTruthy();
+    expect(screen.getByLabelText("选择 Level 2")).toBeTruthy();
+    expect(screen.getByLabelText("选择 Level 3")).toBeTruthy();
     expect(screen.getByText("Level 2 进阶")).toBeTruthy();
     expect(screen.getByText("As It Is")).toBeTruthy();
     expect(screen.getByText("1 课")).toBeTruthy();
@@ -214,13 +214,13 @@ describe("FeaturedScreen", () => {
   it("switches levels and renders each local course", async () => {
     await renderFeatured();
 
-    fireEvent.press(screen.getByLabelText("选择Level 1 入门"));
+    fireEvent.press(screen.getByLabelText("选择 Level 1"));
     expect(screen.getByText("Level 1 入门")).toBeTruthy();
     expect(screen.getByText("每日英语入门")).toBeTruthy();
     expect(screen.getByText("What Job Do You Want in the Future?")).toBeTruthy();
     expect(screen.getByLabelText("播放全部10句")).toBeTruthy();
 
-    fireEvent.press(screen.getByLabelText("选择Level 3 高级"));
+    fireEvent.press(screen.getByLabelText("选择 Level 3"));
     expect(screen.getByText("Level 3 高级")).toBeTruthy();
     expect(screen.getByText("Education")).toBeTruthy();
     expect(
