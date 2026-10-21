@@ -40,6 +40,7 @@ import {
   type VoaLevel,
 } from "@/lib/voa";
 import {
+  getKekeReadingCategories,
   getKekeReadingCourses,
   getKekeReadingLessons,
   kekeReadingLessonToLines,
@@ -78,6 +79,7 @@ export default function FeaturedScreen() {
 
   const [level, setLevel] = useState<VoaLevel>(2);
   const [module, setModule] = useState<"voa" | "keke">("voa");
+  const [kekeCategory, setKekeCategory] = useState<string | null>(null);
   const [courses, setCourses] = useState<VoaCourse[]>(getLocalCourses);
   const [courseId, setCourseId] = useState<string | null>(null);
   const [lessons, setLessons] = useState<VoaLesson[]>([]);
@@ -97,10 +99,16 @@ export default function FeaturedScreen() {
   const [parsingSentence, setParsingSentence] = useState(false);
   const parseRequestRef = useRef(0);
 
-  const visibleCourses = useMemo(
-    () => courses.filter((course) => course.level === level),
-    [courses, level],
-  );
+const visibleCourses = useMemo(
+    () =>
+      courses.filter((course) => {
+        if (module === "keke") {
+          return course.level === level;
+        }
+        return course.level === level;
+      }),
+    [courses, level, module],
+);
 
   const activeCourse =
     visibleCourses.find((course) => course.id === courseId) ??
@@ -298,7 +306,7 @@ export default function FeaturedScreen() {
             <View style={styles.nav}>
               <View>
                 <Text style={styles.brand}>S　英语口语</Text>
-                <Text style={styles.kicker}>精品听读 · 双语名著</Text>
+                <Text style={styles.kicker}>精品听读 · 可可英语</Text>
               </View>
 
               <ScrollView
@@ -362,11 +370,48 @@ export default function FeaturedScreen() {
               </Pressable>
             </ScrollView>
 
-            <Text style={styles.title}>{VOA_LEVEL_TITLES[level]}</Text>
+            {module === "keke" && (
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.categoryRow}
+              >
+                {getKekeReadingCategories().map((category) => (
+                  <Pressable
+                    key={category.id}
+                    onPress={() => {
+                      setKekeCategory(category.id);
+                      setPlayingAll(false);
+                      setActiveId(null);
+                      Speech.stop?.();
+                    }}
+                    style={[
+                      styles.categoryTab,
+                      kekeCategory === category.id && styles.categoryActive,
+                    ]}
+                    accessibilityLabel={`分类 ${category.title}`}
+                  >
+                    <Text style={styles.categoryText}>{category.title}</Text>
+                  </Pressable>
+                ))}
+              </ScrollView>
+            )}
+
+            <Text style={styles.title}>
+              {module === "keke" && kekeCategory
+                ? getKekeReadingCategories().find(
+                    (c) => c.id === kekeCategory,
+                  )?.title ?? "可可英语"
+                : VOA_LEVEL_TITLES[level]}
+            </Text>
 
             <Text style={styles.subtitle}>
               {module === "keke"
-                ? "可可英语精选经典名著双语对照课文，含英文原文与中文翻译。"
+                ? kekeCategory
+                  ? getKekeReadingCategories().find(
+                      (c) => c.id === kekeCategory,
+                    )?.description ?? ""
+                  : "可可英语精选经典名著双语对照课文，含英文原文与中文翻译。"
                 : "镜像 VOA Learning English 课程（美国政府作品，公共领域），国内无需 VPN 听读。"}
             </Text>
 
@@ -704,6 +749,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     paddingVertical: 12,
+  },
+  categoryRow: {
+    flexDirection: "row",
+    gap: 8,
+    paddingVertical: 8,
+  },
+  categoryTab: {
+    backgroundColor: C.soft,
+    borderRadius: 18,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  categoryActive: {
+    backgroundColor: C.blue,
+    borderColor: "#78A1FF",
+  },
+  categoryText: {
+    color: C.text,
+    fontSize: 11,
+    fontWeight: "600",
   },
   moduleTab: {
     borderWidth: 1,
