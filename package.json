@@ -44,7 +44,7 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:components": "jest --runInBand",
+    "test:components": "jest --runInBand --forceExit",
     "export:android": "expo export --platform android"
   },
   "private": true
