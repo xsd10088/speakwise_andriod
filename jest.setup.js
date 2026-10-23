@@ -7,6 +7,7 @@ jest.mock(
 );
 
 const originalWarn = console.warn;
+const originalError = console.error;
 
 jest.spyOn(console, "warn").mockImplementation((...args) => {
   const message = args.map(String).join(" ");
@@ -20,4 +21,18 @@ jest.spyOn(console, "warn").mockImplementation((...args) => {
   }
 
   originalWarn(...args);
+});
+
+jest.spyOn(console, "error").mockImplementation((...args) => {
+  const message = args.map(String).join(" ");
+
+  if (message.includes("ExpoModulesCoreJSLogger")) {
+    return;
+  }
+
+  if (message.includes("Cannot log after tests are done")) {
+    return;
+  }
+
+  originalError(...args);
 });
