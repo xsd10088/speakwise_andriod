@@ -123,6 +123,12 @@ export function getKekeReadingLessons(courseId: string): KekeReadingLesson[] {
   return getKekeReadingCourse(courseId)?.lessons ?? [];
 }
 
+export function getKekeReadingLesson(id: string): KekeReadingLesson | undefined {
+  return getKekeReadingCourses()
+    .flatMap((course) => course.lessons ?? [])
+    .find((lesson) => lesson.id === id);
+}
+
 export async function fetchKekeReadingCourses(): Promise<KekeReadingCourse[]> {
   return getKekeReadingCourses();
 }

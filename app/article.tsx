@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import * as Speech from "expo-speech";
 import { ScreenContainer } from "@/components/ScreenContainer";
-import { kekeReadingLessonToLines, type KekeReadingLesson } from "@/lib/keke-reading";
+import { kekeReadingLessonToLines, getKekeReadingLesson, type KekeReadingLesson } from "@/lib/keke-reading";
 
 const C = {
   bg: "#0B0C0F",
@@ -34,17 +34,7 @@ export default function ArticleScreen({ route }: ArticleScreenProps) {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const lines = kekeReadingLessonToLines({
-      id: lessonId || "",
-      title: "",
-      audioUrl: "",
-      transcript: [],
-      translation: [],
-      source: "",
-      category: "",
-      difficulty: "",
-    });
-    void lines;
+    setLesson(getKekeReadingLesson(lessonId || "") ?? null);
   }, [lessonId]);
 
   const speakLine = (text: string, index: number) => {
