@@ -2,8 +2,8 @@
   "version": 1,
   "feeds": {
     "kk-reading": {
-      "lastFetched": 1792755132336,
-      "itemCount": 6
+      "lastFetched": 1792759441609,
+      "itemCount": 10
     }
   },
   "courses": [
@@ -12,8 +12,8 @@
       "title": "可可英语名著精读",
       "level": 3,
       "description": "可可英语精选经典名著双语对照课文，含英文原文与中文翻译",
-      "lessonCount": 6,
-      "updatedAt": 1792755132336,
+      "lessonCount": 10,
+      "updatedAt": 1792759441609,
       "feedId": "kk-reading",
       "lessons": [
         {
@@ -236,6 +236,42 @@
           "source": "可可英语-名著精读",
           "category": "经典文学",
           "difficulty": "L2"
+        },
+        {
+          "id": "grimm-fairy-tales-1",
+          "title": "《格林童话》- 1",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-1.mp3",
+          "durationSec": 180,
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L2"
+        },
+        {
+          "id": "grimm-fairy-tales-2",
+          "title": "《格林竲话》- 2",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-2.mp3",
+          "durationSec": 190,
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L2"
+        },
+        {
+          "id": "odyssey-1",
+          "title": "《奥德赛》- 1",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/odyssey-1.mp3",
+          "durationSec": 200,
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "romeo-juliet-1",
+          "title": "《罗密欧与朱丽叶》- 1",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/romeo-juliet-1.mp3",
+          "durationSec": 170,
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
         }
       ]
     }

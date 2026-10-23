@@ -12,6 +12,8 @@ import {
   getKekeReadingCategories,
   getKekeReadingCourses,
   getKekeReadingLessons,
+  getKekeReadingCourse,
+  type KekeReadingLesson,
 } from "@/lib/keke-reading";
 
 const C = {
@@ -40,10 +42,10 @@ export default function FeaturedScreen() {
     (cat) => cat.id === selected,
   );
 
-  const lessons =
-    selected === "audiobooks"
-      ? courses.flatMap((course) => course.lessons ?? [])
-      : [];
+const selectedCourse = selected
+      ? getKekeReadingCourse(selected === "audiobooks" ? "keke-reading-classics" : selected) ?? {}
+      : {};
+const lessons = ("lessons" in selectedCourse ? selectedCourse.lessons : []) as KekeReadingLesson[];
 
   return (
     <ScreenContainer>
@@ -68,9 +70,9 @@ export default function FeaturedScreen() {
           </Pressable>
         ))}
 
-        {selected === "audiobooks" && lessons.length > 0 && (
+{selected && lessons.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>有声名著</Text>
+            <Text style={styles.sectionTitle}>{selected === "audiobooks" ? "有声名著" : selected}</Text>
             {lessons.map((lesson) => (
               <Pressable
                 key={lesson.id}
@@ -79,9 +81,9 @@ export default function FeaturedScreen() {
   router.push({
     pathname: "/article",
     params: { lessonId: lesson.id },
-              } as any)
-            }
-              >
+  } as any)
+                }
+                  >
                 <Text style={styles.bookTitle} numberOfLines={2}>
                   {lesson.title}
                 </Text>
