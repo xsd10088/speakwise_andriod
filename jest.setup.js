@@ -9,7 +9,7 @@ jest.mock(
 const originalWarn = console.warn;
 const originalError = console.error;
 
-jest.spyOn(console, "warn").mockImplementation((...args) => {
+console.warn = (...args) => {
   const message = args.map(String).join(" ");
 
   if (message.includes("ExpoModulesCoreJSLogger")) {
@@ -21,9 +21,9 @@ jest.spyOn(console, "warn").mockImplementation((...args) => {
   }
 
   originalWarn(...args);
-});
+};
 
-jest.spyOn(console, "error").mockImplementation((...args) => {
+console.error = (...args) => {
   const message = args.map(String).join(" ");
 
   if (message.includes("ExpoModulesCoreJSLogger")) {
@@ -35,4 +35,4 @@ jest.spyOn(console, "error").mockImplementation((...args) => {
   }
 
   originalError(...args);
-});
+};
