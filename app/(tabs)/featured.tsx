@@ -7,6 +7,11 @@ import {
   View,
 } from "react-native";
 import { ScreenContainer } from "@/components/ScreenContainer";
+import {
+  getKekeReadingCategories,
+  getKekeReadingCourses,
+  getKekeReadingLessons,
+} from "@/lib/keke-reading";
 
 const C = {
   bg: "#0B0C0F",
@@ -17,31 +22,26 @@ const C = {
   muted: "#9AA2B4",
 };
 
-const CATEGORIES = [
-  { id: "voa", title: "VOA 精选" },
-  { id: "bbc", title: "BBC 精选" },
-  { id: "basic", title: "基础英语" },
-  { id: "audiobooks", title: "有声名著" },
-  { id: "media", title: "影音娱乐" },
-  { id: "listening", title: "英语听力" },
-  { id: "speaking", title: "英语口语" },
-  { id: "exam", title: "英语考试" },
-  { id: "knowledge", title: "涨知识" },
-  { id: "daily", title: "每日收听" },
-  { id: "source", title: "题源外刊" },
-  { id: "graded", title: "分级读物" },
-];
-
 export default function FeaturedScreen() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [courses, setCourses] = useState(getKekeReadingCourses());
 
   useEffect(() => {
-    return () => {};
+    setCourses(getKekeReadingCourses());
   }, []);
 
   const handleSelect = (id: string) => {
     setSelected(selected === id ? null : id);
   };
+
+  const selectedCategory = getKekeReadingCategories().find(
+    (cat) => cat.id === selected,
+  );
+
+  const lessons =
+    selected === "audiobooks"
+      ? courses.flatMap((course) => course.lessons ?? [])
+      : [];
 
   return (
     <ScreenContainer>
@@ -53,7 +53,7 @@ export default function FeaturedScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.grid}
       >
-        {CATEGORIES.map((cat) => (
+        {getKekeReadingCategories().map((cat) => (
           <Pressable
             key={cat.id}
             onPress={() => handleSelect(cat.id)}
@@ -65,6 +65,29 @@ export default function FeaturedScreen() {
             <Text style={styles.cardText}>{cat.title}</Text>
           </Pressable>
         ))}
+
+        {selected === "audiobooks" && lessons.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>有声名著</Text>
+            {lessons.map((lesson) => (
+              <Pressable
+                key={lesson.id}
+                style={styles.bookCard}
+                onPress={() => {}}
+              >
+                <Text style={styles.bookTitle} numberOfLines={2}>
+                  {lesson.title}
+                </Text>
+                <Text style={styles.bookMeta}>
+                  {lesson.durationSec
+                    ? `${Math.floor(lesson.durationSec / 60)} 分钟`
+                    : "音频"}
+                </Text>
+                <Text style={styles.bookDifficulty}>{lesson.difficulty}</Text>
+              </Pressable>
+            ))}
+          </View>
+        )}
 
         <View style={styles.placeholderRow}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
@@ -116,6 +139,39 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     textAlign: "center",
+  },
+  section: {
+    width: "100%",
+    marginTop: 16,
+    gap: 12,
+  },
+  sectionTitle: {
+    color: C.text,
+    fontSize: 18,
+    fontWeight: "900",
+  },
+  bookCard: {
+    backgroundColor: C.cardBg,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 12,
+    padding: 14,
+  },
+  bookTitle: {
+    color: C.text,
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 20,
+  },
+  bookMeta: {
+    color: C.muted,
+    fontSize: 11,
+    marginTop: 4,
+  },
+  bookDifficulty: {
+    color: "#8DB0FF",
+    fontSize: 10,
+    marginTop: 2,
   },
   placeholderRow: {
     flexDirection: "row",

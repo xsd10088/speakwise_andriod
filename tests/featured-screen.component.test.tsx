@@ -47,6 +47,7 @@ jest.mock("react-native", () => {
   };
 });
 
+import { getKekeReadingCategories } from "@/lib/keke-reading";
 import FeaturedScreen from "../app/(tabs)/featured";
 
 async function renderFeatured() {
@@ -65,23 +66,10 @@ describe("FeaturedScreen", () => {
     expect(screen.getByText("全部分类")).toBeTruthy();
   });
 
-  it("renders all 12 category cards", async () => {
+  it("renders all category cards from keke-reading", async () => {
     await renderFeatured();
 
-    const expected = [
-      "VOA 精选",
-      "BBC 精选",
-      "基础英语",
-      "有声名著",
-      "影音娱乐",
-      "英语听力",
-      "英语口语",
-      "英语考试",
-      "涨知识",
-      "每日收听",
-      "题源外刊",
-      "分级读物",
-    ];
+    const expected = getKekeReadingCategories().map((cat) => cat.title);
 
     expected.forEach((title) => {
       expect(screen.getByText(title)).toBeTruthy();
@@ -91,16 +79,18 @@ describe("FeaturedScreen", () => {
   it("toggles selection when tapping a category card", async () => {
     await renderFeatured();
 
-    fireEvent.press(screen.getByText("VOA 精选"));
+    const firstCategory = getKekeReadingCategories()[0].title;
+
+    fireEvent.press(screen.getByText(firstCategory));
     // 第二次点击取消选中
-    fireEvent.press(screen.getByText("VOA 精选"));
-    expect(screen.getByText("VOA 精选")).toBeTruthy();
+    fireEvent.press(screen.getByText(firstCategory));
+    expect(screen.getByText(firstCategory)).toBeTruthy();
   });
 
   it("renders placeholder cards for future expansion", async () => {
     await renderFeatured();
-    // 12 个分类卡片 + 15 个占位卡片
+    // 10 个分类卡片 + 15 个占位卡片
     const allTexts = screen.getAllByText("", { exact: false });
-    expect(allTexts.length).toBeGreaterThanOrEqual(12);
+    expect(allTexts.length).toBeGreaterThanOrEqual(10);
   });
 });
