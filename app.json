@@ -43,7 +43,13 @@
           "backgroundColor": "#061B46"
         }
       ],
-      "expo-audio"
+      [
+        "expo-audio",
+        {
+          "supportsScreenRecording": false
+        }
+      ],
+      "expo-speech"
     ],
     "experiments": {
       "typedRoutes": true
