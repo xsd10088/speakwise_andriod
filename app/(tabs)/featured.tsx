@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/ScreenContainer";
 import {
   getKekeReadingCategories,
@@ -25,6 +26,7 @@ const C = {
 export default function FeaturedScreen() {
   const [selected, setSelected] = useState<string | null>(null);
   const [courses, setCourses] = useState(getKekeReadingCourses());
+  const router = useRouter();
 
   useEffect(() => {
     setCourses(getKekeReadingCourses());
@@ -73,7 +75,12 @@ export default function FeaturedScreen() {
               <Pressable
                 key={lesson.id}
                 style={styles.bookCard}
-                onPress={() => {}}
+                onPress={() =>
+  router.push({
+    pathname: "/article",
+    params: { lessonId: lesson.id },
+              } as any)
+            }
               >
                 <Text style={styles.bookTitle} numberOfLines={2}>
                   {lesson.title}

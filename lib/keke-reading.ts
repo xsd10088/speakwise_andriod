@@ -34,6 +34,18 @@ export type KekeReadingCategory = {
 
 export const KEKE_CATEGORIES: KekeReadingCategory[] = [
   {
+    id: "voa",
+    title: "VOA 精选",
+    icon: "Radio",
+    description: "VOA Learning English 精选课程",
+  },
+  {
+    id: "bbc",
+    title: "BBC 精选",
+    icon: "Radio",
+    description: "BBC Learning English 精选课程",
+  },
+  {
     id: "basic",
     title: "基础英语",
     icon: "Ab",

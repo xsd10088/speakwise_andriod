@@ -26,6 +26,15 @@ jest.mock("@/components/ScreenContainer", () => {
   };
 });
 
+jest.mock("expo-router", () => {
+  const RNReact = require("react");
+  return {
+    useRouter: () => ({ push: jest.fn() }),
+    Link: ({ children }: { children: React.ReactNode }) =>
+      RNReact.createElement("Pressable", null, children),
+  };
+});
+
 jest.mock("react-native", () => {
   const RNReact = require("react");
   const host = (name: string) => {
