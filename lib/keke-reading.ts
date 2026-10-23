@@ -7,8 +7,8 @@ export type KekeReadingLesson = {
   title: string;
   audioUrl: string;
   durationSec?: number | null;
-  transcript: string[];
-  translation: string[];
+  transcript?: string[];
+  translation?: string[];
   source: string;
   category: string;
   difficulty: string;
@@ -144,11 +144,11 @@ export async function fetchKekeReadingCourseDetail(
 }
 
 export function kekeReadingLessonToLines(lesson: KekeReadingLesson) {
-  return lesson.transcript.map((text, index) => ({
+  return (lesson.transcript ?? []).map((text, index) => ({
     id: `${lesson.id}-${index + 1}`,
     speaker: index % 2 === 0 ? "Alex" : "Mia",
     text,
-    translation: lesson.translation[index] ?? "",
+    translation: lesson.translation?.[index] ?? "",
     note: "可可英语名著精读",
   }));
 }
