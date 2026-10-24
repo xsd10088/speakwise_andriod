@@ -43,7 +43,7 @@ export default function FeaturedScreen() {
   );
 
 const selectedCourse = selected
-      ? getKekeReadingCourse(selected === "audiobooks" ? "keke-reading-classics" : selected) ?? {}
+      ? getKekeReadingCourse("keke-reading-classics") ?? {}
       : {};
 const lessons = ("lessons" in selectedCourse ? selectedCourse.lessons : []) as KekeReadingLesson[];
 
@@ -70,7 +70,7 @@ const lessons = ("lessons" in selectedCourse ? selectedCourse.lessons : []) as K
           </Pressable>
         ))}
 
-{selected && lessons.length > 0 && (
+{selected && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>{selected === "audiobooks" ? "有声名著" : selected}</Text>
             {lessons.map((lesson) => (
