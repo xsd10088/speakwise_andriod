@@ -95,8 +95,9 @@ export default function FeaturedScreen() {
                     key={lesson.id}
                     style={styles.bookCard}
                     onPress={() => {
-                      // 安全导航：确保 lessonId 不为空，并使用完整路径
+                      // 安全导航：使用完整路径确保跳转到 article 页面
       const navLessonId = lesson.id || "";
+      // 使用 /article 作为 pathname，确保跳转到正确的页面
       router.push({
         pathname: "/article",
         params: { lessonId: navLessonId },

@@ -29,14 +29,28 @@ type ArticleScreenProps = {
 };
 
 export default function ArticleScreen({ route }: ArticleScreenProps) {
-  // 安获取 lessonId，即使 route 或 route.params 为 undefined
+  // 安全获取 lessonId，即使 route 或 route.params 为 undefined
   const { lessonId } = (route?.params as { lessonId?: string }) ?? {};
+
   const [lesson, setLesson] = useState<KekeReadingLesson | null>(null);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // 即使 lessonId 为空也不会报错，设置为空字符串获取空 lesson
-    setLesson(getKekeReadingLesson(lessonId || "") ?? null);
+    // 如果 lessonId 为空或无效，显示错误而不是永久 Loading
+    if (!lessonId) {
+      setError("未能获取课时ID，请返回重试");
+      setLesson(null);
+      return;
+    }
+
+    const lesson = getKekeReadingLesson(lessonId);
+    if (!lesson) {
+      setError("课时数据不存在，请返回重试");
+      setLesson(null);
+      return;
+    }
+    setLesson(lesson);
   }, [lessonId]);
 
   const speakLine = (text: string, index: number) => {
@@ -55,6 +69,21 @@ export default function ArticleScreen({ route }: ArticleScreenProps) {
       onError: () => setPlayingIndex(null),
     });
   };
+
+  if (error) {
+    return (
+      <ScreenContainer>
+        <View style={styles.centered}>
+          <Text style={styles.centeredText}>
+            {error}
+          </Text>
+          <Pressable onPress={() => window.history.back()} style={{marginTop: 20}}>
+            <Text>返回首页</Text>
+          </Pressable>
+        </View>
+      </ScreenContainer>
+    );
+  }
 
   if (!lesson) {
     return (
@@ -122,6 +151,11 @@ const styles = StyleSheet.create({
   loadingText: {
     color: C.muted,
     fontSize: 16,
+  },
+  centeredText: {
+    color: "red",
+    fontSize: 16,
+    textAlign: "center",
   },
   header: {
     marginBottom: 20,
