@@ -23,17 +23,19 @@ const C = {
 type ArticleScreenProps = {
   route: {
     params: {
-      lessonId: string;
+      lessonId?: string;
     };
   };
 };
 
 export default function ArticleScreen({ route }: ArticleScreenProps) {
-  const { lessonId } = (route.params as { lessonId?: string }) ?? {};
+  // 安获取 lessonId，即使 route 或 route.params 为 undefined
+  const { lessonId } = (route?.params as { lessonId?: string }) ?? {};
   const [lesson, setLesson] = useState<KekeReadingLesson | null>(null);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    // 即使 lessonId 为空也不会报错，设置为空字符串获取空 lesson
     setLesson(getKekeReadingLesson(lessonId || "") ?? null);
   }, [lessonId]);
 

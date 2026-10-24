@@ -95,11 +95,12 @@ export default function FeaturedScreen() {
                     key={lesson.id}
                     style={styles.bookCard}
                     onPress={() => {
-                      // 安全导航：确保 lessonId 不为空
-                      router.push({
-                        pathname: "/article",
-                        params: { lessonId: lesson.id },
-                      } as any);
+                      // 安全导航：确保 lessonId 不为空，并使用完整路径
+      const navLessonId = lesson.id || "";
+      router.push({
+        pathname: "/article",
+        params: { lessonId: navLessonId },
+      } as any);
                     }}
                   >
                     <View style={styles.bookCard}>
