@@ -12,8 +12,7 @@ import {
   getKekeReadingCategories,
   getKekeReadingCourses,
   getKekeReadingLessons,
-  getKekeReadingCourse,
-  type KekeReadingLesson,
+  getKekeReadingLesson,
 } from "@/lib/keke-reading";
 
 const C = {
@@ -24,6 +23,19 @@ const C = {
   text: "#F2F3F5",
   muted: "#9AA2B4",
 };
+
+const FIXED_AUDIOBOOK_LESSONS = [
+  "siddhartha-brahmin-son-1",
+  "alice-adventures-wonderland-1",
+  "alice-adventures-wonderland-2",
+  "jane-eyre-1",
+  "pride-prejudice-1",
+  "little-prince-1",
+  "grimm-fairy-tales-1",
+  "grimm-fairy-tales-2",
+  "odyssey-1",
+  "romeo-juliet-1",
+];
 
 export default function FeaturedScreen() {
   const [selected, setSelected] = useState<string | null>(null);
@@ -41,11 +53,6 @@ export default function FeaturedScreen() {
   const selectedCategory = getKekeReadingCategories().find(
     (cat) => cat.id === selected,
   );
-
-const selectedCourse = selected
-      ? getKekeReadingCourse("keke-reading-classics") ?? {}
-      : {};
-const lessons = ("lessons" in selectedCourse ? selectedCourse.lessons : []) as KekeReadingLesson[];
 
   return (
     <ScreenContainer>
@@ -70,31 +77,47 @@ const lessons = ("lessons" in selectedCourse ? selectedCourse.lessons : []) as K
           </Pressable>
         ))}
 
-{selected && (
+        {selected && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>{selected === "audiobooks" ? "有声名著" : selected}</Text>
-            {lessons.map((lesson) => (
-              <Pressable
-                key={lesson.id}
-                style={styles.bookCard}
-                onPress={() =>
-  router.push({
-    pathname: "/article",
-    params: { lessonId: lesson.id },
-  } as any)
-                }
-                  >
-                <Text style={styles.bookTitle} numberOfLines={2}>
-                  {lesson.title}
-                </Text>
-                <Text style={styles.bookMeta}>
-                  {lesson.durationSec
-                    ? `${Math.floor(lesson.durationSec / 60)} 分钟`
-                    : "音频"}
-                </Text>
-                <Text style={styles.bookDifficulty}>{lesson.difficulty}</Text>
-              </Pressable>
-            ))}
+            <Text style={styles.sectionTitle}>
+              {selected === "audiobooks" ? "有声名著" : selected}
+            </Text>
+            {selected === "audiobooks" ? (
+              FIXED_AUDIOBOOK_LESSONS.map((lessonId) => {
+                const lesson = getKekeReadingLesson(lessonId);
+                if (!lesson) return null;
+                return (
+                  <Pressable
+                    key={lesson.id}
+                    style={styles.bookCard}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/article",
+                        params: { lessonId: lesson.id },
+                      } as any)
+                    }
+                      >
+                    <View style={styles.bookCard}>
+                      <Text style={styles.bookTitle} numberOfLines={2}>
+                        {lesson.title}
+                      </Text>
+                      <Text style={styles.bookMeta}>
+                        {lesson.durationSec
+                          ? `${Math.floor(lesson.durationSec / 60)} 分钟`
+                          : "音频"}
+                      </Text>
+                      <Text style={styles.bookDifficulty}>{lesson.difficulty}</Text>
+                    </View>
+                  </Pressable>
+                );
+              })
+            ) : (
+              <View style={styles.placeholderRow}>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
+                  <View key={n} style={styles.emptyCard} />
+                ))}
+              </View>
+            )}
           </View>
         )}
 
