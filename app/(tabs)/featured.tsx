@@ -10,8 +10,6 @@ import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/ScreenContainer";
 import {
   getKekeReadingCategories,
-  getKekeReadingCourses,
-  getKekeReadingLessons,
   getKekeReadingLesson,
 } from "@/lib/keke-reading";
 
@@ -24,7 +22,8 @@ const C = {
   muted: "#9AA2B4",
 };
 
-const FIXED_AUDIOBOOK_LESSONS = [
+// 固定的 10 篇“有声名著”课时 ID
+const FIXED_AUDIOBOOK_LESSON_IDS = [
   "siddhartha-brahmin-son-1",
   "alice-adventures-wonderland-1",
   "alice-adventures-wonderland-2",
@@ -39,20 +38,25 @@ const FIXED_AUDIOBOOK_LESSONS = [
 
 export default function FeaturedScreen() {
   const [selected, setSelected] = useState<string | null>(null);
-  const [courses, setCourses] = useState(getKekeReadingCourses());
   const router = useRouter();
 
   useEffect(() => {
-    setCourses(getKekeReadingCourses());
+    // 获取课程列表
   }, []);
 
-  const handleSelect = (id: string) => {
+  const handleCategorySelect = (id: string) => {
     setSelected(selected === id ? null : id);
   };
 
-  const selectedCategory = getKekeReadingCategories().find(
-    (cat) => cat.id === selected,
-  );
+  // 获取选中类别
+  const categories = getKekeReadingCategories();
+  const selectedCategory = categories.find((cat) => cat.id === selected);
+
+  // 有声名著课程数据 - 从 store.json 获取固定课时
+  const audiobookLessons = FIXED_AUDIOBOOK_LESSON_IDS.map((lessonId) => {
+    const lesson = getKekeReadingLesson(lessonId);
+    return lesson ? { id: lesson.id, title: lesson.title, durationSec: lesson.durationSec, difficulty: lesson.difficulty } : null;
+  }).filter(Boolean) as Array<{ id: string; title: string; durationSec?: number; difficulty: string }>;
 
   return (
     <ScreenContainer>
@@ -64,10 +68,10 @@ export default function FeaturedScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.grid}
       >
-        {getKekeReadingCategories().map((cat) => (
+        {categories.map((cat) => (
           <Pressable
             key={cat.id}
-            onPress={() => handleSelect(cat.id)}
+            onPress={() => handleCategorySelect(cat.id)}
             style={[
               styles.card,
               selected === cat.id && styles.cardSelected,
@@ -83,20 +87,21 @@ export default function FeaturedScreen() {
               {selected === "audiobooks" ? "有声名著" : selected}
             </Text>
             {selected === "audiobooks" ? (
-              FIXED_AUDIOBOOK_LESSONS.map((lessonId) => {
-                const lesson = getKekeReadingLesson(lessonId);
+              // 固定 10 篇文章卡片
+              audiobookLessons.map((lesson) => {
                 if (!lesson) return null;
                 return (
                   <Pressable
                     key={lesson.id}
                     style={styles.bookCard}
-                    onPress={() =>
+                    onPress={() => {
+                      // 安全导航：确保 lessonId 不为空
                       router.push({
                         pathname: "/article",
                         params: { lessonId: lesson.id },
-                      } as any)
-                    }
-                      >
+                      } as any);
+                    }}
+                  >
                     <View style={styles.bookCard}>
                       <Text style={styles.bookTitle} numberOfLines={2}>
                         {lesson.title}
@@ -112,6 +117,7 @@ export default function FeaturedScreen() {
                 );
               })
             ) : (
+              // 其他分类显示占位卡片
               <View style={styles.placeholderRow}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
                   <View key={n} style={styles.emptyCard} />
