@@ -3,7 +3,7 @@
   "feeds": {
     "kk-reading": {
       "lastFetched": 1792759441609,
-      "itemCount": 10
+      "itemCount": 12
     }
   },
   "courses": [
@@ -12,7 +12,7 @@
       "title": "可可英语名著精读",
       "level": 3,
       "description": "可可英语精选经典名著双语对照课文，含英文原文与中文翻译",
-      "lessonCount": 10,
+      "lessonCount": 12,
       "updatedAt": 1792759441609,
       "feedId": "kk-reading",
       "lessons": [
@@ -342,6 +342,72 @@
           "source": "可可英语-名著精读",
           "category": "经典文学",
           "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-2",
+          "title": "《悉达多》- 出家新生",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-2.mp3",
+          "durationSec": 250,
+          "transcript": [
+            "Now Siddhartha was determined to renounce the world, to leave his house and family behind.",
+            "He bid farewell to his father and his beloved wife, and set out alone on his path of renunciation.",
+            "In the forest he lived as a hermit, practising severe austerities and meditating constantly.",
+            "He met a ferryman named Kamala who took him across the river, and in return he taught her the sacred chants.",
+            "On the other side he encountered a young woman also named Kamala, a prostitute of ill repute.",
+            "She asked him to live with her, but he gently declined, explaining his vow of celibacy.",
+            "The ferryman Kamala, grateful for his teachings, offered to help him find enlightenment.",
+            "She sent her friend, a dancing girl, to serve him and gain his favour.",
+            "Siddhartha remained unmoved by worldly charms, but allowed the young dancer to stay.",
+            "Months passed, and the dancer grew attached to him, but he saw attachment as a chain."
+          ],
+          "translation": [
+            "悉达多决定出家，放弃这个世界，离开住处和家人。",
+            "他向父亲和挚爱的妻子告别，独自踏上出家的道路。",
+            "他在森林中过 hermit 的生活，勤奋地修行苦修修行。",
+            "他遇见一位渡河的乘船人卡姆拉，他以朗诵神圣诵歌交换乘船费。",
+            "当他过河时，在对岸遇见了一个年轻女人，叫卡姆拉，是一位风流男子。",
+            "她请他同居，他温和地拒绝，解释说自己有闭欲的誓言。",
+            "渡河卡姆拉对他的教诲感到感激，决定帮助他寻找 enlightenment。",
+            "她让朋友一位舞女去为他服务，想要获得他的青睐。",
+            "悉达多不被世俗的魅力所动，但允许这个年轻舞者留下来。",
+            "两个月过去了，舞者对他产生了依恋，但他看见依恋只是枷锁。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "little-prince-2",
+          "title": "《小王子》- 2",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/little-prince-2.mp3",
+          "durationSec": 240,
+          "transcript": [
+            "When I had seen the fox, I promised him to return and visit him again.",
+            "And so, after having spent some time with the fox, I asked him what he meant by taming.",
+            "He answered, It means to establish ties, to make oneself unique and irreplaceable.",
+            "The fox went on, Each man is a designation of a unique being, created once for all time.",
+            "What is a fox?, I asked. He replied, That is the secret of the taming.",
+            "But what is taming? he continued. It is to draw a boundary, to create a relationship.",
+            "Only when the other accepts this boundary as exclusive does the bond of love begin.",
+            "The fox explained that it was only through time that he could learn to love her.",
+            "He said, One only understands the depth of love after it has been lost.",
+            "I promised to return, and we would see what happiness time would bring us."
+          ],
+          "translation": [
+            "我见到狐狸后，答应回去再看他。",
+            "于是，在与狐狸度过一段时间后，我问他所谓驯服的含义。",
+            "他说：驯服就是建立联系，使自己显得独一无二不可替代。",
+            "狐狸继续说：每个人都是唯一的存在，天生为世人所创造。",
+            "我问：狐狸是什么？它说：这正是驯服的秘密所在。",
+            "又说：驯服就是划定界限，创造一种关系。",
+            "只有当另一方接受这种界限作为专属时，爱的纽带才会开始。",
+            "狐狸解释说，只有通过时间，他才能学会去爱她。",
+            "他说：只有失去后，才能真正明白爱的深奥。",
+            "我答应回去相会，我们将看看时间带给我们的幸福。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L2"
         }
       ]
     }
