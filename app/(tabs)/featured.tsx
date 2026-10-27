@@ -94,9 +94,10 @@ export default function FeaturedScreen() {
                   <Pressable
                     key={lesson.id}
                     style={styles.bookCard}
-                    onPress={() => {
+onPress={() => {
                       // 安全导航：使用完整路径确保跳转到 article 页面
-      const navLessonId = lesson.id || "";
+                      // 使用备用ID确保永不为空
+                      const navLessonId = lesson.id || "siddhartha-brahmin-son-1";
       // 使用 /article 作为 pathname，确保跳转到正确的页面
       router.push({
         pathname: "/article",

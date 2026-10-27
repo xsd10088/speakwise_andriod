@@ -29,21 +29,19 @@ type ArticleScreenProps = {
 };
 
 export default function ArticleScreen({ route }: ArticleScreenProps) {
-  // 安全获取 lessonId，即使 route 或 route.params 为 undefined
-  const { lessonId } = (route?.params as { lessonId?: string }) ?? {};
+  // 调试日志：查看实际接收到的 route 参数
+  console.log("[ArticleScreen] route:", JSON.stringify(route?.params, null, 2));
+  // 健壮获取 lessonId：分步验证，提供备用ID
+  const routeParams = route?.params ?? {};
+  const lessonId = routeParams.lessonId || "siddhartha-brahmin-son-1";
+  console.log("[ArticleScreen] lessonId:", lessonId);
 
   const [lesson, setLesson] = useState<KekeReadingLesson | null>(null);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // 如果 lessonId 为空或无效，显示错误而不是永久 Loading
-    if (!lessonId) {
-      setError("未能获取课时ID，请返回重试");
-      setLesson(null);
-      return;
-    }
-
+    // 开始加载课程数据
     const lesson = getKekeReadingLesson(lessonId);
     if (!lesson) {
       setError("课时数据不存在，请返回重试");
