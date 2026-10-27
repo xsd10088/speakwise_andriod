@@ -22,7 +22,6 @@ const C = {
   muted: "#9AA2B4",
 };
 
-// 固定的 10 篇“有声名著”课时 ID
 const FIXED_AUDIOBOOK_LESSON_IDS = [
   "siddhartha-brahmin-son-1",
   "alice-adventures-wonderland-1",
@@ -41,18 +40,15 @@ export default function FeaturedScreen() {
   const router = useRouter();
 
   useEffect(() => {
-    // 获取课程列表
   }, []);
 
   const handleCategorySelect = (id: string) => {
     setSelected(selected === id ? null : id);
   };
 
-  // 获取选中类别
   const categories = getKekeReadingCategories();
   const selectedCategory = categories.find((cat) => cat.id === selected);
 
-  // 有声名著课程数据 - 从 store.json 获取固定课时
   const audiobookLessons = FIXED_AUDIOBOOK_LESSON_IDS.map((lessonId) => {
     const lesson = getKekeReadingLesson(lessonId);
     return lesson ? { id: lesson.id, title: lesson.title, durationSec: lesson.durationSec, difficulty: lesson.difficulty } : null;
@@ -87,22 +83,18 @@ export default function FeaturedScreen() {
               {selected === "audiobooks" ? "有声名著" : selected}
             </Text>
             {selected === "audiobooks" ? (
-              // 固定 10 篇文章卡片
               audiobookLessons.map((lesson) => {
                 if (!lesson) return null;
                 return (
                   <Pressable
                     key={lesson.id}
                     style={styles.bookCard}
-onPress={() => {
-                      // 安全导航：使用完整路径确保跳转到 article 页面
-                      // 使用备用ID确保永不为空
+                    onPress={() => {
                       const navLessonId = lesson.id || "siddhartha-brahmin-son-1";
-      // 使用 /article 作为 pathname，确保跳转到正确的页面
-      router.push({
-        pathname: "/article",
-        params: { lessonId: navLessonId },
-      } as any);
+                      router.push({
+                        pathname: "/article",
+                        search: `lessonId=${navLessonId}`,
+                      } as any);
                     }}
                   >
                     <View style={styles.bookCard}>
@@ -120,7 +112,6 @@ onPress={() => {
                 );
               })
             ) : (
-              // 其他分类显示占位卡片
               <View style={styles.placeholderRow}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
                   <View key={n} style={styles.emptyCard} />

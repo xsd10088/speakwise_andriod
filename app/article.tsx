@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from "react-native";
 import * as Speech from "expo-speech";
 import { ScreenContainer } from "@/components/ScreenContainer";
@@ -20,63 +21,78 @@ const C = {
   green: "#5BA46F",
 };
 
-type ArticleScreenProps = {
-  route: {
-    params: {
-      lessonId?: string;
-    };
-  };
-};
-
-export default function ArticleScreen({ route }: ArticleScreenProps) {
-  // 调试日志：查看实际接收到的 route 参数
-  console.log("[ArticleScreen] route:", JSON.stringify(route?.params, null, 2));
-  // 健壮获取 lessonId：分步验证，提供备用ID
-  const routeParams = route?.params ?? {};
-  const lessonId = routeParams.lessonId || "siddhartha-brahmin-son-1";
-  console.log("[ArticleScreen] lessonId:", lessonId);
-
+export default function ArticleScreen() {
+  const [lessonId, setLessonId] = useState<string | null>(null);
   const [lesson, setLesson] = useState<KekeReadingLesson | null>(null);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // 开始加载课程数据
-    const lesson = getKekeReadingLesson(lessonId);
-    if (!lesson) {
-      setError("课时数据不存在，请返回重试");
-      setLesson(null);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("lessonId");
+      console.log("[ArticleScreen] lessonId from URL:", id);
+      setLessonId(id);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!lessonId) {
+      setError("未能获取课时ID，请返回重试");
       return;
     }
-    setLesson(lesson);
+
+    const foundLesson = getKekeReadingLesson(lessonId);
+    if (!foundLesson) {
+      setError("课时数据不存在，请返回重试");
+      return;
+    }
+    setLesson(foundLesson);
+    setError(null);
   }, [lessonId]);
 
   const speakLine = (text: string, index: number) => {
     if (playingIndex === index) {
       Speech.stop();
       setPlayingIndex(null);
+      setIsSpeaking(false);
       return;
     }
 
     Speech.stop();
     setPlayingIndex(index);
+    setIsSpeaking(true);
     Speech.speak(text, {
       language: "en-US",
-      onDone: () => setPlayingIndex(null),
-      onStopped: () => setPlayingIndex(null),
-      onError: () => setPlayingIndex(null),
+      onDone: () => {
+        setPlayingIndex(null);
+        setIsSpeaking(false);
+      },
+      onStopped: () => {
+        setPlayingIndex(null);
+        setIsSpeaking(false);
+      },
+      onError: () => {
+        setPlayingIndex(null);
+        setIsSpeaking(false);
+      },
     });
+  };
+
+  const stopAllSpeech = () => {
+    Speech.stop();
+    setPlayingIndex(null);
+    setIsSpeaking(false);
   };
 
   if (error) {
     return (
       <ScreenContainer>
         <View style={styles.centered}>
-          <Text style={styles.centeredText}>
-            {error}
-          </Text>
-          <Pressable onPress={() => window.history.back()} style={{marginTop: 20}}>
-            <Text>返回首页</Text>
+          <Text style={styles.centeredText}>{error}</Text>
+          <Pressable onPress={() => window.history.back()} style={styles.retryButton}>
+            <Text style={styles.retryText}>返回首页</Text>
           </Pressable>
         </View>
       </ScreenContainer>
@@ -127,6 +143,16 @@ export default function ArticleScreen({ route }: ArticleScreenProps) {
             </View>
             <Text style={styles.englishText}>{line.text}</Text>
             <Text style={styles.chineseText}>{line.translation}</Text>
+            {playingIndex === index && (
+              <View style={styles.playButtonContainer}>
+                <TouchableOpacity
+                  onPress={() => stopAllSpeech()}
+                  style={styles.playButton}
+                >
+                  <Text style={styles.playButtonText}>■</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </Pressable>
         ))}
       </ScrollView>
@@ -155,6 +181,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
   },
+  retryButton: {
+    marginTop: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    backgroundColor: C.blue,
+    borderRadius: 8,
+  },
+  retryText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
   header: {
     marginBottom: 20,
   },
@@ -176,6 +214,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 14,
     marginBottom: 12,
+    position: "relative",
   },
   cardActive: {
     borderColor: C.blue,
@@ -207,5 +246,23 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 20,
     marginTop: 8,
+  },
+  playButtonContainer: {
+    position: "absolute",
+    right: 12,
+    bottom: 10,
+  },
+  playButton: {
+    backgroundColor: C.blue,
+    borderRadius: 12,
+    width: 24,
+    height: 24,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  playButtonText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
