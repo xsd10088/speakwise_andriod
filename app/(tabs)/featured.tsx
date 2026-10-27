@@ -89,13 +89,10 @@ export default function FeaturedScreen() {
                   <Pressable
                     key={lesson.id}
                     style={styles.bookCard}
-                    onPress={() => {
+onPress={() => {
                       const navLessonId = lesson.id || "siddhartha-brahmin-son-1";
-                      router.push({
-                        pathname: "/article",
-                        search: `lessonId=${navLessonId}`,
-                      } as any);
-                    }}
+                      router.push(`/article/${navLessonId}` as any);
+                      }}
                   >
                     <View style={styles.bookCard}>
                       <Text style={styles.bookTitle} numberOfLines={2}>

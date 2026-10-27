@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import {
-  Pressable,
+  View,
   ScrollView,
   StyleSheet,
   Text,
-  View,
+  Pressable,
   TouchableOpacity,
 } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { ScreenContainer } from "@/components/ScreenContainer";
 import { kekeReadingLessonToLines, getKekeReadingLesson, type KekeReadingLesson } from "@/lib/keke-reading";
@@ -21,35 +22,25 @@ const C = {
   green: "#5BA46F",
 };
 
-export default function ArticleScreen() {
-  const [lessonId, setLessonId] = useState<string | null>(null);
+export default function ArticleDetailScreen() {
+  const { lessonId } = useLocalSearchParams<{ lessonId?: string }>();
+  const router = useRouter();
   const [lesson, setLesson] = useState<KekeReadingLesson | null>(null);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("lessonId");
-      console.log("[ArticleScreen] lessonId from URL:", id);
-      setLessonId(id);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!lessonId) {
-      setError("未能获取课时ID，请返回重试");
-      return;
-    }
-
-    const foundLesson = getKekeReadingLesson(lessonId);
+    console.log("[ArticleDetailScreen] lessonId from params:", lessonId, typeof lessonId);
+    
+    const id = (typeof lessonId === "string" ? lessonId : null) || "siddhartha-brahmin-son-1";
+    const foundLesson = getKekeReadingLesson(id);
+    
     if (!foundLesson) {
       setError("课时数据不存在，请返回重试");
       return;
     }
     setLesson(foundLesson);
-    setError(null);
   }, [lessonId]);
 
   const speakLine = (text: string, index: number) => {
@@ -91,7 +82,7 @@ export default function ArticleScreen() {
       <ScreenContainer>
         <View style={styles.centered}>
           <Text style={styles.centeredText}>{error}</Text>
-          <Pressable onPress={() => window.history.back()} style={styles.retryButton}>
+          <Pressable onPress={() => router.back()} style={styles.retryButton}>
             <Text style={styles.retryText}>返回首页</Text>
           </Pressable>
         </View>
@@ -121,12 +112,12 @@ export default function ArticleScreen() {
           <Text style={styles.title} numberOfLines={2}>
             {lesson.title}
           </Text>
-          {lesson.durationSec ? (
+          {lesson.durationSec && (
             <Text style={styles.duration}>
               {Math.floor(lesson.durationSec / 60)}:
               {String(lesson.durationSec % 60).padStart(2, "0")}
             </Text>
-          ) : null}
+          )}
         </View>
 
         {lines.map((line, index) => (
