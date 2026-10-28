@@ -10,7 +10,10 @@ import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/ScreenContainer";
 import {
   getKekeReadingCategories,
-  getKekeReadingLesson,
+  getKekeReadingStories,
+  getKekeReadingStory,
+  type KekeReadingStory,
+  type KekeReadingLesson,
 } from "@/lib/keke-reading";
 
 const C = {
@@ -22,21 +25,20 @@ const C = {
   muted: "#9AA2B4",
 };
 
-const FIXED_AUDIOBOOK_LESSON_IDS = [
-  "siddhartha-brahmin-son-1",
-  "alice-adventures-wonderland-1",
-  "alice-adventures-wonderland-2",
-  "jane-eyre-1",
-  "pride-prejudice-1",
-  "little-prince-1",
-  "grimm-fairy-tales-1",
-  "grimm-fairy-tales-2",
-  "odyssey-1",
-  "romeo-juliet-1",
+const FIXED_AUDIOBOOK_STORY_IDS = [
+  "siddhartha-brahmin-son",
+  "alice-adventures-wonderland",
+  "little-prince",
+  "grimm-fairy-tales",
+  "jane-eyre",
+  "pride-prejudice",
+  "odyssey",
+  "romeo-juliet",
 ];
 
 export default function FeaturedScreen() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [expandedStory, setExpandedStory] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -44,15 +46,16 @@ export default function FeaturedScreen() {
 
   const handleCategorySelect = (id: string) => {
     setSelected(selected === id ? null : id);
+    setExpandedStory(null);
   };
 
   const categories = getKekeReadingCategories();
-  const selectedCategory = categories.find((cat) => cat.id === selected);
 
-  const audiobookLessons = FIXED_AUDIOBOOK_LESSON_IDS.map((lessonId) => {
-    const lesson = getKekeReadingLesson(lessonId);
-    return lesson ? { id: lesson.id, title: lesson.title, durationSec: lesson.durationSec, difficulty: lesson.difficulty } : null;
-  }).filter(Boolean) as Array<{ id: string; title: string; durationSec?: number; difficulty: string }>;
+  const audiobookStories: KekeReadingStory[] = FIXED_AUDIOBOOK_STORY_IDS
+    .map(id => getKekeReadingStory(id))
+    .filter((s): s is KekeReadingStory => s != null && s.lessons && s.lessons.length > 0);
+
+  const totalLessons = audiobookStories.reduce((sum, s) => sum + s.lessons.length, 0);
 
   return (
     <ScreenContainer>
@@ -80,32 +83,44 @@ export default function FeaturedScreen() {
         {selected && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              {selected === "audiobooks" ? "有声名著" : selected}
+              {selected === "audiobooks" ? `有声名著 (${totalLessons} 本)` : selected}
             </Text>
             {selected === "audiobooks" ? (
-              audiobookLessons.map((lesson) => {
-                if (!lesson) return null;
+              audiobookStories.map((story) => {
+                const isExpanded = expandedStory === story.id;
                 return (
-                  <Pressable
-                    key={lesson.id}
-                    style={styles.bookCard}
-onPress={() => {
-                      const navLessonId = lesson.id || "siddhartha-brahmin-son-1";
-                      router.push(`/article/${navLessonId}` as any);
-                      }}
-                  >
-                    <View style={styles.bookCard}>
-                      <Text style={styles.bookTitle} numberOfLines={2}>
-                        {lesson.title}
+                  <View key={story.id}>
+                    <Pressable
+                      onPress={() => setExpandedStory(isExpanded ? null : story.id)}
+                      style={styles.storyHeader}
+                    >
+                      <Text style={styles.storyTitle}>{story.title}</Text>
+                      <Text style={styles.storyLessonCount}>
+                        {story.lessons.length} 章节
                       </Text>
-                      <Text style={styles.bookMeta}>
-                        {lesson.durationSec
-                          ? `${Math.floor(lesson.durationSec / 60)} 分钟`
-                          : "音频"}
-                      </Text>
-                      <Text style={styles.bookDifficulty}>{lesson.difficulty}</Text>
-                    </View>
-                  </Pressable>
+                    </Pressable>
+                    {isExpanded && (
+                      <View style={styles.chapterList}>
+                        {story.lessons.map((lesson) => (
+                          <Pressable
+                            key={lesson.id}
+                            style={styles.chapterCard}
+                            onPress={() => {
+                              router.push(`/article/${lesson.id}` as any);
+                            }}
+                          >
+                            <Text style={styles.chapterTitle}>{lesson.title}</Text>
+                            <Text style={styles.chapterMeta}>
+                              {lesson.durationSec 
+                                ? `${Math.floor(lesson.durationSec / 60)} 分钟` 
+                                : "语音"}
+                            </Text>
+                            <Text style={styles.chapterDifficulty}>{lesson.difficulty}</Text>
+                          </Pressable>
+                        ))}
+                      </View>
+                    )}
+                  </View>
                 );
               })
             ) : (
@@ -179,25 +194,48 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "900",
   },
-  bookCard: {
+  storyHeader: {
     backgroundColor: C.cardBg,
     borderWidth: 1,
     borderColor: C.border,
     borderRadius: 12,
     padding: 14,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  bookTitle: {
+  storyTitle: {
+    color: C.text,
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  storyLessonCount: {
+    color: C.muted,
+    fontSize: 12,
+  },
+  chapterList: {
+    gap: 8,
+    marginTop: 8,
+    paddingLeft: 8,
+  },
+  chapterCard: {
+    backgroundColor: C.cardBg,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 8,
+    padding: 12,
+  },
+  chapterTitle: {
     color: C.text,
     fontSize: 14,
-    fontWeight: "700",
-    lineHeight: 20,
+    fontWeight: "600",
   },
-  bookMeta: {
+  chapterMeta: {
     color: C.muted,
     fontSize: 11,
     marginTop: 4,
   },
-  bookDifficulty: {
+  chapterDifficulty: {
     color: "#8DB0FF",
     fontSize: 10,
     marginTop: 2,

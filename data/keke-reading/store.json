@@ -3,7 +3,7 @@
   "feeds": {
     "kk-reading": {
       "lastFetched": 1792759441609,
-      "itemCount": 12
+      "itemCount": 20
     }
   },
   "courses": [
@@ -12,7 +12,7 @@
       "title": "可可英语名著精读",
       "level": 3,
       "description": "可可英语精选经典名著双语对照课文，含英文原文与中文翻译",
-      "lessonCount": 12,
+      "lessonCount": 20,
       "updatedAt": 1792759441609,
       "feedId": "kk-reading",
       "lessons": [
@@ -344,39 +344,6 @@
           "difficulty": "L3"
         },
         {
-          "id": "siddhartha-brahmin-son-2",
-          "title": "《悉达多》- 出家新生",
-          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-2.mp3",
-          "durationSec": 250,
-          "transcript": [
-            "Now Siddhartha was determined to renounce the world, to leave his house and family behind.",
-            "He bid farewell to his father and his beloved wife, and set out alone on his path of renunciation.",
-            "In the forest he lived as a hermit, practising severe austerities and meditating constantly.",
-            "He met a ferryman named Kamala who took him across the river, and in return he taught her the sacred chants.",
-            "On the other side he encountered a young woman also named Kamala, a prostitute of ill repute.",
-            "She asked him to live with her, but he gently declined, explaining his vow of celibacy.",
-            "The ferryman Kamala, grateful for his teachings, offered to help him find enlightenment.",
-            "She sent her friend, a dancing girl, to serve him and gain his favour.",
-            "Siddhartha remained unmoved by worldly charms, but allowed the young dancer to stay.",
-            "Months passed, and the dancer grew attached to him, but he saw attachment as a chain."
-          ],
-          "translation": [
-            "悉达多决定出家，放弃这个世界，离开住处和家人。",
-            "他向父亲和挚爱的妻子告别，独自踏上出家的道路。",
-            "他在森林中过 hermit 的生活，勤奋地修行苦修修行。",
-            "他遇见一位渡河的乘船人卡姆拉，他以朗诵神圣诵歌交换乘船费。",
-            "当他过河时，在对岸遇见了一个年轻女人，叫卡姆拉，是一位风流男子。",
-            "她请他同居，他温和地拒绝，解释说自己有闭欲的誓言。",
-            "渡河卡姆拉对他的教诲感到感激，决定帮助他寻找 enlightenment。",
-            "她让朋友一位舞女去为他服务，想要获得他的青睐。",
-            "悉达多不被世俗的魅力所动，但允许这个年轻舞者留下来。",
-            "两个月过去了，舞者对他产生了依恋，但他看见依恋只是枷锁。"
-          ],
-          "source": "可可英语-名著精读",
-          "category": "经典文学",
-          "difficulty": "L3"
-        },
-        {
           "id": "little-prince-2",
           "title": "《小王子》- 2",
           "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/little-prince-2.mp3",
@@ -408,6 +375,1060 @@
           "source": "可可英语-名著精读",
           "category": "经典文学",
           "difficulty": "L2"
+        },
+        {
+          "id": "siddhartha-brahmin-son-2",
+          "title": "《悉达多》- 婆罗门之子(2)",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-2.mp3",
+          "durationSec": 360,
+          "transcript": [
+            "In the evening of this day they caught up with the ascetics, the skinny Samanas, and offered them their companionship and obedience. They were accepted.",
+            "Siddhartha gave his garments to a poor Brahman in the street. He wore nothing more than the loincloth and the earth-coloured, unsown cloak.",
+            "He ate only once a day, and never something cooked. He fasted for fifteen days. He fasted for twenty-eight days.",
+            "The flesh waned from his thighs and cheeks. Feverish dreams flickered from his enlarged eyes, long nails grew slowly on his parched fingers and a dry, shaggy beard grew on his chin.",
+            "His glance turned to ice when he encountered women; his mouth twitched with contempt, when he walked through a city of nicely dressed people.",
+            "He saw merchants trading, princes hunting, mourners wailing for their dead, whores offering themselves, physicians trying to help the sick, priests determining the most suitable day for seeding, lovers loving, mothers nursing their children—and all of this was not worthy of one look from his eye, it all lied, it all stank, it all stank of lies, it all pretended to be meaningful and joyful and beautiful, and it all was just concealed putrefaction.",
+            "The world tasted bitter. Life was torture.",
+            "A goal stood before Siddhartha, a single goal: to become empty, empty of thirst, empty of wishing, empty of dreams, empty of joy and sorrow.",
+            "Dead to himself, not to be a self any more, to find tranquility with an emptied heart, to be open to miracles in unselfish thoughts, that was his goal.",
+            "Once all of my self was overcome and had died, once every desire and every urge was silent in the heart, then the ultimate part of me had to awake, the innermost of my being, which is no longer my self, the great secret.",
+            "Silently, Siddhartha exposed himself to burning rays of the sun directly above, glowing with pain, glowing with thirst, and stood there, until he neither felt any pain nor thirst any more.",
+            "Silently, he sat there in the rainy season, from his hair the water was dripping over freezing shoulders, over freezing hips and legs, and the penitent stood there, until he could not feel the cold in his shoulders and legs any more, until they were silent, until they were quiet.",
+            "Instructed by the oldest of the Samanas, Siddhartha practised self-denial, practised meditation, according to new Samana rules.",
+            "A heron flew over the bamboo forest—and Siddhartha accepted the heron into his soul, flew over forest and mountains, was a heron, ate fish, felt the pangs of a heron's hunger, spoke the heron's croak, died a heron's death.",
+            "A dead jackal was lying on the sandy bank, and Siddhartha's soul slipped inside the body, was the dead jackal, lay on the banks, got bloated, stank, decayed, was dismembered by hyenas, was skinned by vultures, turned into a skeleton, turned to dust, was blown across the fields.",
+            "And Siddhartha's soul returned, had died, had decayed, was scattered as dust, had tasted the gloomy intoxication of the cycle, awaited in new thirst like a hunter in the gap, where he could escape from the cycle, where the end of the causes, where an eternity without suffering began.",
+            "He killed his senses, he killed his memory, he slipped out of his self into thousands of other forms, was an animal, was carrion, was stone, was wood, was water, and awoke every time to find his old self again.",
+            "Siddhartha learned a lot when he was with the Samanas, many ways leading away from the self he learned to go. He went the way of self-denial by means of pain, through voluntarily suffering and overcoming pain, hunger, thirst, tiredness.",
+            "He went the way of self-denial by means of meditation, through imagining the mind to be void of all conceptions. These and other ways he learned to go, a thousand times he left his self, for hours and days he remained in the non-self.",
+            "But though the ways led away from the self, their end nevertheless always led back to the self. Though Siddhartha fled from the self a thousand times, stayed in nothingness, stayed in the animal, in the stone, the return was inevitable, inescapable was the hour, when he found himself back in the sunshine or in the moonlight.",
+            "By his side lived Govinda, his shadow, walked the same paths, undertook the same efforts. They rarely spoke to one another, than the service and the exercises required.",
+            "How do you think, Govinda, how do you think did we progress? Did we reach any goals? We have learned, and we will continue learning. You will be a great Samana, Siddhartha.",
+            "I can't help but feel that it is not like this, my friend. What I have learned, being among the Samanas, up to this day, this could have learned more quickly and by simpler means.",
+            "What is meditation? What is leaving one's body? What is fasting? What is holding one's breath? It is fleeing from the self, it is a short escape of the agony of being a self, it is a short numbing of the senses against the pain and the pointlessness of life.",
+            "Though Siddhartha fled from the self a thousand times, stayed in nothingness, stayed in the animal, in the stone, the return was inevitable, inescapable was the hour, when he found himself back in the sunshine."
+          ],
+          "translation": [
+            "到了那天的傍晚，他们追上了素ilin的苏马纳们——瘦削的、苟然的、几乎光膘的、满目疮痕的萨玛纳修道人。他们 Offered them their companionship and obedience. 他们被接纳了。",
+            "悉达多把自己的长袍给了一条街上乞食的婆罗门。他只身穿着腰裤和一件未缝的土黄色披风。",
+            "他一天只吃一次，也从不吃熟食。他连续禁食十五天，又连续禁食二十八天。",
+            "他大腿和脸颊的肌肉都因饥饿而消瘦。他眼珠肿大而发热，指甲在干咕的手指上缓缓生长，胡须也在下巴上长出颗颗苍劲的鬃毛。",
+            "当他遇见女人时，他的目光冷硬得像冰块；走在那座穿着华丽衣服的城镇里时，嘴角总带着轻蔑的挑衅。",
+            "他看到商人做生意，王子狩猎，哀悼者为亡灵而哀悼，卖花费命的妓女自称，医生们帮忙疗病，神职人员商量最佳播种日子，恋人亲热，母亲哄育孩子——而这些一点也不配被他这双眼睛目睃，他们都撒谎，都腐烂，都假面笼罩着虚伪的美，都只是掩饰着霉味的腐烂。",
+            "这个世界苦涩得很，活着就是痛苦。",
+            "悉达多心中有着唯一的目标：变得空缺，空缺了渴欲，空缺了欲求，空缺了梦想，空缺了喜悦和悲伤。",
+            "彻底脱离自我，不再是那个自我，才能在被空空的心中找到宁静，敞开心扉，随着无欲的思想接受奇迹，这就是他的目标。",
+            "当我所有的自我都被推翻而死亡，所有的欲望和冲动都沉默了，我的最深处的那一部分必须从睡梦中苏醒——那个不再是自我的，最伟大的秘密。",
+            "悉达多默默地暴露自己在烈日下燃烧的炽热光线下，疼痛地流泪，渴望地流泪，站在那里，直到他既不再感到疼痛，也不再感到渴望。",
+            "在雨季里，悉达多默默地站着，水从发疼的头发滴落，滴在僵硬的肩膀、臀部和腿上，这个忏悔的人站到了那里，直到他不再感到肩膀和腿上的寒冷，直到他们沉默了，直到他们平静了。",
+            "在苏马纳中年人指导下，悉达多修练了苦修、冥想等禅修功法。一只鹭鸶飞过竹林——悉达多接受了鹭鸶进入自己的灵魂，飞越森林和山脉，化身为鹭鸶，吃鱼，感受鹭鸶的饥饿，吟咬鹭鸶的咕鸠声，死于鹭鸶之死。",
+            "尸骸散布在沙滩上的 jackal 蜷缩在那里，悉达多的灵魂渗入了它的身体，化身为尸骸，躺在岸边，腐烂、发霉，被猎豹撕碎，被秃鹰剥皮，化为骨骼，化为灰烬，随风飘散。",
+            "悉达多的灵魂又回来了，死去了，腐烂了，化为灰烬，曾经在轮回的阴暗中寻找新一轮的渴求，凭借猎豹的窥视，凭借那条通往毁灭之路的缝隙，寻找那终将结束轮回的永恒之处。",
+            "他杀死了感官，杀死了记忆，灵魂脱离自我，化身为无数形态——动物、腐肉、石头、木头、水流，醒来时每次都能找回自己的旧身。",
+            "悉达多在苏马纳手下学到了很多关于远离自我的道路。他通过疼痛的自我牺牲来远离自我，通过自我苦修克服饥饿、渴望和疲惫。他通过冥想通过想象心灵空虚来远离自我。",
+            "他学会了无数种离开自我之道，一千次他离开自己，曾在无自我的状态中停留数小时数日。虽然这些道路都指向离开自我，但它们的终点仍然回归到自我。悉达多千百次逃离自我，沉溺于虚无、动物、石头中，归宿是不可避免的——每当阳光或月光下，他会重新找回自己的旧身。",
+            "与他同行的还有govinda，随己影般跟随他，走相同的路，承担相同的修行。他们很少说话，只有服务和练习所需的沉默。",
+            "你觉得如何，govinda？我们在进步吗？我们是否达到了任何目标？我们已经学习了，还会继续学习。你会成为一位伟大的苏马纳，悉达多。",
+            "我不禁觉得，一切都不对，亲爱的govinda。在苏马纳手下，我学到的东西不过如此，达不到更快、更简单的方式。",
+            "冥想是什么？脱离自我是什么？断食是什么？屏息是什么？这些只是逃离自我的短暂逃避，对痛苦无意义的感官麻痹。",
+            "尽管悉达多千百次逃离自我，沉溺于虚无、动物、石头中，归宿是不可避免的——每当阳光或月光下，他会重新找回自己的旧身。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-3",
+          "title": "《悉达多》- 卡玛拉花园",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-3.mp3",
+          "durationSec": 280,
+          "transcript": [
+            "On the way, Siddhartha also remembered everything he had experienced in the Garden Jetavana, the teaching he had heard there, the divine Buddha, the farewell from Govinda, the conversation with the exalted one.",
+            "Again he remembered his own words, he had spoken to the exalted one, every word, and with astonishment he became aware of the fact that there he had said things which he had not really known yet at this time.",
+            "What he had said to Gotama: his, the Buddha's, treasure and secret was not the teachings, but the unspeakable and not teachable, which he had experienced in the hour of his enlightenment—it was nothing but this very thing which he had now gone to experience, what he now began to experience. Now, he had to experience his self.",
+            "It is true that he had already known for a long time that his self was Atman, in its essence bearing the same eternal characteristics as Brahman. But never, he had really found this self, because he had wanted to capture it in the net of thought.",
+            "Both, the thoughts as well as the senses, were pretty things, the ultimate meaning was hidden behind both of them, both had to be listened to, both had to be played with, both neither had to be scorned nor overestimated.",
+            "In the night when he slept in the straw hut of a ferryman by the river, Siddhartha had a dream: Govinda was standing in front of him, dressed in the yellow robe of an ascetic. Sad was how Govinda looked like, sadly he asked: Why have you forsaken me?",
+            "At this, he embraced Govinda, wrapped his arms around him, and as he was pulling him close to his chest and kissed him, it was not Govinda any more, but a woman, and a full breast popped out of the woman's dress, at which Siddhartha lay and drank, sweetly and strongly tasted the milk from this breast.",
+            "It tasted of woman and man, of sun and forest, of animal and flower, of every fruit, of every joyful desire. It intoxicated him and rendered him unconscious. When Siddhartha woke up, the pale river shimmered through the door of the hut, and in the forest, a dark call of an owl resounded deeply and pleasantly.",
+            "When the day began, Siddhartha asked his host, the ferryman, to get him across the river. The ferryman got him across the river on his bamboo-raft, the wide water shimmered reddishly in the light of the morning."
+          ],
+          "translation": [
+            "当日，悉达多回想起在叶亚蒙家公园中一切经历，回想起他在那里听到的教义，回想起神圣的佛陀，回想起与功第达的别离，回想起与最尊敬者的谈话。",
+            "他又回想起自己当时对佛陀说的每一句话，并惊讶地意识到，那时他说的并非完全理解。",
+            "他对佛陀所述的宝贵之秘，并非教义，而是那些无法言说、无法传授的——那正是他此刻开始亲身体验的东西，那正是他正在经历的至至之事。",
+            "他确实早知道自己的本我是阿特曼，拥有与梵那般永恒的本质。但他从未真正发现了自己的本我，因为总想用思维的网把它捕获。",
+            "思维和感官都是美好的事物，终极意义隐藏在它们之behind；都必须被倾听，都必须被玩弄，都既不该蔑视，也不该高估。",
+            "夜晚，悉达多在渡河人小屋的 straw 裘中睡觉，梦见功第达身着黄袍，脸上悲伤地问：\"你为何遗弃我？\"",
+            "他拥抱了功第达，紧贴他的胸口亲吻他，就像拥抱一个女人， breast 找到了裙下的 breast，悉达多沾着欢美的味道喝下了那巨丰的奶汁。",
+            "那奶汁 tasted of man and woman, of sun and forest, of animal and flower, of every fruit, of every joyful desire. 它 intoxicated him and rendered him unconscious.",
+            "当悉达多醒来，薄冷的河水在小屋门外闪烁，森林里一只 dark owl 发出 deep and pleasant 的呼鸣。",
+            "黎明时分，悉达多向渡河人请他穿越河流。渡河人用 bamboo 船把他运过河，宽阔的水面在 morning light 中染成 reddish."
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-4",
+          "title": "《悉达多》- 卡玛拉的邀请",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-4.mp3",
+          "durationSec": 300,
+          "transcript": [
+            "At about noon, he came through a village. In front of the mud cottages, children were rolling about in the street, were playing with pumpkin-seeds and sea-shells, screamed and wrestled, but they all timidly fled from the unknown Samana.",
+            "In the end of the village, the path led through a stream, and by the side of the stream, a young woman was kneeling and washing clothes.",
+            "When Siddhartha greeted her, she lifted her head and looked up to him with a smile, so that he saw the white in her eyes glistening.",
+            "He called out a blessing to her, as it is the custom among travellers, and asked how far he still had to go to reach the large city.",
+            "Then she got up and came to him, beautifully her wet mouth was shimmering in her young face. She exchanged humorous banter with him, asked whether he had eaten already, and whether it was true that the Samanas slept alone in the forest at night and were not allowed to have any women with them.",
+            "While talking, she put her left foot on his right one and made a movement as a woman does who would want to initiate that kind of sexual pleasure with a man, which the textbooks call 'climbing a tree'.",
+            "Siddhartha felt his blood heating up, and since in this moment he had to think of his dream again, he bend slightly down to the woman and kissed with his lips the brown nipple of her breast.",
+            "Looking up, he saw her face smiling full of lust and her eyes, with contracted pupils, begging with desire.",
+            "Siddhartha also felt desire and felt the source of his sexuality moving; but since he had never touched a woman before, he hesitated for a moment, while his hands were already prepared to reach out for her."
+          ],
+          "translation": [
+            "中午时分，他穿过一个小村庄。房屋前的泥泞小屋里，孩子们在街道上打滚，玩着南瓜子和海贝壳，大叫着打斗，但他们都谨慎地躲开这位陌生的苏马纳。",
+            "村庄尽头，小路穿过一条小溪，溪边有一位年轻女子蹲下水衣服。",
+            "当悉达多向她问好时，她抬起头，微笑地望着他，让悉达多看见她眼中闪烁的白光。",
+            "他朝她鞠个礼，作为旅人Among travelers的习俗，询问前往大城的路程。",
+            "她站了起来站在他面前，湿漉漉的嘴唇在年轻的脸上闪耀着光彩。她和他輕鬆地聊天，問他是否吃过饭，以及苏馬納在森林中独睡的真實。",
+            "邊聊天，她把左腳踩在他的右脚上，做出女人想要與男人親密接觸的姿勢，教科書稱之為'樹上攀爬'。",
+            "悉達多血液沸騰，他正要回想那個夢想，稍微垂下頭，親吻她乳頭上 Brown 的 nipple。",
+            "抬頭看去，他看到她的臉上滿滿的欲望的微笑，她的眼睛瞪得象牙白晰，懇求不已。",
+            "悉達多也感到欲望，親激的感官來源在動搖；但他從未碰過女人，他猶豫了一會，他的手已經準備好伸向她。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-5",
+          "title": "《悉达多》- 卡玛拉的哲学",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-5.mp3",
+          "durationSec": 320,
+          "transcript": [
+            "Siddhartha felt desire and felt the source of his sexuality moving; but since he had never touched a woman before, he hesitated for a moment.",
+            "In this moment he heard, shuddering with awe, the voice of his innermost self saying No. Then all charms disappeared from the young woman's smiling face.",
+            "He politely petted her cheek, turned away from her and disappeared away from the disappointed woman with light steps into the bamboo-wood.",
+            "He reached the large city before the evening and was happy to be among people again after living in forests for so long.",
+            "When late in the afternoon, beautiful Kamala approached her grove in her sedan-chair, Siddhartha was standing at the entrance and bowed to meet her.",
+            "He motioned to the servant at the end of her train and asked him to inform Kamala that a young Brahman wished to speak with her.",
+            "After a while the servant returned and led him silently into a pavilion where Kamala lay on a couch alone with him.",
+            "She asked why he had come and whether it was enough to have seen her.",
+            "Siddhartha replied that he came to learn from her, as a Brahman from the ascetics.",
+            "Kamala laughed: Never before had a Samana from the forest wanted to learn from her."
+          ],
+          "translation": [
+            "悉达多感到欲望，感到他生殖器的源头正在动摇；但由于他从未碰过女人，他犹豫了一会儿。",
+            "就在这一瞬间，他听见自己的内心之声说不。这时，所有魅力都从年轻女性的微笑脸上消失。",
+            "他礼貌地抚摸她的脸颊，转身离开，轻盈地走进竹林，离开这位沮丧的女人。",
+            "他在傍晚前到达大城市，感到很高兴，久久未见人间。",
+            "傍晚时分，漂亮的卡玛拉她身披花轿来到花园，悉达多站在入口处鞠谢。",
+            "他指示她身边的仆人，请求他把消息告诉卡玛拉：一位年轻婆罗门想与她商量。",
+            "稍等片刻，仆人带他进入她身后的亭屋，卡玛拉暌待沙发上，悉达多独自与她相见。",
+            "她问他为何而来，是否够见她就好。",
+            "悉达多说他来学习，就像来自苏马纳的婆罗门。",
+            "卡玛拉笑道：从未想过，森林里的苏马纳想向她学习。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-6",
+          "title": "《悉达多》- 财富与悔恨",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-6.mp3",
+          "durationSec": 340,
+          "transcript": [
+            "Siddhartha went to Kamaswami the merchant, was directed into a rich house, servants led him between precious carpets into a chamber where he awaited the master of the house.",
+            "Kamaswami entered swiftly, smoothly, with very gray hair and very intelligent cautious eyes and a greedy mouth.",
+            "I have been told that you were a Brahman, a learned man, but that you seek to be in the service of a merchant. Might you have become destitute, Brahman, so that you seek to serve?",
+            "No, I have not become destitute and have never been destitute. You should know that I am coming from the Samanas, with whom I have lived for a long time.",
+            "If you are coming from the Samanas, how could you be anything but destitute? Aren't the Samanas entirely without possessions?",
+            "I am without possessions, if this is what you mean. Surely I am without possessions. But I am so voluntarily, and therefore I am not destitute.",
+            "But what are you planning to live of, being without possessions?",
+            "I haven't thought of this yet, sir. For more than three years I have been without possessions and have never thought about what to live of.",
+            "So you have lived of the possessions of others. Presumable this is how it is. After all, a merchant also lives of what other people own.",
+            "Well said. But he would not take anything from another person for nothing; he would give his merchandise in return."
+          ],
+          "translation": [
+            "悉达多去见卡马斯瓦米商人，被带到富人家中，仆人们把他领在珍贵的地毯之间，进入一个等候主人出现的屋子。",
+            "卡马斯瓦米迅速、平稳地进入，有着 very gray 的头发，有着 very intelligent 的慎重的眼睛，还有一个贪婪的嘴唇。",
+            "我听说你是一位婆罗门，一个有学问的人，但你寻觋成为Merchant的服务。你是不是饿了，所以想成为仆役？",
+            "不，我没有饿了，也从未饿过。你要知道，我是来自苏马纳手中的，而我生活了很久。",
+            "如果你来自苏马纳，对吧？怎么还能有什么财产？苏马纳不都没有财产吗？",
+            "我没有财产，如果那是你的意思。是的，我没有财产。但这是自愿的，因此我不饿。",
+            "但你打算靠什么生活？",
+            "我还没有想过，先生。三年来，我一直没有财产，也没想过怎么活。",
+            "所以你靠别人的财产生活。是的，这大概就是这样。毕竟，商人也靠别人的财产生活。",
+            "说得好。但他不会免费从别人那里收获；他会用商品偿还。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-8",
+          "title": "《悉达多》- 遇见佛陀",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-8.mp3",
+          "durationSec": 320,
+          "transcript": [
+            "In the town of Savathi, every child knew the name of the exalted Buddha, and every house was prepared to fill the alms-dish of Gotama's disciples, the silently begging ones.",
+            "Near the town was Gotama's favourite place to stay, the grove of Jetavana, which the rich merchant Anathapindika had given him and his people for a gift.",
+            "All tales and answers which the two young ascetics had received in their search for Gotama's abode had pointed them towards this area.",
+            "Arriving at Savathi, in the very first house before the door of which they stopped to beg, food was offered to them, and they accepted the food.",
+            "We would like to know, oh charitable one, where the Buddha dwells, the most venerable one, for we are two Samanas from the forest and have come to see him, the perfected one, and to hear the teachings from his mouth.",
+            "Here, you have truly come to the right place, you Samanas from the forest. In Jetavana, in the garden of Anathapindika dwells the exalted one. There you pilgrims shall spend the night, for there is enough space for the innumerable who flock here to hear the teachings from his mouth.",
+            "This made Govinda happy, and full of joy he exclaimed: Thus we have reached our destination, and our path has come to an end! But tell us, do you know him, the Buddha, have you seen him with your own eyes?",
+            "Many times I have seen him, the exalted one. On many days I have seen him walking through the alleys in silence, wearing his yellow cloak, presenting his alms-dish in silence at the doors of the houses.",
+            "At sunrise they saw with astonishment what a large crowd of believers and curious people had spent the night here.",
+            "Siddhartha saw him, and he instantly recognised him, as if a god had pointed him out to him. He saw him, a simple man in a yellow robe, bearing the alms-dish in his hand, walking silently."
+          ],
+          "translation": [
+            "在萨瓦提 town，每个孩子都知道最尊敬的佛陀的名字，每座房子都准备好为佛陀的徒弟们——沉默地乞讨的人—— filling饭盒。",
+            "离 town 很远，有佛陀最喜欢的住处——安那菩提迦的花园，该富商为他及其人民准备的礼物。",
+            "所有关于佛陀住所的传说和答案都指向这个地区。",
+            "到达萨瓦提后，在他们争取食物的第一个房子前，他们接受了食物。",
+            "我们想知道，善良的人，佛陀居住在哪里，最尊敬的那位，是我们两个来自森林的苏马纳，也来见他，欲聆听他的话语。",
+            "你们来到正确的地方，你们的森林苏马纳。在安那菩提迦的花园中，最尊敬的佛陀居住。你们的朝圣者可以在那里过夜，因为这里有足够的空间容纳来聆听他话语的无数来客。",
+            "这让功第达很高兴，兴高采胪地说：我们到达了目的地，我们的道路结束了！但告诉我们，你们知道他，佛陀吗？你们亲眼见过他吗？",
+            "我很多次看见他，最尊敬的。许多天我看见他静静地走在街巷里，穿着黄布长袍，沉默地在房屋门口献上饭盒。",
+            "清晨时，他们惊讶地看到有许多信徒和好奇的人在此度过了夜晚。",
+            "悉达多看到他，立刻认出他，就像一位神指给他指出。他看到一位身着黄布的简单的人，手里拿着饭盒，安静地走着。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-9",
+          "title": "《悉达多》- 离开佛陀",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-9.mp3",
+          "durationSec": 300,
+          "transcript": [
+            "Right afterwards, when the Buddha had retired for the night, Govinda turned to Siddhartha and spoke eagerly: Siddhartha, it is not my place to scold you. We have both heard the exalted one, we have both perceived the teachings.",
+            "Govinda has heard the teachings, he has taken refuge in it. But you, my honoured friend, don't you also want to walk the path of salvation? Would you want to hesitate, do you want to wait any longer?",
+            "Siddhartha awakened as if he had been asleep, when he heard Govinda's words. For a long time, he looked into Govinda's face. Then he spoke quietly, in a voice without mockery: Govinda, my friend, now you have taken this step, now you have chosen this path.",
+            "Always, oh Govinda, you have been my friend, you have always walked one step behind me. Often I have thought: Won't Govinda for once also take a step by himself, without me, out of his own soul?",
+            "Now you have turned into a man and are choosing your path for yourself. I wish that you would go it up to its end, oh my friend, that you shall find salvation!",
+            "Govinda, not completely understanding it yet, repeated his question in an impatient tone: Speak up, I beg you, my dear! Tell me, since it could not be any other way, that you also, my learned friend, will take your refuge with the exalted Buddha!",
+            "Siddhartha placed his hand on Govinda's shoulder: You failed to hear my good wish for you, oh Govinda. I'm repeating it: I wish that you would go this path up to its end, that you shall find salvation!",
+            "In this moment, Govinda realized that his friend had left him, and he started toweep. Siddhartha kindly spoke to him: Don't forget, Govinda, that you are now one of the Samanas of the Buddha!",
+            "You have renounced your home and your parents, renounced your birth and possessions, renounced your free will, renounced all friendship. This is what the teachings require, this is what the exalted one wants.",
+            "For a long time, the friends continued walking in the grove; for a long time they lay there and found no sleep. And over and over again, Govinda urged his friend, he should tell him why he would not want to seek refuge in Gotama's teachings."
+          ],
+          "translation": [
+            "正当佛陀躺着睡着后，功第达转过身来对悉达多急切地说：悉达多，这不是我的角色去责骂你。我们都听过最尊敬的佛陀的话，我们都领悟到他的教义。",
+            "功第达听信佛陀的话，拜入他的教派。但你，我的贤友，你不也想走向救赎之路吗？你不想犹豫，不想再等待了吗？",
+            "悉达多仿佛从梦中醒来般，听见功第达的话语。他 long time 望着功第达的脸。然后他安静地说：功第达，我朋友，现在你已经踏上这一步，选择了这条道路。",
+            "啊，功第达，你一直是我的朋友，你总是跟在我的后面一步。我常想：功第达哪里不可以一次也不借着我，不从自己的灵魂中迈出一步？",
+            "现在你成年了，为自己选择道路。我希望你能走到这条道路的尽头，我的朋友，你会找到救赎！",
+            "功第达还没完全理解，我们在急切地重复问题：说吧，我恳请你，亲爱的！既然不得不那样，我的有学问的朋友，是否也会拜入最尊敬的佛陀的教派？",
+            "悉达多把手放在功第达的肩膀上：你没听见我对你的美好祝愿，啊，功第达。我在重复：我希望你走这条道路走到尽头，你会找到救赎！",
+            "在那一刻，功第达意识到他的朋友已经离开他了，开始流泪。悉达多温柔地说：别忘了，功第达，你现在是佛陀的苏马纳了！",
+            "你已脱离家庭和父母，脱离出生和财产，脱离自由意志，脱离一切友谊。这就是教义所要求的，这就是最尊敬的所希望的。",
+            "他们 long time 在树下继续行走； long time 躺着找不到睡觉。每次，功第达都劝他朋友告诉他，为什么不想向佛陀的教义中找寻庇护。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-10",
+          "title": "《悉达多》- 河流的智慧",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-10.mp3",
+          "durationSec": 300,
+          "transcript": [
+            "Siddhartha walked through the forest and knew nothing but that one thing, that there was no going back for him.",
+            "He had tasted all of it, sucked everything out of it until he was disgusted with it.",
+            "He had been captured by the world, by lust, covetousness, sloth, and finally also by that vice which he had used to despise and mock the most as the most foolish one of all vices: greed.",
+            "Property, possessions, and riches also had finally captured him; they were no longer a game and trifles to him, had become a shackle and a burden.",
+            "Then the time came when a dream warned him. He had spent the hours of the evening with Kamala in her beautiful pleasure-garden.",
+            "They had been sitting under the trees, talking, and Kamala had said thoughtful words, words behind which a sadness and tiredness lay hidden.",
+            "She had asked him to tell her about Gotama, and could not hear enough of him, how clear his eyes, how still and beautiful his mouth, how kind his smile.",
+            "He had lain by her side, and under her eyes and next to the corners of her mouth he had, as clearly as never before, read a fearful inscription, an inscription of small lines, of slight grooves, an inscription reminiscent of autumn and old age.",
+            "Tiredness was written on Kamala's beautiful face, tiredness from walking a long path which has no happy destination, tiredness and the beginning of withering, and concealed, still unsaid, perhaps not even conscious anxiety: fear of old age, fear of the autumn, fear of having to die.",
+            "Then Siddhartha knew that the game was over, that he could not play it any more."
+          ],
+          "translation": [
+            "悉达多穿过森林，只觉那件事已无往前的可能。",
+            "他尝尽一切，吸尽一切，直到对它感到厌烦。",
+            "他被世界俘获，被欲望、贪婪、懒惰所捕获，最终被那种他曾蔑视的、最愚蠢的恶习所捕获：贪婪。",
+            "财产、财富也终于俘获了他；它们不再是游戏和琐事，成了枷锁和负担。",
+            "那时，一个梦警惕他。他在傍晚的时光与卡玛拉在她美丽的花园中度过光阴。",
+            "他们坐在树下聊天，卡玛拉说了一些深思流泪的话，话语背后藏着悲伤和疲惫。",
+            "她让他讲述佛陀的事，他讲得越多越满足，佛陀的眼睛多么清澈，嘴唇多么安静美好，微笑多么温柔。",
+            "他靠在她身旁，从她眼睛和唇角处，悉达多第一次如此清晰地读到一副可怕的招牌，一行行小痕迹，像秋天和老年的标记。",
+            "卡玛拉美丽的脸上写着疲惫——走长途的疲惫没有幸福的终点，枯萎的开始，还有隐藏的、未说出口的、或许甚至不知不觉的焦虑：对老年的恐惧，对秋天的恐惧，对死亡的恐惧。",
+            "然后悉达多知道游戏结束了，他再也不能继续玩了。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        },
+        {
+          "id": "siddhartha-brahmin-son-11",
+          "title": "《悉达多》- 终成得意",
+          "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-11.mp3",
+          "durationSec": 320,
+          "transcript": [
+            "Siddhartha straightened up and saw a person sitting opposite to him, an unknown man, a monk in a yellow robe with a shaven head, sitting in the position of pondering.",
+            "He observed the man, who had neither hair on his head nor a beard, and he had not observed him for long when he recognised this monk as Govinda, the friend of his youth.",
+            "Govinda had aged, he too, but still his face bore the same features, expressed zeal, faithfulness, searching, timidness. But when Govinda now, sensing his gaze, opened his eyes and looked at him, Siddhartha saw that Govinda did not recognise him.",
+            "Govinda was happy to find him awake; apparently he had been sitting here for a long time and been waiting for him to wake up, though he did not know him.",
+            "I have been sleeping, said Siddhartha. However did you get here?",
+            "You are Siddhartha! Now I'm recognising you, and don't comprehend any more how I couldn't recognise you right away. Be welcome, Siddhartha, my joy is great, to see you again.",
+            "It also gives me joy to see you again. You have been the guard of my sleep, again I thank you for this, though I wouldn't have required any guard.",
+            "I'm going nowhere. We monks are always travelling, whenever it is not the rainy season, we always move from one place to another, live according to the rules of the teachings passed on to us, accept alms, move on.",
+            "You're saying: you're on a pilgrimage, and I believe you. But few would go on a pilgrimage in such clothes, few in such shoes, few with such hair.",
+            "Right so, my dear, you have observed well, your keen eyes see everything. But I haven't said to you that I was a Samana. I said: I'm on a pilgrimage."
+          ],
+          "translation": [
+            "悉达多站了起来，看见一个坐在对面的人，是个不认识的男人，是一位赤头丹头的黄袍僧人，正坐在沉思的姿势里。",
+            "他观察这个人——头上无毛，没胡，且没观察多久，他就认出这位僧人是功第达，他的年轻朋友。",
+            "功第达也衰老了，但他的脸面still bore the same features，表达着热情、忠诚、寻找、敬畏。但当功第达感觉到目光，睁开眼睛看他时，悉达多看到功第达不认出他。",
+            "功第达很高兴看见他醒来；显然他 long time 在那里待着，等待他醒来，尽管他不认识他。",
+            "我睡着了，悉达多说。这怎么来的？",
+            "你是悉达多！我现在认出你了，不再理解我怎么会不认出你。欢迎，悉达多，见你一次就很高兴。",
+            "我也很高兴见你。你曾是我 sleep 的守卫，我再感谢你一次，尽管我不曾需要守卫。",
+            "我去 nowhere。我们佛教徒总是旅行，除了雨季，我们总是从一个地方移动到另一个地方，依据传授给我们的教义规则，接受布施，继续前进。",
+            "你说：你在朝圣，我相信你。但很少人穿着这些衣服走朝圣，穿着这些鞋子，头发那么长。",
+            "是的，我亲爱的，你看得很好，你的锐利的眼睛看见一切。但我没说我是苏马纳，我说：我在朝圣。"
+          ],
+          "source": "可可英语-名著精读",
+          "category": "经典文学",
+          "difficulty": "L3"
+        }
+      ],
+      "stories": [
+        {
+          "id": "alice-adventures-wonderland",
+          "title": "《爱丽丝漫游奇境》",
+          "lessons": [
+            {
+              "id": "alice-adventures-wonderland-1",
+              "title": "《爱丽丝漫游奇境》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/alice-adventures-wonderland-1.mp3",
+              "durationSec": 250,
+              "transcript": [
+                "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do.",
+                "So she was considering in her own mind whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.",
+                "There was nothing so very remarkable in that; but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet.",
+                "In another moment down went Alice after it, never once considering how in the world she was to get out again.",
+                "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.",
+                "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next.",
+                "She took down a jar from one of the shelves as she passed; it was labelled 'ORANGE MARMALADE', but to her great disappointment it was empty.",
+                "'I wonder how many miles I've fallen by this time?' she said aloud. 'I must be getting somewhere near the centre of the earth.'",
+                "'Dinah'll miss me very much to-night, I should think!' (Dinah was the cat.) 'I hope they'll remember her saucer of milk at tea-time.'",
+                "Down, down, down. Would the fall never come to an end? ... thump! thump! down she came upon a heap of sticks and dry leaves, and the fall was over."
+              ],
+              "translation": [
+                "爱丽丝开始对坐在姐姐身边的无聊生活感到厌倦，无所事事地打发时间。",
+                "她正想着采雏菊编花环是否值得那么麻烦，突然一只粉眼睛的白兔从身边跑过。",
+                "没什么特别的，但当兔子真的从背心口袋里掏出怀表看了一眼又匆忙离开时，爱丽丝猛地站了起来。",
+                "爱丽丝立刻追了上去，压根没想过自己该怎么回来。",
+                "兔子洞像隧道一样向前延伸，然后突然向下倾斜，爱丽丝来不及想如何停下，就发现自己正掉进一口深井。",
+                "要么井非常深，要么她掉得很慢，因为她有充足的时间环顾四周，好奇接下来会发生什么。",
+                "她经过时从架子上取下一个罐子，上面写着\"橘子酱”，但令她失望的是，罐子是空的。",
+                "\"不知道我掉了多少英里了？”她大声说，\"我快到地心了吧。\"",
+                "\"今晚丁丁会想念我的。\"（丁专是那只猫）\"希望他们别忘了给丁专留晚饭的牛奶。\"",
+                "掉啊，掉啊，掉啊。这无尽的坠落何时是个头？……扑通！扑通！她终于掉在了一堆枯枝干叶上，坠落结束了。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            },
+            {
+              "id": "alice-adventures-wonderland-2",
+              "title": "《爱丽丝漫游奇境》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/alice-adventures-wonderland-2.mp3",
+              "durationSec": 250,
+              "transcript": [
+                "Poor Alice! It was as much as she could do, lying down on one side, to look through into the garden with one eye; but to get through was more hopeless than ever: she sat down and began to cry again.",
+                "She went on all the same, shedding gallons of tears, until there was a large pool all round her, about four inches deep and reaching half down the hall.",
+                "It was the White Rabbit returning, splendidly dressed, with a pair of white kid gloves in one hand and a large fan in the other.",
+                "Alice took up the fan and gloves, and, as the hall was very hot, she kept fanning herself all the time she went on talking.",
+                "I wonder if I've been changed in the night? Let me think: was I the same when I got up this morning?",
+                "However, she soon made out that she was in the pool of tears which she had wept when she was nine feet high.",
+                "Everything is so out-of-the-way down here, that I should think very likely it can talk: at any rate, there's no harm in trying.",
+                "They were indeed a queer-looking party that assembled on the bank—the birds with draggled feathers, the animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.",
+                "The first question of course was, how to get dry again: they had a consultation about this, and after a few minutes it seemed quite natural to Alice to find herself talking familiarly with them.",
+                "Why,\" said the Dodo, \"the best way to explain it is to do it."
+              ],
+              "translation": [
+                "可怜的爱丽丝！她侧着身子，费了多大劲才用一只眼睛望进花园；可是要穿过去比以往任何时候都更没希望了：她坐下来，又哭了起来。",
+                "她还是不停地哭，流了成加仑的眼泪，直到四周形成一个大水池，大约四英寸深，淹没了半个大厅。",
+                "回来的是白兔，衣冠楚楚，一只手拿着一副白色小山羊皮手套，另一只手拿着一把大扇子。",
+                "爱丽丝拿起扇子和手套，因为大厅里很热，她一边说话一边不停地扇着扇子。",
+                "\"我想知道我夜里是不是变了？让我想想：我今天早上起床的时候，还是原来那个我吗？\"",
+                "然而，她很快就发现，自己正处在九英尺高时哭出来的那片眼泪池里。",
+                "这里的一切都那么稀奇古怪，我觉得它很可能会说话：不管怎样，试试总没有坏处。",
+                "聚集在岸边的确实是一群稀奇古怪的家伙——羽毛湿漉漉的鸟儿，毛紧贴在身上的动物，全都湿漉漉的，又生气又不舒服。",
+                "第一个问题自然是如何把身子弄干：他们为此商量了几分钟，爱丽丝发现自己和他们谈笑风生，仿佛相识了一辈子，这使她觉得很自然。",
+                "\"渡渡鸟说：'解释这件事的最好办法就是亲自做一遍。'"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            }
+          ]
+        },
+        {
+          "id": "pride-prejudice",
+          "title": "《傲慢与偏见》",
+          "lessons": [
+            {
+              "id": "pride-prejudice-1",
+              "title": "《傲慢与偏见》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/pride-prejudice-1.mp3",
+              "durationSec": 260,
+              "transcript": [
+                "Mr. Darcy corroborated it with a bow, and was beginning to determine not to fix his eyes on Elizabeth, when they were suddenly arrested by the sight of the stranger, and Elizabeth happening to see the countenance of both as they looked at each other, was all astonishment at the effect of the meeting.",
+                "Both changed colour, one looked white, the other red. Mr. Wickham, after a few moments, touched his hat -- a salutation which Mr. Darcy just deigned to return.",
+                "What could be the meaning of it? -- It was impossible to imagine; it was impossible not to long to know.",
+                "In another minute Mr. Bingley, but without seeming to have noticed what passed, took leave and rode on with his friend.",
+                "Mr. Collins was not a sensible man, and the deficiency of nature had been but little assisted by education or society.",
+                "The greatest part of his life having been spent under the guidance of an illiterate and miserly father; and though he belonged to one of the universities, he had merely kept the necessary terms, without forming at it any useful acquaintance.",
+                "The subjection in which his father had brought him up had given him originally great humility of manner, but it was now a good deal counteracted by the self-conceit of a weak head, living in retirement, and the consequential feelings of early and unexpected prosperity.",
+                "A fortunate chance had recommended him to Lady Catherine de Bourgh when the living of Hunsford was vacant; and the respect which he felt for her high rank and his veneration for her as his patroness, mingling with a very good opinion of himself, of his authority as a clergyman, and his rights as a rector, made him altogether a mixture of pride and obsequiousness, self-importance and humility."
+              ],
+              "translation": [
+                "达西证明他没有撒谎，同时鞠了个躬。达西正打算把眼睛从伊丽莎白身上移开，这时突然看到了那个陌生人。只见他们两人面面相觑，大惊失色，伊丽莎白看到这个邂逅相遇的场合，觉得很是惊奇。",
+                "两个人都变了脸色，一个惨白，一个通红，过了一会儿，韦翰先生按了按帽子，达西先生勉强回了一下礼。这是什么意思呢？既叫人无从想象，又叫人不能不想去打听一下。",
+                "又过了一会儿，彬格莱先生若无其事地跟她们告别了，骑着马跟他朋友管自走了。",
+                "柯林斯先生并不是个通情达理的人，他虽然也受过教育，也踏进了社会，但是先天的缺陷却简直没有得到什么弥补。",
+                "他大部分日子是在他那守财奴的文盲父亲的教导下度过的。他也算进过大学，实际上不过照例住了几个学期，并没有结交一个有用的朋友。",
+                "他的父亲管束得他十分严厉，因此他的为人本来很是谦卑，不过他本是个蠢材，现在生活又过得很优闲，当然不免自高自大，何况年纪轻轻就发了意外之财，更其自视甚高，哪里还谈得上谦卑。",
+                "当时汉斯福教区有个牧师空缺，他鸿运享通，得到了咖苔琳·德·包尔夫人的提拔。他看到他的女施主地位颇高，便悉心崇拜，备加尊敬；另方面又自命不凡，自以为当上了教士，该有怎样怎样的权利，于是他一身兼有了骄傲自大和谦卑顺从的两重性格。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            }
+          ]
+        },
+        {
+          "id": "odyssey",
+          "title": "《奥德赛》",
+          "lessons": [
+            {
+              "id": "odyssey-1",
+              "title": "《奥德赛》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/odyssey-1.mp3",
+              "durationSec": 200,
+              "transcript": [
+                "The Greek hero Odysseus had spent ten years fighting in the Trojan War.",
+                "Now he spent another ten years trying to return home to Ithaca.",
+                "Poseidon, the god of the sea, was angry with Odysseus and stirred up a great storm.",
+                "The storm wrecked his ship and swept him away to the island of the nymph Calypso.",
+                "Calypso kept Odysseus as her lover for seven years, refusing to let him leave.",
+                "The goddess Athena appealed to Zeus to allow Odysseus to return home.",
+                "Zeus sent Hermes to Calypso's island to command her to release Odysseus.",
+                "Calypso reluctantly gave Odysseus a raft and warned him of the dangers ahead.",
+                "Odysseus set sail, but the sea goddess Leucothea saved him from drowning.",
+                "He washed up on the shores of the Phaeacians, who offered him shelter."
+              ],
+              "translation": [
+                "希腊英雄奥德修斯在特洛伊战争中战斗了十年。",
+                "现在他又花了十年时间试图返回故乡奇托卡。",
+                "海神波塞冬对奥德修斯非常愤怒，并掀起了巨大的风暴。",
+                "风暴撞毁了他的船只，把他冲到海妖卡利西波的岛屿上。",
+                "卡利西波把奥德修斯当作情人关押了七年，拒不让他离开。",
+                "女神雅典娜向宙斯恳求，允许奥德修斯回家。",
+                "宙斯派赫尔墨斯去卡利西波的岛屿，命令她释放奥德修斯。",
+                "卡利西波勉强为奥德修斯筑造了只舟，并警告他前方的危险。",
+                "奥德修斯启航，但海神吕可塞塔勉强拯救了他免于溺水。",
+                "他漂流至飞翅族的海岸，他们为他提供了庇护。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            }
+          ]
+        },
+        {
+          "id": "grimm-fairy-tales",
+          "title": "《格林童话》",
+          "lessons": [
+            {
+              "id": "grimm-fairy-tales-1",
+              "title": "《格林童话》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-1.mp3",
+              "durationSec": 180,
+              "transcript": [
+                "Once upon a time, in a village far away, there lived a poor woodcutter and his family.",
+                "The woodcutter worked hard every day to provide for his wife and two children, Hansel and Gretel.",
+                "One day, a great famine swept the land, and there was not enough food for everyone.",
+                "The woodcutter's wife suggested leaving the children in the forest to fend for themselves.",
+                "The woodcutter was reluctant, but eventually agreed to take the children deep into the woods.",
+                "Hansel, who had been listening at the door, had a clever idea.",
+                "He gathered a handful of white pebbles from the path and promised to mark the way home.",
+                "However, when the time came, the parents locked the door to prevent Hansel from going outside.",
+                "Hansel could not get the pebbles, so he used breadcrumbs instead, scattering them as they walked.",
+                "But the breadcrumbs were eaten by birds, and the children lost their way."
+              ],
+              "translation": [
+                "从前，在一个遥远的村庄里，住着一个贫穷的木匠和他的家人。",
+                "木匠每天辛勤工作，以供养他的妻子和两个孩子，汉塞尔和格蕾特。",
+                "有一天，一场严重的饥荒席卷了全土地，人人都没有足够的食物。",
+                "木匠的妻子建议把孩子留在森林里自谋生路。",
+                "木匠虽不愿，但最终还是同意把孩子带进森林深处。",
+                "汉塞尔偷听后有了主意。",
+                "他从路上收集了一把白卵石，并许诺标记回家的路。",
+                "然而，当时候到了，父母锁上了门，防止汉塞尔出去。",
+                "汉塞尔得不到卵石，于是改用面包屑，散落在他们走的路径上。",
+                "但面包屑被鸟儿吃掉了，孩子们走散了。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            },
+            {
+              "id": "grimm-fairy-tales-2",
+              "title": "《格林童话》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-2.mp3",
+              "durationSec": 190,
+              "transcript": [
+                "Not far from their home, there stood a small cottage where a kind old woman lived alone.",
+                "She was known throughout the village as a wise woman who could heal the sick with her herbs.",
+                "When Hansel and Gretel stumbled upon her cottage, they were weak and hungry.",
+                "The old woman took them in, gave them warm milk, and let them rest by her fire.",
+                "However, she was not what she seemed to be.",
+                "She was a wicked witch who built the cottage of gingerbread and cake to lure children.",
+                "Once inside, she locked the door and placed Hansel in a stall, fattening him for the feast.",
+                "Every day she would creep into the stall and feel his finger to see if he was fat enough.",
+                "Gretel was forced to cook for Hansel, while she was kept as the witch's servant.",
+                "Gretel cleverly devised a plan to outwit the witch and save her brother."
+              ],
+              "translation": [
+                "不远处，有一座住着独自生活的善良老妇人小屋。",
+                "她被村民们公认为一位通过草药能医治生病人的善良老妇人。",
+                "当汉塞尔和格蕾特撞上她的小屋时，他们虚弱又饿得要死。",
+                "这位老妇人收留了他们，给他们温暖的牛奶，让他们靠近她的火堆休息。",
+                "然而，她并非外表所象征的那样。",
+                "她是个恶毒的巫婆，用姜饼和蛋糕建造小屋，诱惑儿童们。",
+                "一旦进入她的屋子，她就锁上了门，把汉塞尔关在牛棚里，以备晚餐。",
+                "每天她会悄悄潜入牛棚，摸他的手指，看他是否够胖。",
+                "格蕾特被迫给汉塞尔做饭菜，而她则被关作为巫婆的仆人。",
+                "格蕾特巧妏地策划了一个计划，欺骗巫婆，拯救她的兄弟。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            }
+          ]
+        },
+        {
+          "id": "jane-eyre",
+          "title": "《简·爱》",
+          "lessons": [
+            {
+              "id": "jane-eyre-1",
+              "title": "《简·爱》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/jane-eyre-1.mp3",
+              "durationSec": 280,
+              "transcript": [
+                "What is all this? demanded another voice peremptorily; and Mrs. Reed came along the corridor, her cap flying wide, her gown rustling stormily.",
+                "Abbott and Bessie, I believe I gave orders that Jane Eyre should be left in the red-room till I came to her myself.",
+                "Miss Jane screamed so loud, ma'am, pleaded Bessie.",
+                "Let her go, was the only answer.",
+                "Come here, Miss Jane: your name is Jane, is it not?",
+                "Yes, sir, Jane Eyre.",
+                "Well, you have been crying, Miss Jane Eyre; can you tell me what about? Have you any pain?",
+                "No, sir.",
+                "Oh! I daresay she is crying because she could not go with Missis in the carriage, interposed Bessie.",
+                "Surely not! why, she is too old for such pettishness."
+              ],
+              "translation": [
+                "\"这是怎么回事？\"另一个专横的声音问道；里德太太沿着走廊走来，帽子歪戴着，衣服沙沙作响。",
+                "\"阿波特和贝西，我相信我命令过，把简·爱关在红房子里，直到我亲自来。\"",
+                "\"小姐简叫得可响了，夫人。\"贝西说。",
+                "\"放开她。\"这就是唯一的回答。",
+                "\"到这儿来，简小姐：你的名字是简， 是不是吗？\"",
+                "\"是的，先生，简·爱。\"",
+                "\"怎么了，简·爱小姐，你在哭什么？你哪儿疼吗？\"",
+                "\"不，先生。\"",
+                "\"哦！我敢说她哭是因为她没能跟太太一起坐马车。\"贝西插嘴说。",
+                "\"胡说！她都这么大了，怎么可能耍小性子。\""
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            }
+          ]
+        },
+        {
+          "id": "romeo-juliet",
+          "title": "《罗密欧与朱丽叶》",
+          "lessons": [
+            {
+              "id": "romeo-juliet-1",
+              "title": "《罗密欧与朱丽叶》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/romeo-juliet-1.mp3",
+              "durationSec": 170,
+              "transcript": [
+                "In Verona, where our story takes place, two great families have been feuding for years.",
+                "The Montagues and the Capulets fight in the streets, disturbing the peace of the city.",
+                "Benvolio, a Montague, tries to stop the fighting, but Tybalt, a Capulet, attacks him.",
+                "Prince Escalus intervenes and warns that any further fighting will result in death.",
+                "Later, Romeo, a Montague, sees Juliet, a Capulet, at a masked ball and falls in love.",
+                "Juliet feels the same way, and they secretly plan to marry the next day.",
+                "Friar Laurence agrees to marry them, hoping the union will end the family feud.",
+                "However, a series of misunderstandings and unfortunate events leads to tragedy.",
+                "Romeo is banished, and Juliet is forced to marry Paris against her will.",
+                "The play ends with the deaths of Romeo and Juliet, reconciling the two families."
+              ],
+              "translation": [
+                "在佛罗伦萨，我们的故事就在这里展开，两大家族争斗了多年。",
+                "蒙太古家族和卡普莱特家族在街头斗争，扰乱了城市的和平。",
+                "本瓦尔比奥是蒙太古家族成员，试图停止斗争，但卡普莱特的提巴尔袭击了他。",
+                "埃斯卡鲁斯王子 intervene 并警告，任何进一步的斗争都将导致死亡。",
+                "后来，罗马欧，蒙太古家族的成员，在一场戴面具的晚会上看到卡普莱特的朱丽叶，并爱上了她。",
+                "朱丽叶也同样感受到了爱情，他们秘密计划第二天结婚。",
+                "弗里ar·劳伦斯同意为他们结婚，希望这段婚姻能结束家族的争斗。",
+                "然而，一系列误解和不幸的事件导致了悲剧。",
+                "罗马欧被流放，朱丽叶被迫嫁给帕里斯，违背了自己的意愿。",
+                "悲剧以罗马欧和朱丽叶的死亡告终，和解了两个家族。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            }
+          ]
+        },
+        {
+          "id": "little-prince",
+          "title": "《小王子》",
+          "lessons": [
+            {
+              "id": "little-prince-1",
+              "title": "《小王子》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/little-prince-1.mp3",
+              "durationSec": 240,
+              "transcript": [
+                "Once when I was six years old I saw a magnificent picture in a book, called Stories from Nature, about the primeval forest.",
+                "It was a picture of a boa constrictor, in the process of swallowing a wild animal.",
+                "He kept the whole forest under his control, and no one dared to disobey him.",
+                "I thought to myself: if I could draw, I would draw a picture of a boa constrictor digesting an elephant.",
+                "But I had never drawn anything in my life before.",
+                "So I drew my first picture, Number One.",
+                "It looked like this: a hat.",
+                "I showed my drawing to the grown-ups, and asked them whether it was beautiful.",
+                "They answered me: why should a hat be beautiful? It is only a hat.",
+                "They did not understand that it was not a hat at all.",
+                "It was a boa constrictor digesting an elephant."
+              ],
+              "translation": [
+                "我六岁的时候，在一本名为《自然故事》的书里，看到了一幅关于原始森林的壮丽画面。",
+                "那是一条巨蟒正在吞食一只野兽的画面。",
+                "他把整个森林都控制在手中，没有人敢违背他的命令。",
+                "我心想：如果我会画画，我会画一幅巨蟒消化大象的画。",
+                "但我以前从没画过任何东西。",
+                "所以我画了我的第一幅画，图一号。",
+                "它看起来像这样：一顶帽子。",
+                "我把画拿给大人看，问他们这幅画美不美。",
+                "他们回答我：一顶帽子有什么好看的？不过是一顶帽子而已。",
+                "他们根本没看出来，这根本不是帽子。",
+                "这是一条正在消化大象的巨蟒。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            },
+            {
+              "id": "little-prince-2",
+              "title": "《小王子》",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/little-prince-2.mp3",
+              "durationSec": 240,
+              "transcript": [
+                "When I had seen the fox, I promised him to return and visit him again.",
+                "And so, after having spent some time with the fox, I asked him what he meant by taming.",
+                "He answered, It means to establish ties, to make oneself unique and irreplaceable.",
+                "The fox went on, Each man is a designation of a unique being, created once for all time.",
+                "What is a fox?, I asked. He replied, That is the secret of the taming.",
+                "But what is taming? he continued. It is to draw a boundary, to create a relationship.",
+                "Only when the other accepts this boundary as exclusive does the bond of love begin.",
+                "The fox explained that it was only through time that he could learn to love her.",
+                "He said, One only understands the depth of love after it has been lost.",
+                "I promised to return, and we would see what happiness time would bring us."
+              ],
+              "translation": [
+                "我见到狐狸后，答应回去再看他。",
+                "于是，在与狐狸度过一段时间后，我问他所谓驯服的含义。",
+                "他说：驯服就是建立联系，使自己显得独一无二不可替代。",
+                "狐狸继续说：每个人都是唯一的存在，天生为世人所创造。",
+                "我问：狐狸是什么？它说：这正是驯服的秘密所在。",
+                "又说：驯服就是划定界限，创造一种关系。",
+                "只有当另一方接受这种界限作为专属时，爱的纽带才会开始。",
+                "狐狸解释说，只有通过时间，他才能学会去爱她。",
+                "他说：只有失去后，才能真正明白爱的深奥。",
+                "我答应回去相会，我们将看看时间带给我们的幸福。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L2"
+            }
+          ]
+        },
+        {
+          "id": "siddhartha-brahmin-son",
+          "title": "悉达多",
+          "lessons": [
+            {
+              "id": "siddhartha-brahmin-son-1",
+              "title": "悉达多悉达多-婆罗门之子(1)",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-1.mp3",
+              "durationSec": 250,
+              "transcript": [
+                "In the shade of the house, in the sunshine of the riverbank near the boats, in the shade of the Sal-wood forest, in the shade of the fig tree is where Siddhartha grew up, the handsome son of the Brahman, the young falcon, together with his friend Govinda, son of a Brahman.",
+                "The sun tanned his light shoulders by the banks of the river when bathing, performing the sacred ablutions, the sacred offerings.",
+                "In the mango grove, shade poured into his black eyes, when playing as a boy, when his mother sang, when the sacred offerings were made, when his father, the scholar, taught him, when the wise men talked.",
+                "For a long time, Siddhartha had been partaking in the discussions of the wise men, practising debate with Govinda, practising with Govinda the art of reflection, the service of meditation.",
+                "He already knew how to speak the Om silently, the word of words, to speak it silently into himself while inhaling, to speak it silently out of himself while exhaling, with all the concentration of his soul, the forehead surrounded by the glow of the clear-thinking spirit.",
+                "He already knew to feel Atman in the depths of his being, indestructible, one with the universe.",
+                "Joy leapt in his father's heart for his son who was quick to learn, thirsty for knowledge; he saw him growing up to become great wise man and priest, a prince among the Brahmans.",
+                "Bliss leapt in his mother's breast when she saw him, when she saw him walking, when she saw him sit down and get up, Siddhartha, strong, handsome, he who was walking on slender legs, greeting her with perfect respect.",
+                "Love touched the hearts of the Brahmans' young daughters when Siddhartha walked through the lanes of the town with the luminous forehead, with the eye of a king, with his slim hips.",
+                "He was the wonder of the town, the pride of the family."
+              ],
+              "translation": [
+                "在房舍的阴影中，在阳光照耀下的河岸边，在泊岸的小船旁，在柳树林和无花果树的浓荫里，悉达多，英俊的婆罗门之子，年少的雄鹰，与挚友侨文达一同长大。",
+                "在河岸边，在神圣的祭祀和沐浴中，阳光晒黑了他浅色的臂膀。",
+                "在芒果林中。在孩童的嬉戏间，在母亲的歌声和神圣的祭祀中，在聆听博学父亲的教诲和智者的谈话时，树影流入了他幽黑的眼眸。",
+                "悉达多早已加入了智者们的谈话，与侨文达一道修习辩论、静思与禅定的技艺。",
+                "他已经学会如何默念\"唵\"--这真言之本；吸气时默默吸入它，呼气时则凝神默默吐出它，此刻，他的前额仿佛放射出纯净思索的心灵之光。",
+                "他已学会如何在自我存在的深层体认识阿特曼--永恒不坏，与宇宙合一。",
+                "他的父亲心中充满喜悦，因为他的儿子聪慧好学且渴慕知识；他知道他的儿子将会成为一位伟大的智者、一位祭祀、婆罗门中的王子。",
+                "他的母亲满怀幸福地看着自己的儿子，注视着他坐落、起立和行走，强壮英俊的悉达多，四肢修长，体态完美地向母亲问安。",
+                "每当悉达多走过城里的街巷，年轻的婆罗门女子心中就会泛起阵阵爱的涟漪；他有着高高的前额，王者般的眼神，还有隙削的背景。",
+                "这位少年在城中极受大家欢迎，是整个家族的骄傲。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-2",
+              "title": "悉达多婆罗门之子(2)",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-2.mp3",
+              "durationSec": 360,
+              "transcript": [
+                "In the evening of this day they caught up with the ascetics, the skinny Samanas, and offered them their companionship and obedience. They were accepted.",
+                "Siddhartha gave his garments to a poor Brahman in the street. He wore nothing more than the loincloth and the earth-coloured, unsown cloak.",
+                "He ate only once a day, and never something cooked. He fasted for fifteen days. He fasted for twenty-eight days.",
+                "The flesh waned from his thighs and cheeks. Feverish dreams flickered from his enlarged eyes, long nails grew slowly on his parched fingers and a dry, shaggy beard grew on his chin.",
+                "His glance turned to ice when he encountered women; his mouth twitched with contempt, when he walked through a city of nicely dressed people.",
+                "He saw merchants trading, princes hunting, mourners wailing for their dead, whores offering themselves, physicians trying to help the sick, priests determining the most suitable day for seeding, lovers loving, mothers nursing their children—and all of this was not worthy of one look from his eye, it all lied, it all stank, it all stank of lies, it all pretended to be meaningful and joyful and beautiful, and it all was just concealed putrefaction.",
+                "The world tasted bitter. Life was torture.",
+                "A goal stood before Siddhartha, a single goal: to become empty, empty of thirst, empty of wishing, empty of dreams, empty of joy and sorrow.",
+                "Dead to himself, not to be a self any more, to find tranquility with an emptied heart, to be open to miracles in unselfish thoughts, that was his goal.",
+                "Once all of my self was overcome and had died, once every desire and every urge was silent in the heart, then the ultimate part of me had to awake, the innermost of my being, which is no longer my self, the great secret.",
+                "Silently, Siddhartha exposed himself to burning rays of the sun directly above, glowing with pain, glowing with thirst, and stood there, until he neither felt any pain nor thirst any more.",
+                "Silently, he sat there in the rainy season, from his hair the water was dripping over freezing shoulders, over freezing hips and legs, and the penitent stood there, until he could not feel the cold in his shoulders and legs any more, until they were silent, until they were quiet.",
+                "Instructed by the oldest of the Samanas, Siddhartha practised self-denial, practised meditation, according to new Samana rules.",
+                "A heron flew over the bamboo forest—and Siddhartha accepted the heron into his soul, flew over forest and mountains, was a heron, ate fish, felt the pangs of a heron's hunger, spoke the heron's croak, died a heron's death.",
+                "A dead jackal was lying on the sandy bank, and Siddhartha's soul slipped inside the body, was the dead jackal, lay on the banks, got bloated, stank, decayed, was dismembered by hyenas, was skinned by vultures, turned into a skeleton, turned to dust, was blown across the fields.",
+                "And Siddhartha's soul returned, had died, had decayed, was scattered as dust, had tasted the gloomy intoxication of the cycle, awaited in new thirst like a hunter in the gap, where he could escape from the cycle, where the end of the causes, where an eternity without suffering began.",
+                "He killed his senses, he killed his memory, he slipped out of his self into thousands of other forms, was an animal, was carrion, was stone, was wood, was water, and awoke every time to find his old self again.",
+                "Siddhartha learned a lot when he was with the Samanas, many ways leading away from the self he learned to go. He went the way of self-denial by means of pain, through voluntarily suffering and overcoming pain, hunger, thirst, tiredness.",
+                "He went the way of self-denial by means of meditation, through imagining the mind to be void of all conceptions. These and other ways he learned to go, a thousand times he left his self, for hours and days he remained in the non-self.",
+                "But though the ways led away from the self, their end nevertheless always led back to the self. Though Siddhartha fled from the self a thousand times, stayed in nothingness, stayed in the animal, in the stone, the return was inevitable, inescapable was the hour, when he found himself back in the sunshine or in the moonlight.",
+                "By his side lived Govinda, his shadow, walked the same paths, undertook the same efforts. They rarely spoke to one another, than the service and the exercises required.",
+                "How do you think, Govinda, how do you think did we progress? Did we reach any goals? We have learned, and we will continue learning. You will be a great Samana, Siddhartha.",
+                "I can't help but feel that it is not like this, my friend. What I have learned, being among the Samanas, up to this day, this could have learned more quickly and by simpler means.",
+                "What is meditation? What is leaving one's body? What is fasting? What is holding one's breath? It is fleeing from the self, it is a short escape of the agony of being a self, it is a short numbing of the senses against the pain and the pointlessness of life.",
+                "Though Siddhartha fled from the self a thousand times, stayed in nothingness, stayed in the animal, in the stone, the return was inevitable, inescapable was the hour, when he found himself back in the sunshine."
+              ],
+              "translation": [
+                "到了那天的傍晚，他们追上了素ilin的苏马纳们——瘦削的、苟然的、几乎光膘的、满目疮痕的萨玛纳修道人。他们 Offered them their companionship and obedience. 他们被接纳了。",
+                "悉达多把自己的长袍给了一条街上乞食的婆罗门。他只身穿着腰裤和一件未缝的土黄色披风。",
+                "他一天只吃一次，也从不吃熟食。他连续禁食十五天，又连续禁食二十八天。",
+                "他大腿和脸颊的肌肉都因饥饿而消瘦。他眼珠肿大而发热，指甲在干咕的手指上缓缓生长，胡须也在下巴上长出颗颗苍劲的鬃毛。",
+                "当他遇见女人时，他的目光冷硬得像冰块；走在那座穿着华丽衣服的城镇里时，嘴角总带着轻蔑的挑衅。",
+                "他看到商人做生意，王子狩猎，哀悼者为亡灵而哀悼，卖花费命的妓女自称，医生们帮忙疗病，神职人员商量最佳播种日子，恋人亲热，母亲哄育孩子——而这些一点也不配被他这双眼睛目睃，他们都撒谎，都腐烂，都假面笼罩着虚伪的美，都只是掩饰着霉味的腐烂。",
+                "这个世界苦涩得很，活着就是痛苦。",
+                "悉达多心中有着唯一的目标：变得空缺，空缺了渴欲，空缺了欲求，空缺了梦想，空缺了喜悦和悲伤。",
+                "彻底脱离自我，不再是那个自我，才能在被空空的心中找到宁静，敞开心扉，随着无欲的思想接受奇迹，这就是他的目标。",
+                "当我所有的自我都被推翻而死亡，所有的欲望和冲动都沉默了，我的最深处的那一部分必须从睡梦中苏醒——那个不再是自我的，最伟大的秘密。",
+                "悉达多默默地暴露自己在烈日下燃烧的炽热光线下，疼痛地流泪，渴望地流泪，站在那里，直到他既不再感到疼痛，也不再感到渴望。",
+                "在雨季里，悉达多默默地站着，水从发疼的头发滴落，滴在僵硬的肩膀、臀部和腿上，这个忏悔的人站到了那里，直到他不再感到肩膀和腿上的寒冷，直到他们沉默了，直到他们平静了。",
+                "在苏马纳中年人指导下，悉达多修练了苦修、冥想等禅修功法。一只鹭鸶飞过竹林——悉达多接受了鹭鸶进入自己的灵魂，飞越森林和山脉，化身为鹭鸶，吃鱼，感受鹭鸶的饥饿，吟咬鹭鸶的咕鸠声，死于鹭鸶之死。",
+                "尸骸散布在沙滩上的 jackal 蜷缩在那里，悉达多的灵魂渗入了它的身体，化身为尸骸，躺在岸边，腐烂、发霉，被猎豹撕碎，被秃鹰剥皮，化为骨骼，化为灰烬，随风飘散。",
+                "悉达多的灵魂又回来了，死去了，腐烂了，化为灰烬，曾经在轮回的阴暗中寻找新一轮的渴求，凭借猎豹的窥视，凭借那条通往毁灭之路的缝隙，寻找那终将结束轮回的永恒之处。",
+                "他杀死了感官，杀死了记忆，灵魂脱离自我，化身为无数形态——动物、腐肉、石头、木头、水流，醒来时每次都能找回自己的旧身。",
+                "悉达多在苏马纳手下学到了很多关于远离自我的道路。他通过疼痛的自我牺牲来远离自我，通过自我苦修克服饥饿、渴望和疲惫。他通过冥想通过想象心灵空虚来远离自我。",
+                "他学会了无数种离开自我之道，一千次他离开自己，曾在无自我的状态中停留数小时数日。虽然这些道路都指向离开自我，但它们的终点仍然回归到自我。悉达多千百次逃离自我，沉溺于虚无、动物、石头中，归宿是不可避免的——每当阳光或月光下，他会重新找回自己的旧身。",
+                "与他同行的还有govinda，随己影般跟随他，走相同的路，承担相同的修行。他们很少说话，只有服务和练习所需的沉默。",
+                "你觉得如何，govinda？我们在进步吗？我们是否达到了任何目标？我们已经学习了，还会继续学习。你会成为一位伟大的苏马纳，悉达多。",
+                "我不禁觉得，一切都不对，亲爱的govinda。在苏马纳手下，我学到的东西不过如此，达不到更快、更简单的方式。",
+                "冥想是什么？脱离自我是什么？断食是什么？屏息是什么？这些只是逃离自我的短暂逃避，对痛苦无意义的感官麻痹。",
+                "尽管悉达多千百次逃离自我，沉溺于虚无、动物、石头中，归宿是不可避免的——每当阳光或月光下，他会重新找回自己的旧身。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-3",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-3.mp3",
+              "durationSec": 280,
+              "transcript": [
+                "On the way, Siddhartha also remembered everything he had experienced in the Garden Jetavana, the teaching he had heard there, the divine Buddha, the farewell from Govinda, the conversation with the exalted one.",
+                "Again he remembered his own words, he had spoken to the exalted one, every word, and with astonishment he became aware of the fact that there he had said things which he had not really known yet at this time.",
+                "What he had said to Gotama: his, the Buddha's, treasure and secret was not the teachings, but the unspeakable and not teachable, which he had experienced in the hour of his enlightenment—it was nothing but this very thing which he had now gone to experience, what he now began to experience. Now, he had to experience his self.",
+                "It is true that he had already known for a long time that his self was Atman, in its essence bearing the same eternal characteristics as Brahman. But never, he had really found this self, because he had wanted to capture it in the net of thought.",
+                "Both, the thoughts as well as the senses, were pretty things, the ultimate meaning was hidden behind both of them, both had to be listened to, both had to be played with, both neither had to be scorned nor overestimated.",
+                "In the night when he slept in the straw hut of a ferryman by the river, Siddhartha had a dream: Govinda was standing in front of him, dressed in the yellow robe of an ascetic. Sad was how Govinda looked like, sadly he asked: Why have you forsaken me?",
+                "At this, he embraced Govinda, wrapped his arms around him, and as he was pulling him close to his chest and kissed him, it was not Govinda any more, but a woman, and a full breast popped out of the woman's dress, at which Siddhartha lay and drank, sweetly and strongly tasted the milk from this breast.",
+                "It tasted of woman and man, of sun and forest, of animal and flower, of every fruit, of every joyful desire. It intoxicated him and rendered him unconscious. When Siddhartha woke up, the pale river shimmered through the door of the hut, and in the forest, a dark call of an owl resounded deeply and pleasantly.",
+                "When the day began, Siddhartha asked his host, the ferryman, to get him across the river. The ferryman got him across the river on his bamboo-raft, the wide water shimmered reddishly in the light of the morning."
+              ],
+              "translation": [
+                "当日，悉达多回想起在叶亚蒙家公园中一切经历，回想起他在那里听到的教义，回想起神圣的佛陀，回想起与功第达的别离，回想起与最尊敬者的谈话。",
+                "他又回想起自己当时对佛陀说的每一句话，并惊讶地意识到，那时他说的并非完全理解。",
+                "他对佛陀所述的宝贵之秘，并非教义，而是那些无法言说、无法传授的——那正是他此刻开始亲身体验的东西，那正是他正在经历的至至之事。",
+                "他确实早知道自己的本我是阿特曼，拥有与梵那般永恒的本质。但他从未真正发现了自己的本我，因为总想用思维的网把它捕获。",
+                "思维和感官都是美好的事物，终极意义隐藏在它们之behind；都必须被倾听，都必须被玩弄，都既不该蔑视，也不该高估。",
+                "夜晚，悉达多在渡河人小屋的 straw 裘中睡觉，梦见功第达身着黄袍，脸上悲伤地问：\"你为何遗弃我？\"",
+                "他拥抱了功第达，紧贴他的胸口亲吻他，就像拥抱一个女人， breast 找到了裙下的 breast，悉达多沾着欢美的味道喝下了那巨丰的奶汁。",
+                "那奶汁 tasted of man and woman, of sun and forest, of animal and flower, of every fruit, of every joyful desire. 它 intoxicated him and rendered him unconscious.",
+                "当悉达多醒来，薄冷的河水在小屋门外闪烁，森林里一只 dark owl 发出 deep and pleasant 的呼鸣。",
+                "黎明时分，悉达多向渡河人请他穿越河流。渡河人用 bamboo 船把他运过河，宽阔的水面在 morning light 中染成 reddish."
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-4",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-4.mp3",
+              "durationSec": 300,
+              "transcript": [
+                "At about noon, he came through a village. In front of the mud cottages, children were rolling about in the street, were playing with pumpkin-seeds and sea-shells, screamed and wrestled, but they all timidly fled from the unknown Samana.",
+                "In the end of the village, the path led through a stream, and by the side of the stream, a young woman was kneeling and washing clothes.",
+                "When Siddhartha greeted her, she lifted her head and looked up to him with a smile, so that he saw the white in her eyes glistening.",
+                "He called out a blessing to her, as it is the custom among travellers, and asked how far he still had to go to reach the large city.",
+                "Then she got up and came to him, beautifully her wet mouth was shimmering in her young face. She exchanged humorous banter with him, asked whether he had eaten already, and whether it was true that the Samanas slept alone in the forest at night and were not allowed to have any women with them.",
+                "While talking, she put her left foot on his right one and made a movement as a woman does who would want to initiate that kind of sexual pleasure with a man, which the textbooks call 'climbing a tree'.",
+                "Siddhartha felt his blood heating up, and since in this moment he had to think of his dream again, he bend slightly down to the woman and kissed with his lips the brown nipple of her breast.",
+                "Looking up, he saw her face smiling full of lust and her eyes, with contracted pupils, begging with desire.",
+                "Siddhartha also felt desire and felt the source of his sexuality moving; but since he had never touched a woman before, he hesitated for a moment, while his hands were already prepared to reach out for her."
+              ],
+              "translation": [
+                "中午时分，他穿过一个小村庄。房屋前的泥泞小屋里，孩子们在街道上打滚，玩着南瓜子和海贝壳，大叫着打斗，但他们都谨慎地躲开这位陌生的苏马纳。",
+                "村庄尽头，小路穿过一条小溪，溪边有一位年轻女子蹲下水衣服。",
+                "当悉达多向她问好时，她抬起头，微笑地望着他，让悉达多看见她眼中闪烁的白光。",
+                "他朝她鞠个礼，作为旅人Among travelers的习俗，询问前往大城的路程。",
+                "她站了起来站在他面前，湿漉漉的嘴唇在年轻的脸上闪耀着光彩。她和他輕鬆地聊天，問他是否吃过饭，以及苏馬納在森林中独睡的真實。",
+                "邊聊天，她把左腳踩在他的右脚上，做出女人想要與男人親密接觸的姿勢，教科書稱之為'樹上攀爬'。",
+                "悉達多血液沸騰，他正要回想那個夢想，稍微垂下頭，親吻她乳頭上 Brown 的 nipple。",
+                "抬頭看去，他看到她的臉上滿滿的欲望的微笑，她的眼睛瞪得象牙白晰，懇求不已。",
+                "悉達多也感到欲望，親激的感官來源在動搖；但他從未碰過女人，他猶豫了一會，他的手已經準備好伸向她。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-5",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-5.mp3",
+              "durationSec": 320,
+              "transcript": [
+                "Siddhartha felt desire and felt the source of his sexuality moving; but since he had never touched a woman before, he hesitated for a moment.",
+                "In this moment he heard, shuddering with awe, the voice of his innermost self saying No. Then all charms disappeared from the young woman's smiling face.",
+                "He politely petted her cheek, turned away from her and disappeared away from the disappointed woman with light steps into the bamboo-wood.",
+                "He reached the large city before the evening and was happy to be among people again after living in forests for so long.",
+                "When late in the afternoon, beautiful Kamala approached her grove in her sedan-chair, Siddhartha was standing at the entrance and bowed to meet her.",
+                "He motioned to the servant at the end of her train and asked him to inform Kamala that a young Brahman wished to speak with her.",
+                "After a while the servant returned and led him silently into a pavilion where Kamala lay on a couch alone with him.",
+                "She asked why he had come and whether it was enough to have seen her.",
+                "Siddhartha replied that he came to learn from her, as a Brahman from the ascetics.",
+                "Kamala laughed: Never before had a Samana from the forest wanted to learn from her."
+              ],
+              "translation": [
+                "悉达多感到欲望，感到他生殖器的源头正在动摇；但由于他从未碰过女人，他犹豫了一会儿。",
+                "就在这一瞬间，他听见自己的内心之声说不。这时，所有魅力都从年轻女性的微笑脸上消失。",
+                "他礼貌地抚摸她的脸颊，转身离开，轻盈地走进竹林，离开这位沮丧的女人。",
+                "他在傍晚前到达大城市，感到很高兴，久久未见人间。",
+                "傍晚时分，漂亮的卡玛拉她身披花轿来到花园，悉达多站在入口处鞠谢。",
+                "他指示她身边的仆人，请求他把消息告诉卡玛拉：一位年轻婆罗门想与她商量。",
+                "稍等片刻，仆人带他进入她身后的亭屋，卡玛拉暌待沙发上，悉达多独自与她相见。",
+                "她问他为何而来，是否够见她就好。",
+                "悉达多说他来学习，就像来自苏马纳的婆罗门。",
+                "卡玛拉笑道：从未想过，森林里的苏马纳想向她学习。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-6",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-6.mp3",
+              "durationSec": 340,
+              "transcript": [
+                "Siddhartha went to Kamaswami the merchant, was directed into a rich house, servants led him between precious carpets into a chamber where he awaited the master of the house.",
+                "Kamaswami entered swiftly, smoothly, with very gray hair and very intelligent cautious eyes and a greedy mouth.",
+                "I have been told that you were a Brahman, a learned man, but that you seek to be in the service of a merchant. Might you have become destitute, Brahman, so that you seek to serve?",
+                "No, I have not become destitute and have never been destitute. You should know that I am coming from the Samanas, with whom I have lived for a long time.",
+                "If you are coming from the Samanas, how could you be anything but destitute? Aren't the Samanas entirely without possessions?",
+                "I am without possessions, if this is what you mean. Surely I am without possessions. But I am so voluntarily, and therefore I am not destitute.",
+                "But what are you planning to live of, being without possessions?",
+                "I haven't thought of this yet, sir. For more than three years I have been without possessions and have never thought about what to live of.",
+                "So you have lived of the possessions of others. Presumable this is how it is. After all, a merchant also lives of what other people own.",
+                "Well said. But he would not take anything from another person for nothing; he would give his merchandise in return."
+              ],
+              "translation": [
+                "悉达多去见卡马斯瓦米商人，被带到富人家中，仆人们把他领在珍贵的地毯之间，进入一个等候主人出现的屋子。",
+                "卡马斯瓦米迅速、平稳地进入，有着 very gray 的头发，有着 very intelligent 的慎重的眼睛，还有一个贪婪的嘴唇。",
+                "我听说你是一位婆罗门，一个有学问的人，但你寻觋成为Merchant的服务。你是不是饿了，所以想成为仆役？",
+                "不，我没有饿了，也从未饿过。你要知道，我是来自苏马纳手中的，而我生活了很久。",
+                "如果你来自苏马纳，对吧？怎么还能有什么财产？苏马纳不都没有财产吗？",
+                "我没有财产，如果那是你的意思。是的，我没有财产。但这是自愿的，因此我不饿。",
+                "但你打算靠什么生活？",
+                "我还没有想过，先生。三年来，我一直没有财产，也没想过怎么活。",
+                "所以你靠别人的财产生活。是的，这大概就是这样。毕竟，商人也靠别人的财产生活。",
+                "说得好。但他不会免费从别人那里收获；他会用商品偿还。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-8",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-8.mp3",
+              "durationSec": 320,
+              "transcript": [
+                "In the town of Savathi, every child knew the name of the exalted Buddha, and every house was prepared to fill the alms-dish of Gotama's disciples, the silently begging ones.",
+                "Near the town was Gotama's favourite place to stay, the grove of Jetavana, which the rich merchant Anathapindika had given him and his people for a gift.",
+                "All tales and answers which the two young ascetics had received in their search for Gotama's abode had pointed them towards this area.",
+                "Arriving at Savathi, in the very first house before the door of which they stopped to beg, food was offered to them, and they accepted the food.",
+                "We would like to know, oh charitable one, where the Buddha dwells, the most venerable one, for we are two Samanas from the forest and have come to see him, the perfected one, and to hear the teachings from his mouth.",
+                "Here, you have truly come to the right place, you Samanas from the forest. In Jetavana, in the garden of Anathapindika dwells the exalted one. There you pilgrims shall spend the night, for there is enough space for the innumerable who flock here to hear the teachings from his mouth.",
+                "This made Govinda happy, and full of joy he exclaimed: Thus we have reached our destination, and our path has come to an end! But tell us, do you know him, the Buddha, have you seen him with your own eyes?",
+                "Many times I have seen him, the exalted one. On many days I have seen him walking through the alleys in silence, wearing his yellow cloak, presenting his alms-dish in silence at the doors of the houses.",
+                "At sunrise they saw with astonishment what a large crowd of believers and curious people had spent the night here.",
+                "Siddhartha saw him, and he instantly recognised him, as if a god had pointed him out to him. He saw him, a simple man in a yellow robe, bearing the alms-dish in his hand, walking silently."
+              ],
+              "translation": [
+                "在萨瓦提 town，每个孩子都知道最尊敬的佛陀的名字，每座房子都准备好为佛陀的徒弟们——沉默地乞讨的人—— filling饭盒。",
+                "离 town 很远，有佛陀最喜欢的住处——安那菩提迦的花园，该富商为他及其人民准备的礼物。",
+                "所有关于佛陀住所的传说和答案都指向这个地区。",
+                "到达萨瓦提后，在他们争取食物的第一个房子前，他们接受了食物。",
+                "我们想知道，善良的人，佛陀居住在哪里，最尊敬的那位，是我们两个来自森林的苏马纳，也来见他，欲聆听他的话语。",
+                "你们来到正确的地方，你们的森林苏马纳。在安那菩提迦的花园中，最尊敬的佛陀居住。你们的朝圣者可以在那里过夜，因为这里有足够的空间容纳来聆听他话语的无数来客。",
+                "这让功第达很高兴，兴高采胪地说：我们到达了目的地，我们的道路结束了！但告诉我们，你们知道他，佛陀吗？你们亲眼见过他吗？",
+                "我很多次看见他，最尊敬的。许多天我看见他静静地走在街巷里，穿着黄布长袍，沉默地在房屋门口献上饭盒。",
+                "清晨时，他们惊讶地看到有许多信徒和好奇的人在此度过了夜晚。",
+                "悉达多看到他，立刻认出他，就像一位神指给他指出。他看到一位身着黄布的简单的人，手里拿着饭盒，安静地走着。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-9",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-9.mp3",
+              "durationSec": 300,
+              "transcript": [
+                "Right afterwards, when the Buddha had retired for the night, Govinda turned to Siddhartha and spoke eagerly: Siddhartha, it is not my place to scold you. We have both heard the exalted one, we have both perceived the teachings.",
+                "Govinda has heard the teachings, he has taken refuge in it. But you, my honoured friend, don't you also want to walk the path of salvation? Would you want to hesitate, do you want to wait any longer?",
+                "Siddhartha awakened as if he had been asleep, when he heard Govinda's words. For a long time, he looked into Govinda's face. Then he spoke quietly, in a voice without mockery: Govinda, my friend, now you have taken this step, now you have chosen this path.",
+                "Always, oh Govinda, you have been my friend, you have always walked one step behind me. Often I have thought: Won't Govinda for once also take a step by himself, without me, out of his own soul?",
+                "Now you have turned into a man and are choosing your path for yourself. I wish that you would go it up to its end, oh my friend, that you shall find salvation!",
+                "Govinda, not completely understanding it yet, repeated his question in an impatient tone: Speak up, I beg you, my dear! Tell me, since it could not be any other way, that you also, my learned friend, will take your refuge with the exalted Buddha!",
+                "Siddhartha placed his hand on Govinda's shoulder: You failed to hear my good wish for you, oh Govinda. I'm repeating it: I wish that you would go this path up to its end, that you shall find salvation!",
+                "In this moment, Govinda realized that his friend had left him, and he started toweep. Siddhartha kindly spoke to him: Don't forget, Govinda, that you are now one of the Samanas of the Buddha!",
+                "You have renounced your home and your parents, renounced your birth and possessions, renounced your free will, renounced all friendship. This is what the teachings require, this is what the exalted one wants.",
+                "For a long time, the friends continued walking in the grove; for a long time they lay there and found no sleep. And over and over again, Govinda urged his friend, he should tell him why he would not want to seek refuge in Gotama's teachings."
+              ],
+              "translation": [
+                "正当佛陀躺着睡着后，功第达转过身来对悉达多急切地说：悉达多，这不是我的角色去责骂你。我们都听过最尊敬的佛陀的话，我们都领悟到他的教义。",
+                "功第达听信佛陀的话，拜入他的教派。但你，我的贤友，你不也想走向救赎之路吗？你不想犹豫，不想再等待了吗？",
+                "悉达多仿佛从梦中醒来般，听见功第达的话语。他 long time 望着功第达的脸。然后他安静地说：功第达，我朋友，现在你已经踏上这一步，选择了这条道路。",
+                "啊，功第达，你一直是我的朋友，你总是跟在我的后面一步。我常想：功第达哪里不可以一次也不借着我，不从自己的灵魂中迈出一步？",
+                "现在你成年了，为自己选择道路。我希望你能走到这条道路的尽头，我的朋友，你会找到救赎！",
+                "功第达还没完全理解，我们在急切地重复问题：说吧，我恳请你，亲爱的！既然不得不那样，我的有学问的朋友，是否也会拜入最尊敬的佛陀的教派？",
+                "悉达多把手放在功第达的肩膀上：你没听见我对你的美好祝愿，啊，功第达。我在重复：我希望你走这条道路走到尽头，你会找到救赎！",
+                "在那一刻，功第达意识到他的朋友已经离开他了，开始流泪。悉达多温柔地说：别忘了，功第达，你现在是佛陀的苏马纳了！",
+                "你已脱离家庭和父母，脱离出生和财产，脱离自由意志，脱离一切友谊。这就是教义所要求的，这就是最尊敬的所希望的。",
+                "他们 long time 在树下继续行走； long time 躺着找不到睡觉。每次，功第达都劝他朋友告诉他，为什么不想向佛陀的教义中找寻庇护。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-10",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-10.mp3",
+              "durationSec": 300,
+              "transcript": [
+                "Siddhartha walked through the forest and knew nothing but that one thing, that there was no going back for him.",
+                "He had tasted all of it, sucked everything out of it until he was disgusted with it.",
+                "He had been captured by the world, by lust, covetousness, sloth, and finally also by that vice which he had used to despise and mock the most as the most foolish one of all vices: greed.",
+                "Property, possessions, and riches also had finally captured him; they were no longer a game and trifles to him, had become a shackle and a burden.",
+                "Then the time came when a dream warned him. He had spent the hours of the evening with Kamala in her beautiful pleasure-garden.",
+                "They had been sitting under the trees, talking, and Kamala had said thoughtful words, words behind which a sadness and tiredness lay hidden.",
+                "She had asked him to tell her about Gotama, and could not hear enough of him, how clear his eyes, how still and beautiful his mouth, how kind his smile.",
+                "He had lain by her side, and under her eyes and next to the corners of her mouth he had, as clearly as never before, read a fearful inscription, an inscription of small lines, of slight grooves, an inscription reminiscent of autumn and old age.",
+                "Tiredness was written on Kamala's beautiful face, tiredness from walking a long path which has no happy destination, tiredness and the beginning of withering, and concealed, still unsaid, perhaps not even conscious anxiety: fear of old age, fear of the autumn, fear of having to die.",
+                "Then Siddhartha knew that the game was over, that he could not play it any more."
+              ],
+              "translation": [
+                "悉达多穿过森林，只觉那件事已无往前的可能。",
+                "他尝尽一切，吸尽一切，直到对它感到厌烦。",
+                "他被世界俘获，被欲望、贪婪、懒惰所捕获，最终被那种他曾蔑视的、最愚蠢的恶习所捕获：贪婪。",
+                "财产、财富也终于俘获了他；它们不再是游戏和琐事，成了枷锁和负担。",
+                "那时，一个梦警惕他。他在傍晚的时光与卡玛拉在她美丽的花园中度过光阴。",
+                "他们坐在树下聊天，卡玛拉说了一些深思流泪的话，话语背后藏着悲伤和疲惫。",
+                "她让他讲述佛陀的事，他讲得越多越满足，佛陀的眼睛多么清澈，嘴唇多么安静美好，微笑多么温柔。",
+                "他靠在她身旁，从她眼睛和唇角处，悉达多第一次如此清晰地读到一副可怕的招牌，一行行小痕迹，像秋天和老年的标记。",
+                "卡玛拉美丽的脸上写着疲惫——走长途的疲惫没有幸福的终点，枯萎的开始，还有隐藏的、未说出口的、或许甚至不知不觉的焦虑：对老年的恐惧，对秋天的恐惧，对死亡的恐惧。",
+                "然后悉达多知道游戏结束了，他再也不能继续玩了。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            },
+            {
+              "id": "siddhartha-brahmin-son-11",
+              "title": "悉达多",
+              "audioUrl": "https://speakwise-wsicpu2u.manus.space/audio/siddhartha-brahmin-son-11.mp3",
+              "durationSec": 320,
+              "transcript": [
+                "Siddhartha straightened up and saw a person sitting opposite to him, an unknown man, a monk in a yellow robe with a shaven head, sitting in the position of pondering.",
+                "He observed the man, who had neither hair on his head nor a beard, and he had not observed him for long when he recognised this monk as Govinda, the friend of his youth.",
+                "Govinda had aged, he too, but still his face bore the same features, expressed zeal, faithfulness, searching, timidness. But when Govinda now, sensing his gaze, opened his eyes and looked at him, Siddhartha saw that Govinda did not recognise him.",
+                "Govinda was happy to find him awake; apparently he had been sitting here for a long time and been waiting for him to wake up, though he did not know him.",
+                "I have been sleeping, said Siddhartha. However did you get here?",
+                "You are Siddhartha! Now I'm recognising you, and don't comprehend any more how I couldn't recognise you right away. Be welcome, Siddhartha, my joy is great, to see you again.",
+                "It also gives me joy to see you again. You have been the guard of my sleep, again I thank you for this, though I wouldn't have required any guard.",
+                "I'm going nowhere. We monks are always travelling, whenever it is not the rainy season, we always move from one place to another, live according to the rules of the teachings passed on to us, accept alms, move on.",
+                "You're saying: you're on a pilgrimage, and I believe you. But few would go on a pilgrimage in such clothes, few in such shoes, few with such hair.",
+                "Right so, my dear, you have observed well, your keen eyes see everything. But I haven't said to you that I was a Samana. I said: I'm on a pilgrimage."
+              ],
+              "translation": [
+                "悉达多站了起来，看见一个坐在对面的人，是个不认识的男人，是一位赤头丹头的黄袍僧人，正坐在沉思的姿势里。",
+                "他观察这个人——头上无毛，没胡，且没观察多久，他就认出这位僧人是功第达，他的年轻朋友。",
+                "功第达也衰老了，但他的脸面still bore the same features，表达着热情、忠诚、寻找、敬畏。但当功第达感觉到目光，睁开眼睛看他时，悉达多看到功第达不认出他。",
+                "功第达很高兴看见他醒来；显然他 long time 在那里待着，等待他醒来，尽管他不认识他。",
+                "我睡着了，悉达多说。这怎么来的？",
+                "你是悉达多！我现在认出你了，不再理解我怎么会不认出你。欢迎，悉达多，见你一次就很高兴。",
+                "我也很高兴见你。你曾是我 sleep 的守卫，我再感谢你一次，尽管我不曾需要守卫。",
+                "我去 nowhere。我们佛教徒总是旅行，除了雨季，我们总是从一个地方移动到另一个地方，依据传授给我们的教义规则，接受布施，继续前进。",
+                "你说：你在朝圣，我相信你。但很少人穿着这些衣服走朝圣，穿着这些鞋子，头发那么长。",
+                "是的，我亲爱的，你看得很好，你的锐利的眼睛看见一切。但我没说我是苏马纳，我说：我在朝圣。"
+              ],
+              "source": "可可英语-名著精读",
+              "category": "经典文学",
+              "difficulty": "L3"
+            }
+          ]
         }
       ]
     }

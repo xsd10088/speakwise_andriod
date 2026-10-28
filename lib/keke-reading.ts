@@ -14,6 +14,12 @@ export type KekeReadingLesson = {
   difficulty: string;
 };
 
+export type KekeReadingStory = {
+  id: string;
+  title: string;
+  lessons: KekeReadingLesson[];
+};
+
 export type KekeReadingCourse = {
   id: string;
   title: string;
@@ -23,6 +29,7 @@ export type KekeReadingCourse = {
   updatedAt?: number;
   feedId?: string;
   lessons?: KekeReadingLesson[];
+  stories?: KekeReadingStory[];
 };
 
 export type KekeReadingCategory = {
@@ -123,10 +130,23 @@ export function getKekeReadingLessons(courseId: string): KekeReadingLesson[] {
   return getKekeReadingCourse(courseId)?.lessons ?? [];
 }
 
+export function getKekeReadingStories(courseId: string = "keke-reading-classics"): KekeReadingStory[] {
+  return getKekeReadingCourse(courseId)?.stories ?? [];
+}
+
+export function getKekeReadingStory(id: string): KekeReadingStory | undefined {
+  return getKekeReadingStories().find((story) => story.id === id);
+}
+
 export function getKekeReadingLesson(id: string): KekeReadingLesson | undefined {
-  return getKekeReadingCourses()
-    .flatMap((course) => course.lessons ?? [])
-    .find((lesson) => lesson.id === id);
+  const course = getKekeReadingCourse("keke-reading-classics");
+  if (course?.stories) {
+    for (const story of course.stories) {
+      const lesson = story.lessons.find(l => l.id === id);
+      if (lesson) return lesson;
+    }
+  }
+  return course?.lessons?.find((lesson) => lesson.id === id);
 }
 
 export async function fetchKekeReadingCourses(): Promise<KekeReadingCourse[]> {
