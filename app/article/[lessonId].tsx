@@ -33,7 +33,7 @@ export default function ArticleDetailScreen() {
   useEffect(() => {
     console.log("[ArticleDetailScreen] lessonId from params:", lessonId, typeof lessonId);
     
-    const id = (typeof lessonId === "string" ? lessonId : null) || "siddhartha-brahmin-son-1";
+    const id = (typeof lessonId === "string" ? lessonId : null) || "siddhartha-1";
     const foundLesson = getKekeReadingLesson(id);
     
     if (!foundLesson) {

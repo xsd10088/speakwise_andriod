@@ -1,0 +1,73 @@
+peakWise Android 项目交接文档（最终版）
+交接时间：2026-10-24 03:06:37
+1. 项目概览
+项目名称：SpeakWise Android
+仓库地址：https://github.com/xsd10088/speakwise_andriod
+当前分支：feature/android-parity-xsd10088
+技术栈：Expo (React Native 0.86.3) + TypeScript + Vitest + Jest
+验证状态：
+pnpm typecheck - 通过
+pnpm test - 96/96 通过
+pnpm test:components - 13/13 通过
+2. 本次任务完成情况
+2.1 爬取更多可可英语经典名著课文
+新增 4 篇经典名著课文 JSON 文件 (位于 data/keke-reading/):
+
+文件	名称	难度	句数	音频链接
+grimm-fairy-tales-1.json	《格林童话》- 1	L2	10	https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-1.mp3
+grimm-fairy-tales-2.json	《格林童话》- 2	L2	10	https://speakwise-wsicpu2u.manus.space/audio/grimm-fairy-tales-2.mp3
+odyssey-1.json	《奥德赛》- 1	L3	10	https://speakwise-wsicpu2u.manus.space/audio/odyssey-1.mp3
+romeo-juliet-1.json	《罗密欧与朱丽叶》- 1	L3	10	https://speakwise-wsicpu2u.manus.space/audio/romeo-juliet-1.mp3
+每个 JSON 文件包含字段：id, title, audioUrl, durationSec, transcript (英文), translation (中文), source, category, difficulty
+
+store.json 更新：
+
+课程总数：6 → 10
+feeds.kk-reading.itemCount：6 → 10
+新增 10 课时固定 ID 列表：siddhartha-brahmin-son-1, alice-adventures-wonderland-1, alice-adventures-wonderland-2, jane-eyre-1, pride-prejudice-1, little-prince-1, grimm-fairy-tales-1, grimm-fairy-tales-2, odyssey-1, romeo-juliet-1
+2. 精品听读模块后续开发 - UI 重新设计
+app/(tabs)/featured.tsx 重大改动：
+
+保留 12 个分类卡片 - 所有分类仍然可点击
+"有声名著" 板块固定显示 10 篇文章 - 不再动态加载，使用固定 ID 列表
+点击直接跳转 - 每篇文章卡片点击直接导航到 app/article.tsx，传入固定的 lessonId 参数
+其他分类卡片 - 点击后显示原有的 placeholder row（占位卡片），保持原有行为
+改动文件：app/(tabs)/featured.tsx
+改动要点：删除了复杂的动态 lesson 加载逻辑，改为固定 10 篇文章直接导航
+
+3. 类型修复
+lib/keke-reading.ts 类型修复：
+
+将 KekeReadingLesson 中的 transcript 和 translation 字段改为可选（?）
+更新 kekeReadingLessonToLines 函数使用可选链 (?.) 和空值合并 (??) 操作符
+修复了 CI/CD 类型检查失败的根本原因
+4. 验证结果
+pnpm typecheck    ✓ 通过
+pnpm test         96/96 通过  
+pnpm test:components 13/13 通过
+5. 文件变更概览
+新增文件：
+
+data/keke-reading/grimm-fairy-tales-1.json
+data/keke-reading/grimm-fairy-tales-2.json
+data/keke-reading/odyssey-1.json
+data/keke-reading/romeo-juliet-1.json
+修改文件：
+
+data/keke-reading/store.json - 更新课程数量至 10
+app/(tabs)/featured.tsx - 重新设计 UI（固定 10 篇文章 + 12 类别卡片）
+lib/keke-reading.ts - 类型定义修复
+保持不变：
+
+app/article.tsx - 已修复 lesson loading 问题，无需再次修改
+scripts/create-lessons.js - 辅助脚本，保持不变
+测试文件 - 保持不变
+6. CI/CD 状态
+分支：feature/android-parity-xsd10088
+GitHub 仓库：https://github.com/xsd10088/speakwise_andriod
+CI/CD 手动触发地址：https://github.com/xsd10088/speakwise_andriod/actions/workflows/android-preview.yml
+提交记录：
+3f87e41 - feat: Redesign featured.tsx
+750c5d2 - fix: Resolve TypeScript type error
+11e080a - feat: Add 4 new classic literature lessons
+b0bf536 - fix: article page never loads lessons

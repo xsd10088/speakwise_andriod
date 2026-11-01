@@ -26,7 +26,7 @@ const C = {
 };
 
 const FIXED_AUDIOBOOK_STORY_IDS = [
-  "siddhartha-brahmin-son",
+  "siddhartha",
   "alice-adventures-wonderland",
   "little-prince",
   "grimm-fairy-tales",
