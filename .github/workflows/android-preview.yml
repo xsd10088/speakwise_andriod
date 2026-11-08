@@ -25,12 +25,11 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      # ========== 这里用 Corepack 激活pnpm，替代之前的pnpm/action-setup ==========
-      - name: Enable Corepack & activate pnpm
+      # ===== 官方脚本安装指定版本pnpm，自动添加PATH =====
+      - name: Install pnpm 9.15.9
         run: |
-          corepack enable
-          corepack prepare --activate
-      # =====================================================================
+          curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=9.15.9 sh -
+      # ================================================
 
       - name: Setup Java
         uses: actions/setup-java@v4
