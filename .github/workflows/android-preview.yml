@@ -19,16 +19,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ===== 删除原来 Enable pnpm 那段，换成下面这两行 =====
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
 
-      - name: Install pnpm 9.15.9
-        run: npm install -g pnpm@9.15.9
-      # ==================================================
+      # ========== 这里用 Corepack 激活pnpm，替代之前的pnpm/action-setup ==========
+      - name: Enable Corepack & activate pnpm
+        run: |
+          corepack enable
+          corepack prepare --activate
+      # =====================================================================
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -39,7 +41,6 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
-          # setup-android defaults to installing the removed `tools` package.
           packages: ""
 
       - name: Install dependencies
