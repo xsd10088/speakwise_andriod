@@ -25,7 +25,7 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - name: Enable Corepack
+      - name: Enable corepack
         run: |
           corepack enable
           corepack prepare --activate
