@@ -25,7 +25,7 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - name: Install pnpm 9.15.9 manually
+      - name: Install pnpm 9.15.9 via npm
         run: npm install -g pnpm@9.15.9
 
       - name: Setup Java
@@ -37,7 +37,6 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
-          # setup-android defaults to installing the removed `tools` package.
           packages: ""
 
       - name: Install dependencies
