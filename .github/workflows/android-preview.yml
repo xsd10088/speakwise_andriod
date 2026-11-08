@@ -25,8 +25,7 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      # 删掉 pnpm/action-setup，改用 corepack
-      - name: Enable Corepack & prepare pnpm
+      - name: Enable Corepack
         run: |
           corepack enable
           corepack prepare --activate
