@@ -16,10 +16,6 @@ const LESSONS = [
   'siddhartha-brahmin-son-9',
   'siddhartha-brahmin-son-10',
   'siddhartha-brahmin-son-11',
-  'alice-adventures-wonderland-1',
-  'alice-adventures-wonderland-2',
-  'jane-eyre-1',
-  'pride-prejudice-1',
   'little-prince-1',
   'little-prince-2',
   'little-prince-15',
@@ -28,7 +24,6 @@ const LESSONS = [
   'little-prince-18',
   'grimm-fairy-tales-1',
   'grimm-fairy-tales-2',
-  'odyssey-1',
   'romeo-juliet-1'
 ];
 
