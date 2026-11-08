@@ -211,7 +211,7 @@ export default function ListeningScreen() {
         ref={listRef}
         data={lines}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.content}
+        {...({ contentContainerStyle: styles.content } as any)}
         showsVerticalScrollIndicator={false}
         onScrollToIndexFailed={() => undefined}
         ListHeaderComponent={
@@ -397,7 +397,7 @@ export default function ListeningScreen() {
             </View>
           </View>
         }
-        renderItem={({ item, index }) => (
+        renderItem={({ item, index }: { item: ListeningLine; index: number }) => (
           <View
             style={[
               styles.lineCard,

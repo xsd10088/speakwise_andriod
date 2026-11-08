@@ -11,7 +11,7 @@ export default function ProgressScreen() {
   const [selected, setSelected] = useState<typeof words[number] | null>(null);
   const [selectedDefinition, setSelectedDefinition] = useState<WordDefinition | null>(null);
   useEffect(() => { if (!selected) { setSelectedDefinition(null); return; } setSelectedDefinition(getWordDefinition(selected.word)); let active = true; lookupWordDefinition(selected.word).then((definition) => { if (active) setSelectedDefinition(definition); }); return () => { active = false; }; }, [selected]);
-  return <ScreenContainer><FlatList ref={listRef} data={[]} renderItem={null} contentContainerStyle={styles.content} ListHeaderComponent={<View>
+  return <ScreenContainer><FlatList ref={listRef} data={[]} renderItem={null} {...({ contentContainerStyle: styles.content } as any)} ListHeaderComponent={<View>
     <View style={styles.headerRow}><View><Text style={styles.brand}>SpeakWise</Text><Text style={styles.kicker}>我的学习进度</Text></View><View style={styles.avatar}><Text style={styles.avatarText}>S</Text></View></View>
     <Text style={styles.title}>稳步进步，持续开口。</Text><Text style={styles.subtitle}>这里会记录你的真实练习结果和收藏的生词。</Text>
     <View style={styles.cardGrid}><Stat value="—" label="已完成对话" hint="完成真实练习后显示"/><Stat value={`${words.length}`} label="生词本" hint="收藏单词后显示"/><Stat value="—" label="平均准确率" hint="完成评分后显示"/></View>
