@@ -1,0 +1,226 @@
+﻿{
+    "bookId":  "9a533e06faa41b4c",
+    "bookTitle":  "老人与海",
+    "bookTitleEn":  "The Old Man and the Sea",
+    "sourceUrl":  "https://www.yingyuxiaoshuo.com/book/9a533e06faa41b4c",
+    "chapters":  [
+                     {
+                         "chapterIndex":  0,
+                         "chapterNumber":  1,
+                         "title":  "第一节",
+                         "file":  "chapter-01.json",
+                         "paragraphs":  14
+                     },
+                     {
+                         "chapterIndex":  1,
+                         "chapterNumber":  2,
+                         "title":  "第二节",
+                         "file":  "chapter-02.json",
+                         "paragraphs":  9
+                     },
+                     {
+                         "chapterIndex":  2,
+                         "chapterNumber":  3,
+                         "title":  "第三节",
+                         "file":  "chapter-03.json",
+                         "paragraphs":  7
+                     },
+                     {
+                         "chapterIndex":  3,
+                         "chapterNumber":  4,
+                         "title":  "第四节",
+                         "file":  "chapter-04.json",
+                         "paragraphs":  10
+                     },
+                     {
+                         "chapterIndex":  4,
+                         "chapterNumber":  5,
+                         "title":  "第五节",
+                         "file":  "chapter-05.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  5,
+                         "chapterNumber":  6,
+                         "title":  "第六节",
+                         "file":  "chapter-06.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  6,
+                         "chapterNumber":  7,
+                         "title":  "第七节",
+                         "file":  "chapter-07.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  7,
+                         "chapterNumber":  8,
+                         "title":  "第八节",
+                         "file":  "chapter-08.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  8,
+                         "chapterNumber":  9,
+                         "title":  "第九节",
+                         "file":  "chapter-09.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  9,
+                         "chapterNumber":  10,
+                         "title":  "第十节",
+                         "file":  "chapter-10.json",
+                         "paragraphs":  10
+                     },
+                     {
+                         "chapterIndex":  10,
+                         "chapterNumber":  11,
+                         "title":  "第十一节",
+                         "file":  "chapter-11.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  11,
+                         "chapterNumber":  12,
+                         "title":  "第十二节",
+                         "file":  "chapter-12.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  12,
+                         "chapterNumber":  13,
+                         "title":  "第十三节",
+                         "file":  "chapter-13.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  13,
+                         "chapterNumber":  14,
+                         "title":  "第十四节",
+                         "file":  "chapter-14.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  14,
+                         "chapterNumber":  15,
+                         "title":  "第十五节",
+                         "file":  "chapter-15.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  15,
+                         "chapterNumber":  16,
+                         "title":  "第十六节",
+                         "file":  "chapter-16.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  16,
+                         "chapterNumber":  17,
+                         "title":  "第十七节",
+                         "file":  "chapter-17.json",
+                         "paragraphs":  9
+                     },
+                     {
+                         "chapterIndex":  17,
+                         "chapterNumber":  18,
+                         "title":  "第十八节",
+                         "file":  "chapter-18.json",
+                         "paragraphs":  4
+                     },
+                     {
+                         "chapterIndex":  18,
+                         "chapterNumber":  19,
+                         "title":  "第十九节",
+                         "file":  "chapter-19.json",
+                         "paragraphs":  5
+                     },
+                     {
+                         "chapterIndex":  19,
+                         "chapterNumber":  20,
+                         "title":  "第二十节",
+                         "file":  "chapter-20.json",
+                         "paragraphs":  7
+                     },
+                     {
+                         "chapterIndex":  20,
+                         "chapterNumber":  21,
+                         "title":  "第二十一节",
+                         "file":  "chapter-21.json",
+                         "paragraphs":  7
+                     },
+                     {
+                         "chapterIndex":  21,
+                         "chapterNumber":  22,
+                         "title":  "第二十二节",
+                         "file":  "chapter-22.json",
+                         "paragraphs":  14
+                     },
+                     {
+                         "chapterIndex":  22,
+                         "chapterNumber":  23,
+                         "title":  "第二十三节",
+                         "file":  "chapter-23.json",
+                         "paragraphs":  21
+                     },
+                     {
+                         "chapterIndex":  23,
+                         "chapterNumber":  24,
+                         "title":  "第二十四节",
+                         "file":  "chapter-24.json",
+                         "paragraphs":  11
+                     },
+                     {
+                         "chapterIndex":  24,
+                         "chapterNumber":  25,
+                         "title":  "第二十五节",
+                         "file":  "chapter-25.json",
+                         "paragraphs":  12
+                     },
+                     {
+                         "chapterIndex":  25,
+                         "chapterNumber":  26,
+                         "title":  "第二十六节",
+                         "file":  "chapter-26.json",
+                         "paragraphs":  12
+                     },
+                     {
+                         "chapterIndex":  26,
+                         "chapterNumber":  27,
+                         "title":  "第二十七节",
+                         "file":  "chapter-27.json",
+                         "paragraphs":  18
+                     },
+                     {
+                         "chapterIndex":  27,
+                         "chapterNumber":  28,
+                         "title":  "第二十八节",
+                         "file":  "chapter-28.json",
+                         "paragraphs":  13
+                     },
+                     {
+                         "chapterIndex":  28,
+                         "chapterNumber":  29,
+                         "title":  "第二十九节",
+                         "file":  "chapter-29.json",
+                         "paragraphs":  16
+                     },
+                     {
+                         "chapterIndex":  29,
+                         "chapterNumber":  30,
+                         "title":  "第三十节",
+                         "file":  "chapter-30.json",
+                         "paragraphs":  11
+                     },
+                     {
+                         "chapterIndex":  30,
+                         "chapterNumber":  31,
+                         "title":  "第三十一节",
+                         "file":  "chapter-31.json",
+                         "paragraphs":  10
+                     }
+                 ],
+    "updatedAt":  "2026-11-17T07:08:35Z"
+}
